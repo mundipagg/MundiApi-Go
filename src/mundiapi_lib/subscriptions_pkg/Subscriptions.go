@@ -41,6 +41,8 @@ type SUBSCRIPTIONS interface {
     CancelSubscription (string, *models_pkg.CreateCancelSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     DeleteSubscriptionItem (string, string) (*models_pkg.GetSubscriptionItemResponse, error)
+
+    UpdateSubscriptionMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error)
 }
 
 /*

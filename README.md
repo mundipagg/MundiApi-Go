@@ -359,6 +359,37 @@ result,_ = charges.CaptureCharge(chargeId, request)
 ```
 
 
+### <a name="update_charge_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".charges_pkg.UpdateChargeMetadata") UpdateChargeMetadata
+
+> Updates the metadata from a charge
+
+
+```go
+func (me *CHARGES_IMPL) UpdateChargeMetadata(
+            chargeId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetChargeResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| chargeId |  ``` Required ```  | The charge id |
+| request |  ``` Required ```  | Request for updating the charge metadata |
+
+
+#### Example Usage
+
+```go
+chargeId := "charge_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetChargeResponse
+result,_ = charges.UpdateChargeMetadata(chargeId, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="customers_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".customers_pkg") customers_pkg
@@ -930,6 +961,37 @@ result,_ = customers.GetAccessToken(customerId, tokenId)
 ```
 
 
+### <a name="update_customer_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.UpdateCustomerMetadata") UpdateCustomerMetadata
+
+> Updates the metadata a customer
+
+
+```go
+func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata(
+            customerId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetCustomerResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | The customer id |
+| request |  ``` Required ```  | Request for updating the customer metadata |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetCustomerResponse
+result,_ = customers.UpdateCustomerMetadata(customerId, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="subscriptions_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".subscriptions_pkg") subscriptions_pkg
@@ -1396,6 +1458,37 @@ result,_ = subscriptions.DeleteSubscriptionItem(subscriptionId, subscriptionItem
 ```
 
 
+### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMetadata") UpdateSubscriptionMetadata
+
+> Updates the metadata from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata(
+            subscriptionId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscrption metadata |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionMetadata(subscriptionId, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="plans_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".plans_pkg") plans_pkg
@@ -1407,33 +1500,6 @@ Factory for the ``` PLANS ``` interface can be accessed from the package plans_p
 ```go
 plans := plans_pkg.NewPLANS()
 ```
-
-### <a name="get_plan_items"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlanItems") GetPlanItems
-
-> Gets all items from a plan
-
-
-```go
-func (me *PLANS_IMPL) GetPlanItems(planId string)(*models_pkg.ListPlanItemsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-
-var result *models_pkg.ListPlanItemsResponse
-result,_ = plans.GetPlanItems(planId)
-
-```
-
 
 ### <a name="update_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.UpdatePlanItem") UpdatePlanItem
 
@@ -1693,6 +1759,37 @@ result,_ = plans.DeletePlanItem(planId, planItemId)
 ```
 
 
+### <a name="update_plan_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.UpdatePlanMetadata") UpdatePlanMetadata
+
+> Updates the metadata from a plan
+
+
+```go
+func (me *PLANS_IMPL) UpdatePlanMetadata(
+            planId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetPlanResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | The plan id |
+| request |  ``` Required ```  | Request for updating the plan metadata |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetPlanResponse
+result,_ = plans.UpdatePlanMetadata(planId, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="invoices_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".invoices_pkg") invoices_pkg
@@ -1805,6 +1902,37 @@ result,_ = invoices.GetInvoice(invoiceId)
 ```
 
 
+### <a name="update_invoice_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.UpdateInvoiceMetadata") UpdateInvoiceMetadata
+
+> Updates the metadata from an invoice
+
+
+```go
+func (me *INVOICES_IMPL) UpdateInvoiceMetadata(
+            invoiceId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetInvoiceResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | The invoice id |
+| request |  ``` Required ```  | Request for updating the invoice metadata |
+
+
+#### Example Usage
+
+```go
+invoiceId := "invoice_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetInvoiceResponse
+result,_ = invoices.UpdateInvoiceMetadata(invoiceId, request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="orders_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".orders_pkg") orders_pkg
@@ -1886,6 +2014,37 @@ var body *models_pkg.CreateOrderRequest
 
 var result *models_pkg.GetOrderResponse
 result,_ = orders.CreateOrder(body)
+
+```
+
+
+### <a name="update_order_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderMetadata") UpdateOrderMetadata
+
+> Updates the metadata from an order
+
+
+```go
+func (me *ORDERS_IMPL) UpdateOrderMetadata(
+            orderId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | The order id |
+| request |  ``` Required ```  | Request for updating the order metadata |
+
+
+#### Example Usage
+
+```go
+orderId := "order_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetOrderResponse
+result,_ = orders.UpdateOrderMetadata(orderId, request)
 
 ```
 

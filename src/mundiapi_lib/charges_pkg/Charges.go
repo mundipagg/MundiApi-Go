@@ -27,6 +27,8 @@ type CHARGES interface {
     CancelCharge (string, *models_pkg.CreateCancelChargeRequest) (*models_pkg.GetChargeResponse, error)
 
     CaptureCharge (string, *models_pkg.CreateCaptureChargeRequest) (*models_pkg.GetChargeResponse, error)
+
+    UpdateChargeMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetChargeResponse, error)
 }
 
 /*

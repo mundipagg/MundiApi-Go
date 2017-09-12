@@ -17,6 +17,8 @@ type ORDERS interface {
     GetOrders () (*models_pkg.ListOrderResponse, error)
 
     CreateOrder (*models_pkg.CreateOrderRequest) (*models_pkg.GetOrderResponse, error)
+
+    UpdateOrderMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetOrderResponse, error)
 }
 
 /*

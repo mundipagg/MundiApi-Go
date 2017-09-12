@@ -49,6 +49,8 @@ type CUSTOMERS interface {
     CreateAccessToken (string, *models_pkg.CreateAccessTokenRequest) (*models_pkg.GetAccessTokenResponse, error)
 
     GetAccessToken (string, string) (*models_pkg.GetAccessTokenResponse, error)
+
+    UpdateCustomerMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetCustomerResponse, error)
 }
 
 /*

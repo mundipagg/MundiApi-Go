@@ -171,14 +171,6 @@ type CreateChargeRequest struct {
 }
 
 /*
- * Structure for the custom type ListPlanItemsResponse
- */
-type ListPlanItemsResponse struct {
-    Data            []*GetPlanItemResponse `json:"data" form:"data"` //The plan items
-    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
-}
-
-/*
  * Structure for the custom type ListTransactionsResponse
  */
 type ListTransactionsResponse struct {
@@ -206,7 +198,7 @@ type ListInvoicesResponse struct {
  * Structure for the custom type ListSubscriptionsResponse
  */
 type ListSubscriptionsResponse struct {
-    Data            []string        `json:"data" form:"data"` //The subscription objects
+    Data            []*GetSubscriptionResponse `json:"data" form:"data"` //The subscription objects
     Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
 }
 
@@ -215,7 +207,7 @@ type ListSubscriptionsResponse struct {
  */
 type ListPlansResponse struct {
     Data            []*GetPlanResponse `json:"data" form:"data"` //The plan objects
-    Paging          string          `json:"paging" form:"paging"` //Paging object
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
 }
 
 /*
@@ -274,19 +266,6 @@ type CreateUsageRequest struct {
 }
 
 /*
- * Structure for the custom type CreateOrderRequest
- */
-type CreateOrderRequest struct {
-    Items           []*CreateOrderItemRequest `json:"items" form:"items"` //Items
-    Customer        CreateCustomerRequest `json:"customer" form:"customer"` //Customer
-    Payments        []*CreatePaymentRequest `json:"payments" form:"payments"` //Payment data
-    Code            string          `json:"code" form:"code"` //The order code
-    CustomerId      string          `json:"customer_id" form:"customer_id"` //The customer id
-    Shipping        CreateShippingRequest `json:"shipping" form:"shipping"` //Shipping data
-    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
-}
-
-/*
  * Structure for the custom type CreateDiscountRequest
  */
 type CreateDiscountRequest struct {
@@ -294,19 +273,6 @@ type CreateDiscountRequest struct {
     DiscountType    string          `json:"discount_type" form:"discount_type"` //Discount type. Can be either flat or percentage.
     ItemId          string          `json:"item_id" form:"item_id"` //The item where the discount will be applied
     Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //Number of cycles that the discount will be applied
-}
-
-/*
- * Structure for the custom type CreatePaymentRequest
- */
-type CreatePaymentRequest struct {
-    PaymentMethod          string          `json:"payment_method" form:"payment_method"` //Payment method
-    CreditCard             CreateCreditCardPaymentRequest `json:"credit_card" form:"credit_card"` //Settings for credit card payment
-    Boleto                 CreateBoletoPaymentRequest `json:"boleto" form:"boleto"` //Settings for boleto payment
-    Currency               string          `json:"currency" form:"currency"` //Currency. Must be informed using 3 characters
-    Voucher                CreateVoucherPaymentRequest `json:"voucher" form:"voucher"` //Settings for voucher payment
-    BankTransfer           CreateBankTransferPaymentRequest `json:"bank_transfer,omitempty" form:"bank_transfer,omitempty"` //Settings for bank transfer payment
-    GatewayAffiliationId   *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway affiliation code
 }
 
 /*
@@ -700,6 +666,7 @@ type CreateCreditCardPaymentRequest struct {
     UpdateSubscriptionCard   bool            `json:"update_subscription_card" form:"update_subscription_card"` //Indicates if the card from the subscription must be updated
     CardId                   string          `json:"card_id" form:"card_id"` //The credit card id
     CardToken                string          `json:"card_token" form:"card_token"` //TODO: Write general description for this field
+    Recurrence               bool            `json:"recurrence" form:"recurrence"` //Indicates a recurrence
     Capture                  *bool           `json:"capture,omitempty" form:"capture,omitempty"` //Indicates if the operation should be only authorization or auth and capture.
 }
 
@@ -802,6 +769,7 @@ type UpdateChargeCardRequest struct {
     UpdateSubscription  bool            `json:"update_subscription" form:"update_subscription"` //Indicates if the subscriptions using this card must also be updated
     CardId              string          `json:"card_id" form:"card_id"` //Card id
     Card                CreateCardRequest `json:"card" form:"card"` //Card data
+    Recurrence          bool            `json:"recurrence" form:"recurrence"` //Indicates a recurrence
 }
 
 /*
@@ -820,7 +788,7 @@ type CreateBoletoPaymentRequest struct {
  * Structure for the custom type ListUsagesResponse
  */
 type ListUsagesResponse struct {
-    Data            []string        `json:"data" form:"data"` //The usage objects
+    Data            []*GetUsageResponse `json:"data" form:"data"` //The usage objects
     Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
 }
 
@@ -1010,6 +978,7 @@ type GetCreditCardTransactionResponse struct {
     AcquirerAuthCode          string          `json:"acquirer_auth_code" form:"acquirer_auth_code"` //Acquirer authorization code
     OperationType             string          `json:"operation_type" form:"operation_type"` //Operation type
     Card                      GetCardResponse `json:"card" form:"card"` //Card data
+    AcquirerMessage           string          `json:"acquirer_message" form:"acquirer_message"` //Acquirer message
     Installments              *int64          `json:"installments,omitempty" form:"installments,omitempty"` //Number of installments
 }
 
@@ -1090,4 +1059,39 @@ type GetTokenResponse struct {
     CreatedAt       *time.Time      `json:"created_at" form:"created_at"` //TODO: Write general description for this field
     ExpiresAt       string          `json:"expires_at" form:"expires_at"` //TODO: Write general description for this field
     Card            GetCardTokenResponse `json:"card" form:"card"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type UpdateMetadataRequest
+ */
+type UpdateMetadataRequest struct {
+    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
+}
+
+/*
+ * Structure for the custom type CreatePaymentRequest
+ */
+type CreatePaymentRequest struct {
+    PaymentMethod          string          `json:"payment_method" form:"payment_method"` //Payment method
+    CreditCard             CreateCreditCardPaymentRequest `json:"credit_card" form:"credit_card"` //Settings for credit card payment
+    Boleto                 CreateBoletoPaymentRequest `json:"boleto" form:"boleto"` //Settings for boleto payment
+    Currency               string          `json:"currency" form:"currency"` //Currency. Must be informed using 3 characters
+    Voucher                CreateVoucherPaymentRequest `json:"voucher" form:"voucher"` //Settings for voucher payment
+    BankTransfer           CreateBankTransferPaymentRequest `json:"bank_transfer,omitempty" form:"bank_transfer,omitempty"` //Settings for bank transfer payment
+    GatewayAffiliationId   *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway affiliation code
+    Amount                 *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount of the payment, in cents
+}
+
+/*
+ * Structure for the custom type CreateOrderRequest
+ */
+type CreateOrderRequest struct {
+    Items             []*CreateOrderItemRequest `json:"items" form:"items"` //Items
+    Customer          CreateCustomerRequest `json:"customer" form:"customer"` //Customer
+    Payments          []*CreatePaymentRequest `json:"payments" form:"payments"` //Payment data
+    Code              string          `json:"code" form:"code"` //The order code
+    CustomerId        string          `json:"customer_id" form:"customer_id"` //The customer id
+    Shipping          CreateShippingRequest `json:"shipping" form:"shipping"` //Shipping data
+    Metadata          map[string]string `json:"metadata" form:"metadata"` //Metadata
+    AntifraudEnabled  *bool           `json:"antifraud_enabled,omitempty" form:"antifraud_enabled,omitempty"` //Defines whether the order will go through anti-fraud
 }

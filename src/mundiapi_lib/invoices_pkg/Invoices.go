@@ -19,6 +19,8 @@ type INVOICES interface {
     GetInvoices () (*models_pkg.ListInvoicesResponse, error)
 
     GetInvoice (string) (*models_pkg.GetInvoiceResponse, error)
+
+    UpdateInvoiceMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetInvoiceResponse, error)
 }
 
 /*
