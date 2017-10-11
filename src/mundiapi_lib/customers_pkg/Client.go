@@ -19,229 +19,6 @@ import(
 type CUSTOMERS_IMPL struct { }
 
 /**
- * Gets all adressess from a customer
- * @param    string        customerId      parameter: Required
- * @return	Returns the *models_pkg.ListAddressesResponse response from the API call
- */
-func (me *CUSTOMERS_IMPL) GetAddresses (
-            customerId string) (*models_pkg.ListAddressesResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := mundiapi_lib.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
-        "customer_id" : customerId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ListAddressesResponse = &models_pkg.ListAddressesResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-}
-
-/**
- * Get all cards from a customer
- * @param    string        customerId      parameter: Required
- * @return	Returns the *models_pkg.ListCardsResponse response from the API call
- */
-func (me *CUSTOMERS_IMPL) GetCards (
-            customerId string) (*models_pkg.ListCardsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := mundiapi_lib.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/cards"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
-        "customer_id" : customerId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ListCardsResponse = &models_pkg.ListCardsResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-}
-
-/**
- * Get all Customers
- * @return	Returns the *models_pkg.ListCustomersResponse response from the API call
- */
-func (me *CUSTOMERS_IMPL) GetCustomers () (*models_pkg.ListCustomersResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := mundiapi_lib.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers"
-
-    //variable to hold errors
-    var err error = nil
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ListCustomersResponse = &models_pkg.ListCustomersResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-}
-
-/**
  * Creates a new customer
  * @param    *models_pkg.CreateCustomerRequest        request     parameter: Required
  * @return	Returns the *models_pkg.GetCustomerResponse response from the API call
@@ -390,90 +167,6 @@ func (me *CUSTOMERS_IMPL) GetCustomer (
 }
 
 /**
- * Updates an address
- * @param    string                                  customerId      parameter: Required
- * @param    string                                  addressId       parameter: Required
- * @param    *models_pkg.UpdateAddressRequest        request         parameter: Required
- * @return	Returns the *models_pkg.GetAddressResponse response from the API call
- */
-func (me *CUSTOMERS_IMPL) UpdateAddress (
-            customerId string,
-            addressId string,
-            request *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := mundiapi_lib.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses/{address_id}"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
-        "customer_id" : customerId,
-        "address_id" : addressId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-    }
-
-    //prepare API request
-    _request := unirest.PutWithAuth(_queryBuilder, headers, request, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.GetAddressResponse = &models_pkg.GetAddressResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-}
-
-/**
  * Updates a card
  * @param    string                               customerId      parameter: Required
  * @param    string                               cardId          parameter: Required
@@ -548,6 +241,90 @@ func (me *CUSTOMERS_IMPL) UpdateCard (
 
     //returning the response
     var retVal *models_pkg.GetCardResponse = &models_pkg.GetCardResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+}
+
+/**
+ * Updates an address
+ * @param    string                                  customerId      parameter: Required
+ * @param    string                                  addressId       parameter: Required
+ * @param    *models_pkg.UpdateAddressRequest        request         parameter: Required
+ * @return	Returns the *models_pkg.GetAddressResponse response from the API call
+ */
+func (me *CUSTOMERS_IMPL) UpdateAddress (
+            customerId string,
+            addressId string,
+            request *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := mundiapi_lib.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses/{address_id}"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "customer_id" : customerId,
+        "address_id" : addressId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+    }
+
+    //prepare API request
+    _request := unirest.PutWithAuth(_queryBuilder, headers, request, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.GetAddressResponse = &models_pkg.GetAddressResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -1203,26 +980,38 @@ func (me *CUSTOMERS_IMPL) DeleteAccessTokens (
 }
 
 /**
- * Get all access tokens from a customer
- * @param    string        customerId      parameter: Required
- * @return	Returns the *models_pkg.ListAccessTokensResponse response from the API call
+ * Get all Customers
+ * @param    *string        name         parameter: Optional
+ * @param    *string        document     parameter: Optional
+ * @param    *int64         page         parameter: Optional
+ * @param    *int64         size         parameter: Optional
+ * @param    *string        email        parameter: Optional
+ * @return	Returns the *models_pkg.ListCustomersResponse response from the API call
  */
-func (me *CUSTOMERS_IMPL) GetAccessTokens (
-            customerId string) (*models_pkg.ListAccessTokensResponse, error) {
+func (me *CUSTOMERS_IMPL) GetCustomers (
+            name *string,
+            document *string,
+            page *int64,
+            size *int64,
+            email *string) (*models_pkg.ListCustomersResponse, error) {
         //the base uri for api requests
     _queryBuilder := mundiapi_lib.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/access-tokens"
+   _queryBuilder = _queryBuilder + "/customers"
 
     //variable to hold errors
     var err error = nil
     //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
-        "customer_id" : customerId,
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "name" : name,
+        "document" : document,
+        "page" : apihelper_pkg.ToString(*page, "1"),
+        "size" : apihelper_pkg.ToString(*size, "10"),
+        "email" : email,
     })
     if err != nil {
-        //error in template param handling
+        //error in query param handling
         return nil, err
     }
 
@@ -1270,7 +1059,7 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens (
     }
 
     //returning the response
-    var retVal *models_pkg.ListAccessTokensResponse = &models_pkg.ListAccessTokensResponse{}
+    var retVal *models_pkg.ListCustomersResponse = &models_pkg.ListCustomersResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -1281,12 +1070,12 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens (
 }
 
 /**
- * Delete a customer's access token
+ * Get a Customer's access token
  * @param    string        customerId      parameter: Required
  * @param    string        tokenId         parameter: Required
  * @return	Returns the *models_pkg.GetAccessTokenResponse response from the API call
  */
-func (me *CUSTOMERS_IMPL) DeleteAccessToken (
+func (me *CUSTOMERS_IMPL) GetAccessToken (
             customerId string,
             tokenId string) (*models_pkg.GetAccessTokenResponse, error) {
         //the base uri for api requests
@@ -1321,7 +1110,7 @@ func (me *CUSTOMERS_IMPL) DeleteAccessToken (
     }
 
     //prepare API request
-    _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request);
     if err != nil {
@@ -1443,12 +1232,12 @@ func (me *CUSTOMERS_IMPL) CreateAccessToken (
 }
 
 /**
- * Get a Customer's access token
+ * Delete a customer's access token
  * @param    string        customerId      parameter: Required
  * @param    string        tokenId         parameter: Required
  * @return	Returns the *models_pkg.GetAccessTokenResponse response from the API call
  */
-func (me *CUSTOMERS_IMPL) GetAccessToken (
+func (me *CUSTOMERS_IMPL) DeleteAccessToken (
             customerId string,
             tokenId string) (*models_pkg.GetAccessTokenResponse, error) {
         //the base uri for api requests
@@ -1483,7 +1272,7 @@ func (me *CUSTOMERS_IMPL) GetAccessToken (
     }
 
     //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request);
     if err != nil {
@@ -1595,6 +1384,282 @@ func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata (
 
     //returning the response
     var retVal *models_pkg.GetCustomerResponse = &models_pkg.GetCustomerResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+}
+
+/**
+ * Get all access tokens from a customer
+ * @param    string        customerId      parameter: Required
+ * @param    *int64        page            parameter: Optional
+ * @param    *int64        size            parameter: Optional
+ * @return	Returns the *models_pkg.ListAccessTokensResponse response from the API call
+ */
+func (me *CUSTOMERS_IMPL) GetAccessTokens (
+            customerId string,
+            page *int64,
+            size *int64) (*models_pkg.ListAccessTokensResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := mundiapi_lib.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/customers/{customer_id}/access-tokens"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "customer_id" : customerId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "page" : page,
+        "size" : size,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ListAccessTokensResponse = &models_pkg.ListAccessTokensResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+}
+
+/**
+ * Gets all adressess from a customer
+ * @param    string        customerId      parameter: Required
+ * @param    *int64        page            parameter: Optional
+ * @param    *int64        size            parameter: Optional
+ * @return	Returns the *models_pkg.ListAddressesResponse response from the API call
+ */
+func (me *CUSTOMERS_IMPL) GetAddresses (
+            customerId string,
+            page *int64,
+            size *int64) (*models_pkg.ListAddressesResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := mundiapi_lib.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "customer_id" : customerId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "page" : page,
+        "size" : size,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ListAddressesResponse = &models_pkg.ListAddressesResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+}
+
+/**
+ * Get all cards from a customer
+ * @param    string        customerId      parameter: Required
+ * @param    *int64        page            parameter: Optional
+ * @param    *int64        size            parameter: Optional
+ * @return	Returns the *models_pkg.ListCardsResponse response from the API call
+ */
+func (me *CUSTOMERS_IMPL) GetCards (
+            customerId string,
+            page *int64,
+            size *int64) (*models_pkg.ListCardsResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := mundiapi_lib.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/customers/{customer_id}/cards"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "customer_id" : customerId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "page" : page,
+        "size" : size,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ListCardsResponse = &models_pkg.ListCardsResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {

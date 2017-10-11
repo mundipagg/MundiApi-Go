@@ -12,19 +12,13 @@ import "mundiapi_lib/models_pkg"
  * Interface for the CUSTOMERS_IMPL
  */
 type CUSTOMERS interface {
-    GetAddresses (string) (*models_pkg.ListAddressesResponse, error)
-
-    GetCards (string) (*models_pkg.ListCardsResponse, error)
-
-    GetCustomers () (*models_pkg.ListCustomersResponse, error)
-
     CreateCustomer (*models_pkg.CreateCustomerRequest) (*models_pkg.GetCustomerResponse, error)
 
     GetCustomer (string) (*models_pkg.GetCustomerResponse, error)
 
-    UpdateAddress (string, string, *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error)
-
     UpdateCard (string, string, *models_pkg.UpdateCardRequest) (*models_pkg.GetCardResponse, error)
+
+    UpdateAddress (string, string, *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error)
 
     GetAddress (string, string) (*models_pkg.GetAddressResponse, error)
 
@@ -42,15 +36,21 @@ type CUSTOMERS interface {
 
     DeleteAccessTokens (string) (*models_pkg.ListAccessTokensResponse, error)
 
-    GetAccessTokens (string) (*models_pkg.ListAccessTokensResponse, error)
-
-    DeleteAccessToken (string, string) (*models_pkg.GetAccessTokenResponse, error)
-
-    CreateAccessToken (string, *models_pkg.CreateAccessTokenRequest) (*models_pkg.GetAccessTokenResponse, error)
+    GetCustomers (*string, *string, *int64, *int64, *string) (*models_pkg.ListCustomersResponse, error)
 
     GetAccessToken (string, string) (*models_pkg.GetAccessTokenResponse, error)
 
+    CreateAccessToken (string, *models_pkg.CreateAccessTokenRequest) (*models_pkg.GetAccessTokenResponse, error)
+
+    DeleteAccessToken (string, string) (*models_pkg.GetAccessTokenResponse, error)
+
     UpdateCustomerMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetCustomerResponse, error)
+
+    GetAccessTokens (string, *int64, *int64) (*models_pkg.ListAccessTokensResponse, error)
+
+    GetAddresses (string, *int64, *int64) (*models_pkg.ListAddressesResponse, error)
+
+    GetCards (string, *int64, *int64) (*models_pkg.ListCardsResponse, error)
 }
 
 /*

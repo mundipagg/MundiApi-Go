@@ -119,9 +119,9 @@ To configure these for your generated code, open the file "Configuration.go" and
 
 * [charges_pkg](#charges_pkg)
 * [customers_pkg](#customers_pkg)
-* [subscriptions_pkg](#subscriptions_pkg)
-* [plans_pkg](#plans_pkg)
 * [invoices_pkg](#invoices_pkg)
+* [plans_pkg](#plans_pkg)
+* [subscriptions_pkg](#subscriptions_pkg)
 * [orders_pkg](#orders_pkg)
 * [tokens_pkg](#tokens_pkg)
 
@@ -185,25 +185,6 @@ chargeId := "charge_id"
 
 var result *models_pkg.GetChargeResponse
 result,_ = charges.RetryCharge(chargeId)
-
-```
-
-
-### <a name="get_charges"></a>![Method: ](https://apidocs.io/img/method.png ".charges_pkg.GetCharges") GetCharges
-
-> Lists all charges
-
-
-```go
-func (me *CHARGES_IMPL) GetCharges()(*models_pkg.ListChargesResponse,error)
-```
-
-#### Example Usage
-
-```go
-
-var result *models_pkg.ListChargesResponse
-result,_ = charges.GetCharges()
 
 ```
 
@@ -390,6 +371,58 @@ result,_ = charges.UpdateChargeMetadata(chargeId, request)
 ```
 
 
+### <a name="get_charges"></a>![Method: ](https://apidocs.io/img/method.png ".charges_pkg.GetCharges") GetCharges
+
+> Lists all charges
+
+
+```go
+func (me *CHARGES_IMPL) GetCharges(
+            page *int64,
+            size *int64,
+            code *string,
+            status *string,
+            paymentMethod *string,
+            customerId *string,
+            orderId *string,
+            createdSince *time.Time,
+            createdUntil *time.Time)(*models_pkg.ListChargesResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for charge's code |
+| status |  ``` Optional ```  | Filter for charge's status |
+| paymentMethod |  ``` Optional ```  | Filter for charge's payment method |
+| customerId |  ``` Optional ```  | Filter for charge's customer id |
+| orderId |  ``` Optional ```  | Filter for charge's order id |
+| createdSince |  ``` Optional ```  | Filter for the beginning of the range for charge's creation |
+| createdUntil |  ``` Optional ```  | Filter for the end of the range for charge's creation |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("105", 10, 8)
+size,_ := strconv.ParseInt("105", 10, 8)
+code := "code"
+status := "status"
+paymentMethod := "payment_method"
+customerId := "customer_id"
+orderId := "order_id"
+createdSince := time.Now()
+createdUntil := time.Now()
+
+var result *models_pkg.ListChargesResponse
+result,_ = charges.GetCharges(page, size, code, status, paymentMethod, customerId, orderId, createdSince, createdUntil)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="customers_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".customers_pkg") customers_pkg
@@ -401,79 +434,6 @@ Factory for the ``` CUSTOMERS ``` interface can be accessed from the package cus
 ```go
 customers := customers_pkg.NewCUSTOMERS()
 ```
-
-### <a name="get_addresses"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetAddresses") GetAddresses
-
-> Gets all adressess from a customer
-
-
-```go
-func (me *CUSTOMERS_IMPL) GetAddresses(customerId string)(*models_pkg.ListAddressesResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer id |
-
-
-#### Example Usage
-
-```go
-customerId := "customer_id"
-
-var result *models_pkg.ListAddressesResponse
-result,_ = customers.GetAddresses(customerId)
-
-```
-
-
-### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetCards") GetCards
-
-> Get all cards from a customer
-
-
-```go
-func (me *CUSTOMERS_IMPL) GetCards(customerId string)(*models_pkg.ListCardsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-
-
-#### Example Usage
-
-```go
-customerId := "customer_id"
-
-var result *models_pkg.ListCardsResponse
-result,_ = customers.GetCards(customerId)
-
-```
-
-
-### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetCustomers") GetCustomers
-
-> Get all Customers
-
-
-```go
-func (me *CUSTOMERS_IMPL) GetCustomers()(*models_pkg.ListCustomersResponse,error)
-```
-
-#### Example Usage
-
-```go
-
-var result *models_pkg.ListCustomersResponse
-result,_ = customers.GetCustomers()
-
-```
-
 
 ### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.CreateCustomer") CreateCustomer
 
@@ -529,40 +489,6 @@ result,_ = customers.GetCustomer(customerId)
 ```
 
 
-### <a name="update_address"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.UpdateAddress") UpdateAddress
-
-> Updates an address
-
-
-```go
-func (me *CUSTOMERS_IMPL) UpdateAddress(
-            customerId string,
-            addressId string,
-            request *models_pkg.UpdateAddressRequest)(*models_pkg.GetAddressResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| addressId |  ``` Required ```  | Address Id |
-| request |  ``` Required ```  | Request for updating an address |
-
-
-#### Example Usage
-
-```go
-customerId := "customer_id"
-addressId := "address_id"
-var request *models_pkg.UpdateAddressRequest
-
-var result *models_pkg.GetAddressResponse
-result,_ = customers.UpdateAddress(customerId, addressId, request)
-
-```
-
-
 ### <a name="update_card"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.UpdateCard") UpdateCard
 
 > Updates a card
@@ -593,6 +519,40 @@ var request *models_pkg.UpdateCardRequest
 
 var result *models_pkg.GetCardResponse
 result,_ = customers.UpdateCard(customerId, cardId, request)
+
+```
+
+
+### <a name="update_address"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.UpdateAddress") UpdateAddress
+
+> Updates an address
+
+
+```go
+func (me *CUSTOMERS_IMPL) UpdateAddress(
+            customerId string,
+            addressId string,
+            request *models_pkg.UpdateAddressRequest)(*models_pkg.GetAddressResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| addressId |  ``` Required ```  | Address Id |
+| request |  ``` Required ```  | Request for updating an address |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+addressId := "address_id"
+var request *models_pkg.UpdateAddressRequest
+
+var result *models_pkg.GetAddressResponse
+result,_ = customers.UpdateAddress(customerId, addressId, request)
 
 ```
 
@@ -841,91 +801,42 @@ result,_ = customers.DeleteAccessTokens(customerId)
 ```
 
 
-### <a name="get_access_tokens"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetAccessTokens") GetAccessTokens
+### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetCustomers") GetCustomers
 
-> Get all access tokens from a customer
+> Get all Customers
 
 
 ```go
-func (me *CUSTOMERS_IMPL) GetAccessTokens(customerId string)(*models_pkg.ListAccessTokensResponse,error)
+func (me *CUSTOMERS_IMPL) GetCustomers(
+            name *string,
+            document *string,
+            page *int64,
+            size *int64,
+            email *string)(*models_pkg.ListCustomersResponse,error)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
+| name |  ``` Optional ```  | Name of the Customer |
+| document |  ``` Optional ```  | Document of the Customer |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
+| size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
+| email |  ``` Optional ```  | Customer's email |
 
 
 #### Example Usage
 
 ```go
-customerId := "customer_id"
+name := "name"
+document := "document"
+page,_ := strconv.ParseInt("1", 10, 8)
+size,_ := strconv.ParseInt("10", 10, 8)
+email := "email"
 
-var result *models_pkg.ListAccessTokensResponse
-result,_ = customers.GetAccessTokens(customerId)
-
-```
-
-
-### <a name="delete_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.DeleteAccessToken") DeleteAccessToken
-
-> Delete a customer's access token
-
-
-```go
-func (me *CUSTOMERS_IMPL) DeleteAccessToken(
-            customerId string,
-            tokenId string)(*models_pkg.GetAccessTokenResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| tokenId |  ``` Required ```  | Token Id |
-
-
-#### Example Usage
-
-```go
-customerId := "customer_id"
-tokenId := "token_id"
-
-var result *models_pkg.GetAccessTokenResponse
-result,_ = customers.DeleteAccessToken(customerId, tokenId)
-
-```
-
-
-### <a name="create_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.CreateAccessToken") CreateAccessToken
-
-> Creates a access token for a customer
-
-
-```go
-func (me *CUSTOMERS_IMPL) CreateAccessToken(
-            customerId string,
-            request *models_pkg.CreateAccessTokenRequest)(*models_pkg.GetAccessTokenResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| request |  ``` Required ```  | Request for creating a access token |
-
-
-#### Example Usage
-
-```go
-customerId := "customer_id"
-var request *models_pkg.CreateAccessTokenRequest
-
-var result *models_pkg.GetAccessTokenResponse
-result,_ = customers.CreateAccessToken(customerId, request)
+var result *models_pkg.ListCustomersResponse
+result,_ = customers.GetCustomers(name, document, page, size, email)
 
 ```
 
@@ -961,6 +872,68 @@ result,_ = customers.GetAccessToken(customerId, tokenId)
 ```
 
 
+### <a name="create_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.CreateAccessToken") CreateAccessToken
+
+> Creates a access token for a customer
+
+
+```go
+func (me *CUSTOMERS_IMPL) CreateAccessToken(
+            customerId string,
+            request *models_pkg.CreateAccessTokenRequest)(*models_pkg.GetAccessTokenResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| request |  ``` Required ```  | Request for creating a access token |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+var request *models_pkg.CreateAccessTokenRequest
+
+var result *models_pkg.GetAccessTokenResponse
+result,_ = customers.CreateAccessToken(customerId, request)
+
+```
+
+
+### <a name="delete_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.DeleteAccessToken") DeleteAccessToken
+
+> Delete a customer's access token
+
+
+```go
+func (me *CUSTOMERS_IMPL) DeleteAccessToken(
+            customerId string,
+            tokenId string)(*models_pkg.GetAccessTokenResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| tokenId |  ``` Required ```  | Token Id |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+tokenId := "token_id"
+
+var result *models_pkg.GetAccessTokenResponse
+result,_ = customers.DeleteAccessToken(customerId, tokenId)
+
+```
+
+
 ### <a name="update_customer_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.UpdateCustomerMetadata") UpdateCustomerMetadata
 
 > Updates the metadata a customer
@@ -992,6 +965,588 @@ result,_ = customers.UpdateCustomerMetadata(customerId, request)
 ```
 
 
+### <a name="get_access_tokens"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetAccessTokens") GetAccessTokens
+
+> Get all access tokens from a customer
+
+
+```go
+func (me *CUSTOMERS_IMPL) GetAccessTokens(
+            customerId string,
+            page *int64,
+            size *int64)(*models_pkg.ListAccessTokensResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+page,_ := strconv.ParseInt("196", 10, 8)
+size,_ := strconv.ParseInt("196", 10, 8)
+
+var result *models_pkg.ListAccessTokensResponse
+result,_ = customers.GetAccessTokens(customerId, page, size)
+
+```
+
+
+### <a name="get_addresses"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetAddresses") GetAddresses
+
+> Gets all adressess from a customer
+
+
+```go
+func (me *CUSTOMERS_IMPL) GetAddresses(
+            customerId string,
+            page *int64,
+            size *int64)(*models_pkg.ListAddressesResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+page,_ := strconv.ParseInt("196", 10, 8)
+size,_ := strconv.ParseInt("196", 10, 8)
+
+var result *models_pkg.ListAddressesResponse
+result,_ = customers.GetAddresses(customerId, page, size)
+
+```
+
+
+### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetCards") GetCards
+
+> Get all cards from a customer
+
+
+```go
+func (me *CUSTOMERS_IMPL) GetCards(
+            customerId string,
+            page *int64,
+            size *int64)(*models_pkg.ListCardsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+page,_ := strconv.ParseInt("196", 10, 8)
+size,_ := strconv.ParseInt("196", 10, 8)
+
+var result *models_pkg.ListCardsResponse
+result,_ = customers.GetCards(customerId, page, size)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="invoices_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".invoices_pkg") invoices_pkg
+
+### Get instance
+
+Factory for the ``` INVOICES ``` interface can be accessed from the package invoices_pkg.
+
+```go
+invoices := invoices_pkg.NewINVOICES()
+```
+
+### <a name="get_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.GetInvoice") GetInvoice
+
+> Gets an invoice
+
+
+```go
+func (me *INVOICES_IMPL) GetInvoice(invoiceId string)(*models_pkg.GetInvoiceResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | Invoice Id |
+
+
+#### Example Usage
+
+```go
+invoiceId := "invoice_id"
+
+var result *models_pkg.GetInvoiceResponse
+result,_ = invoices.GetInvoice(invoiceId)
+
+```
+
+
+### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.CancelInvoice") CancelInvoice
+
+> Cancels an invoice
+
+
+```go
+func (me *INVOICES_IMPL) CancelInvoice(invoiceId string)(*models_pkg.GetInvoiceResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | Invoice id |
+
+
+#### Example Usage
+
+```go
+invoiceId := "invoice_id"
+
+var result *models_pkg.GetInvoiceResponse
+result,_ = invoices.CancelInvoice(invoiceId)
+
+```
+
+
+### <a name="update_invoice_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.UpdateInvoiceMetadata") UpdateInvoiceMetadata
+
+> Updates the metadata from an invoice
+
+
+```go
+func (me *INVOICES_IMPL) UpdateInvoiceMetadata(
+            invoiceId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetInvoiceResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | The invoice id |
+| request |  ``` Required ```  | Request for updating the invoice metadata |
+
+
+#### Example Usage
+
+```go
+invoiceId := "invoice_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetInvoiceResponse
+result,_ = invoices.UpdateInvoiceMetadata(invoiceId, request)
+
+```
+
+
+### <a name="get_invoices"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.GetInvoices") GetInvoices
+
+> Gets all invoices
+
+
+```go
+func (me *INVOICES_IMPL) GetInvoices(
+            page *int64,
+            size *int64,
+            code *string,
+            customerId *string,
+            subscriptionId *string,
+            createdSince *time.Time,
+            createdUntil *time.Time,
+            status *string,
+            dueSince *time.Time,
+            dueUntil *time.Time)(*models_pkg.ListInvoicesResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for Invoice's code |
+| customerId |  ``` Optional ```  | Filter for Invoice's customer id |
+| subscriptionId |  ``` Optional ```  | Filter for Invoice's subscription id |
+| createdSince |  ``` Optional ```  | Filter for Invoice's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for Invoices creation date end range |
+| status |  ``` Optional ```  | Filter for Invoice's status |
+| dueSince |  ``` Optional ```  | Filter for Invoice's due date start range |
+| dueUntil |  ``` Optional ```  | Filter for Invoice's due date end range |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("196", 10, 8)
+size,_ := strconv.ParseInt("196", 10, 8)
+code := "code"
+customerId := "customer_id"
+subscriptionId := "subscription_id"
+createdSince := time.Now()
+createdUntil := time.Now()
+status := "status"
+dueSince := time.Now()
+dueUntil := time.Now()
+
+var result *models_pkg.ListInvoicesResponse
+result,_ = invoices.GetInvoices(page, size, code, customerId, subscriptionId, createdSince, createdUntil, status, dueSince, dueUntil)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="plans_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".plans_pkg") plans_pkg
+
+### Get instance
+
+Factory for the ``` PLANS ``` interface can be accessed from the package plans_pkg.
+
+```go
+plans := plans_pkg.NewPLANS()
+```
+
+### <a name="update_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.UpdatePlanItem") UpdatePlanItem
+
+> Updates a plan item
+
+
+```go
+func (me *PLANS_IMPL) UpdatePlanItem(
+            planId string,
+            planItemId string,
+            body *models_pkg.UpdatePlanItemRequest)(*models_pkg.GetPlanItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| planItemId |  ``` Required ```  | Plan item id |
+| body |  ``` Required ```  | Request for updating the plan item |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+planItemId := "plan_item_id"
+var body *models_pkg.UpdatePlanItemRequest
+
+var result *models_pkg.GetPlanItemResponse
+result,_ = plans.UpdatePlanItem(planId, planItemId, body)
+
+```
+
+
+### <a name="get_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlan") GetPlan
+
+> Gets a plan
+
+
+```go
+func (me *PLANS_IMPL) GetPlan(planId string)(*models_pkg.GetPlanResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+
+var result *models_pkg.GetPlanResponse
+result,_ = plans.GetPlan(planId)
+
+```
+
+
+### <a name="create_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.CreatePlanItem") CreatePlanItem
+
+> Adds a new item to a plan
+
+
+```go
+func (me *PLANS_IMPL) CreatePlanItem(
+            planId string,
+            request *models_pkg.CreatePlanItemRequest)(*models_pkg.GetPlanItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| request |  ``` Required ```  | Request for creating a plan item |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+var request *models_pkg.CreatePlanItemRequest
+
+var result *models_pkg.GetPlanItemResponse
+result,_ = plans.CreatePlanItem(planId, request)
+
+```
+
+
+### <a name="update_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.UpdatePlan") UpdatePlan
+
+> Updates a plan
+
+
+```go
+func (me *PLANS_IMPL) UpdatePlan(
+            planId string,
+            request *models_pkg.UpdatePlanRequest)(*models_pkg.GetPlanResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| request |  ``` Required ```  | Request for updating a plan |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+var request *models_pkg.UpdatePlanRequest
+
+var result *models_pkg.GetPlanResponse
+result,_ = plans.UpdatePlan(planId, request)
+
+```
+
+
+### <a name="create_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.CreatePlan") CreatePlan
+
+> Creates a new plan
+
+
+```go
+func (me *PLANS_IMPL) CreatePlan(body *models_pkg.CreatePlanRequest)(*models_pkg.GetPlanResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating a plan |
+
+
+#### Example Usage
+
+```go
+var body *models_pkg.CreatePlanRequest
+
+var result *models_pkg.GetPlanResponse
+result,_ = plans.CreatePlan(body)
+
+```
+
+
+### <a name="delete_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.DeletePlan") DeletePlan
+
+> Deletes a plan
+
+
+```go
+func (me *PLANS_IMPL) DeletePlan(planId string)(*models_pkg.GetPlanResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+
+var result *models_pkg.GetPlanResponse
+result,_ = plans.DeletePlan(planId)
+
+```
+
+
+### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlanItem") GetPlanItem
+
+> Gets a plan item
+
+
+```go
+func (me *PLANS_IMPL) GetPlanItem(
+            planId string,
+            planItemId string)(*models_pkg.GetPlanItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| planItemId |  ``` Required ```  | Plan item id |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+planItemId := "plan_item_id"
+
+var result *models_pkg.GetPlanItemResponse
+result,_ = plans.GetPlanItem(planId, planItemId)
+
+```
+
+
+### <a name="delete_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.DeletePlanItem") DeletePlanItem
+
+> Removes an item from a plan
+
+
+```go
+func (me *PLANS_IMPL) DeletePlanItem(
+            planId string,
+            planItemId string)(*models_pkg.GetPlanItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| planItemId |  ``` Required ```  | Plan item id |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+planItemId := "plan_item_id"
+
+var result *models_pkg.GetPlanItemResponse
+result,_ = plans.DeletePlanItem(planId, planItemId)
+
+```
+
+
+### <a name="update_plan_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.UpdatePlanMetadata") UpdatePlanMetadata
+
+> Updates the metadata from a plan
+
+
+```go
+func (me *PLANS_IMPL) UpdatePlanMetadata(
+            planId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetPlanResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | The plan id |
+| request |  ``` Required ```  | Request for updating the plan metadata |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetPlanResponse
+result,_ = plans.UpdatePlanMetadata(planId, request)
+
+```
+
+
+### <a name="get_plans"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlans") GetPlans
+
+> Gets all plans
+
+
+```go
+func (me *PLANS_IMPL) GetPlans(
+            page *int64,
+            size *int64,
+            name *string,
+            status *string,
+            billingType *string,
+            createdSince *time.Time,
+            createdUntil *time.Time)(*models_pkg.ListPlansResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | Filter for Plan's name |
+| status |  ``` Optional ```  | Filter for Plan's status |
+| billingType |  ``` Optional ```  | Filter for plan's billing type |
+| createdSince |  ``` Optional ```  | Filter for plan's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for plan's creation date end range |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("196", 10, 8)
+size,_ := strconv.ParseInt("196", 10, 8)
+name := "name"
+status := "status"
+billingType := "billing_type"
+createdSince := time.Now()
+createdUntil := time.Now()
+
+var result *models_pkg.ListPlansResponse
+result,_ = plans.GetPlans(page, size, name, status, billingType, createdSince, createdUntil)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="subscriptions_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".subscriptions_pkg") subscriptions_pkg
@@ -1004,33 +1559,36 @@ Factory for the ``` SUBSCRIPTIONS ``` interface can be accessed from the package
 subscriptions := subscriptions_pkg.NewSUBSCRIPTIONS()
 ```
 
-### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionBillingDate") UpdateSubscriptionBillingDate
+### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionItem") UpdateSubscriptionItem
 
-> Updates the billing date from a subscription
+> Updates a subscription item
 
 
 ```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate(
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem(
             subscriptionId string,
-            request *models_pkg.UpdateSubscriptionBillingDateRequest)(*models_pkg.GetSubscriptionResponse,error)
+            itemId string,
+            body *models_pkg.UpdateSubscriptionItemRequest)(*models_pkg.GetSubscriptionItemResponse,error)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription billing date |
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for updating a subscription item |
 
 
 #### Example Usage
 
 ```go
 subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionBillingDateRequest
+itemId := "item_id"
+var body *models_pkg.UpdateSubscriptionItemRequest
 
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionBillingDate(subscriptionId, request)
+var result *models_pkg.GetSubscriptionItemResponse
+result,_ = subscriptions.UpdateSubscriptionItem(subscriptionId, itemId, body)
 
 ```
 
@@ -1069,55 +1627,33 @@ result,_ = subscriptions.CreateUsage(subscriptionId, itemId, body)
 ```
 
 
-### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionItem") UpdateSubscriptionItem
+### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionBillingDate") UpdateSubscriptionBillingDate
 
-> Updates a subscription item
+> Updates the billing date from a subscription
 
 
 ```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem(
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate(
             subscriptionId string,
-            itemId string,
-            body *models_pkg.UpdateSubscriptionItemRequest)(*models_pkg.GetSubscriptionItemResponse,error)
+            request *models_pkg.UpdateSubscriptionBillingDateRequest)(*models_pkg.GetSubscriptionResponse,error)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for updating a subscription item |
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscription billing date |
 
 
 #### Example Usage
 
 ```go
 subscriptionId := "subscription_id"
-itemId := "item_id"
-var body *models_pkg.UpdateSubscriptionItemRequest
+var request *models_pkg.UpdateSubscriptionBillingDateRequest
 
-var result *models_pkg.GetSubscriptionItemResponse
-result,_ = subscriptions.UpdateSubscriptionItem(subscriptionId, itemId, body)
-
-```
-
-
-### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptions") GetSubscriptions
-
-> Gets all subscriptions
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions()(*models_pkg.ListSubscriptionsResponse,error)
-```
-
-#### Example Usage
-
-```go
-
-var result *models_pkg.ListSubscriptionsResponse
-result,_ = subscriptions.GetSubscriptions()
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionBillingDate(subscriptionId, request)
 
 ```
 
@@ -1300,71 +1836,6 @@ result,_ = subscriptions.UpdateSubscriptionPaymentMethod(subscriptionId, request
 ```
 
 
-### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsages") GetUsages
-
-> Lists all usages from a subscription item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetUsages(
-            subscriptionId string,
-            itemId string)(*models_pkg.ListUsagesResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-
-var result *models_pkg.ListUsagesResponse
-result,_ = subscriptions.GetUsages(subscriptionId, itemId)
-
-```
-
-
-### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteUsage") DeleteUsage
-
-> Deletes a usage
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteUsage(
-            subscriptionId string,
-            itemId string,
-            usageId string)(*models_pkg.GetUsageResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| usageId |  ``` Required ```  | The usage id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-usageId := "usage_id"
-
-var result *models_pkg.GetUsageResponse
-result,_ = subscriptions.DeleteUsage(subscriptionId, itemId, usageId)
-
-```
-
-
 ### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteDiscount") DeleteDiscount
 
 > Deletes a discount
@@ -1458,6 +1929,77 @@ result,_ = subscriptions.DeleteSubscriptionItem(subscriptionId, subscriptionItem
 ```
 
 
+### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteUsage") DeleteUsage
+
+> Deletes a usage
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteUsage(
+            subscriptionId string,
+            itemId string,
+            usageId string)(*models_pkg.GetUsageResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| usageId |  ``` Required ```  | The usage id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+usageId := "usage_id"
+
+var result *models_pkg.GetUsageResponse
+result,_ = subscriptions.DeleteUsage(subscriptionId, itemId, usageId)
+
+```
+
+
+### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsages") GetUsages
+
+> Lists all usages from a subscription item
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetUsages(
+            subscriptionId string,
+            itemId string,
+            page *int64,
+            size *int64)(*models_pkg.ListUsagesResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+page,_ := strconv.ParseInt("196", 10, 8)
+size,_ := strconv.ParseInt("196", 10, 8)
+
+var result *models_pkg.ListUsagesResponse
+result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size)
+
+```
+
+
 ### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMetadata") UpdateSubscriptionMetadata
 
 > Updates the metadata from a subscription
@@ -1489,446 +2031,63 @@ result,_ = subscriptions.UpdateSubscriptionMetadata(subscriptionId, request)
 ```
 
 
-[Back to List of Controllers](#list_of_controllers)
+### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptions") GetSubscriptions
 
-## <a name="plans_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".plans_pkg") plans_pkg
-
-### Get instance
-
-Factory for the ``` PLANS ``` interface can be accessed from the package plans_pkg.
-
-```go
-plans := plans_pkg.NewPLANS()
-```
-
-### <a name="update_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.UpdatePlanItem") UpdatePlanItem
-
-> Updates a plan item
+> Gets all subscriptions
 
 
 ```go
-func (me *PLANS_IMPL) UpdatePlanItem(
-            planId string,
-            planItemId string,
-            body *models_pkg.UpdatePlanItemRequest)(*models_pkg.GetPlanItemResponse,error)
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
+            page *int64,
+            size *int64,
+            code *string,
+            billingType *string,
+            customerId *string,
+            planId *string,
+            cardId *string,
+            status *string,
+            nextBillingSince *time.Time,
+            nextBillingUntil *time.Time,
+            createdSince *time.Time,
+            createdUntil *time.Time)(*models_pkg.ListSubscriptionsResponse,error)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| planItemId |  ``` Required ```  | Plan item id |
-| body |  ``` Required ```  | Request for updating the plan item |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for subscription's code |
+| billingType |  ``` Optional ```  | Filter for subscription's billing type |
+| customerId |  ``` Optional ```  | Filter for subscription's customer id |
+| planId |  ``` Optional ```  | Filter for subscription's plan id |
+| cardId |  ``` Optional ```  | Filter for subscription's card id |
+| status |  ``` Optional ```  | Filter for subscription's status |
+| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
+| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
+| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
 
 
 #### Example Usage
 
 ```go
+page,_ := strconv.ParseInt("33", 10, 8)
+size,_ := strconv.ParseInt("33", 10, 8)
+code := "code"
+billingType := "billing_type"
+customerId := "customer_id"
 planId := "plan_id"
-planItemId := "plan_item_id"
-var body *models_pkg.UpdatePlanItemRequest
-
-var result *models_pkg.GetPlanItemResponse
-result,_ = plans.UpdatePlanItem(planId, planItemId, body)
-
-```
-
-
-### <a name="get_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlan") GetPlan
-
-> Gets a plan
-
-
-```go
-func (me *PLANS_IMPL) GetPlan(planId string)(*models_pkg.GetPlanResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-
-var result *models_pkg.GetPlanResponse
-result,_ = plans.GetPlan(planId)
-
-```
-
-
-### <a name="create_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.CreatePlanItem") CreatePlanItem
-
-> Adds a new item to a plan
-
-
-```go
-func (me *PLANS_IMPL) CreatePlanItem(
-            planId string,
-            request *models_pkg.CreatePlanItemRequest)(*models_pkg.GetPlanItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| request |  ``` Required ```  | Request for creating a plan item |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-var request *models_pkg.CreatePlanItemRequest
-
-var result *models_pkg.GetPlanItemResponse
-result,_ = plans.CreatePlanItem(planId, request)
-
-```
-
-
-### <a name="update_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.UpdatePlan") UpdatePlan
-
-> Updates a plan
-
-
-```go
-func (me *PLANS_IMPL) UpdatePlan(
-            planId string,
-            request *models_pkg.UpdatePlanRequest)(*models_pkg.GetPlanResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| request |  ``` Required ```  | Request for updating a plan |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-var request *models_pkg.UpdatePlanRequest
-
-var result *models_pkg.GetPlanResponse
-result,_ = plans.UpdatePlan(planId, request)
-
-```
-
-
-### <a name="create_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.CreatePlan") CreatePlan
-
-> Creates a new plan
-
-
-```go
-func (me *PLANS_IMPL) CreatePlan(body *models_pkg.CreatePlanRequest)(*models_pkg.GetPlanResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating a plan |
-
-
-#### Example Usage
-
-```go
-var body *models_pkg.CreatePlanRequest
-
-var result *models_pkg.GetPlanResponse
-result,_ = plans.CreatePlan(body)
-
-```
-
-
-### <a name="get_plans"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlans") GetPlans
-
-> Gets all plans
-
-
-```go
-func (me *PLANS_IMPL) GetPlans()(*models_pkg.ListPlansResponse,error)
-```
-
-#### Example Usage
-
-```go
-
-var result *models_pkg.ListPlansResponse
-result,_ = plans.GetPlans()
-
-```
-
-
-### <a name="delete_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.DeletePlan") DeletePlan
-
-> Deletes a plan
-
-
-```go
-func (me *PLANS_IMPL) DeletePlan(planId string)(*models_pkg.GetPlanResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-
-var result *models_pkg.GetPlanResponse
-result,_ = plans.DeletePlan(planId)
-
-```
-
-
-### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlanItem") GetPlanItem
-
-> Gets a plan item
-
-
-```go
-func (me *PLANS_IMPL) GetPlanItem(
-            planId string,
-            planItemId string)(*models_pkg.GetPlanItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| planItemId |  ``` Required ```  | Plan item id |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-planItemId := "plan_item_id"
-
-var result *models_pkg.GetPlanItemResponse
-result,_ = plans.GetPlanItem(planId, planItemId)
-
-```
-
-
-### <a name="delete_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.DeletePlanItem") DeletePlanItem
-
-> Removes an item from a plan
-
-
-```go
-func (me *PLANS_IMPL) DeletePlanItem(
-            planId string,
-            planItemId string)(*models_pkg.GetPlanItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| planItemId |  ``` Required ```  | Plan item id |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-planItemId := "plan_item_id"
-
-var result *models_pkg.GetPlanItemResponse
-result,_ = plans.DeletePlanItem(planId, planItemId)
-
-```
-
-
-### <a name="update_plan_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.UpdatePlanMetadata") UpdatePlanMetadata
-
-> Updates the metadata from a plan
-
-
-```go
-func (me *PLANS_IMPL) UpdatePlanMetadata(
-            planId string,
-            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetPlanResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | The plan id |
-| request |  ``` Required ```  | Request for updating the plan metadata |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-var request *models_pkg.UpdateMetadataRequest
-
-var result *models_pkg.GetPlanResponse
-result,_ = plans.UpdatePlanMetadata(planId, request)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="invoices_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".invoices_pkg") invoices_pkg
-
-### Get instance
-
-Factory for the ``` INVOICES ``` interface can be accessed from the package invoices_pkg.
-
-```go
-invoices := invoices_pkg.NewINVOICES()
-```
-
-### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.CancelInvoice") CancelInvoice
-
-> Cancels an invoice
-
-
-```go
-func (me *INVOICES_IMPL) CancelInvoice(invoiceId string)(*models_pkg.GetInvoiceResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice id |
-
-
-#### Example Usage
-
-```go
-invoiceId := "invoice_id"
-
-var result *models_pkg.GetInvoiceResponse
-result,_ = invoices.CancelInvoice(invoiceId)
-
-```
-
-
-### <a name="get_last_invoice_charge"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.GetLastInvoiceCharge") GetLastInvoiceCharge
-
-> Gets the last charge from an invoice
-
-
-```go
-func (me *INVOICES_IMPL) GetLastInvoiceCharge(invoiceId string)(*models_pkg.GetChargeResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice id |
-
-
-#### Example Usage
-
-```go
-invoiceId := "invoice_id"
-
-var result *models_pkg.GetChargeResponse
-result,_ = invoices.GetLastInvoiceCharge(invoiceId)
-
-```
-
-
-### <a name="get_invoices"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.GetInvoices") GetInvoices
-
-> Gets all invoices
-
-
-```go
-func (me *INVOICES_IMPL) GetInvoices()(*models_pkg.ListInvoicesResponse,error)
-```
-
-#### Example Usage
-
-```go
-
-var result *models_pkg.ListInvoicesResponse
-result,_ = invoices.GetInvoices()
-
-```
-
-
-### <a name="get_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.GetInvoice") GetInvoice
-
-> Gets an invoice
-
-
-```go
-func (me *INVOICES_IMPL) GetInvoice(invoiceId string)(*models_pkg.GetInvoiceResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice Id |
-
-
-#### Example Usage
-
-```go
-invoiceId := "invoice_id"
-
-var result *models_pkg.GetInvoiceResponse
-result,_ = invoices.GetInvoice(invoiceId)
-
-```
-
-
-### <a name="update_invoice_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.UpdateInvoiceMetadata") UpdateInvoiceMetadata
-
-> Updates the metadata from an invoice
-
-
-```go
-func (me *INVOICES_IMPL) UpdateInvoiceMetadata(
-            invoiceId string,
-            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetInvoiceResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | The invoice id |
-| request |  ``` Required ```  | Request for updating the invoice metadata |
-
-
-#### Example Usage
-
-```go
-invoiceId := "invoice_id"
-var request *models_pkg.UpdateMetadataRequest
-
-var result *models_pkg.GetInvoiceResponse
-result,_ = invoices.UpdateInvoiceMetadata(invoiceId, request)
+cardId := "card_id"
+status := "status"
+nextBillingSince := time.Now()
+nextBillingUntil := time.Now()
+createdSince := time.Now()
+createdUntil := time.Now()
+
+var result *models_pkg.ListSubscriptionsResponse
+result,_ = subscriptions.GetSubscriptions(page, size, code, billingType, customerId, planId, cardId, status, nextBillingSince, nextBillingUntil, createdSince, createdUntil)
 
 ```
 
@@ -1968,25 +2127,6 @@ orderId := "order_id"
 
 var result *models_pkg.GetOrderResponse
 result,_ = orders.GetOrder(orderId)
-
-```
-
-
-### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrders") GetOrders
-
-> Gets all orders
-
-
-```go
-func (me *ORDERS_IMPL) GetOrders()(*models_pkg.ListOrderResponse,error)
-```
-
-#### Example Usage
-
-```go
-
-var result *models_pkg.ListOrderResponse
-result,_ = orders.GetOrders()
 
 ```
 
@@ -2045,6 +2185,52 @@ var request *models_pkg.UpdateMetadataRequest
 
 var result *models_pkg.GetOrderResponse
 result,_ = orders.UpdateOrderMetadata(orderId, request)
+
+```
+
+
+### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrders") GetOrders
+
+> Gets all orders
+
+
+```go
+func (me *ORDERS_IMPL) GetOrders(
+            page *int64,
+            size *int64,
+            code *string,
+            status *string,
+            createdSince *time.Time,
+            createdUntil *time.Time,
+            customerId *string)(*models_pkg.ListOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for order's code |
+| status |  ``` Optional ```  | Filter for order's status |
+| createdSince |  ``` Optional ```  | Filter for order's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for order's creation date end range |
+| customerId |  ``` Optional ```  | Filter for order's customer id |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("33", 10, 8)
+size,_ := strconv.ParseInt("33", 10, 8)
+code := "code"
+status := "status"
+createdSince := time.Now()
+createdUntil := time.Now()
+customerId := "customer_id"
+
+var result *models_pkg.ListOrderResponse
+result,_ = orders.GetOrders(page, size, code, status, createdSince, createdUntil, customerId)
 
 ```
 

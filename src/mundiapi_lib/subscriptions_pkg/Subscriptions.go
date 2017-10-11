@@ -6,19 +6,18 @@
 
 package subscriptions_pkg
 
+import "time"
 import "mundiapi_lib/models_pkg"
 
 /*
  * Interface for the SUBSCRIPTIONS_IMPL
  */
 type SUBSCRIPTIONS interface {
-    UpdateSubscriptionBillingDate (string, *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error)
+    UpdateSubscriptionItem (string, string, *models_pkg.UpdateSubscriptionItemRequest) (*models_pkg.GetSubscriptionItemResponse, error)
 
     CreateUsage (string, string, *models_pkg.CreateUsageRequest) (*models_pkg.GetUsageResponse, error)
 
-    UpdateSubscriptionItem (string, string, *models_pkg.UpdateSubscriptionItemRequest) (*models_pkg.GetSubscriptionItemResponse, error)
-
-    GetSubscriptions () (*models_pkg.ListSubscriptionsResponse, error)
+    UpdateSubscriptionBillingDate (string, *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     UpdateSubscriptionCard (string, *models_pkg.UpdateSubscriptionCardRequest) (*models_pkg.GetSubscriptionResponse, error)
 
@@ -32,17 +31,19 @@ type SUBSCRIPTIONS interface {
 
     UpdateSubscriptionPaymentMethod (string, *models_pkg.UpdateSubscriptionPaymentMethodRequest) (*models_pkg.GetSubscriptionResponse, error)
 
-    GetUsages (string, string) (*models_pkg.ListUsagesResponse, error)
-
-    DeleteUsage (string, string, string) (*models_pkg.GetUsageResponse, error)
-
     DeleteDiscount (string, string) (*models_pkg.GetDiscountResponse, error)
 
     CancelSubscription (string, *models_pkg.CreateCancelSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     DeleteSubscriptionItem (string, string) (*models_pkg.GetSubscriptionItemResponse, error)
 
+    DeleteUsage (string, string, string) (*models_pkg.GetUsageResponse, error)
+
+    GetUsages (string, string, *int64, *int64) (*models_pkg.ListUsagesResponse, error)
+
     UpdateSubscriptionMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error)
+
+    GetSubscriptions (*int64, *int64, *string, *string, *string, *string, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListSubscriptionsResponse, error)
 }
 
 /*

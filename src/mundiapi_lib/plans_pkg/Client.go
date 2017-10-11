@@ -7,6 +7,7 @@ package plans_pkg
 
 
 import(
+	"time"
 	"encoding/json"
 	"mundiapi_lib/models_pkg"
 	"github.com/apimatic/unirest-go"
@@ -413,73 +414,6 @@ func (me *PLANS_IMPL) CreatePlan (
 }
 
 /**
- * Gets all plans
- * @return	Returns the *models_pkg.ListPlansResponse response from the API call
- */
-func (me *PLANS_IMPL) GetPlans () (*models_pkg.ListPlansResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := mundiapi_lib.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans"
-
-    //variable to hold errors
-    var err error = nil
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ListPlansResponse = &models_pkg.ListPlansResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-}
-
-/**
  * Deletes a plan
  * @param    string        planId      parameter: Required
  * @return	Returns the *models_pkg.GetPlanResponse response from the API call
@@ -791,6 +725,102 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
 
     //returning the response
     var retVal *models_pkg.GetPlanResponse = &models_pkg.GetPlanResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+}
+
+/**
+ * Gets all plans
+ * @param    *int64            page              parameter: Optional
+ * @param    *int64            size              parameter: Optional
+ * @param    *string           name              parameter: Optional
+ * @param    *string           status            parameter: Optional
+ * @param    *string           billingType       parameter: Optional
+ * @param    *time.Time        createdSince      parameter: Optional
+ * @param    *time.Time        createdUntil      parameter: Optional
+ * @return	Returns the *models_pkg.ListPlansResponse response from the API call
+ */
+func (me *PLANS_IMPL) GetPlans (
+            page *int64,
+            size *int64,
+            name *string,
+            status *string,
+            billingType *string,
+            createdSince *time.Time,
+            createdUntil *time.Time) (*models_pkg.ListPlansResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := mundiapi_lib.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/plans"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "page" : page,
+        "size" : size,
+        "name" : name,
+        "status" : status,
+        "billing_type" : billingType,
+        "created_since" : createdSince,
+        "created_until" : createdUntil,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ListPlansResponse = &models_pkg.ListPlansResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {

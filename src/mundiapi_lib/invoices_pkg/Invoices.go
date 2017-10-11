@@ -6,21 +6,20 @@
 
 package invoices_pkg
 
+import "time"
 import "mundiapi_lib/models_pkg"
 
 /*
  * Interface for the INVOICES_IMPL
  */
 type INVOICES interface {
-    CancelInvoice (string) (*models_pkg.GetInvoiceResponse, error)
-
-    GetLastInvoiceCharge (string) (*models_pkg.GetChargeResponse, error)
-
-    GetInvoices () (*models_pkg.ListInvoicesResponse, error)
-
     GetInvoice (string) (*models_pkg.GetInvoiceResponse, error)
 
+    CancelInvoice (string) (*models_pkg.GetInvoiceResponse, error)
+
     UpdateInvoiceMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetInvoiceResponse, error)
+
+    GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time) (*models_pkg.ListInvoicesResponse, error)
 }
 
 /*

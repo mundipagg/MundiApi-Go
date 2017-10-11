@@ -6,6 +6,7 @@
 
 package orders_pkg
 
+import "time"
 import "mundiapi_lib/models_pkg"
 
 /*
@@ -14,11 +15,11 @@ import "mundiapi_lib/models_pkg"
 type ORDERS interface {
     GetOrder (string) (*models_pkg.GetOrderResponse, error)
 
-    GetOrders () (*models_pkg.ListOrderResponse, error)
-
     CreateOrder (*models_pkg.CreateOrderRequest) (*models_pkg.GetOrderResponse, error)
 
     UpdateOrderMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetOrderResponse, error)
+
+    GetOrders (*int64, *int64, *string, *string, *time.Time, *time.Time, *string) (*models_pkg.ListOrderResponse, error)
 }
 
 /*
