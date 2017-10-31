@@ -141,10 +141,10 @@ type UpdateCustomerRequest struct {
     Name            string          `json:"name" form:"name"` //Name
     Email           string          `json:"email" form:"email"` //Email
     Document        string          `json:"document" form:"document"` //Document number
-    PersonType      string          `json:"person_type" form:"person_type"` //Person type
+    Type            string          `json:"type" form:"type"` //Person type
     Address         CreateAddressRequest `json:"address" form:"address"` //Address
     Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
-    Phones          CreatePhonesRequest `json:"phones" form:"phones"` //TODO: Write general description for this field
+    Phones          CreatePhonesRequest `json:"phones,omitempty" form:"phones,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -345,6 +345,7 @@ type GetTransactionResponse struct {
     UpdatedAt        *time.Time      `json:"updated_at" form:"updated_at"` //Last update date
     AttemptCount     int64           `json:"attempt_count" form:"attempt_count"` //Number of attempts tried
     MaxAttempts      int64           `json:"max_attempts" form:"max_attempts"` //Max attempts
+    Splits           []*GetSplitResponse `json:"splits" form:"splits"` //Splits
     NextAttempt      *time.Time      `json:"next_attempt,omitempty" form:"next_attempt,omitempty"` //Date and time of the next attempt
     TransactionType  *string         `json:"transaction_type,omitempty" form:"transaction_type,omitempty"` //TODO: Write general description for this field
 }
@@ -847,26 +848,26 @@ type CreateBoletoPaymentRequest struct {
  * Structure for the custom type CreatePhoneRequest
  */
 type CreatePhoneRequest struct {
-    CountryCode     string          `json:"country_code" form:"country_code"` //TODO: Write general description for this field
-    Number          string          `json:"number" form:"number"` //TODO: Write general description for this field
-    AreaCode        string          `json:"area_code" form:"area_code"` //TODO: Write general description for this field
+    CountryCode     *string         `json:"country_code,omitempty" form:"country_code,omitempty"` //TODO: Write general description for this field
+    Number          *string         `json:"number,omitempty" form:"number,omitempty"` //TODO: Write general description for this field
+    AreaCode        *string         `json:"area_code,omitempty" form:"area_code,omitempty"` //TODO: Write general description for this field
 }
 
 /*
  * Structure for the custom type CreatePhonesRequest
  */
 type CreatePhonesRequest struct {
-    HomePhone       CreatePhoneRequest `json:"home_phone" form:"home_phone"` //TODO: Write general description for this field
-    MobilePhone     CreatePhoneRequest `json:"mobile_phone" form:"mobile_phone"` //TODO: Write general description for this field
+    HomePhone       CreatePhoneRequest `json:"home_phone,omitempty" form:"home_phone,omitempty"` //TODO: Write general description for this field
+    MobilePhone     CreatePhoneRequest `json:"mobile_phone,omitempty" form:"mobile_phone,omitempty"` //TODO: Write general description for this field
 }
 
 /*
  * Structure for the custom type GetPhoneResponse
  */
 type GetPhoneResponse struct {
-    CountryCode     string          `json:"country_code" form:"country_code"` //TODO: Write general description for this field
-    Number          string          `json:"number" form:"number"` //TODO: Write general description for this field
-    AreaCode        string          `json:"area_code" form:"area_code"` //TODO: Write general description for this field
+    CountryCode     *string         `json:"country_code,omitempty" form:"country_code,omitempty"` //TODO: Write general description for this field
+    Number          *string         `json:"number,omitempty" form:"number,omitempty"` //TODO: Write general description for this field
+    AreaCode        *string         `json:"area_code,omitempty" form:"area_code,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -976,7 +977,7 @@ type GetAccessTokenResponse struct {
  * Structure for the custom type CreateAccessTokenRequest
  */
 type CreateAccessTokenRequest struct {
-    EsxpiresIn      *int64          `json:"esxpires_in,omitempty" form:"esxpires_in,omitempty"` //Minutes to expire the token
+    ExpiresIn       *int64          `json:"expires_in,omitempty" form:"expires_in,omitempty"` //Minutes to expire the token
 }
 
 /*
@@ -1063,6 +1064,7 @@ type CreatePaymentRequest struct {
     Currency               string          `json:"currency" form:"currency"` //Currency. Must be informed using 3 characters
     Voucher                CreateVoucherPaymentRequest `json:"voucher" form:"voucher"` //Settings for voucher payment
     Metadata               map[string]string `json:"metadata" form:"metadata"` //Metadata
+    Split                  []*CreateSplitRequest `json:"split" form:"split"` //Splits
     BankTransfer           CreateBankTransferPaymentRequest `json:"bank_transfer,omitempty" form:"bank_transfer,omitempty"` //Settings for bank transfer payment
     GatewayAffiliationId   *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway affiliation code
     Amount                 *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount of the payment, in cents
@@ -1183,4 +1185,216 @@ type GetOrderItemResponse struct {
     Description       string          `json:"description" form:"description"` //TODO: Write general description for this field
     Quantity          int64           `json:"quantity" form:"quantity"` //TODO: Write general description for this field
     GetSellerResponse GetSellerResponse `json:"GetSellerResponse,omitempty" form:"GetSellerResponse,omitempty"` //Seller data
+}
+
+/*
+ * Structure for the custom type CreateTransferRequest
+ */
+type CreateTransferRequest struct {
+    Amount          int64           `json:"amount" form:"amount"` //Transfer amount
+    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
+}
+
+/*
+ * Structure for the custom type GetTransferResponse
+ */
+type GetTransferResponse struct {
+    Id              string          `json:"id" form:"id"` //Id
+    Amount          int64           `json:"amount" form:"amount"` //Transfer amount
+    Status          string          `json:"status" form:"status"` //Transfer status
+    CreatedAt       *time.Time      `json:"created_at" form:"created_at"` //Transfer creation date
+    UpdatedAt       *time.Time      `json:"updated_at" form:"updated_at"` //Transfer last update date
+    BankAccount     GetBankAccountResponse `json:"bank_account" form:"bank_account"` //Bank account
+    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
+}
+
+/*
+ * Structure for the custom type CreateRecipientRequest
+ */
+type CreateRecipientRequest struct {
+    Name                 string          `json:"name" form:"name"` //Recipient name
+    Email                string          `json:"email" form:"email"` //Recipient email
+    Description          string          `json:"description" form:"description"` //Recipient description
+    Document             string          `json:"document" form:"document"` //Recipient document number
+    Type                 string          `json:"type" form:"type"` //Recipient type
+    DefaultBankAccount   CreateBankAccountRequest `json:"default_bank_account" form:"default_bank_account"` //Bank account
+    Metadata             map[string]string `json:"metadata" form:"metadata"` //Metadata
+}
+
+/*
+ * Structure for the custom type CreateBankAccountRequest
+ */
+type CreateBankAccountRequest struct {
+    HolderName          string          `json:"holder_name" form:"holder_name"` //Bank account holder name
+    HolderType          string          `json:"holder_type" form:"holder_type"` //Bank account holder type
+    HolderDocument      string          `json:"holder_document" form:"holder_document"` //Bank account holder document
+    Bank                string          `json:"bank" form:"bank"` //Bank
+    BranchNumber        string          `json:"branch_number" form:"branch_number"` //Branch number
+    BranchCheckDigit    string          `json:"branch_check_digit" form:"branch_check_digit"` //Branch check digit
+    AccountNumber       string          `json:"account_number" form:"account_number"` //Account number
+    AccountCheckDigit   string          `json:"account_check_digit" form:"account_check_digit"` //Account check digit
+    Type                string          `json:"type" form:"type"` //Bank account type
+    Metadata            map[string]string `json:"metadata" form:"metadata"` //Metadata
+}
+
+/*
+ * Structure for the custom type GetRecipientResponse
+ */
+type GetRecipientResponse struct {
+    Id                   string          `json:"id" form:"id"` //Id
+    Name                 string          `json:"name" form:"name"` //Name
+    Email                string          `json:"email" form:"email"` //Email
+    Document             string          `json:"document" form:"document"` //Document
+    Description          string          `json:"description" form:"description"` //Description
+    Type                 string          `json:"type" form:"type"` //Type
+    Status               string          `json:"status" form:"status"` //Status
+    CreatedAt            *time.Time      `json:"created_at" form:"created_at"` //Creation date
+    UpdatedAt            *time.Time      `json:"updated_at" form:"updated_at"` //Last update date
+    DeletedAt            *time.Time      `json:"deleted_at" form:"deleted_at"` //Deletion date
+    DefaultBankAccount   GetBankAccountResponse `json:"default_bank_account" form:"default_bank_account"` //Default bank account
+    GatewayRecipients    []*GetGatewayRecipientResponse `json:"gateway_recipients" form:"gateway_recipients"` //Info about the recipient on the gateway
+    Metadata             map[string]string `json:"metadata" form:"metadata"` //Metadata
+}
+
+/*
+ * Structure for the custom type GetBankAccountResponse
+ */
+type GetBankAccountResponse struct {
+    Id                  string          `json:"id" form:"id"` //Id
+    HolderName          string          `json:"holder_name" form:"holder_name"` //Holder name
+    HolderType          string          `json:"holder_type" form:"holder_type"` //Holder type
+    Bank                string          `json:"bank" form:"bank"` //Bank
+    BranchNumber        string          `json:"branch_number" form:"branch_number"` //Branch number
+    BranchCheckDigit    string          `json:"branch_check_digit" form:"branch_check_digit"` //Branch check digit
+    AccountNumber       string          `json:"account_number" form:"account_number"` //Account number
+    AccountCheckDigit   string          `json:"account_check_digit" form:"account_check_digit"` //Account check digit
+    Type                string          `json:"type" form:"type"` //Bank account type
+    Status              string          `json:"status" form:"status"` //Bank account status
+    CreatedAt           *time.Time      `json:"created_at" form:"created_at"` //Creation date
+    UpdatedAt           *time.Time      `json:"updated_at" form:"updated_at"` //Last update date
+    DeletedAt           *time.Time      `json:"deleted_at" form:"deleted_at"` //Deletion date
+    Recipient           GetRecipientResponse `json:"recipient" form:"recipient"` //Recipient
+    Metadata            map[string]string `json:"metadata" form:"metadata"` //Metadata
+}
+
+/*
+ * Structure for the custom type UpdateRecipientRequest
+ */
+type UpdateRecipientRequest struct {
+    Name            string          `json:"name" form:"name"` //Name
+    Email           string          `json:"email" form:"email"` //Email
+    Description     string          `json:"description" form:"description"` //Description
+    Type            string          `json:"type" form:"type"` //Type
+    Status          string          `json:"status" form:"status"` //Status
+    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
+}
+
+/*
+ * Structure for the custom type GetGatewayRecipientResponse
+ */
+type GetGatewayRecipientResponse struct {
+    Gateway         string          `json:"gateway" form:"gateway"` //Gateway name
+    Status          string          `json:"status" form:"status"` //Status of the recipient on the gateway
+    Pgid            string          `json:"pgid" form:"pgid"` //Recipient id on the gateway
+    CreatedAt       string          `json:"created_at" form:"created_at"` //Creation date
+    UpdatedAt       string          `json:"updated_at" form:"updated_at"` //Last update date
+}
+
+/*
+ * Structure for the custom type ListRecipientResponse
+ */
+type ListRecipientResponse struct {
+    Data            []*GetRecipientResponse `json:"data" form:"data"` //Recipients
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging
+}
+
+/*
+ * Structure for the custom type UpdateRecipientBankAccountRequest
+ */
+type UpdateRecipientBankAccountRequest struct {
+    BankAccount     CreateBankAccountRequest `json:"bank_account" form:"bank_account"` //Bank account
+}
+
+/*
+ * Structure for the custom type ListTransferResponse
+ */
+type ListTransferResponse struct {
+    Data            []*GetTransferResponse `json:"data" form:"data"` //Transfers
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging
+}
+
+/*
+ * Structure for the custom type GetBalanceResponse
+ */
+type GetBalanceResponse struct {
+    Currency         string          `json:"currency" form:"currency"` //Currency
+    AvailableAmount  int64           `json:"available_amount" form:"available_amount"` //Amount available for transferring
+    Recipient        GetRecipientResponse `json:"recipient" form:"recipient"` //Recipient
+}
+
+/*
+ * Structure for the custom type GetAnticipationResponse
+ */
+type GetAnticipationResponse struct {
+    Id               string          `json:"id" form:"id"` //Id
+    RequestedAmount  int64           `json:"requested_amount" form:"requested_amount"` //Requested amount
+    ApprovedAmount   int64           `json:"approved_amount" form:"approved_amount"` //Approved amount
+    Recipient        GetRecipientResponse `json:"recipient" form:"recipient"` //Recipient
+    Pgid             string          `json:"pgid" form:"pgid"` //Anticipation id on the gateway
+    CreatedAt        *time.Time      `json:"created_at" form:"created_at"` //Creation date
+    UpdatedAt        *time.Time      `json:"updated_at" form:"updated_at"` //Last update date
+    PaymentDate      *time.Time      `json:"payment_date" form:"payment_date"` //Payment date
+    Status           string          `json:"status" form:"status"` //Status
+    Timeframe        string          `json:"timeframe" form:"timeframe"` //Timeframe
+}
+
+/*
+ * Structure for the custom type CreateAnticipationRequest
+ */
+type CreateAnticipationRequest struct {
+    Amount          int64           `json:"amount" form:"amount"` //Amount requested for the anticipation
+    Timeframe       string          `json:"timeframe" form:"timeframe"` //Timeframe
+    PaymentDate     *time.Time      `json:"payment_date" form:"payment_date"` //Payment date
+}
+
+/*
+ * Structure for the custom type ListAnticipationResponse
+ */
+type ListAnticipationResponse struct {
+    Data            []*GetAnticipationResponse `json:"data" form:"data"` //Anticipations
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging
+}
+
+/*
+ * Structure for the custom type GetAnticipationLimitResponse
+ */
+type GetAnticipationLimitResponse struct {
+    Amount           int64           `json:"amount" form:"amount"` //Amount
+    AnticipationFee  int64           `json:"anticipation_fee" form:"anticipation_fee"` //Anticipation fee
+}
+
+/*
+ * Structure for the custom type GetAnticipationLimitsResponse
+ */
+type GetAnticipationLimitsResponse struct {
+    Max             GetAnticipationLimitResponse `json:"max" form:"max"` //Max limit
+    Min             GetAnticipationLimitResponse `json:"min" form:"min"` //Min limit
+}
+
+/*
+ * Structure for the custom type CreateSplitRequest
+ */
+type CreateSplitRequest struct {
+    Type            string          `json:"type" form:"type"` //Split type
+    Amount          int64           `json:"amount" form:"amount"` //Amount
+    RecipientId     string          `json:"recipient_id" form:"recipient_id"` //Recipient id
+}
+
+/*
+ * Structure for the custom type GetSplitResponse
+ */
+type GetSplitResponse struct {
+    Type            string          `json:"type" form:"type"` //Type
+    Amount          int64           `json:"amount" form:"amount"` //Amount
+    Recipient       GetRecipientResponse `json:"recipient" form:"recipient"` //Recipient
 }

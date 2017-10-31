@@ -124,6 +124,7 @@ To configure these for your generated code, open the file "Configuration.go" and
 * [subscriptions_pkg](#subscriptions_pkg)
 * [orders_pkg](#orders_pkg)
 * [tokens_pkg](#tokens_pkg)
+* [recipients_pkg](#recipients_pkg)
 
 ## <a name="charges_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".charges_pkg") charges_pkg
 
@@ -407,8 +408,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("105", 10, 8)
-size,_ := strconv.ParseInt("105", 10, 8)
+page,_ := strconv.ParseInt("96", 10, 8)
+size,_ := strconv.ParseInt("96", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -990,8 +991,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("196", 10, 8)
-size,_ := strconv.ParseInt("196", 10, 8)
+page,_ := strconv.ParseInt("54", 10, 8)
+size,_ := strconv.ParseInt("54", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -1024,8 +1025,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("196", 10, 8)
-size,_ := strconv.ParseInt("196", 10, 8)
+page,_ := strconv.ParseInt("54", 10, 8)
+size,_ := strconv.ParseInt("54", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -1058,8 +1059,8 @@ func (me *CUSTOMERS_IMPL) GetCards(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("196", 10, 8)
-size,_ := strconv.ParseInt("196", 10, 8)
+page,_ := strconv.ParseInt("54", 10, 8)
+size,_ := strconv.ParseInt("54", 10, 8)
 
 var result *models_pkg.ListCardsResponse
 result,_ = customers.GetCards(customerId, page, size)
@@ -1202,8 +1203,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("196", 10, 8)
-size,_ := strconv.ParseInt("196", 10, 8)
+page,_ := strconv.ParseInt("54", 10, 8)
+size,_ := strconv.ParseInt("54", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -1533,8 +1534,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("196", 10, 8)
-size,_ := strconv.ParseInt("196", 10, 8)
+page,_ := strconv.ParseInt("54", 10, 8)
+size,_ := strconv.ParseInt("54", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"
@@ -1991,8 +1992,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
 ```go
 subscriptionId := "subscription_id"
 itemId := "item_id"
-page,_ := strconv.ParseInt("196", 10, 8)
-size,_ := strconv.ParseInt("196", 10, 8)
+page,_ := strconv.ParseInt("54", 10, 8)
+size,_ := strconv.ParseInt("54", 10, 8)
 
 var result *models_pkg.ListUsagesResponse
 result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size)
@@ -2073,8 +2074,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("33", 10, 8)
-size,_ := strconv.ParseInt("33", 10, 8)
+page,_ := strconv.ParseInt("54", 10, 8)
+size,_ := strconv.ParseInt("54", 10, 8)
 code := "code"
 billingType := "billing_type"
 customerId := "customer_id"
@@ -2221,8 +2222,8 @@ func (me *ORDERS_IMPL) GetOrders(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("33", 10, 8)
-size,_ := strconv.ParseInt("33", 10, 8)
+page,_ := strconv.ParseInt("54", 10, 8)
+size,_ := strconv.ParseInt("54", 10, 8)
 code := "code"
 status := "status"
 createdSince := time.Now()
@@ -2309,6 +2310,476 @@ var request *models_pkg.CreateTokenRequest
 
 var result *models_pkg.GetTokenResponse
 result,_ = tokens.CreateToken(publicKey, request)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="recipients_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".recipients_pkg") recipients_pkg
+
+### Get instance
+
+Factory for the ``` RECIPIENTS ``` interface can be accessed from the package recipients_pkg.
+
+```go
+recipients := recipients_pkg.NewRECIPIENTS()
+```
+
+### <a name="create_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.CreateRecipient") CreateRecipient
+
+> Creates a new recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) CreateRecipient(request *models_pkg.CreateRecipientRequest)(*models_pkg.GetRecipientResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| request |  ``` Required ```  | Recipient data |
+
+
+#### Example Usage
+
+```go
+var request *models_pkg.CreateRecipientRequest
+
+var result *models_pkg.GetRecipientResponse
+result,_ = recipients.CreateRecipient(request)
+
+```
+
+
+### <a name="update_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.UpdateRecipient") UpdateRecipient
+
+> Updates a recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) UpdateRecipient(
+            recipientId string,
+            request *models_pkg.UpdateRecipientRequest)(*models_pkg.GetRecipientResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Recipient data |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+var request *models_pkg.UpdateRecipientRequest
+
+var result *models_pkg.GetRecipientResponse
+result,_ = recipients.UpdateRecipient(recipientId, request)
+
+```
+
+
+### <a name="update_recipient_default_bank_account"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.UpdateRecipientDefaultBankAccount") UpdateRecipientDefaultBankAccount
+
+> Updates the default bank account from a recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount(
+            recipientId string,
+            request *models_pkg.UpdateRecipientBankAccountRequest)(*models_pkg.GetRecipientResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Bank account data |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+var request *models_pkg.UpdateRecipientBankAccountRequest
+
+var result *models_pkg.GetRecipientResponse
+result,_ = recipients.UpdateRecipientDefaultBankAccount(recipientId, request)
+
+```
+
+
+### <a name="get_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetRecipient") GetRecipient
+
+> Retrieves recipient information
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetRecipient(recipientId string)(*models_pkg.GetRecipientResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipiend id |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+
+var result *models_pkg.GetRecipientResponse
+result,_ = recipients.GetRecipient(recipientId)
+
+```
+
+
+### <a name="get_recipients"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetRecipients") GetRecipients
+
+> Retrieves paginated recipients information
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetRecipients(
+            page *int64,
+            size *int64)(*models_pkg.ListRecipientResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("146", 10, 8)
+size,_ := strconv.ParseInt("146", 10, 8)
+
+var result *models_pkg.ListRecipientResponse
+result,_ = recipients.GetRecipients(page, size)
+
+```
+
+
+### <a name="get_balance"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetBalance") GetBalance
+
+> Get balance information for a recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetBalance(recipientId string)(*models_pkg.GetBalanceResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+
+var result *models_pkg.GetBalanceResponse
+result,_ = recipients.GetBalance(recipientId)
+
+```
+
+
+### <a name="create_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.CreateTransfer") CreateTransfer
+
+> Creates a transfer for a recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) CreateTransfer(
+            recipientId string,
+            request *models_pkg.CreateTransferRequest)(*models_pkg.GetTransferResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient Id |
+| request |  ``` Required ```  | Transfer data |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+var request *models_pkg.CreateTransferRequest
+
+var result *models_pkg.GetTransferResponse
+result,_ = recipients.CreateTransfer(recipientId, request)
+
+```
+
+
+### <a name="get_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetTransfer") GetTransfer
+
+> Gets a transfer
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetTransfer(
+            recipientId string,
+            transferId string)(*models_pkg.GetTransferResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| transferId |  ``` Required ```  | Transfer id |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+transferId := "transfer_id"
+
+var result *models_pkg.GetTransferResponse
+result,_ = recipients.GetTransfer(recipientId, transferId)
+
+```
+
+
+### <a name="get_transfers"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetTransfers") GetTransfers
+
+> Gets a paginated list of transfers for the recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetTransfers(
+            recipientId string,
+            page *int64,
+            size *int64,
+            status *string,
+            createdSince *time.Time,
+            createdUntil *time.Time)(*models_pkg.ListTransferResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| status |  ``` Optional ```  | Filter for transfer status |
+| createdSince |  ``` Optional ```  | Filter for start range of transfer creation date |
+| createdUntil |  ``` Optional ```  | Filter for end range of transfer creation date |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+page,_ := strconv.ParseInt("146", 10, 8)
+size,_ := strconv.ParseInt("146", 10, 8)
+status := "status"
+createdSince := time.Now()
+createdUntil := time.Now()
+
+var result *models_pkg.ListTransferResponse
+result,_ = recipients.GetTransfers(recipientId, page, size, status, createdSince, createdUntil)
+
+```
+
+
+### <a name="create_anticipation"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.CreateAnticipation") CreateAnticipation
+
+> Creates an anticipation
+
+
+```go
+func (me *RECIPIENTS_IMPL) CreateAnticipation(
+            recipientId string,
+            request *models_pkg.CreateAnticipationRequest)(*models_pkg.GetAnticipationResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Anticipation data |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+var request *models_pkg.CreateAnticipationRequest
+
+var result *models_pkg.GetAnticipationResponse
+result,_ = recipients.CreateAnticipation(recipientId, request)
+
+```
+
+
+### <a name="get_anticipation"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetAnticipation") GetAnticipation
+
+> Gets an anticipation
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetAnticipation(
+            recipientId string,
+            anticipationId string)(*models_pkg.GetAnticipationResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| anticipationId |  ``` Required ```  | Anticipation id |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+anticipationId := "anticipation_id"
+
+var result *models_pkg.GetAnticipationResponse
+result,_ = recipients.GetAnticipation(recipientId, anticipationId)
+
+```
+
+
+### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetAnticipationLimits") GetAnticipationLimits
+
+> Gets the anticipation limits for a recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetAnticipationLimits(
+            recipientId string,
+            timeframe string,
+            paymentDate *time.Time)(*models_pkg.GetAnticipationLimitResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| timeframe |  ``` Required ```  | Timeframe |
+| paymentDate |  ``` Required ```  | Anticipation payment date |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+timeframe := "timeframe"
+paymentDate := time.Now()
+
+var result *models_pkg.GetAnticipationLimitResponse
+result,_ = recipients.GetAnticipationLimits(recipientId, timeframe, paymentDate)
+
+```
+
+
+### <a name="get_anticipations"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetAnticipations") GetAnticipations
+
+> Retrieves a paginated list of anticipations from a recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetAnticipations(
+            recipientId string,
+            page *int64,
+            size *int64,
+            status *string,
+            timeframe *string,
+            paymentDateSince *time.Time,
+            paymentDateUntil *time.Time,
+            createdSince *time.Time,
+            createdUntil *time.Time)(*models_pkg.ListAnticipationResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| status |  ``` Optional ```  | Filter for anticipation status |
+| timeframe |  ``` Optional ```  | Filter for anticipation timeframe |
+| paymentDateSince |  ``` Optional ```  | Filter for start range for anticipation payment date |
+| paymentDateUntil |  ``` Optional ```  | Filter for end range for anticipation payment date |
+| createdSince |  ``` Optional ```  | Filter for start range for anticipation creation date |
+| createdUntil |  ``` Optional ```  | Filter for end range for anticipation creation date |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+page,_ := strconv.ParseInt("146", 10, 8)
+size,_ := strconv.ParseInt("146", 10, 8)
+status := "status"
+timeframe := "timeframe"
+paymentDateSince := time.Now()
+paymentDateUntil := time.Now()
+createdSince := time.Now()
+createdUntil := time.Now()
+
+var result *models_pkg.ListAnticipationResponse
+result,_ = recipients.GetAnticipations(recipientId, page, size, status, timeframe, paymentDateSince, paymentDateUntil, createdSince, createdUntil)
+
+```
+
+
+### <a name="update_recipient_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.UpdateRecipientMetadata") UpdateRecipientMetadata
+
+> Updates recipient metadata
+
+
+```go
+func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata(
+            recipientId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetRecipientResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Metadata |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetRecipientResponse
+result,_ = recipients.UpdateRecipientMetadata(recipientId, request)
 
 ```
 
