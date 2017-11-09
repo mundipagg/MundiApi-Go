@@ -70,6 +70,10 @@ type GetOrderResponse struct {
     Shipping        GetShippingResponse `json:"shipping" form:"shipping"` //TODO: Write general description for this field
     Metadata        map[string]string `json:"metadata" form:"metadata"` //TODO: Write general description for this field
     Checkouts       []*GetCheckoutPaymentSettingsResponse `json:"checkouts,omitempty" form:"checkouts,omitempty"` //Checkout Payment Settings Response
+    Ip              *string         `json:"ip,omitempty" form:"ip,omitempty"` //Ip address
+    SessionId       *string         `json:"session_id,omitempty" form:"session_id,omitempty"` //Session id
+    Location        GetLocationResponse `json:"location,omitempty" form:"location,omitempty"` //Location
+    Device          GetDeviceResponse `json:"device,omitempty" form:"device,omitempty"` //Device's informations
 }
 
 /*
@@ -1083,6 +1087,10 @@ type CreateOrderRequest struct {
     Shipping          CreateShippingRequest `json:"shipping" form:"shipping"` //Shipping data
     Metadata          map[string]string `json:"metadata" form:"metadata"` //Metadata
     AntifraudEnabled  *bool           `json:"antifraud_enabled,omitempty" form:"antifraud_enabled,omitempty"` //Defines whether the order will go through anti-fraud
+    Ip                *string         `json:"ip,omitempty" form:"ip,omitempty"` //Ip address
+    SessionId         *string         `json:"session_id,omitempty" form:"session_id,omitempty"` //Session id
+    Location          CreateLocationRequest `json:"location,omitempty" form:"location,omitempty"` //Request's location
+    Device            CreateDeviceRequest `json:"device,omitempty" form:"device,omitempty"` //Device's informations
 }
 
 /*
@@ -1397,4 +1405,34 @@ type GetSplitResponse struct {
     Type            string          `json:"type" form:"type"` //Type
     Amount          int64           `json:"amount" form:"amount"` //Amount
     Recipient       GetRecipientResponse `json:"recipient" form:"recipient"` //Recipient
+}
+
+/*
+ * Structure for the custom type GetDeviceResponse
+ */
+type GetDeviceResponse struct {
+    Platform        *string         `json:"platform,omitempty" form:"platform,omitempty"` //Device's platform name
+}
+
+/*
+ * Structure for the custom type CreateDeviceRequest
+ */
+type CreateDeviceRequest struct {
+    Platform        *string         `json:"platform,omitempty" form:"platform,omitempty"` //Device's platform
+}
+
+/*
+ * Structure for the custom type GetLocationResponse
+ */
+type GetLocationResponse struct {
+    Latitude        string          `json:"latitude" form:"latitude"` //Latitude
+    Longitude       string          `json:"longitude" form:"longitude"` //Longitude
+}
+
+/*
+ * Structure for the custom type CreateLocationRequest
+ */
+type CreateLocationRequest struct {
+    Latitude        string          `json:"latitude" form:"latitude"` //Latitude
+    Longitude       string          `json:"longitude" form:"longitude"` //Longitude
 }

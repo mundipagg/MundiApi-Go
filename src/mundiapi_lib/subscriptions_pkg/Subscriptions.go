@@ -44,6 +44,12 @@ type SUBSCRIPTIONS interface {
     UpdateSubscriptionMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     GetSubscriptions (*int64, *int64, *string, *string, *string, *string, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListSubscriptionsResponse, error)
+
+    CreateAnUsage (string, string) (*models_pkg.GetUsageResponse, error)
+
+    GetSubscriptionItem (string, string) (*models_pkg.GetSubscriptionItemResponse, error)
+
+    GetSubscriptionItems (string, string, string) (*models_pkg.ListSubscriptionsResponse, error)
 }
 
 /*

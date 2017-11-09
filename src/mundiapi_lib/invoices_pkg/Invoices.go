@@ -20,6 +20,8 @@ type INVOICES interface {
     UpdateInvoiceMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetInvoiceResponse, error)
 
     GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time) (*models_pkg.ListInvoicesResponse, error)
+
+    CreateInvoice (string, string) (*models_pkg.GetInvoiceResponse, error)
 }
 
 /*
