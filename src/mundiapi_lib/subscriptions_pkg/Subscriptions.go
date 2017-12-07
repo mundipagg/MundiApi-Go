@@ -13,13 +13,17 @@ import "mundiapi_lib/models_pkg"
  * Interface for the SUBSCRIPTIONS_IMPL
  */
 type SUBSCRIPTIONS interface {
+    UpdateSubscriptionBillingDate (string, *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error)
+
+    UpdateSubscriptionCard (string, *models_pkg.UpdateSubscriptionCardRequest) (*models_pkg.GetSubscriptionResponse, error)
+
     UpdateSubscriptionItem (string, string, *models_pkg.UpdateSubscriptionItemRequest) (*models_pkg.GetSubscriptionItemResponse, error)
 
     CreateUsage (string, string, *models_pkg.CreateUsageRequest) (*models_pkg.GetUsageResponse, error)
 
-    UpdateSubscriptionBillingDate (string, *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error)
+    GetSubscription (string) (*models_pkg.GetSubscriptionResponse, error)
 
-    UpdateSubscriptionCard (string, *models_pkg.UpdateSubscriptionCardRequest) (*models_pkg.GetSubscriptionResponse, error)
+    UpdateSubscriptionPaymentMethod (string, *models_pkg.UpdateSubscriptionPaymentMethodRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     CreateSubscription (*models_pkg.CreateSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error)
 
@@ -27,13 +31,17 @@ type SUBSCRIPTIONS interface {
 
     CreateDiscount (string, *models_pkg.CreateDiscountRequest) (*models_pkg.GetDiscountResponse, error)
 
-    GetSubscription (string) (*models_pkg.GetSubscriptionResponse, error)
+    GetSubscriptionItem (string, string) (*models_pkg.GetSubscriptionItemResponse, error)
 
-    UpdateSubscriptionPaymentMethod (string, *models_pkg.UpdateSubscriptionPaymentMethodRequest) (*models_pkg.GetSubscriptionResponse, error)
+    GetSubscriptionItems (string, string, string) (*models_pkg.ListSubscriptionsResponse, error)
 
-    DeleteDiscount (string, string) (*models_pkg.GetDiscountResponse, error)
+    UpdateSubscriptionAffiliationId (string, *models_pkg.UpdateSubscriptionAffiliationIdRequest) (*models_pkg.GetSubscriptionResponse, error)
 
-    CancelSubscription (string, *models_pkg.CreateCancelSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error)
+    CreateAnUsage (string, string) (*models_pkg.GetUsageResponse, error)
+
+    GetSubscriptions (*int64, *int64, *string, *string, *string, *string, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListSubscriptionsResponse, error)
+
+    UpdateSubscriptionMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     DeleteSubscriptionItem (string, string) (*models_pkg.GetSubscriptionItemResponse, error)
 
@@ -41,15 +49,9 @@ type SUBSCRIPTIONS interface {
 
     GetUsages (string, string, *int64, *int64) (*models_pkg.ListUsagesResponse, error)
 
-    UpdateSubscriptionMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error)
+    DeleteDiscount (string, string) (*models_pkg.GetDiscountResponse, error)
 
-    GetSubscriptions (*int64, *int64, *string, *string, *string, *string, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListSubscriptionsResponse, error)
-
-    CreateAnUsage (string, string) (*models_pkg.GetUsageResponse, error)
-
-    GetSubscriptionItem (string, string) (*models_pkg.GetSubscriptionItemResponse, error)
-
-    GetSubscriptionItems (string, string, string) (*models_pkg.ListSubscriptionsResponse, error)
+    CancelSubscription (string, *models_pkg.CreateCancelSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error)
 }
 
 /*
