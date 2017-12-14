@@ -999,6 +999,8 @@ type CreatePaymentRequest struct {
     Voucher                CreateVoucherPaymentRequest `json:"voucher" form:"voucher"` //Settings for voucher payment
     Metadata               map[string]string `json:"metadata" form:"metadata"` //Metadata
     Split                  []*CreateSplitRequest `json:"split" form:"split"` //Splits
+    CustomerId             string          `json:"customer_id" form:"customer_id"` //Customer Id
+    Customer               CreateCustomerRequest `json:"customer" form:"customer"` //Customer
     BankTransfer           CreateBankTransferPaymentRequest `json:"bank_transfer,omitempty" form:"bank_transfer,omitempty"` //Settings for bank transfer payment
     GatewayAffiliationId   *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway affiliation code
     Amount                 *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount of the payment, in cents

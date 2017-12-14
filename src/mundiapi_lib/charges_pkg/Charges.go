@@ -30,6 +30,8 @@ type CHARGES interface {
     CancelCharge (string, *models_pkg.CreateCancelChargeRequest) (*models_pkg.GetChargeResponse, error)
 
     CaptureCharge (string, *models_pkg.CreateCaptureChargeRequest) (*models_pkg.GetChargeResponse, error)
+
+    UpdateChargeDueDate (string, *models_pkg.UpdateChargeDueDateRequest) (*models_pkg.GetChargeResponse, error)
 }
 
 /*
