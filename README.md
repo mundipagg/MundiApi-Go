@@ -125,6 +125,7 @@ To configure these for your generated code, open the file "Configuration.go" and
 * [charges_pkg](#charges_pkg)
 * [recipients_pkg](#recipients_pkg)
 * [tokens_pkg](#tokens_pkg)
+* [sellers_pkg](#sellers_pkg)
 
 ## <a name="subscriptions_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".subscriptions_pkg") subscriptions_pkg
 
@@ -582,8 +583,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("132", 10, 8)
-size,_ := strconv.ParseInt("132", 10, 8)
+page,_ := strconv.ParseInt("184", 10, 8)
+size,_ := strconv.ParseInt("184", 10, 8)
 code := "code"
 billingType := "billing_type"
 customerId := "customer_id"
@@ -725,8 +726,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
 ```go
 subscriptionId := "subscription_id"
 itemId := "item_id"
-page,_ := strconv.ParseInt("132", 10, 8)
-size,_ := strconv.ParseInt("132", 10, 8)
+page,_ := strconv.ParseInt("184", 10, 8)
+size,_ := strconv.ParseInt("184", 10, 8)
 
 var result *models_pkg.ListUsagesResponse
 result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size)
@@ -894,8 +895,8 @@ func (me *ORDERS_IMPL) GetOrders(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("224", 10, 8)
-size,_ := strconv.ParseInt("224", 10, 8)
+page,_ := strconv.ParseInt("21", 10, 8)
+size,_ := strconv.ParseInt("21", 10, 8)
 code := "code"
 status := "status"
 createdSince := time.Now()
@@ -935,6 +936,191 @@ var request *models_pkg.UpdateMetadataRequest
 
 var result *models_pkg.GetOrderResponse
 result,_ = orders.UpdateOrderMetadata(orderId, request)
+
+```
+
+
+### <a name="delete_all_order_items"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.DeleteAllOrderItems") DeleteAllOrderItems
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) DeleteAllOrderItems(orderId string)(*models_pkg.GetOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+
+var result *models_pkg.GetOrderResponse
+result,_ = orders.DeleteAllOrderItems(orderId)
+
+```
+
+
+### <a name="update_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderItem") UpdateOrderItem
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) UpdateOrderItem(
+            orderId string,
+            itemId string,
+            request *models_pkg.UpdateOrderItemRequest)(*models_pkg.GetOrderItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+| request |  ``` Required ```  | Item Model |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+itemId := "itemId"
+var request *models_pkg.UpdateOrderItemRequest
+
+var result *models_pkg.GetOrderItemResponse
+result,_ = orders.UpdateOrderItem(orderId, itemId, request)
+
+```
+
+
+### <a name="delete_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.DeleteOrderItem") DeleteOrderItem
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) DeleteOrderItem(
+            orderId string,
+            itemId string)(*models_pkg.GetOrderItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+itemId := "itemId"
+
+var result *models_pkg.GetOrderItemResponse
+result,_ = orders.DeleteOrderItem(orderId, itemId)
+
+```
+
+
+### <a name="create_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.CreateOrderItem") CreateOrderItem
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) CreateOrderItem(
+            orderId string,
+            request *models_pkg.CreateOrderItemRequest)(*models_pkg.GetOrderItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| request |  ``` Required ```  | Order Item Model |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+var request *models_pkg.CreateOrderItemRequest
+
+var result *models_pkg.GetOrderItemResponse
+result,_ = orders.CreateOrderItem(orderId, request)
+
+```
+
+
+### <a name="get_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrderItem") GetOrderItem
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) GetOrderItem(
+            orderId string,
+            itemId string)(*models_pkg.GetOrderItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+itemId := "itemId"
+
+var result *models_pkg.GetOrderItemResponse
+result,_ = orders.GetOrderItem(orderId, itemId)
+
+```
+
+
+### <a name="update_order_status"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderStatus") UpdateOrderStatus
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) UpdateOrderStatus(
+            id string,
+            request *models_pkg.UpdateOrderStatusRequest)(*models_pkg.GetOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| id |  ``` Required ```  | Order Id |
+| request |  ``` Required ```  | Update Order Model |
+
+
+#### Example Usage
+
+```go
+id := "id"
+var request *models_pkg.UpdateOrderStatusRequest
+
+var result *models_pkg.GetOrderResponse
+result,_ = orders.UpdateOrderStatus(id, request)
 
 ```
 
@@ -1160,8 +1346,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("224", 10, 8)
-size,_ := strconv.ParseInt("224", 10, 8)
+page,_ := strconv.ParseInt("21", 10, 8)
+size,_ := strconv.ParseInt("21", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"
@@ -1433,8 +1619,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("224", 10, 8)
-size,_ := strconv.ParseInt("224", 10, 8)
+page,_ := strconv.ParseInt("21", 10, 8)
+size,_ := strconv.ParseInt("21", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -1640,8 +1826,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("224", 10, 8)
-size,_ := strconv.ParseInt("224", 10, 8)
+page,_ := strconv.ParseInt("21", 10, 8)
+size,_ := strconv.ParseInt("21", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -1674,8 +1860,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("224", 10, 8)
-size,_ := strconv.ParseInt("224", 10, 8)
+page,_ := strconv.ParseInt("21", 10, 8)
+size,_ := strconv.ParseInt("21", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -1708,8 +1894,8 @@ func (me *CUSTOMERS_IMPL) GetCards(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("224", 10, 8)
-size,_ := strconv.ParseInt("224", 10, 8)
+page,_ := strconv.ParseInt("21", 10, 8)
+size,_ := strconv.ParseInt("21", 10, 8)
 
 var result *models_pkg.ListCardsResponse
 result,_ = customers.GetCards(customerId, page, size)
@@ -2316,8 +2502,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("224", 10, 8)
-size,_ := strconv.ParseInt("224", 10, 8)
+page,_ := strconv.ParseInt("112", 10, 8)
+size,_ := strconv.ParseInt("112", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -2561,8 +2747,8 @@ func (me *RECIPIENTS_IMPL) GetTransfers(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("182", 10, 8)
-size,_ := strconv.ParseInt("182", 10, 8)
+page,_ := strconv.ParseInt("112", 10, 8)
+size,_ := strconv.ParseInt("112", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -2706,8 +2892,8 @@ func (me *RECIPIENTS_IMPL) GetAnticipations(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("182", 10, 8)
-size,_ := strconv.ParseInt("182", 10, 8)
+page,_ := strconv.ParseInt("112", 10, 8)
+size,_ := strconv.ParseInt("112", 10, 8)
 status := "status"
 timeframe := "timeframe"
 paymentDateSince := time.Now()
@@ -2832,8 +3018,8 @@ func (me *RECIPIENTS_IMPL) GetRecipients(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("182", 10, 8)
-size,_ := strconv.ParseInt("182", 10, 8)
+page,_ := strconv.ParseInt("112", 10, 8)
+size,_ := strconv.ParseInt("112", 10, 8)
 
 var result *models_pkg.ListRecipientResponse
 result,_ = recipients.GetRecipients(page, size)
@@ -3000,6 +3186,213 @@ var request *models_pkg.CreateTokenRequest
 
 var result *models_pkg.GetTokenResponse
 result,_ = tokens.CreateToken(publicKey, request)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="sellers_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".sellers_pkg") sellers_pkg
+
+### Get instance
+
+Factory for the ``` SELLERS ``` interface can be accessed from the package sellers_pkg.
+
+```go
+sellers := sellers_pkg.NewSELLERS()
+```
+
+### <a name="get_seller_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.GetSellerById") GetSellerById
+
+> TODO: Add a method description
+
+
+```go
+func (me *SELLERS_IMPL) GetSellerById(id string)(*models_pkg.GetSellerResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| id |  ``` Required ```  | Seller Id |
+
+
+#### Example Usage
+
+```go
+id := "id"
+
+var result *models_pkg.GetSellerResponse
+result,_ = sellers.GetSellerById(id)
+
+```
+
+
+### <a name="delete_seller"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.DeleteSeller") DeleteSeller
+
+> TODO: Add a method description
+
+
+```go
+func (me *SELLERS_IMPL) DeleteSeller(sellerId string)(*models_pkg.GetSellerResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| sellerId |  ``` Required ```  | Seller Id |
+
+
+#### Example Usage
+
+```go
+sellerId := "sellerId"
+
+var result *models_pkg.GetSellerResponse
+result,_ = sellers.DeleteSeller(sellerId)
+
+```
+
+
+### <a name="create_seller"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.CreateSeller") CreateSeller
+
+> TODO: Add a method description
+
+
+```go
+func (me *SELLERS_IMPL) CreateSeller(request *models_pkg.CreateSellerRequest)(*models_pkg.GetSellerResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| request |  ``` Required ```  | Seller Model |
+
+
+#### Example Usage
+
+```go
+var request *models_pkg.CreateSellerRequest
+
+var result *models_pkg.GetSellerResponse
+result,_ = sellers.CreateSeller(request)
+
+```
+
+
+### <a name="get_sellers"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.GetSellers") GetSellers
+
+> TODO: Add a method description
+
+
+```go
+func (me *SELLERS_IMPL) GetSellers(
+            page *int64,
+            size *int64,
+            name *string,
+            document *string,
+            code *string,
+            status *string,
+            mtype *string,
+            createdSince *time.Time,
+            createdUntil *time.Time)(*models_pkg.ListSellerResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | TODO: Add a parameter description |
+| document |  ``` Optional ```  | TODO: Add a parameter description |
+| code |  ``` Optional ```  | TODO: Add a parameter description |
+| status |  ``` Optional ```  | TODO: Add a parameter description |
+| mtype |  ``` Optional ```  | TODO: Add a parameter description |
+| createdSince |  ``` Optional ```  | TODO: Add a parameter description |
+| createdUntil |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("112", 10, 8)
+size,_ := strconv.ParseInt("112", 10, 8)
+name := "name"
+document := "document"
+code := "code"
+status := "status"
+mtype := "type"
+createdSince := time.Now()
+createdUntil := time.Now()
+
+var result *models_pkg.ListSellerResponse
+result,_ = sellers.GetSellers(page, size, name, document, code, status, mtype, createdSince, createdUntil)
+
+```
+
+
+### <a name="update_seller"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.UpdateSeller") UpdateSeller
+
+> TODO: Add a method description
+
+
+```go
+func (me *SELLERS_IMPL) UpdateSeller(
+            id string,
+            request *models_pkg.UpdateSellerRequest)(*models_pkg.GetSellerResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| id |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | Update Seller model |
+
+
+#### Example Usage
+
+```go
+id := "id"
+var request *models_pkg.UpdateSellerRequest
+
+var result *models_pkg.GetSellerResponse
+result,_ = sellers.UpdateSeller(id, request)
+
+```
+
+
+### <a name="update_seller_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.UpdateSellerMetadata") UpdateSellerMetadata
+
+> TODO: Add a method description
+
+
+```go
+func (me *SELLERS_IMPL) UpdateSellerMetadata(
+            sellerId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetSellerResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| sellerId |  ``` Required ```  | Seller Id |
+| request |  ``` Required ```  | Request for updating the charge metadata |
+
+
+#### Example Usage
+
+```go
+sellerId := "seller_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetSellerResponse
+result,_ = sellers.UpdateSellerMetadata(sellerId, request)
 
 ```
 

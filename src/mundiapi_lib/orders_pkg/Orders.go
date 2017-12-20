@@ -20,6 +20,18 @@ type ORDERS interface {
     GetOrders (*int64, *int64, *string, *string, *time.Time, *time.Time, *string) (*models_pkg.ListOrderResponse, error)
 
     UpdateOrderMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetOrderResponse, error)
+
+    DeleteAllOrderItems (string) (*models_pkg.GetOrderResponse, error)
+
+    UpdateOrderItem (string, string, *models_pkg.UpdateOrderItemRequest) (*models_pkg.GetOrderItemResponse, error)
+
+    DeleteOrderItem (string, string) (*models_pkg.GetOrderItemResponse, error)
+
+    CreateOrderItem (string, *models_pkg.CreateOrderItemRequest) (*models_pkg.GetOrderItemResponse, error)
+
+    GetOrderItem (string, string) (*models_pkg.GetOrderItemResponse, error)
+
+    UpdateOrderStatus (string, *models_pkg.UpdateOrderStatusRequest) (*models_pkg.GetOrderResponse, error)
 }
 
 /*
