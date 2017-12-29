@@ -251,18 +251,6 @@ type CreateChargeRequest struct {
 }
 
 /*
- * Structure for the custom type GetUsageResponse
- */
-type GetUsageResponse struct {
-    Id                string          `json:"id" form:"id"` //Id
-    Quantity          int64           `json:"quantity" form:"quantity"` //Quantity
-    Description       string          `json:"description" form:"description"` //Description
-    UsedAt            *time.Time      `json:"used_at" form:"used_at"` //Used at
-    CreatedAt         *time.Time      `json:"created_at" form:"created_at"` //Creation date
-    SubscriptionItem  GetSubscriptionItemResponse `json:"subscription_item" form:"subscription_item"` //Subscription item
-}
-
-/*
  * Structure for the custom type UpdateCardRequest
  */
 type UpdateCardRequest struct {
@@ -1527,4 +1515,18 @@ type UpdateSellerRequest struct {
 type ListSellerResponse struct {
     Data            []*GetSellerResponse `json:"data" form:"data"` //The order object
     Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
+}
+
+/*
+ * Structure for the custom type GetUsageResponse
+ */
+type GetUsageResponse struct {
+    Id                string          `json:"id" form:"id"` //Id
+    Quantity          int64           `json:"quantity" form:"quantity"` //Quantity
+    Description       string          `json:"description" form:"description"` //Description
+    UsedAt            *time.Time      `json:"used_at" form:"used_at"` //Used at
+    CreatedAt         *time.Time      `json:"created_at" form:"created_at"` //Creation date
+    Status            string          `json:"status" form:"status"` //Status
+    SubscriptionItem  GetSubscriptionItemResponse `json:"subscription_item" form:"subscription_item"` //Subscription item
+    DeletedAt         *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
 }
