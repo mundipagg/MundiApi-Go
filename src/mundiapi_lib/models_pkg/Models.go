@@ -263,19 +263,6 @@ type UpdateCardRequest struct {
 }
 
 /*
- * Structure for the custom type UpdateCustomerRequest
- */
-type UpdateCustomerRequest struct {
-    Name            string          `json:"name" form:"name"` //Name
-    Email           string          `json:"email" form:"email"` //Email
-    Document        string          `json:"document" form:"document"` //Document number
-    Type            string          `json:"type" form:"type"` //Person type
-    Address         CreateAddressRequest `json:"address" form:"address"` //Address
-    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
-    Phones          CreatePhonesRequest `json:"phones,omitempty" form:"phones,omitempty"` //TODO: Write general description for this field
-}
-
-/*
  * Structure for the custom type UpdatePlanItemRequest
  */
 type UpdatePlanItemRequest struct {
@@ -365,6 +352,7 @@ type GetTransactionResponse struct {
     AttemptCount     int64           `json:"attempt_count" form:"attempt_count"` //Number of attempts tried
     MaxAttempts      int64           `json:"max_attempts" form:"max_attempts"` //Max attempts
     Splits           []*GetSplitResponse `json:"splits" form:"splits"` //Splits
+    Id               string          `json:"id" form:"id"` //Código da transação
     NextAttempt      *time.Time      `json:"next_attempt,omitempty" form:"next_attempt,omitempty"` //Date and time of the next attempt
     TransactionType  *string         `json:"transaction_type,omitempty" form:"transaction_type,omitempty"` //TODO: Write general description for this field
 }
@@ -496,6 +484,7 @@ type GetCustomerResponse struct {
     Address         GetAddressResponse `json:"address" form:"address"` //TODO: Write general description for this field
     Metadata        map[string]string `json:"metadata" form:"metadata"` //TODO: Write general description for this field
     Phones          GetPhonesResponse `json:"phones" form:"phones"` //TODO: Write general description for this field
+    Code            string          `json:"code" form:"code"` //Código de referência do cliente no sistema da loja. Max: 52 caracteres
     FbId            *int64          `json:"fb_id,omitempty" form:"fb_id,omitempty"` //TODO: Write general description for this field
 }
 
@@ -1529,4 +1518,18 @@ type GetUsageResponse struct {
     Status            string          `json:"status" form:"status"` //Status
     SubscriptionItem  GetSubscriptionItemResponse `json:"subscription_item" form:"subscription_item"` //Subscription item
     DeletedAt         *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type UpdateCustomerRequest
+ */
+type UpdateCustomerRequest struct {
+    Name            string          `json:"name" form:"name"` //Name
+    Email           string          `json:"email" form:"email"` //Email
+    Document        string          `json:"document" form:"document"` //Document number
+    Type            string          `json:"type" form:"type"` //Person type
+    Address         CreateAddressRequest `json:"address" form:"address"` //Address
+    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
+    Code            string          `json:"code" form:"code"` //Código de referência do cliente no sistema da loja. Max: 52 caracteres
+    Phones          CreatePhonesRequest `json:"phones,omitempty" form:"phones,omitempty"` //TODO: Write general description for this field
 }
