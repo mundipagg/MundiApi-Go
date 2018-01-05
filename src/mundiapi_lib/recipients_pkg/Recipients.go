@@ -13,19 +13,7 @@ import "mundiapi_lib/models_pkg"
  * Interface for the RECIPIENTS_IMPL
  */
 type RECIPIENTS interface {
-    UpdateRecipientMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetRecipientResponse, error)
-
-    GetTransfer (string, string) (*models_pkg.GetTransferResponse, error)
-
-    GetTransfers (string, *int64, *int64, *string, *time.Time, *time.Time) (*models_pkg.ListTransferResponse, error)
-
-    CreateAnticipation (string, *models_pkg.CreateAnticipationRequest) (*models_pkg.GetAnticipationResponse, error)
-
-    GetAnticipation (string, string) (*models_pkg.GetAnticipationResponse, error)
-
-    GetAnticipationLimits (string, string, *time.Time) (*models_pkg.GetAnticipationLimitResponse, error)
-
-    GetAnticipations (string, *int64, *int64, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListAnticipationResponse, error)
+    CreateRecipient (*models_pkg.CreateRecipientRequest) (*models_pkg.GetRecipientResponse, error)
 
     UpdateRecipient (string, *models_pkg.UpdateRecipientRequest) (*models_pkg.GetRecipientResponse, error)
 
@@ -39,7 +27,19 @@ type RECIPIENTS interface {
 
     CreateTransfer (string, *models_pkg.CreateTransferRequest) (*models_pkg.GetTransferResponse, error)
 
-    CreateRecipient (*models_pkg.CreateRecipientRequest) (*models_pkg.GetRecipientResponse, error)
+    GetTransfer (string, string) (*models_pkg.GetTransferResponse, error)
+
+    GetTransfers (string, *int64, *int64, *string, *time.Time, *time.Time) (*models_pkg.ListTransferResponse, error)
+
+    CreateAnticipation (string, *models_pkg.CreateAnticipationRequest) (*models_pkg.GetAnticipationResponse, error)
+
+    GetAnticipation (string, string) (*models_pkg.GetAnticipationResponse, error)
+
+    GetAnticipationLimits (string, string, *time.Time) (*models_pkg.GetAnticipationLimitResponse, error)
+
+    GetAnticipations (string, *int64, *int64, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListAnticipationResponse, error)
+
+    UpdateRecipientMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetRecipientResponse, error)
 }
 
 /*

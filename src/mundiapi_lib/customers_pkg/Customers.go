@@ -12,19 +12,27 @@ import "mundiapi_lib/models_pkg"
  * Interface for the CUSTOMERS_IMPL
  */
 type CUSTOMERS interface {
-    UpdateCard (string, string, *models_pkg.UpdateCardRequest) (*models_pkg.GetCardResponse, error)
-
-    UpdateAddress (string, string, *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error)
-
     CreateCustomer (*models_pkg.CreateCustomerRequest) (*models_pkg.GetCustomerResponse, error)
 
     GetCustomer (string) (*models_pkg.GetCustomerResponse, error)
 
-    GetAccessTokens (string, *int64, *int64) (*models_pkg.ListAccessTokensResponse, error)
+    UpdateCard (string, string, *models_pkg.UpdateCardRequest) (*models_pkg.GetCardResponse, error)
 
-    GetAddresses (string, *int64, *int64) (*models_pkg.ListAddressesResponse, error)
+    UpdateAddress (string, string, *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error)
 
-    GetCards (string, *int64, *int64) (*models_pkg.ListCardsResponse, error)
+    GetAddress (string, string) (*models_pkg.GetAddressResponse, error)
+
+    DeleteAddress (string, string) (*models_pkg.GetAddressResponse, error)
+
+    DeleteCard (string, string) (*models_pkg.GetCardResponse, error)
+
+    CreateAddress (string, *models_pkg.CreateAddressRequest) (*models_pkg.GetAddressResponse, error)
+
+    GetCard (string, string) (*models_pkg.GetCardResponse, error)
+
+    CreateCard (string, *models_pkg.CreateCardRequest) (*models_pkg.GetCardResponse, error)
+
+    UpdateCustomer (string, *models_pkg.UpdateCustomerRequest) (*models_pkg.GetCustomerResponse, error)
 
     DeleteAccessTokens (string) (*models_pkg.ListAccessTokensResponse, error)
 
@@ -38,19 +46,11 @@ type CUSTOMERS interface {
 
     UpdateCustomerMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetCustomerResponse, error)
 
-    UpdateCustomer (string, *models_pkg.UpdateCustomerRequest) (*models_pkg.GetCustomerResponse, error)
+    GetAccessTokens (string, *int64, *int64) (*models_pkg.ListAccessTokensResponse, error)
 
-    GetAddress (string, string) (*models_pkg.GetAddressResponse, error)
+    GetAddresses (string, *int64, *int64) (*models_pkg.ListAddressesResponse, error)
 
-    DeleteAddress (string, string) (*models_pkg.GetAddressResponse, error)
-
-    DeleteCard (string, string) (*models_pkg.GetCardResponse, error)
-
-    CreateAddress (string, *models_pkg.CreateAddressRequest) (*models_pkg.GetAddressResponse, error)
-
-    GetCard (string, string) (*models_pkg.GetCardResponse, error)
-
-    CreateCard (string, *models_pkg.CreateCardRequest) (*models_pkg.GetCardResponse, error)
+    GetCards (string, *int64, *int64) (*models_pkg.ListCardsResponse, error)
 }
 
 /*
