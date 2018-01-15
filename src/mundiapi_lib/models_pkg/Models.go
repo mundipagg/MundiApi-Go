@@ -9,6 +9,30 @@ package models_pkg
 import "time"
 
 /*
+ * Structure for the custom type GetCheckoutBoletoPaymentResponse
+ */
+type GetCheckoutBoletoPaymentResponse struct {
+    DueAt           *time.Time      `json:"due_at" form:"due_at"` //Data de vencimento do boleto
+    Instructions    string          `json:"instructions" form:"instructions"` //Instruções do boleto
+}
+
+/*
+ * Structure for the custom type GetCheckoutCardPaymentResponse
+ */
+type GetCheckoutCardPaymentResponse struct {
+    StatementDescriptor string          `json:"statementDescriptor" form:"statementDescriptor"` //Descrição na fatura
+    Installments        []*GetCheckoutCardInstallmentOptionsResponse `json:"installments" form:"installments"` //Parcelas
+}
+
+/*
+ * Structure for the custom type GetCheckoutCardInstallmentOptionsResponse
+ */
+type GetCheckoutCardInstallmentOptionsResponse struct {
+    Number          string          `json:"number" form:"number"` //Número de parcelas
+    Total           int64           `json:"total" form:"total"` //Valor total da compra
+}
+
+/*
  * Structure for the custom type CreateCancelChargeRequest
  */
 type CreateCancelChargeRequest struct {
@@ -207,7 +231,7 @@ type GetOrderResponse struct {
     Shipping        GetShippingResponse `json:"shipping" form:"shipping"` //TODO: Write general description for this field
     Metadata        map[string]string `json:"metadata" form:"metadata"` //TODO: Write general description for this field
     Closed          bool            `json:"closed" form:"closed"` //Indicates whether the order is closed
-    Checkouts       []*GetCheckoutPaymentSettingsResponse `json:"checkouts,omitempty" form:"checkouts,omitempty"` //Checkout Payment Settings Response
+    Checkouts       []*GetCheckoutPaymentResponse `json:"checkouts,omitempty" form:"checkouts,omitempty"` //Checkout Payment Settings Response
     Ip              *string         `json:"ip,omitempty" form:"ip,omitempty"` //Ip address
     SessionId       *string         `json:"session_id,omitempty" form:"session_id,omitempty"` //Session id
     Location        GetLocationResponse `json:"location,omitempty" form:"location,omitempty"` //Location
@@ -1020,18 +1044,6 @@ type CreateCheckoutCardPaymentRequest struct {
 }
 
 /*
- * Structure for the custom type CreateCheckoutPaymentRequest
- */
-type CreateCheckoutPaymentRequest struct {
-    AcceptedPaymentMethods   []string        `json:"accepted_payment_methods" form:"accepted_payment_methods"` //Accepted Payment Methods
-    SuccessUrl               string          `json:"success_url" form:"success_url"` //Success url
-    DefaultPaymentMethod     *string         `json:"default_payment_method,omitempty" form:"default_payment_method,omitempty"` //Default payment method
-    GatewayAffiliationId     *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway Affiliation Id
-    CreditCard               CreateCheckoutCardPaymentRequest `json:"credit_card,omitempty" form:"credit_card,omitempty"` //Card payment request
-    Boleto                   CreateCheckoutBoletoPaymentRequest `json:"boleto,omitempty" form:"boleto,omitempty"` //Boleto payment request
-}
-
-/*
  * Structure for the custom type GetCheckoutPaymentSettingsResponse
  */
 type GetCheckoutPaymentSettingsResponse struct {
@@ -1521,6 +1533,29 @@ type UpdateCustomerRequest struct {
 }
 
 /*
+ * Structure for the custom type GetCheckoutPaymentResponse
+ */
+type GetCheckoutPaymentResponse struct {
+    Id                         string          `json:"id" form:"id"` //TODO: Write general description for this field
+    DefaultPaymentMethod       string          `json:"default_payment_method" form:"default_payment_method"` //Meio de pagamento padrão no checkout
+    SuccessUrl                 string          `json:"success_url" form:"success_url"` //Url de redirecionamento de sucesso após o checkou
+    PaymentUrl                 string          `json:"payment_url" form:"payment_url"` //Url para pagamento usando o checkout
+    GatewayAffiliationId       string          `json:"gateway_affiliation_id" form:"gateway_affiliation_id"` //Código da afiliação onde o pagamento será processado no gateway
+    AcceptedPaymentMethods     []string        `json:"accepted_payment_methods" form:"accepted_payment_methods"` //Meios de pagamento aceitos no checkout
+    Status                     string          `json:"status" form:"status"` //Status do checkout
+    SkipCheckoutSuccessPage    bool            `json:"skip_checkout_success_page" form:"skip_checkout_success_page"` //Pular tela de sucesso pós-pagamento?
+    CreatedAt                  *time.Time      `json:"created_at" form:"created_at"` //Data de criação
+    UpdatedAt                  *time.Time      `json:"updated_at" form:"updated_at"` //Data de atualização
+    CustomerEditable           bool            `json:"customer_editable" form:"customer_editable"` //Torna o objeto customer editável
+    Customer                   GetCustomerResponse `json:"customer" form:"customer"` //Dados do comprador
+    Billingaddress             GetAddressResponse `json:"billingaddress" form:"billingaddress"` //Dados do endereço de cobrança
+    CreditCard                 GetCheckoutCardPaymentResponse `json:"credit_Card" form:"credit_Card"` //Configurações de cartão de crédito
+    Boleto                     GetCheckoutBoletoPaymentResponse `json:"boleto" form:"boleto"` //Configurações de boleto
+    Amount                     *int64          `json:"amount,omitempty" form:"amount,omitempty"` //Valor em centavos
+    CanceledAt                 *time.Time      `json:"canceled_at,omitempty" form:"canceled_at,omitempty"` //Data de cancelamento
+}
+
+/*
  * Structure for the custom type GetBoletoTransactionResponse
  */
 type GetBoletoTransactionResponse struct {
@@ -1540,4 +1575,17 @@ type GetBoletoTransactionResponse struct {
     Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
     DueAt           *time.Time      `json:"due_at,omitempty" form:"due_at,omitempty"` //TODO: Write general description for this field
     PaidAt          *time.Time      `json:"paid_at,omitempty" form:"paid_at,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type CreateCheckoutPaymentRequest
+ */
+type CreateCheckoutPaymentRequest struct {
+    AcceptedPaymentMethods   []string        `json:"accepted_payment_methods" form:"accepted_payment_methods"` //Accepted Payment Methods
+    SuccessUrl               string          `json:"success_url" form:"success_url"` //Success url
+    DefaultPaymentMethod     *string         `json:"default_payment_method,omitempty" form:"default_payment_method,omitempty"` //Default payment method
+    GatewayAffiliationId     *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway Affiliation Id
+    CreditCard               CreateCheckoutCardPaymentRequest `json:"credit_card,omitempty" form:"credit_card,omitempty"` //Card payment request
+    Boleto                   CreateCheckoutBoletoPaymentRequest `json:"boleto,omitempty" form:"boleto,omitempty"` //Boleto payment request
+    CustomerEditable         *bool           `json:"customer_editable,omitempty" form:"customer_editable,omitempty"` //Torna o objeto editável
 }
