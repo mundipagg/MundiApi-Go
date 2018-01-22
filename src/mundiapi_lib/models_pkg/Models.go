@@ -758,18 +758,6 @@ type GetPlanResponse struct {
 }
 
 /*
- * Structure for the custom type CreateBoletoPaymentRequest
- */
-type CreateBoletoPaymentRequest struct {
-    Retries            int64           `json:"retries" form:"retries"` //Number of retries
-    Bank               string          `json:"bank" form:"bank"` //The bank code, containing three characters. The available codes are on the API specification
-    Instructions       string          `json:"instructions" form:"instructions"` //The instructions field that will be printed on the boleto.
-    DueAt              *time.Time      `json:"due_at" form:"due_at"` //Boleto due date
-    BillingAddress     CreateAddressRequest `json:"billing_address" form:"billing_address"` //Card's billing address
-    BillingAddressId   string          `json:"billing_address_id" form:"billing_address_id"` //The address id for the billing address
-}
-
-/*
  * Structure for the custom type CreatePhoneRequest
  */
 type CreatePhoneRequest struct {
@@ -1588,4 +1576,17 @@ type CreateCheckoutPaymentRequest struct {
     CreditCard               CreateCheckoutCardPaymentRequest `json:"credit_card,omitempty" form:"credit_card,omitempty"` //Card payment request
     Boleto                   CreateCheckoutBoletoPaymentRequest `json:"boleto,omitempty" form:"boleto,omitempty"` //Boleto payment request
     CustomerEditable         *bool           `json:"customer_editable,omitempty" form:"customer_editable,omitempty"` //Torna o objeto editável
+}
+
+/*
+ * Structure for the custom type CreateBoletoPaymentRequest
+ */
+type CreateBoletoPaymentRequest struct {
+    Retries            int64           `json:"retries" form:"retries"` //Number of retries
+    Bank               string          `json:"bank" form:"bank"` //The bank code, containing three characters. The available codes are on the API specification
+    Instructions       string          `json:"instructions" form:"instructions"` //The instructions field that will be printed on the boleto.
+    DueAt              *time.Time      `json:"due_at" form:"due_at"` //Boleto due date
+    BillingAddress     CreateAddressRequest `json:"billing_address" form:"billing_address"` //Card's billing address
+    BillingAddressId   string          `json:"billing_address_id" form:"billing_address_id"` //The address id for the billing address
+    NossoNumero        *string         `json:"nosso_numero,omitempty" form:"nosso_numero,omitempty"` //Número de identificação do cliente com o banco
 }
