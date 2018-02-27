@@ -17,15 +17,15 @@ type ORDERS interface {
 
     CreateOrder (*models_pkg.CreateOrderRequest) (*models_pkg.GetOrderResponse, error)
 
+    GetOrders (*int64, *int64, *string, *string, *time.Time, *time.Time, *string) (*models_pkg.ListOrderResponse, error)
+
     UpdateOrderMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetOrderResponse, error)
 
-    GetOrders (*int64, *int64, *string, *string, *time.Time, *time.Time, *string) (*models_pkg.ListOrderResponse, error)
+    DeleteAllOrderItems (string) (*models_pkg.GetOrderResponse, error)
 
     UpdateOrderItem (string, string, *models_pkg.UpdateOrderItemRequest) (*models_pkg.GetOrderItemResponse, error)
 
     DeleteOrderItem (string, string) (*models_pkg.GetOrderItemResponse, error)
-
-    DeleteAllOrderItems (string) (*models_pkg.GetOrderResponse, error)
 
     CreateOrderItem (string, *models_pkg.CreateOrderItemRequest) (*models_pkg.GetOrderItemResponse, error)
 

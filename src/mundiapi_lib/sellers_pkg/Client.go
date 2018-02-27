@@ -21,19 +21,28 @@ type SELLERS_IMPL struct { }
 
 /**
  * TODO: type endpoint description here
- * @param    *models_pkg.CreateSellerRequest        request     parameter: Required
+ * @param    string        id     parameter: Required
  * @return	Returns the *models_pkg.GetSellerResponse response from the API call
  */
-func (me *SELLERS_IMPL) CreateSeller (
-            request *models_pkg.CreateSellerRequest) (*models_pkg.GetSellerResponse, error) {
+func (me *SELLERS_IMPL) GetSellerById (
+            id string) (*models_pkg.GetSellerResponse, error) {
         //the base uri for api requests
     _queryBuilder := mundiapi_lib.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/sellers/"
+   _queryBuilder = _queryBuilder + "/sellers/{id}"
 
     //variable to hold errors
     var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "id" : id,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -45,11 +54,10 @@ func (me *SELLERS_IMPL) CreateSeller (
     headers := map[string]interface{} {
         "user-agent" : "MundiSDK",
         "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
     }
 
     //prepare API request
-    _request := unirest.PostWithAuth(_queryBuilder, headers, request, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request);
     if err != nil {
@@ -169,28 +177,19 @@ func (me *SELLERS_IMPL) DeleteSeller (
 
 /**
  * TODO: type endpoint description here
- * @param    string        id     parameter: Required
+ * @param    *models_pkg.CreateSellerRequest        request     parameter: Required
  * @return	Returns the *models_pkg.GetSellerResponse response from the API call
  */
-func (me *SELLERS_IMPL) GetSellerById (
-            id string) (*models_pkg.GetSellerResponse, error) {
+func (me *SELLERS_IMPL) CreateSeller (
+            request *models_pkg.CreateSellerRequest) (*models_pkg.GetSellerResponse, error) {
         //the base uri for api requests
     _queryBuilder := mundiapi_lib.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/sellers/{id}"
+   _queryBuilder = _queryBuilder + "/sellers/"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
-        "id" : id,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -202,10 +201,11 @@ func (me *SELLERS_IMPL) GetSellerById (
     headers := map[string]interface{} {
         "user-agent" : "MundiSDK",
         "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
     }
 
     //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
+    _request := unirest.PostWithAuth(_queryBuilder, headers, request, mundiapi_lib.Config.BasicAuthUserName, mundiapi_lib.Config.BasicAuthPassword)
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request);
     if err != nil {
