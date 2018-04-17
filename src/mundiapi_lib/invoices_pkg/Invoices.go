@@ -8,27 +8,30 @@ package invoices_pkg
 
 import "time"
 import "mundiapi_lib/models_pkg"
+import "mundiapi_lib/configuration_pkg"
 
 /*
  * Interface for the INVOICES_IMPL
  */
 type INVOICES interface {
+    GetInvoice (string) (*models_pkg.GetInvoiceResponse, error)
+
     CancelInvoice (string) (*models_pkg.GetInvoiceResponse, error)
 
-    GetInvoice (string) (*models_pkg.GetInvoiceResponse, error)
+    UpdateInvoiceMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetInvoiceResponse, error)
+
+    GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time) (*models_pkg.ListInvoicesResponse, error)
 
     CreateInvoice (string, string) (*models_pkg.GetInvoiceResponse, error)
 
     UpdateInvoiceStatus (string, *models_pkg.UpdateInvoiceStatusRequest) (*models_pkg.GetInvoiceResponse, error)
-
-    GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time) (*models_pkg.ListInvoicesResponse, error)
-
-    UpdateInvoiceMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetInvoiceResponse, error)
 }
 
 /*
  * Factory for the INVOICES interaface returning INVOICES_IMPL
  */
-func NewINVOICES() INVOICES {
-    return &INVOICES_IMPL{}
+func NewINVOICES(config configuration_pkg.CONFIGURATION) *INVOICES_IMPL {
+    client := new(INVOICES_IMPL)
+    client.config = config
+    return client
 }

@@ -8,16 +8,17 @@ package sellers_pkg
 
 import "time"
 import "mundiapi_lib/models_pkg"
+import "mundiapi_lib/configuration_pkg"
 
 /*
  * Interface for the SELLERS_IMPL
  */
 type SELLERS interface {
-    GetSellerById (string) (*models_pkg.GetSellerResponse, error)
+    CreateSeller (*models_pkg.CreateSellerRequest) (*models_pkg.GetSellerResponse, error)
 
     DeleteSeller (string) (*models_pkg.GetSellerResponse, error)
 
-    CreateSeller (*models_pkg.CreateSellerRequest) (*models_pkg.GetSellerResponse, error)
+    GetSellerById (string) (*models_pkg.GetSellerResponse, error)
 
     GetSellers (*int64, *int64, *string, *string, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.ListSellerResponse, error)
 
@@ -29,6 +30,8 @@ type SELLERS interface {
 /*
  * Factory for the SELLERS interaface returning SELLERS_IMPL
  */
-func NewSELLERS() SELLERS {
-    return &SELLERS_IMPL{}
+func NewSELLERS(config configuration_pkg.CONFIGURATION) *SELLERS_IMPL {
+    client := new(SELLERS_IMPL)
+    client.config = config
+    return client
 }
