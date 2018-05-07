@@ -40,8 +40,6 @@ type SUBSCRIPTIONS interface {
 
     DeleteUsage (string, string, string) (*models_pkg.GetUsageResponse, error)
 
-    GetUsages (string, string, *int64, *int64) (*models_pkg.ListUsagesResponse, error)
-
     UpdateSubscriptionMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     GetSubscriptions (*int64, *int64, *string, *string, *string, *string, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListSubscriptionsResponse, error)
@@ -58,7 +56,15 @@ type SUBSCRIPTIONS interface {
 
     GetDiscounts (string, int64, int64) (*models_pkg.ListDiscountsResponse, error)
 
-    GetSubscriptionUsagesDetails (string, *string) (*models_pkg.GetSubscriptionUsagesDetailsResponse, error)
+    CreateIncrement (string, *models_pkg.CreateIncrementRequest) (*models_pkg.GetIncrementResponse, error)
+
+    GetIncrements (string, *int64, *int64) (*models_pkg.ListIncrementsResponse, error)
+
+    DeleteIncrement (string, string) (*models_pkg.GetIncrementResponse, error)
+
+    GetUsagesDetails (string, *string, *int64, *int64) (*models_pkg.GetUsagesDetailsResponse, error)
+
+    GetUsages (string, string, *int64, *int64, *string) (*models_pkg.ListUsagesResponse, error)
 }
 
 /*

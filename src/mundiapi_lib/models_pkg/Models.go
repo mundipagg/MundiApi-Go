@@ -119,15 +119,6 @@ type UpdateChargeDueDateRequest struct {
 }
 
 /*
- * Structure for the custom type CreateUsageRequest
- */
-type CreateUsageRequest struct {
-    Quantity        int64           `json:"quantity" form:"quantity"` //TODO: Write general description for this field
-    Description     string          `json:"description" form:"description"` //TODO: Write general description for this field
-    UsedAt          *time.Time      `json:"used_at" form:"used_at"` //TODO: Write general description for this field
-}
-
-/*
  * Structure for the custom type ListOrderResponse
  */
 type ListOrderResponse struct {
@@ -329,27 +320,6 @@ type GetTransactionResponse struct {
 }
 
 /*
- * Structure for the custom type GetCardResponse
- */
-type GetCardResponse struct {
-    Id               string          `json:"id" form:"id"` //TODO: Write general description for this field
-    LastFourDigits   string          `json:"last_four_digits" form:"last_four_digits"` //TODO: Write general description for this field
-    Brand            string          `json:"brand" form:"brand"` //TODO: Write general description for this field
-    HolderName       string          `json:"holder_name" form:"holder_name"` //TODO: Write general description for this field
-    ExpMonth         int64           `json:"exp_month" form:"exp_month"` //TODO: Write general description for this field
-    ExpYear          int64           `json:"exp_year" form:"exp_year"` //TODO: Write general description for this field
-    Status           string          `json:"status" form:"status"` //TODO: Write general description for this field
-    CreatedAt        *time.Time      `json:"created_at" form:"created_at"` //TODO: Write general description for this field
-    UpdatedAt        *time.Time      `json:"updated_at" form:"updated_at"` //TODO: Write general description for this field
-    BillingAddress   GetBillingAddressResponse `json:"billing_address" form:"billing_address"` //TODO: Write general description for this field
-    Customer         GetCustomerResponse `json:"customer" form:"customer"` //TODO: Write general description for this field
-    Metadata         map[string]string `json:"metadata" form:"metadata"` //TODO: Write general description for this field
-    Type             string          `json:"type" form:"type"` //Card type
-    HolderDocument   string          `json:"holder_document" form:"holder_document"` //Document number for the card's holder
-    DeletedAt        *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
-}
-
-/*
  * Structure for the custom type GetAddressResponse
  */
 type GetAddressResponse struct {
@@ -417,6 +387,7 @@ type GetDiscountResponse struct {
     Subscription    GetSubscriptionResponse `json:"subscription" form:"subscription"` //TODO: Write general description for this field
     Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //TODO: Write general description for this field
     DeletedAt       *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
+    Description     *string         `json:"description,omitempty" form:"description,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -457,16 +428,6 @@ type GetCustomerResponse struct {
     Phones          GetPhonesResponse `json:"phones" form:"phones"` //TODO: Write general description for this field
     Code            string          `json:"code" form:"code"` //Código de referência do cliente no sistema da loja. Max: 52 caracteres
     FbId            *int64          `json:"fb_id,omitempty" form:"fb_id,omitempty"` //TODO: Write general description for this field
-}
-
-/*
- * Structure for the custom type CreateDiscountRequest
- */
-type CreateDiscountRequest struct {
-    Value           float64         `json:"value" form:"value"` //The discount value
-    DiscountType    string          `json:"discount_type" form:"discount_type"` //Discount type. Can be either flat or percentage.
-    ItemId          string          `json:"item_id" form:"item_id"` //The item where the discount will be applied
-    Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //Number of cycles that the discount will be applied
 }
 
 /*
@@ -896,25 +857,6 @@ type CreatePaymentRequest struct {
 }
 
 /*
- * Structure for the custom type CreateOrderRequest
- */
-type CreateOrderRequest struct {
-    Items             []*CreateOrderItemRequest `json:"items" form:"items"` //Items
-    Customer          CreateCustomerRequest `json:"customer" form:"customer"` //Customer
-    Payments          []*CreatePaymentRequest `json:"payments" form:"payments"` //Payment data
-    Code              string          `json:"code" form:"code"` //The order code
-    CustomerId        string          `json:"customer_id" form:"customer_id"` //The customer id
-    Shipping          CreateShippingRequest `json:"shipping" form:"shipping"` //Shipping data
-    Metadata          map[string]string `json:"metadata" form:"metadata"` //Metadata
-    Closed            bool            `json:"closed" form:"closed"` //TODO: Write general description for this field
-    AntifraudEnabled  *bool           `json:"antifraud_enabled,omitempty" form:"antifraud_enabled,omitempty"` //Defines whether the order will go through anti-fraud
-    Ip                *string         `json:"ip,omitempty" form:"ip,omitempty"` //Ip address
-    SessionId         *string         `json:"session_id,omitempty" form:"session_id,omitempty"` //Session id
-    Location          CreateLocationRequest `json:"location,omitempty" form:"location,omitempty"` //Request's location
-    Device            CreateDeviceRequest `json:"device,omitempty" form:"device,omitempty"` //Device's informations
-}
-
-/*
  * Structure for the custom type CreateCheckoutCardInstallmentOptionRequest
  */
 type CreateCheckoutCardInstallmentOptionRequest struct {
@@ -1273,6 +1215,8 @@ type GetInvoiceResponse struct {
     CanceledAt      *time.Time      `json:"canceled_at,omitempty" form:"canceled_at,omitempty"` //TODO: Write general description for this field
     BillingAt       *time.Time      `json:"billing_at,omitempty" form:"billing_at,omitempty"` //TODO: Write general description for this field
     SeenAt          *time.Time      `json:"seen_at,omitempty" form:"seen_at,omitempty"` //TODO: Write general description for this field
+    TotalDiscount   *int64          `json:"total_discount,omitempty" form:"total_discount,omitempty"` //Total discounted value
+    TotalIncrement  *int64          `json:"total_increment,omitempty" form:"total_increment,omitempty"` //Total discounted value
 }
 
 /*
@@ -1328,24 +1272,6 @@ type CreateSubscriptionItemRequest struct {
     Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //Number of cycles which the item will be charged
     Quantity        *int64          `json:"quantity,omitempty" form:"quantity,omitempty"` //Quantity of items
     MinimumPrice    *int64          `json:"minimum_price,omitempty" form:"minimum_price,omitempty"` //Minimum price
-}
-
-/*
- * Structure for the custom type GetSubscriptionItemResponse
- */
-type GetSubscriptionItemResponse struct {
-    Id              string          `json:"id" form:"id"` //TODO: Write general description for this field
-    Description     string          `json:"description" form:"description"` //TODO: Write general description for this field
-    Status          string          `json:"status" form:"status"` //TODO: Write general description for this field
-    CreatedAt       *time.Time      `json:"created_at" form:"created_at"` //TODO: Write general description for this field
-    UpdatedAt       *time.Time      `json:"updated_at" form:"updated_at"` //TODO: Write general description for this field
-    PricingScheme   GetPricingSchemeResponse `json:"pricing_scheme" form:"pricing_scheme"` //TODO: Write general description for this field
-    Discounts       []*GetDiscountResponse `json:"discounts" form:"discounts"` //TODO: Write general description for this field
-    Subscription    GetSubscriptionResponse `json:"subscription" form:"subscription"` //TODO: Write general description for this field
-    Name            string          `json:"name" form:"name"` //Item name
-    Quantity        *int64          `json:"quantity,omitempty" form:"quantity,omitempty"` //TODO: Write general description for this field
-    Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //TODO: Write general description for this field
-    DeletedAt       *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -1412,6 +1338,7 @@ type GetUsageResponse struct {
     Status            string          `json:"status" form:"status"` //Status
     SubscriptionItem  GetSubscriptionItemResponse `json:"subscription_item" form:"subscription_item"` //Subscription item
     DeletedAt         *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
+    Code              *string         `json:"code,omitempty" form:"code,omitempty"` //Identification code in the client system
 }
 
 /*
@@ -1549,16 +1476,6 @@ type ListDiscountsResponse struct {
 }
 
 /*
- * Structure for the custom type GetSubscriptionUsagesDetailsResponse
- */
-type GetSubscriptionUsagesDetailsResponse struct {
-    SubscriptionId  string          `json:"subscription_id" form:"subscription_id"` //Subscription Identifier
-    TotalAmount     int64           `json:"total_amount" form:"total_amount"` //Current Invoice Amount
-    Period          GetPeriodResponse `json:"Period" form:"Period"` //Period Details
-    Usages          []*GetUsageResponse `json:"Usages" form:"Usages"` //Usages Details
-}
-
-/*
  * Structure for the custom type CreateSubscriptionRequest
  */
 type CreateSubscriptionRequest struct {
@@ -1578,6 +1495,7 @@ type CreateSubscriptionRequest struct {
     Discounts              []*CreateDiscountRequest `json:"discounts" form:"discounts"` //Discounts
     Metadata               map[string]string `json:"metadata" form:"metadata"` //Metadata
     Setup                  CreateSetupRequest `json:"setup" form:"setup"` //Setup data
+    Increments             []*CreateIncrementRequest `json:"increments" form:"increments"` //Increments
     PlanId                 *string         `json:"plan_id,omitempty" form:"plan_id,omitempty"` //Plan id
     CustomerId             *string         `json:"customer_id,omitempty" form:"customer_id,omitempty"` //Customer id
     CardId                 *string         `json:"card_id,omitempty" form:"card_id,omitempty"` //Card id
@@ -1590,6 +1508,16 @@ type CreateSubscriptionRequest struct {
     GatewayAffiliationId   *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway Affiliation code
     Quantity               *int64          `json:"quantity,omitempty" form:"quantity,omitempty"` //Quantity
     BoletoDueDays          *int64          `json:"boleto_due_days,omitempty" form:"boleto_due_days,omitempty"` //Days until boleto expires
+}
+
+/*
+ * Structure for the custom type CreateUsageRequest
+ */
+type CreateUsageRequest struct {
+    Quantity        int64           `json:"quantity" form:"quantity"` //TODO: Write general description for this field
+    Description     string          `json:"description" form:"description"` //TODO: Write general description for this field
+    UsedAt          *time.Time      `json:"used_at" form:"used_at"` //TODO: Write general description for this field
+    Code            *string         `json:"code,omitempty" form:"code,omitempty"` //Identification code in the client system
 }
 
 /*
@@ -1616,10 +1544,137 @@ type GetSubscriptionResponse struct {
     Metadata               map[string]string `json:"metadata" form:"metadata"` //TODO: Write general description for this field
     Setup                  GetSetupResponse `json:"setup" form:"setup"` //TODO: Write general description for this field
     GatewayAffiliationId   string          `json:"gateway_affiliation_id" form:"gateway_affiliation_id"` //Affiliation Code
+    Increments             []*GetIncrementResponse `json:"increments" form:"increments"` //Subscription increments
     NextBillingAt          *time.Time      `json:"next_billing_at,omitempty" form:"next_billing_at,omitempty"` //TODO: Write general description for this field
     BillingDay             *int64          `json:"billing_day,omitempty" form:"billing_day,omitempty"` //TODO: Write general description for this field
     MinimumPrice           *int64          `json:"minimum_price,omitempty" form:"minimum_price,omitempty"` //TODO: Write general description for this field
     CanceledAt             *time.Time      `json:"canceled_at,omitempty" form:"canceled_at,omitempty"` //TODO: Write general description for this field
     Discounts              []*GetDiscountResponse `json:"discounts,omitempty" form:"discounts,omitempty"` //Subscription discounts
     BoletoDueDays          *int64          `json:"boleto_due_days,omitempty" form:"boleto_due_days,omitempty"` //Days until boleto expires
+}
+
+/*
+ * Structure for the custom type CreateDiscountRequest
+ */
+type CreateDiscountRequest struct {
+    Value           float64         `json:"value" form:"value"` //The discount value
+    DiscountType    string          `json:"discount_type" form:"discount_type"` //Discount type. Can be either flat or percentage.
+    ItemId          string          `json:"item_id" form:"item_id"` //The item where the discount will be applied
+    Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //Number of cycles that the discount will be applied
+    Description     *string         `json:"description,omitempty" form:"description,omitempty"` //Description
+}
+
+/*
+ * Structure for the custom type CreateIncrementRequest
+ */
+type CreateIncrementRequest struct {
+    Value           float64         `json:"value" form:"value"` //The increment value
+    IncrementType   string          `json:"increment_type" form:"increment_type"` //Increment type. Can be either flat or percentage.
+    ItemId          string          `json:"item_id" form:"item_id"` //The item where the increment will be applied
+    Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //Number of cycles that the increment will be applied
+    Description     *string         `json:"description,omitempty" form:"description,omitempty"` //Description
+}
+
+/*
+ * Structure for the custom type GetSubscriptionItemResponse
+ */
+type GetSubscriptionItemResponse struct {
+    Id              string          `json:"id" form:"id"` //TODO: Write general description for this field
+    Description     string          `json:"description" form:"description"` //TODO: Write general description for this field
+    Status          string          `json:"status" form:"status"` //TODO: Write general description for this field
+    CreatedAt       *time.Time      `json:"created_at" form:"created_at"` //TODO: Write general description for this field
+    UpdatedAt       *time.Time      `json:"updated_at" form:"updated_at"` //TODO: Write general description for this field
+    PricingScheme   GetPricingSchemeResponse `json:"pricing_scheme" form:"pricing_scheme"` //TODO: Write general description for this field
+    Discounts       []*GetDiscountResponse `json:"discounts" form:"discounts"` //TODO: Write general description for this field
+    Increments      []*GetIncrementResponse `json:"increments" form:"increments"` //TODO: Write general description for this field
+    Subscription    GetSubscriptionResponse `json:"subscription" form:"subscription"` //TODO: Write general description for this field
+    Name            string          `json:"name" form:"name"` //Item name
+    Quantity        *int64          `json:"quantity,omitempty" form:"quantity,omitempty"` //TODO: Write general description for this field
+    Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //TODO: Write general description for this field
+    DeletedAt       *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type GetUsagesDetailsResponse
+ */
+type GetUsagesDetailsResponse struct {
+    SubscriptionId  string          `json:"subscription_id" form:"subscription_id"` //Subscription Identifier
+    TotalAmount     int64           `json:"total_amount" form:"total_amount"` //Current Invoice Amount
+    Period          GetPeriodResponse `json:"Period" form:"Period"` //Period Details
+    Usages          ListUsagesDetailsResponse `json:"Usages" form:"Usages"` //Usages Details
+    TotalDiscount   *int64          `json:"total_discount,omitempty" form:"total_discount,omitempty"` //Total discounted value
+    TotalIncrement  *int64          `json:"total_increment,omitempty" form:"total_increment,omitempty"` //Total inremented value
+}
+
+/*
+ * Structure for the custom type GetIncrementResponse
+ */
+type GetIncrementResponse struct {
+    Id              string          `json:"id" form:"id"` //TODO: Write general description for this field
+    Value           float64         `json:"value" form:"value"` //TODO: Write general description for this field
+    IncrementType   string          `json:"increment_type" form:"increment_type"` //TODO: Write general description for this field
+    Status          string          `json:"status" form:"status"` //TODO: Write general description for this field
+    CreatedAt       *time.Time      `json:"created_at" form:"created_at"` //TODO: Write general description for this field
+    Subscription    GetSubscriptionResponse `json:"subscription" form:"subscription"` //TODO: Write general description for this field
+    Cycles          *int64          `json:"cycles,omitempty" form:"cycles,omitempty"` //TODO: Write general description for this field
+    DeletedAt       *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
+    Description     *string         `json:"description,omitempty" form:"description,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type ListIncrementsResponse
+ */
+type ListIncrementsResponse struct {
+    Data            []*GetIncrementResponse `json:"data" form:"data"` //The Increments response
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
+}
+
+/*
+ * Structure for the custom type CreateOrderRequest
+ */
+type CreateOrderRequest struct {
+    Items             []*CreateOrderItemRequest `json:"items" form:"items"` //Items
+    Customer          CreateCustomerRequest `json:"customer" form:"customer"` //Customer
+    Payments          []*CreatePaymentRequest `json:"payments" form:"payments"` //Payment data
+    Code              string          `json:"code" form:"code"` //The order code
+    CustomerId        string          `json:"customer_id" form:"customer_id"` //The customer id
+    Shipping          CreateShippingRequest `json:"shipping" form:"shipping"` //Shipping data
+    Metadata          map[string]string `json:"metadata" form:"metadata"` //Metadata
+    Closed            bool            `json:"closed" form:"closed"` //TODO: Write general description for this field
+    AntifraudEnabled  *bool           `json:"antifraud_enabled,omitempty" form:"antifraud_enabled,omitempty"` //Defines whether the order will go through anti-fraud
+    Ip                *string         `json:"ip,omitempty" form:"ip,omitempty"` //Ip address
+    SessionId         *string         `json:"session_id,omitempty" form:"session_id,omitempty"` //Session id
+    Location          CreateLocationRequest `json:"location,omitempty" form:"location,omitempty"` //Request's location
+    Device            CreateDeviceRequest `json:"device,omitempty" form:"device,omitempty"` //Device's informations
+    Currency          *string         `json:"currency,omitempty" form:"currency,omitempty"` //Currency
+}
+
+/*
+ * Structure for the custom type ListUsagesDetailsResponse
+ */
+type ListUsagesDetailsResponse struct {
+    Data            []*GetUsageResponse `json:"data" form:"data"` //The usage objects
+    Paging          PagingResponse  `json:"paging" form:"paging"` //paging object
+}
+
+/*
+ * Structure for the custom type GetCardResponse
+ */
+type GetCardResponse struct {
+    Id               string          `json:"id" form:"id"` //TODO: Write general description for this field
+    LastFourDigits   string          `json:"last_four_digits" form:"last_four_digits"` //TODO: Write general description for this field
+    Brand            string          `json:"brand" form:"brand"` //TODO: Write general description for this field
+    HolderName       string          `json:"holder_name" form:"holder_name"` //TODO: Write general description for this field
+    ExpMonth         int64           `json:"exp_month" form:"exp_month"` //TODO: Write general description for this field
+    ExpYear          int64           `json:"exp_year" form:"exp_year"` //TODO: Write general description for this field
+    Status           string          `json:"status" form:"status"` //TODO: Write general description for this field
+    CreatedAt        *time.Time      `json:"created_at" form:"created_at"` //TODO: Write general description for this field
+    UpdatedAt        *time.Time      `json:"updated_at" form:"updated_at"` //TODO: Write general description for this field
+    BillingAddress   GetBillingAddressResponse `json:"billing_address" form:"billing_address"` //TODO: Write general description for this field
+    Customer         GetCustomerResponse `json:"customer" form:"customer"` //TODO: Write general description for this field
+    Metadata         map[string]string `json:"metadata" form:"metadata"` //TODO: Write general description for this field
+    Type             string          `json:"type" form:"type"` //Card type
+    HolderDocument   string          `json:"holder_document" form:"holder_document"` //Document number for the card's holder
+    FirstSixDigits   string          `json:"first_six_digits" form:"first_six_digits"` //First six digits
+    DeletedAt        *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
 }
