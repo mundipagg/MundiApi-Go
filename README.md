@@ -409,8 +409,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("113", 10, 8)
-size,_ := strconv.ParseInt("113", 10, 8)
+page,_ := strconv.ParseInt("85", 10, 8)
+size,_ := strconv.ParseInt("85", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -983,8 +983,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("113", 10, 8)
-size,_ := strconv.ParseInt("113", 10, 8)
+page,_ := strconv.ParseInt("85", 10, 8)
+size,_ := strconv.ParseInt("85", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -1017,8 +1017,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("113", 10, 8)
-size,_ := strconv.ParseInt("113", 10, 8)
+page,_ := strconv.ParseInt("85", 10, 8)
+size,_ := strconv.ParseInt("85", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -1051,8 +1051,8 @@ func (me *CUSTOMERS_IMPL) GetCards(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("113", 10, 8)
-size,_ := strconv.ParseInt("113", 10, 8)
+page,_ := strconv.ParseInt("85", 10, 8)
+size,_ := strconv.ParseInt("85", 10, 8)
 
 var result *models_pkg.ListCardsResponse
 result,_ = customers.GetCards(customerId, page, size)
@@ -1238,8 +1238,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("204", 10, 8)
-size,_ := strconv.ParseInt("204", 10, 8)
+page,_ := strconv.ParseInt("43", 10, 8)
+size,_ := strconv.ParseInt("43", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -1631,8 +1631,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("204", 10, 8)
-size,_ := strconv.ParseInt("204", 10, 8)
+page,_ := strconv.ParseInt("43", 10, 8)
+size,_ := strconv.ParseInt("43", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"
@@ -2134,8 +2134,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("163", 10, 8)
-size,_ := strconv.ParseInt("163", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 code := "code"
 billingType := "billing_type"
 customerId := "customer_id"
@@ -2211,40 +2211,6 @@ itemId := "item_id"
 
 var result *models_pkg.GetSubscriptionItemResponse
 result,_ = subscriptions.GetSubscriptionItem(subscriptionId, itemId)
-
-```
-
-
-### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItems") GetSubscriptionItems
-
-> Get Subscription Itens
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
-            subscriptionId string,
-            status string,
-            description string)(*models_pkg.ListSubscriptionsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| status |  ``` Required ```  | Status |
-| description |  ``` Required ```  | Description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-status := "status"
-description := "description"
-
-var result *models_pkg.ListSubscriptionsResponse
-result,_ = subscriptions.GetSubscriptionItems(subscriptionId, status, description)
 
 ```
 
@@ -2336,8 +2302,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("163", 10, 8)
-size,_ := strconv.ParseInt("163", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 
 var result *models_pkg.ListDiscountsResponse
 result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
@@ -2401,8 +2367,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("163", 10, 8)
-size,_ := strconv.ParseInt("163", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 
 var result *models_pkg.ListIncrementsResponse
 result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
@@ -2451,7 +2417,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
             subscriptionId string,
             cycleId *string,
             size *int64,
-            page *int64)(*models_pkg.GetUsagesDetailsResponse,error)
+            page *int64,
+            itemId *string)(*models_pkg.GetUsagesDetailsResponse,error)
 ```
 
 #### Parameters
@@ -2462,6 +2429,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
 | cycleId |  ``` Optional ```  | Cycle id |
 | size |  ``` Optional ```  | Page size |
 | page |  ``` Optional ```  | Page number |
+| itemId |  ``` Optional ```  | Identificador do item |
 
 
 #### Example Usage
@@ -2469,11 +2437,12 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
 ```go
 subscriptionId := "subscription_id"
 cycleId := "cycle_id"
-size,_ := strconv.ParseInt("163", 10, 8)
-page,_ := strconv.ParseInt("163", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+itemId := "item_id"
 
 var result *models_pkg.GetUsagesDetailsResponse
-result,_ = subscriptions.GetUsagesDetails(subscriptionId, cycleId, size, page)
+result,_ = subscriptions.GetUsagesDetails(subscriptionId, cycleId, size, page, itemId)
 
 ```
 
@@ -2489,7 +2458,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
             itemId string,
             page *int64,
             size *int64,
-            code *string)(*models_pkg.ListUsagesResponse,error)
+            code *string,
+            group *string)(*models_pkg.ListUsagesResponse,error)
 ```
 
 #### Parameters
@@ -2501,6 +2471,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
 | page |  ``` Optional ```  | Page number |
 | size |  ``` Optional ```  | Page size |
 | code |  ``` Optional ```  | Identification code in the client system |
+| group |  ``` Optional ```  | Identification group in the client system |
 
 
 #### Example Usage
@@ -2508,12 +2479,65 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
 ```go
 subscriptionId := "subscription_id"
 itemId := "item_id"
-page,_ := strconv.ParseInt("163", 10, 8)
-size,_ := strconv.ParseInt("163", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 code := "code"
+group := "group"
 
 var result *models_pkg.ListUsagesResponse
-result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size, code)
+result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size, code, group)
+
+```
+
+
+### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItems") GetSubscriptionItems
+
+> Get Subscription Items
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
+            subscriptionId string,
+            page *int64,
+            size *int64,
+            name *string,
+            code *string,
+            status *string,
+            description *string,
+            createdSince *string,
+            createdUntil *string)(*models_pkg.ListSubscriptionItemsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | The item name |
+| code |  ``` Optional ```  | Identification code in the client system |
+| status |  ``` Optional ```  | The item statis |
+| description |  ``` Optional ```  | The item description |
+| createdSince |  ``` Optional ```  | Filter for item's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for item's creation date end range |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
+name := "name"
+code := "code"
+status := "status"
+description := "description"
+createdSince := "created_since"
+createdUntil := "created_until"
+
+var result *models_pkg.ListSubscriptionItemsResponse
+result,_ = subscriptions.GetSubscriptionItems(subscriptionId, page, size, name, code, status, description, createdSince, createdUntil)
 
 ```
 
@@ -2647,8 +2671,8 @@ func (me *ORDERS_IMPL) GetOrders(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("163", 10, 8)
-size,_ := strconv.ParseInt("163", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 code := "code"
 status := "status"
 createdSince := time.Now()
@@ -3074,8 +3098,8 @@ func (me *RECIPIENTS_IMPL) GetRecipients(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("163", 10, 8)
-size,_ := strconv.ParseInt("163", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 
 var result *models_pkg.ListRecipientResponse
 result,_ = recipients.GetRecipients(page, size)
@@ -3203,8 +3227,8 @@ func (me *RECIPIENTS_IMPL) GetTransfers(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("163", 10, 8)
-size,_ := strconv.ParseInt("163", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -3348,8 +3372,8 @@ func (me *RECIPIENTS_IMPL) GetAnticipations(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("163", 10, 8)
-size,_ := strconv.ParseInt("163", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 status := "status"
 timeframe := "timeframe"
 paymentDateSince := time.Now()
@@ -3523,8 +3547,8 @@ func (me *SELLERS_IMPL) GetSellers(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("91", 10, 8)
-size,_ := strconv.ParseInt("91", 10, 8)
+page,_ := strconv.ParseInt("134", 10, 8)
+size,_ := strconv.ParseInt("134", 10, 8)
 name := "name"
 document := "document"
 code := "code"

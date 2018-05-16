@@ -48,8 +48,6 @@ type SUBSCRIPTIONS interface {
 
     GetSubscriptionItem (string, string) (*models_pkg.GetSubscriptionItemResponse, error)
 
-    GetSubscriptionItems (string, string, string) (*models_pkg.ListSubscriptionsResponse, error)
-
     UpdateSubscriptionAffiliationId (string, *models_pkg.UpdateSubscriptionAffiliationIdRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     GetDiscountById (string, string) (*models_pkg.GetDiscountResponse, error)
@@ -62,9 +60,11 @@ type SUBSCRIPTIONS interface {
 
     DeleteIncrement (string, string) (*models_pkg.GetIncrementResponse, error)
 
-    GetUsagesDetails (string, *string, *int64, *int64) (*models_pkg.GetUsagesDetailsResponse, error)
+    GetUsagesDetails (string, *string, *int64, *int64, *string) (*models_pkg.GetUsagesDetailsResponse, error)
 
-    GetUsages (string, string, *int64, *int64, *string) (*models_pkg.ListUsagesResponse, error)
+    GetUsages (string, string, *int64, *int64, *string, *string) (*models_pkg.ListUsagesResponse, error)
+
+    GetSubscriptionItems (string, *int64, *int64, *string, *string, *string, *string, *string, *string) (*models_pkg.ListSubscriptionItemsResponse, error)
 }
 
 /*

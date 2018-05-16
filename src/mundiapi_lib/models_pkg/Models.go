@@ -1339,6 +1339,7 @@ type GetUsageResponse struct {
     SubscriptionItem  GetSubscriptionItemResponse `json:"subscription_item" form:"subscription_item"` //Subscription item
     DeletedAt         *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
     Code              *string         `json:"code,omitempty" form:"code,omitempty"` //Identification code in the client system
+    Group             *string         `json:"group,omitempty" form:"group,omitempty"` //Identification group in the client system
 }
 
 /*
@@ -1518,6 +1519,7 @@ type CreateUsageRequest struct {
     Description     string          `json:"description" form:"description"` //TODO: Write general description for this field
     UsedAt          *time.Time      `json:"used_at" form:"used_at"` //TODO: Write general description for this field
     Code            *string         `json:"code,omitempty" form:"code,omitempty"` //Identification code in the client system
+    Group           *string         `json:"group,omitempty" form:"group,omitempty"` //identification group in the client system
 }
 
 /*
