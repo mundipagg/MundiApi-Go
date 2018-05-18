@@ -14,6 +14,8 @@ import "mundiapi_lib/configuration_pkg"
  * Interface for the SUBSCRIPTIONS_IMPL
  */
 type SUBSCRIPTIONS interface {
+    GetIncrementById (string, string) (*models_pkg.GetIncrementResponse, error)
+
     UpdateSubscriptionItem (string, string, *models_pkg.UpdateSubscriptionItemRequest) (*models_pkg.GetSubscriptionItemResponse, error)
 
     CreateUsage (string, string, *models_pkg.CreateUsageRequest) (*models_pkg.GetUsageResponse, error)

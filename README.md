@@ -117,15 +117,943 @@ To configure these for your generated code, open the file "Configuration.go" and
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
+* [subscriptions_pkg](#subscriptions_pkg)
 * [charges_pkg](#charges_pkg)
 * [customers_pkg](#customers_pkg)
 * [invoices_pkg](#invoices_pkg)
 * [plans_pkg](#plans_pkg)
-* [subscriptions_pkg](#subscriptions_pkg)
 * [orders_pkg](#orders_pkg)
 * [tokens_pkg](#tokens_pkg)
 * [recipients_pkg](#recipients_pkg)
 * [sellers_pkg](#sellers_pkg)
+
+## <a name="subscriptions_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".subscriptions_pkg") subscriptions_pkg
+
+### Get instance
+
+Factory for the ``` SUBSCRIPTIONS ``` interface can be accessed from the package subscriptions_pkg.
+
+```go
+subscriptions := subscriptions_pkg.NewSUBSCRIPTIONS()
+```
+
+### <a name="get_increment_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetIncrementById") GetIncrementById
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetIncrementById(
+            subscriptionId string,
+            incrementId string)(*models_pkg.GetIncrementResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription Id |
+| incrementId |  ``` Required ```  | The increment Id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+incrementId := "increment_id"
+
+var result *models_pkg.GetIncrementResponse
+result,_ = subscriptions.GetIncrementById(subscriptionId, incrementId)
+
+```
+
+
+### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionItem") UpdateSubscriptionItem
+
+> Updates a subscription item
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem(
+            subscriptionId string,
+            itemId string,
+            body *models_pkg.UpdateSubscriptionItemRequest)(*models_pkg.GetSubscriptionItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for updating a subscription item |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+var body *models_pkg.UpdateSubscriptionItemRequest
+
+var result *models_pkg.GetSubscriptionItemResponse
+result,_ = subscriptions.UpdateSubscriptionItem(subscriptionId, itemId, body)
+
+```
+
+
+### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateUsage") CreateUsage
+
+> Creates a usage
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateUsage(
+            subscriptionId string,
+            itemId string,
+            body *models_pkg.CreateUsageRequest)(*models_pkg.GetUsageResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for creating a usage |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+var body *models_pkg.CreateUsageRequest
+
+var result *models_pkg.GetUsageResponse
+result,_ = subscriptions.CreateUsage(subscriptionId, itemId, body)
+
+```
+
+
+### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionBillingDate") UpdateSubscriptionBillingDate
+
+> Updates the billing date from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionBillingDateRequest)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscription billing date |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionBillingDateRequest
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionBillingDate(subscriptionId, request)
+
+```
+
+
+### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionCard") UpdateSubscriptionCard
+
+> Updates the credit card from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionCardRequest)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating a card |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionCardRequest
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionCard(subscriptionId, request)
+
+```
+
+
+### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateSubscription") CreateSubscription
+
+> Creates a new subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateSubscription(body *models_pkg.CreateSubscriptionRequest)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating a subscription |
+
+
+#### Example Usage
+
+```go
+var body *models_pkg.CreateSubscriptionRequest
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.CreateSubscription(body)
+
+```
+
+
+### <a name="create_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateSubscriptionItem") CreateSubscriptionItem
+
+> Creates a new Subscription item
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem(
+            subscriptionId string,
+            request *models_pkg.CreateSubscriptionItemRequest)(*models_pkg.GetSubscriptionItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a subscription item |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.CreateSubscriptionItemRequest
+
+var result *models_pkg.GetSubscriptionItemResponse
+result,_ = subscriptions.CreateSubscriptionItem(subscriptionId, request)
+
+```
+
+
+### <a name="create_discount"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateDiscount") CreateDiscount
+
+> Creates a discount
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateDiscount(
+            subscriptionId string,
+            request *models_pkg.CreateDiscountRequest)(*models_pkg.GetDiscountResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a discount |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.CreateDiscountRequest
+
+var result *models_pkg.GetDiscountResponse
+result,_ = subscriptions.CreateDiscount(subscriptionId, request)
+
+```
+
+
+### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscription") GetSubscription
+
+> Gets a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscription(subscriptionId string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.GetSubscription(subscriptionId)
+
+```
+
+
+### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionPaymentMethod") UpdateSubscriptionPaymentMethod
+
+> Updates the payment method from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionPaymentMethodRequest)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionPaymentMethodRequest
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionPaymentMethod(subscriptionId, request)
+
+```
+
+
+### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteDiscount") DeleteDiscount
+
+> Deletes a discount
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount(
+            subscriptionId string,
+            discountId string)(*models_pkg.GetDiscountResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| discountId |  ``` Required ```  | Discount Id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+discountId := "discount_id"
+
+var result *models_pkg.GetDiscountResponse
+result,_ = subscriptions.DeleteDiscount(subscriptionId, discountId)
+
+```
+
+
+### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CancelSubscription") CancelSubscription
+
+> Cancels a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CancelSubscription(
+            subscriptionId string,
+            request *models_pkg.CreateCancelSubscriptionRequest)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Optional ```  | Request for cancelling a subscription |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.CreateCancelSubscriptionRequest
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.CancelSubscription(subscriptionId, request)
+
+```
+
+
+### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteSubscriptionItem") DeleteSubscriptionItem
+
+> Deletes a subscription item
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem(
+            subscriptionId string,
+            subscriptionItemId string)(*models_pkg.GetSubscriptionItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| subscriptionItemId |  ``` Required ```  | Subscription item id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+subscriptionItemId := "subscription_item_id"
+
+var result *models_pkg.GetSubscriptionItemResponse
+result,_ = subscriptions.DeleteSubscriptionItem(subscriptionId, subscriptionItemId)
+
+```
+
+
+### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteUsage") DeleteUsage
+
+> Deletes a usage
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteUsage(
+            subscriptionId string,
+            itemId string,
+            usageId string)(*models_pkg.GetUsageResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| usageId |  ``` Required ```  | The usage id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+usageId := "usage_id"
+
+var result *models_pkg.GetUsageResponse
+result,_ = subscriptions.DeleteUsage(subscriptionId, itemId, usageId)
+
+```
+
+
+### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMetadata") UpdateSubscriptionMetadata
+
+> Updates the metadata from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata(
+            subscriptionId string,
+            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscrption metadata |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateMetadataRequest
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionMetadata(subscriptionId, request)
+
+```
+
+
+### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptions") GetSubscriptions
+
+> Gets all subscriptions
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
+            page *int64,
+            size *int64,
+            code *string,
+            billingType *string,
+            customerId *string,
+            planId *string,
+            cardId *string,
+            status *string,
+            nextBillingSince *time.Time,
+            nextBillingUntil *time.Time,
+            createdSince *time.Time,
+            createdUntil *time.Time)(*models_pkg.ListSubscriptionsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for subscription's code |
+| billingType |  ``` Optional ```  | Filter for subscription's billing type |
+| customerId |  ``` Optional ```  | Filter for subscription's customer id |
+| planId |  ``` Optional ```  | Filter for subscription's plan id |
+| cardId |  ``` Optional ```  | Filter for subscription's card id |
+| status |  ``` Optional ```  | Filter for subscription's status |
+| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
+| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
+| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("213", 10, 8)
+size,_ := strconv.ParseInt("213", 10, 8)
+code := "code"
+billingType := "billing_type"
+customerId := "customer_id"
+planId := "plan_id"
+cardId := "card_id"
+status := "status"
+nextBillingSince := time.Now()
+nextBillingUntil := time.Now()
+createdSince := time.Now()
+createdUntil := time.Now()
+
+var result *models_pkg.ListSubscriptionsResponse
+result,_ = subscriptions.GetSubscriptions(page, size, code, billingType, customerId, planId, cardId, status, nextBillingSince, nextBillingUntil, createdSince, createdUntil)
+
+```
+
+
+### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateAnUsage") CreateAnUsage
+
+> Create Usage
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage(
+            subscriptionId string,
+            itemId string)(*models_pkg.GetUsageResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| itemId |  ``` Required ```  | Item id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+
+var result *models_pkg.GetUsageResponse
+result,_ = subscriptions.CreateAnUsage(subscriptionId, itemId)
+
+```
+
+
+### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItem") GetSubscriptionItem
+
+> Get Subscription Item
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem(
+            subscriptionId string,
+            itemId string)(*models_pkg.GetSubscriptionItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+
+var result *models_pkg.GetSubscriptionItemResponse
+result,_ = subscriptions.GetSubscriptionItem(subscriptionId, itemId)
+
+```
+
+
+### <a name="update_subscription_affiliation_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionAffiliationId") UpdateSubscriptionAffiliationId
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionAffiliationIdRequest)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | Request for updating a subscription affiliation id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionAffiliationIdRequest
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionAffiliationId(subscriptionId, request)
+
+```
+
+
+### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscountById") GetDiscountById
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetDiscountById(
+            subscriptionId string,
+            discountId string)(*models_pkg.GetDiscountResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| discountId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+discountId := "discountId"
+
+var result *models_pkg.GetDiscountResponse
+result,_ = subscriptions.GetDiscountById(subscriptionId, discountId)
+
+```
+
+
+### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscounts") GetDiscounts
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
+            subscriptionId string,
+            page int64,
+            size int64)(*models_pkg.ListDiscountsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Required ```  | Page number |
+| size |  ``` Required ```  | Page size |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
+
+var result *models_pkg.ListDiscountsResponse
+result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
+
+```
+
+
+### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateIncrement") CreateIncrement
+
+> Creates a increment
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateIncrement(
+            subscriptionId string,
+            request *models_pkg.CreateIncrementRequest)(*models_pkg.GetIncrementResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a increment |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.CreateIncrementRequest
+
+var result *models_pkg.GetIncrementResponse
+result,_ = subscriptions.CreateIncrement(subscriptionId, request)
+
+```
+
+
+### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetIncrements") GetIncrements
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
+            subscriptionId string,
+            page *int64,
+            size *int64)(*models_pkg.ListIncrementsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
+
+var result *models_pkg.ListIncrementsResponse
+result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
+
+```
+
+
+### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteIncrement") DeleteIncrement
+
+> Deletes a increment
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement(
+            subscriptionId string,
+            incrementId string)(*models_pkg.GetIncrementResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| incrementId |  ``` Required ```  | Increment id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+incrementId := "increment_id"
+
+var result *models_pkg.GetIncrementResponse
+result,_ = subscriptions.DeleteIncrement(subscriptionId, incrementId)
+
+```
+
+
+### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsagesDetails") GetUsagesDetails
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
+            subscriptionId string,
+            cycleId *string,
+            size *int64,
+            page *int64,
+            itemId *string)(*models_pkg.GetUsagesDetailsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Identifier |
+| cycleId |  ``` Optional ```  | Cycle id |
+| size |  ``` Optional ```  | Page size |
+| page |  ``` Optional ```  | Page number |
+| itemId |  ``` Optional ```  | Identificador do item |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+cycleId := "cycle_id"
+size,_ := strconv.ParseInt("50", 10, 8)
+page,_ := strconv.ParseInt("50", 10, 8)
+itemId := "item_id"
+
+var result *models_pkg.GetUsagesDetailsResponse
+result,_ = subscriptions.GetUsagesDetails(subscriptionId, cycleId, size, page, itemId)
+
+```
+
+
+### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsages") GetUsages
+
+> Lists all usages from a subscription item
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetUsages(
+            subscriptionId string,
+            itemId string,
+            page *int64,
+            size *int64,
+            code *string,
+            group *string)(*models_pkg.ListUsagesResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Identification code in the client system |
+| group |  ``` Optional ```  | Identification group in the client system |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
+code := "code"
+group := "group"
+
+var result *models_pkg.ListUsagesResponse
+result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size, code, group)
+
+```
+
+
+### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItems") GetSubscriptionItems
+
+> Get Subscription Items
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
+            subscriptionId string,
+            page *int64,
+            size *int64,
+            name *string,
+            code *string,
+            status *string,
+            description *string,
+            createdSince *string,
+            createdUntil *string)(*models_pkg.ListSubscriptionItemsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | The item name |
+| code |  ``` Optional ```  | Identification code in the client system |
+| status |  ``` Optional ```  | The item statis |
+| description |  ``` Optional ```  | The item description |
+| createdSince |  ``` Optional ```  | Filter for item's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for item's creation date end range |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
+name := "name"
+code := "code"
+status := "status"
+description := "description"
+createdSince := "created_since"
+createdUntil := "created_until"
+
+var result *models_pkg.ListSubscriptionItemsResponse
+result,_ = subscriptions.GetSubscriptionItems(subscriptionId, page, size, name, code, status, description, createdSince, createdUntil)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
 
 ## <a name="charges_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".charges_pkg") charges_pkg
 
@@ -409,8 +1337,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("85", 10, 8)
-size,_ := strconv.ParseInt("85", 10, 8)
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -983,8 +1911,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("85", 10, 8)
-size,_ := strconv.ParseInt("85", 10, 8)
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -1017,8 +1945,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("85", 10, 8)
-size,_ := strconv.ParseInt("85", 10, 8)
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -1051,8 +1979,8 @@ func (me *CUSTOMERS_IMPL) GetCards(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("85", 10, 8)
-size,_ := strconv.ParseInt("85", 10, 8)
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
 
 var result *models_pkg.ListCardsResponse
 result,_ = customers.GetCards(customerId, page, size)
@@ -1238,8 +2166,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("43", 10, 8)
-size,_ := strconv.ParseInt("43", 10, 8)
+page,_ := strconv.ParseInt("50", 10, 8)
+size,_ := strconv.ParseInt("50", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -1631,8 +2559,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("43", 10, 8)
-size,_ := strconv.ParseInt("43", 10, 8)
+page,_ := strconv.ParseInt("141", 10, 8)
+size,_ := strconv.ParseInt("141", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"
@@ -1641,903 +2569,6 @@ createdUntil := time.Now()
 
 var result *models_pkg.ListPlansResponse
 result,_ = plans.GetPlans(page, size, name, status, billingType, createdSince, createdUntil)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="subscriptions_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".subscriptions_pkg") subscriptions_pkg
-
-### Get instance
-
-Factory for the ``` SUBSCRIPTIONS ``` interface can be accessed from the package subscriptions_pkg.
-
-```go
-subscriptions := subscriptions_pkg.NewSUBSCRIPTIONS()
-```
-
-### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionItem") UpdateSubscriptionItem
-
-> Updates a subscription item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem(
-            subscriptionId string,
-            itemId string,
-            body *models_pkg.UpdateSubscriptionItemRequest)(*models_pkg.GetSubscriptionItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for updating a subscription item |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-var body *models_pkg.UpdateSubscriptionItemRequest
-
-var result *models_pkg.GetSubscriptionItemResponse
-result,_ = subscriptions.UpdateSubscriptionItem(subscriptionId, itemId, body)
-
-```
-
-
-### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateUsage") CreateUsage
-
-> Creates a usage
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateUsage(
-            subscriptionId string,
-            itemId string,
-            body *models_pkg.CreateUsageRequest)(*models_pkg.GetUsageResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for creating a usage |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-var body *models_pkg.CreateUsageRequest
-
-var result *models_pkg.GetUsageResponse
-result,_ = subscriptions.CreateUsage(subscriptionId, itemId, body)
-
-```
-
-
-### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionBillingDate") UpdateSubscriptionBillingDate
-
-> Updates the billing date from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionBillingDateRequest)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription billing date |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionBillingDateRequest
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionBillingDate(subscriptionId, request)
-
-```
-
-
-### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionCard") UpdateSubscriptionCard
-
-> Updates the credit card from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionCardRequest)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating a card |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionCardRequest
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionCard(subscriptionId, request)
-
-```
-
-
-### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateSubscription") CreateSubscription
-
-> Creates a new subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateSubscription(body *models_pkg.CreateSubscriptionRequest)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating a subscription |
-
-
-#### Example Usage
-
-```go
-var body *models_pkg.CreateSubscriptionRequest
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.CreateSubscription(body)
-
-```
-
-
-### <a name="create_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateSubscriptionItem") CreateSubscriptionItem
-
-> Creates a new Subscription item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem(
-            subscriptionId string,
-            request *models_pkg.CreateSubscriptionItemRequest)(*models_pkg.GetSubscriptionItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a subscription item |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.CreateSubscriptionItemRequest
-
-var result *models_pkg.GetSubscriptionItemResponse
-result,_ = subscriptions.CreateSubscriptionItem(subscriptionId, request)
-
-```
-
-
-### <a name="create_discount"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateDiscount") CreateDiscount
-
-> Creates a discount
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateDiscount(
-            subscriptionId string,
-            request *models_pkg.CreateDiscountRequest)(*models_pkg.GetDiscountResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a discount |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.CreateDiscountRequest
-
-var result *models_pkg.GetDiscountResponse
-result,_ = subscriptions.CreateDiscount(subscriptionId, request)
-
-```
-
-
-### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscription") GetSubscription
-
-> Gets a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscription(subscriptionId string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.GetSubscription(subscriptionId)
-
-```
-
-
-### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionPaymentMethod") UpdateSubscriptionPaymentMethod
-
-> Updates the payment method from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionPaymentMethodRequest)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionPaymentMethodRequest
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionPaymentMethod(subscriptionId, request)
-
-```
-
-
-### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteDiscount") DeleteDiscount
-
-> Deletes a discount
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount(
-            subscriptionId string,
-            discountId string)(*models_pkg.GetDiscountResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| discountId |  ``` Required ```  | Discount Id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-discountId := "discount_id"
-
-var result *models_pkg.GetDiscountResponse
-result,_ = subscriptions.DeleteDiscount(subscriptionId, discountId)
-
-```
-
-
-### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CancelSubscription") CancelSubscription
-
-> Cancels a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CancelSubscription(
-            subscriptionId string,
-            request *models_pkg.CreateCancelSubscriptionRequest)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Optional ```  | Request for cancelling a subscription |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.CreateCancelSubscriptionRequest
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.CancelSubscription(subscriptionId, request)
-
-```
-
-
-### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteSubscriptionItem") DeleteSubscriptionItem
-
-> Deletes a subscription item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem(
-            subscriptionId string,
-            subscriptionItemId string)(*models_pkg.GetSubscriptionItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| subscriptionItemId |  ``` Required ```  | Subscription item id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-subscriptionItemId := "subscription_item_id"
-
-var result *models_pkg.GetSubscriptionItemResponse
-result,_ = subscriptions.DeleteSubscriptionItem(subscriptionId, subscriptionItemId)
-
-```
-
-
-### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteUsage") DeleteUsage
-
-> Deletes a usage
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteUsage(
-            subscriptionId string,
-            itemId string,
-            usageId string)(*models_pkg.GetUsageResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| usageId |  ``` Required ```  | The usage id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-usageId := "usage_id"
-
-var result *models_pkg.GetUsageResponse
-result,_ = subscriptions.DeleteUsage(subscriptionId, itemId, usageId)
-
-```
-
-
-### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMetadata") UpdateSubscriptionMetadata
-
-> Updates the metadata from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata(
-            subscriptionId string,
-            request *models_pkg.UpdateMetadataRequest)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscrption metadata |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateMetadataRequest
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionMetadata(subscriptionId, request)
-
-```
-
-
-### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptions") GetSubscriptions
-
-> Gets all subscriptions
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
-            page *int64,
-            size *int64,
-            code *string,
-            billingType *string,
-            customerId *string,
-            planId *string,
-            cardId *string,
-            status *string,
-            nextBillingSince *time.Time,
-            nextBillingUntil *time.Time,
-            createdSince *time.Time,
-            createdUntil *time.Time)(*models_pkg.ListSubscriptionsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Filter for subscription's code |
-| billingType |  ``` Optional ```  | Filter for subscription's billing type |
-| customerId |  ``` Optional ```  | Filter for subscription's customer id |
-| planId |  ``` Optional ```  | Filter for subscription's plan id |
-| cardId |  ``` Optional ```  | Filter for subscription's card id |
-| status |  ``` Optional ```  | Filter for subscription's status |
-| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
-| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
-| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
-
-
-#### Example Usage
-
-```go
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
-code := "code"
-billingType := "billing_type"
-customerId := "customer_id"
-planId := "plan_id"
-cardId := "card_id"
-status := "status"
-nextBillingSince := time.Now()
-nextBillingUntil := time.Now()
-createdSince := time.Now()
-createdUntil := time.Now()
-
-var result *models_pkg.ListSubscriptionsResponse
-result,_ = subscriptions.GetSubscriptions(page, size, code, billingType, customerId, planId, cardId, status, nextBillingSince, nextBillingUntil, createdSince, createdUntil)
-
-```
-
-
-### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateAnUsage") CreateAnUsage
-
-> Create Usage
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage(
-            subscriptionId string,
-            itemId string)(*models_pkg.GetUsageResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| itemId |  ``` Required ```  | Item id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-
-var result *models_pkg.GetUsageResponse
-result,_ = subscriptions.CreateAnUsage(subscriptionId, itemId)
-
-```
-
-
-### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItem") GetSubscriptionItem
-
-> Get Subscription Item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem(
-            subscriptionId string,
-            itemId string)(*models_pkg.GetSubscriptionItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-
-var result *models_pkg.GetSubscriptionItemResponse
-result,_ = subscriptions.GetSubscriptionItem(subscriptionId, itemId)
-
-```
-
-
-### <a name="update_subscription_affiliation_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionAffiliationId") UpdateSubscriptionAffiliationId
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionAffiliationIdRequest)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-| request |  ``` Required ```  | Request for updating a subscription affiliation id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionAffiliationIdRequest
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionAffiliationId(subscriptionId, request)
-
-```
-
-
-### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscountById") GetDiscountById
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetDiscountById(
-            subscriptionId string,
-            discountId string)(*models_pkg.GetDiscountResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-| discountId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-discountId := "discountId"
-
-var result *models_pkg.GetDiscountResponse
-result,_ = subscriptions.GetDiscountById(subscriptionId, discountId)
-
-```
-
-
-### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscounts") GetDiscounts
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
-            subscriptionId string,
-            page int64,
-            size int64)(*models_pkg.ListDiscountsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Required ```  | Page number |
-| size |  ``` Required ```  | Page size |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
-
-var result *models_pkg.ListDiscountsResponse
-result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
-
-```
-
-
-### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateIncrement") CreateIncrement
-
-> Creates a increment
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateIncrement(
-            subscriptionId string,
-            request *models_pkg.CreateIncrementRequest)(*models_pkg.GetIncrementResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a increment |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.CreateIncrementRequest
-
-var result *models_pkg.GetIncrementResponse
-result,_ = subscriptions.CreateIncrement(subscriptionId, request)
-
-```
-
-
-### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetIncrements") GetIncrements
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
-            subscriptionId string,
-            page *int64,
-            size *int64)(*models_pkg.ListIncrementsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
-
-var result *models_pkg.ListIncrementsResponse
-result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
-
-```
-
-
-### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteIncrement") DeleteIncrement
-
-> Deletes a increment
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement(
-            subscriptionId string,
-            incrementId string)(*models_pkg.GetIncrementResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| incrementId |  ``` Required ```  | Increment id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-incrementId := "increment_id"
-
-var result *models_pkg.GetIncrementResponse
-result,_ = subscriptions.DeleteIncrement(subscriptionId, incrementId)
-
-```
-
-
-### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsagesDetails") GetUsagesDetails
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
-            subscriptionId string,
-            cycleId *string,
-            size *int64,
-            page *int64,
-            itemId *string)(*models_pkg.GetUsagesDetailsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Identifier |
-| cycleId |  ``` Optional ```  | Cycle id |
-| size |  ``` Optional ```  | Page size |
-| page |  ``` Optional ```  | Page number |
-| itemId |  ``` Optional ```  | Identificador do item |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-cycleId := "cycle_id"
-size,_ := strconv.ParseInt("134", 10, 8)
-page,_ := strconv.ParseInt("134", 10, 8)
-itemId := "item_id"
-
-var result *models_pkg.GetUsagesDetailsResponse
-result,_ = subscriptions.GetUsagesDetails(subscriptionId, cycleId, size, page, itemId)
-
-```
-
-
-### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsages") GetUsages
-
-> Lists all usages from a subscription item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetUsages(
-            subscriptionId string,
-            itemId string,
-            page *int64,
-            size *int64,
-            code *string,
-            group *string)(*models_pkg.ListUsagesResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Identification code in the client system |
-| group |  ``` Optional ```  | Identification group in the client system |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
-code := "code"
-group := "group"
-
-var result *models_pkg.ListUsagesResponse
-result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size, code, group)
-
-```
-
-
-### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItems") GetSubscriptionItems
-
-> Get Subscription Items
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
-            subscriptionId string,
-            page *int64,
-            size *int64,
-            name *string,
-            code *string,
-            status *string,
-            description *string,
-            createdSince *string,
-            createdUntil *string)(*models_pkg.ListSubscriptionItemsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| name |  ``` Optional ```  | The item name |
-| code |  ``` Optional ```  | Identification code in the client system |
-| status |  ``` Optional ```  | The item statis |
-| description |  ``` Optional ```  | The item description |
-| createdSince |  ``` Optional ```  | Filter for item's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for item's creation date end range |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
-name := "name"
-code := "code"
-status := "status"
-description := "description"
-createdSince := "created_since"
-createdUntil := "created_until"
-
-var result *models_pkg.ListSubscriptionItemsResponse
-result,_ = subscriptions.GetSubscriptionItems(subscriptionId, page, size, name, code, status, description, createdSince, createdUntil)
 
 ```
 
@@ -2671,8 +2702,8 @@ func (me *ORDERS_IMPL) GetOrders(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
+page,_ := strconv.ParseInt("141", 10, 8)
+size,_ := strconv.ParseInt("141", 10, 8)
 code := "code"
 status := "status"
 createdSince := time.Now()
@@ -3098,8 +3129,8 @@ func (me *RECIPIENTS_IMPL) GetRecipients(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
+page,_ := strconv.ParseInt("141", 10, 8)
+size,_ := strconv.ParseInt("141", 10, 8)
 
 var result *models_pkg.ListRecipientResponse
 result,_ = recipients.GetRecipients(page, size)
@@ -3227,8 +3258,8 @@ func (me *RECIPIENTS_IMPL) GetTransfers(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
+page,_ := strconv.ParseInt("141", 10, 8)
+size,_ := strconv.ParseInt("141", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -3372,8 +3403,8 @@ func (me *RECIPIENTS_IMPL) GetAnticipations(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
+page,_ := strconv.ParseInt("141", 10, 8)
+size,_ := strconv.ParseInt("141", 10, 8)
 status := "status"
 timeframe := "timeframe"
 paymentDateSince := time.Now()
@@ -3547,8 +3578,8 @@ func (me *SELLERS_IMPL) GetSellers(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("134", 10, 8)
-size,_ := strconv.ParseInt("134", 10, 8)
+page,_ := strconv.ParseInt("99", 10, 8)
+size,_ := strconv.ParseInt("99", 10, 8)
 name := "name"
 document := "document"
 code := "code"
