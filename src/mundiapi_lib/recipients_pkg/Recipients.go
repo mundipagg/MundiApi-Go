@@ -41,6 +41,8 @@ type RECIPIENTS interface {
     GetAnticipations (string, *int64, *int64, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListAnticipationResponse, error)
 
     UpdateRecipientMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetRecipientResponse, error)
+
+    UpdateRecipientTransferSettings (string, *models_pkg.UpdateTransferSettingsRequest) (*models_pkg.GetRecipientResponse, error)
 }
 
 /*
