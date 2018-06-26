@@ -1726,6 +1726,7 @@ type CreatePaymentRequest struct {
     CustomerId             *string         `json:"customer_id,omitempty" form:"customer_id,omitempty"` //Customer Id
     Customer               CreateCustomerRequest `json:"customer,omitempty" form:"customer,omitempty"` //Customer
     Metadata               *map[string]string `json:"metadata,omitempty" form:"metadata,omitempty"` //Metadata
+    Cash                   CreateCashPaymentRequest `json:"cash,omitempty" form:"cash,omitempty"` //Settings for cash payment
 }
 
 /*
@@ -1798,4 +1799,29 @@ type GetTransactionResponse struct {
     GatewayResponse  GetGatewayResponseResponse `json:"gateway_response" form:"gateway_response"` //The Gateway Response
     NextAttempt      *time.Time      `json:"next_attempt,omitempty" form:"next_attempt,omitempty"` //Date and time of the next attempt
     TransactionType  *string         `json:"transaction_type,omitempty" form:"transaction_type,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type CreateCashPaymentRequest
+ */
+type CreateCashPaymentRequest struct {
+    Description     string          `json:"description" form:"description"` //Description
+    Confirm         bool            `json:"confirm" form:"confirm"` //Indicates whether cash collection will be confirmed in the act of creation
+}
+
+/*
+ * Structure for the custom type CreateConfirmPaymentRequest
+ */
+type CreateConfirmPaymentRequest struct {
+    Description     string          `json:"description" form:"description"` //Description
+    Code            string          `json:"Code" form:"Code"` //Code reference
+    Amount          *int64          `json:"Amount,omitempty" form:"Amount,omitempty"` //Amount
+}
+
+/*
+ * Structure for the custom type GetCashTransactionResponse
+ */
+type GetCashTransactionResponse struct {
+    GetTransactionResponse // Anonymous member to emulate model inheritence
+    Description     string          `json:"description" form:"description"` //Description
 }

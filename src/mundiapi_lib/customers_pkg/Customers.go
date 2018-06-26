@@ -52,6 +52,8 @@ type CUSTOMERS interface {
     GetCards (string, *int64, *int64) (*models_pkg.ListCardsResponse, error)
 
     GetCustomers (*string, *string, *int64, *int64, *string, *string) (*models_pkg.ListCustomersResponse, error)
+
+    RenewCard (string, string) (*models_pkg.GetCardResponse, error)
 }
 
 /*

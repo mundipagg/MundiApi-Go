@@ -33,6 +33,8 @@ type CHARGES interface {
     GetCharges (*int64, *int64, *string, *string, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.ListChargesResponse, error)
 
     UpdateChargeDueDate (string, *models_pkg.UpdateChargeDueDateRequest) (*models_pkg.GetChargeResponse, error)
+
+    ConfirmPayment (string, *models_pkg.CreateConfirmPaymentRequest) (*models_pkg.GetChargeResponse, error)
 }
 
 /*
