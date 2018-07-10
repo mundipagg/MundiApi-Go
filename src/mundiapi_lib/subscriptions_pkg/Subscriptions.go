@@ -67,6 +67,10 @@ type SUBSCRIPTIONS interface {
     GetUsages (string, string, *int64, *int64, *string, *string) (*models_pkg.ListUsagesResponse, error)
 
     GetSubscriptionItems (string, *int64, *int64, *string, *string, *string, *string, *string, *string) (*models_pkg.ListSubscriptionItemsResponse, error)
+
+    UpdateSubscriptionDueDays (string, *models_pkg.UpdateSubscriptionDueDaysRequest) (*models_pkg.GetSubscriptionResponse, error)
+
+    UpdateSubscriptionMiniumPrice (string, *models_pkg.UpdateSubscriptionMinimumPriceRequest) (*models_pkg.GetSubscriptionResponse, error)
 }
 
 /*

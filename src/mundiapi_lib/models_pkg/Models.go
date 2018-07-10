@@ -886,18 +886,6 @@ type GetSellerResponse struct {
 }
 
 /*
- * Structure for the custom type CreateOrderItemRequest
- */
-type CreateOrderItemRequest struct {
-    Amount          int64           `json:"amount" form:"amount"` //Amount
-    Description     string          `json:"description" form:"description"` //Description
-    Quantity        int64           `json:"quantity" form:"quantity"` //Quantity
-    Category        string          `json:"category" form:"category"` //Category
-    Seller          CreateSellerRequest `json:"seller,omitempty" form:"seller,omitempty"` //Item seller
-    SellerId        *string         `json:"seller_id,omitempty" form:"seller_id,omitempty"` //seller identificator
-}
-
-/*
  * Structure for the custom type GetOrderItemResponse
  */
 type GetOrderItemResponse struct {
@@ -1824,4 +1812,31 @@ type CreateConfirmPaymentRequest struct {
 type GetCashTransactionResponse struct {
     GetTransactionResponse // Anonymous member to emulate model inheritence
     Description     string          `json:"description" form:"description"` //Description
+}
+
+/*
+ * Structure for the custom type UpdateSubscriptionDueDaysRequest
+ */
+type UpdateSubscriptionDueDaysRequest struct {
+    BoletoDueDays   int64           `json:"boleto_due_days" form:"boleto_due_days"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type UpdateSubscriptionMinimumPriceRequest
+ */
+type UpdateSubscriptionMinimumPriceRequest struct {
+    MinimumPrice    *int64          `json:"minimum_price,omitempty" form:"minimum_price,omitempty"` //Valor mínimo da assinatura
+}
+
+/*
+ * Structure for the custom type CreateOrderItemRequest
+ */
+type CreateOrderItemRequest struct {
+    Amount          int64           `json:"amount" form:"amount"` //Amount
+    Description     string          `json:"description" form:"description"` //Description
+    Quantity        int64           `json:"quantity" form:"quantity"` //Quantity
+    Category        string          `json:"category" form:"category"` //Category
+    Seller          CreateSellerRequest `json:"seller,omitempty" form:"seller,omitempty"` //Item seller
+    SellerId        *string         `json:"seller_id,omitempty" form:"seller_id,omitempty"` //seller identificator
+    Code            *string         `json:"code,omitempty" form:"code,omitempty"` //The item code passed by the client
 }
