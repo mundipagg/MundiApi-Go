@@ -34,13 +34,6 @@ type GetCheckoutCardInstallmentOptionsResponse struct {
 }
 
 /*
- * Structure for the custom type CreateCancelChargeRequest
- */
-type CreateCancelChargeRequest struct {
-    Amount          *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount that will be canceled.
-}
-
-/*
  * Structure for the custom type ListCustomersResponse
  */
 type ListCustomersResponse struct {
@@ -1088,15 +1081,6 @@ type CreateSplitRequest struct {
 }
 
 /*
- * Structure for the custom type GetSplitResponse
- */
-type GetSplitResponse struct {
-    Type            string          `json:"type" form:"type"` //Type
-    Amount          int64           `json:"amount" form:"amount"` //Amount
-    Recipient       GetRecipientResponse `json:"recipient" form:"recipient"` //Recipient
-}
-
-/*
  * Structure for the custom type GetDeviceResponse
  */
 type GetDeviceResponse struct {
@@ -1829,6 +1813,24 @@ type UpdateSubscriptionMinimumPriceRequest struct {
 }
 
 /*
+ * Structure for the custom type GetSplitResponse
+ */
+type GetSplitResponse struct {
+    Type            string          `json:"type" form:"type"` //Type
+    Amount          int64           `json:"amount" form:"amount"` //Amount
+    Recipient       GetRecipientResponse `json:"recipient" form:"recipient"` //Recipient
+    GatewayId       string          `json:"gateway_id" form:"gateway_id"` //The split rule gateway id
+}
+
+/*
+ * Structure for the custom type CreateCancelChargeRequest
+ */
+type CreateCancelChargeRequest struct {
+    Amount          *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount that will be canceled.
+    SplitRules      []*CreateCancelChargeSplitRulesRequest `json:"split_rules,omitempty" form:"split_rules,omitempty"` //The split rules request
+}
+
+/*
  * Structure for the custom type CreateOrderItemRequest
  */
 type CreateOrderItemRequest struct {
@@ -1839,4 +1841,13 @@ type CreateOrderItemRequest struct {
     Seller          CreateSellerRequest `json:"seller,omitempty" form:"seller,omitempty"` //Item seller
     SellerId        *string         `json:"seller_id,omitempty" form:"seller_id,omitempty"` //seller identificator
     Code            *string         `json:"code,omitempty" form:"code,omitempty"` //The item code passed by the client
+}
+
+/*
+ * Structure for the custom type CreateCancelChargeSplitRulesRequest
+ */
+type CreateCancelChargeSplitRulesRequest struct {
+    Id              string          `json:"id" form:"id"` //The split rule gateway id
+    Amount          int64           `json:"Amount" form:"Amount"` //The split rule amount
+    Type            string          `json:"type" form:"type"` //The amount type (flat ou percentage)
 }
