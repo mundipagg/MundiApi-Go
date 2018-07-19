@@ -14,23 +14,23 @@ import "mundiapi_lib/configuration_pkg"
  * Interface for the CHARGES_IMPL
  */
 type CHARGES interface {
-    GetCharge (string) (*models_pkg.GetChargeResponse, error)
-
-    RetryCharge (string) (*models_pkg.GetChargeResponse, error)
-
-    CreateCharge (*models_pkg.CreateChargeRequest) (*models_pkg.GetChargeResponse, error)
-
     UpdateChargeCard (string, *models_pkg.UpdateChargeCardRequest) (*models_pkg.GetChargeResponse, error)
 
     UpdateChargePaymentMethod (string, *models_pkg.UpdateChargePaymentMethodRequest) (*models_pkg.GetChargeResponse, error)
 
-    CancelCharge (string, *models_pkg.CreateCancelChargeRequest) (*models_pkg.GetChargeResponse, error)
+    CreateCharge (*models_pkg.CreateChargeRequest) (*models_pkg.GetChargeResponse, error)
 
-    CaptureCharge (string, *models_pkg.CreateCaptureChargeRequest) (*models_pkg.GetChargeResponse, error)
+    GetCharge (string) (*models_pkg.GetChargeResponse, error)
+
+    RetryCharge (string) (*models_pkg.GetChargeResponse, error)
+
+    GetCharges (*int64, *int64, *string, *string, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.ListChargesResponse, error)
 
     UpdateChargeMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetChargeResponse, error)
 
-    GetCharges (*int64, *int64, *string, *string, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.ListChargesResponse, error)
+    CancelCharge (string, *models_pkg.CreateCancelChargeRequest) (*models_pkg.GetChargeResponse, error)
+
+    CaptureCharge (string, *models_pkg.CreateCaptureChargeRequest) (*models_pkg.GetChargeResponse, error)
 
     UpdateChargeDueDate (string, *models_pkg.UpdateChargeDueDateRequest) (*models_pkg.GetChargeResponse, error)
 

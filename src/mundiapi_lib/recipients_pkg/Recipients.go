@@ -14,19 +14,7 @@ import "mundiapi_lib/configuration_pkg"
  * Interface for the RECIPIENTS_IMPL
  */
 type RECIPIENTS interface {
-    CreateRecipient (*models_pkg.CreateRecipientRequest) (*models_pkg.GetRecipientResponse, error)
-
-    UpdateRecipient (string, *models_pkg.UpdateRecipientRequest) (*models_pkg.GetRecipientResponse, error)
-
-    UpdateRecipientDefaultBankAccount (string, *models_pkg.UpdateRecipientBankAccountRequest) (*models_pkg.GetRecipientResponse, error)
-
-    GetRecipient (string) (*models_pkg.GetRecipientResponse, error)
-
-    GetRecipients (*int64, *int64) (*models_pkg.ListRecipientResponse, error)
-
-    GetBalance (string) (*models_pkg.GetBalanceResponse, error)
-
-    CreateTransfer (string, *models_pkg.CreateTransferRequest) (*models_pkg.GetTransferResponse, error)
+    UpdateRecipientMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetRecipientResponse, error)
 
     GetTransfer (string, string) (*models_pkg.GetTransferResponse, error)
 
@@ -40,7 +28,19 @@ type RECIPIENTS interface {
 
     GetAnticipations (string, *int64, *int64, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListAnticipationResponse, error)
 
-    UpdateRecipientMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetRecipientResponse, error)
+    UpdateRecipient (string, *models_pkg.UpdateRecipientRequest) (*models_pkg.GetRecipientResponse, error)
+
+    UpdateRecipientDefaultBankAccount (string, *models_pkg.UpdateRecipientBankAccountRequest) (*models_pkg.GetRecipientResponse, error)
+
+    GetRecipient (string) (*models_pkg.GetRecipientResponse, error)
+
+    GetRecipients (*int64, *int64) (*models_pkg.ListRecipientResponse, error)
+
+    GetBalance (string) (*models_pkg.GetBalanceResponse, error)
+
+    CreateTransfer (string, *models_pkg.CreateTransferRequest) (*models_pkg.GetTransferResponse, error)
+
+    CreateRecipient (*models_pkg.CreateRecipientRequest) (*models_pkg.GetRecipientResponse, error)
 
     UpdateRecipientTransferSettings (string, *models_pkg.UpdateTransferSettingsRequest) (*models_pkg.GetRecipientResponse, error)
 }

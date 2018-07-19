@@ -9,13 +9,13 @@ package MundiAPIClient
 import(
 	"mundiapi_lib/configuration_pkg"
 	"mundiapi_lib/subscriptions_pkg"
-	"mundiapi_lib/charges_pkg"
-	"mundiapi_lib/customers_pkg"
-	"mundiapi_lib/invoices_pkg"
-	"mundiapi_lib/plans_pkg"
 	"mundiapi_lib/orders_pkg"
-	"mundiapi_lib/tokens_pkg"
+	"mundiapi_lib/plans_pkg"
+	"mundiapi_lib/invoices_pkg"
+	"mundiapi_lib/customers_pkg"
+	"mundiapi_lib/charges_pkg"
 	"mundiapi_lib/recipients_pkg"
+	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/sellers_pkg"
 )
 
@@ -25,13 +25,13 @@ import(
  */
 type MUNDIAPI interface {
      Subscriptions()         subscriptions_pkg.SUBSCRIPTIONS
-     Charges()               charges_pkg.CHARGES
-     Customers()             customers_pkg.CUSTOMERS
-     Invoices()              invoices_pkg.INVOICES
-     Plans()                 plans_pkg.PLANS
      Orders()                orders_pkg.ORDERS
-     Tokens()                tokens_pkg.TOKENS
+     Plans()                 plans_pkg.PLANS
+     Invoices()              invoices_pkg.INVOICES
+     Customers()             customers_pkg.CUSTOMERS
+     Charges()               charges_pkg.CHARGES
      Recipients()            recipients_pkg.RECIPIENTS
+     Tokens()                tokens_pkg.TOKENS
      Sellers()               sellers_pkg.SELLERS
      Configuration()         configuration_pkg.CONFIGURATION
 }

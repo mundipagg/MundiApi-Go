@@ -14,11 +14,11 @@ import "mundiapi_lib/configuration_pkg"
  * Interface for the SELLERS_IMPL
  */
 type SELLERS interface {
-    CreateSeller (*models_pkg.CreateSellerRequest) (*models_pkg.GetSellerResponse, error)
+    GetSellerById (string) (*models_pkg.GetSellerResponse, error)
 
     DeleteSeller (string) (*models_pkg.GetSellerResponse, error)
 
-    GetSellerById (string) (*models_pkg.GetSellerResponse, error)
+    CreateSeller (*models_pkg.CreateSellerRequest) (*models_pkg.GetSellerResponse, error)
 
     GetSellers (*int64, *int64, *string, *string, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.ListSellerResponse, error)
 

@@ -106,6 +106,170 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
 }
 
 /**
+ * Updates the billing date from a subscription
+ * @param    string                                                  subscriptionId      parameter: Required
+ * @param    *models_pkg.UpdateSubscriptionBillingDateRequest        request             parameter: Required
+ * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
+ */
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/billing-date"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "subscription_id" : subscriptionId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+    }
+
+    //prepare API request
+    _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.GetSubscriptionResponse = &models_pkg.GetSubscriptionResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Updates the credit card from a subscription
+ * @param    string                                           subscriptionId      parameter: Required
+ * @param    *models_pkg.UpdateSubscriptionCardRequest        request             parameter: Required
+ * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
+ */
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionCardRequest) (*models_pkg.GetSubscriptionResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/card"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "subscription_id" : subscriptionId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+    }
+
+    //prepare API request
+    _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.GetSubscriptionResponse = &models_pkg.GetSubscriptionResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
  * Updates a subscription item
  * @param    string                                           subscriptionId      parameter: Required
  * @param    string                                           itemId              parameter: Required
@@ -276,19 +440,17 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
 }
 
 /**
- * Updates the billing date from a subscription
- * @param    string                                                  subscriptionId      parameter: Required
- * @param    *models_pkg.UpdateSubscriptionBillingDateRequest        request             parameter: Required
+ * Gets a subscription
+ * @param    string        subscriptionId      parameter: Required
  * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error) {
+func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
+            subscriptionId string) (*models_pkg.GetSubscriptionResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/billing-date"
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}"
 
     //variable to hold errors
     var err error = nil
@@ -312,11 +474,10 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
     headers := map[string]interface{} {
         "user-agent" : "MundiSDK",
         "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
     }
 
     //prepare API request
-    _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request);
     if err != nil {
@@ -358,19 +519,19 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
 }
 
 /**
- * Updates the credit card from a subscription
- * @param    string                                           subscriptionId      parameter: Required
- * @param    *models_pkg.UpdateSubscriptionCardRequest        request             parameter: Required
+ * Updates the payment method from a subscription
+ * @param    string                                                    subscriptionId      parameter: Required
+ * @param    *models_pkg.UpdateSubscriptionPaymentMethodRequest        request             parameter: Required
  * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
             subscriptionId string,
-            request *models_pkg.UpdateSubscriptionCardRequest) (*models_pkg.GetSubscriptionResponse, error) {
+            request *models_pkg.UpdateSubscriptionPaymentMethodRequest) (*models_pkg.GetSubscriptionResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/card"
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/payment-method"
 
     //variable to hold errors
     var err error = nil
@@ -675,23 +836,26 @@ func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
 }
 
 /**
- * Gets a subscription
+ * Get Subscription Item
  * @param    string        subscriptionId      parameter: Required
- * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
+ * @param    string        itemId              parameter: Required
+ * @return	Returns the *models_pkg.GetSubscriptionItemResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
-            subscriptionId string) (*models_pkg.GetSubscriptionResponse, error) {
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
+            subscriptionId string,
+            itemId string) (*models_pkg.GetSubscriptionItemResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}"
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}"
 
     //variable to hold errors
     var err error = nil
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
         "subscription_id" : subscriptionId,
+        "item_id" : itemId,
     })
     if err != nil {
         //error in template param handling
@@ -742,7 +906,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
     }
 
     //returning the response
-    var retVal *models_pkg.GetSubscriptionResponse = &models_pkg.GetSubscriptionResponse{}
+    var retVal *models_pkg.GetSubscriptionItemResponse = &models_pkg.GetSubscriptionItemResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -754,19 +918,19 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
 }
 
 /**
- * Updates the payment method from a subscription
+ * TODO: type endpoint description here
  * @param    string                                                    subscriptionId      parameter: Required
- * @param    *models_pkg.UpdateSubscriptionPaymentMethodRequest        request             parameter: Required
+ * @param    *models_pkg.UpdateSubscriptionAffiliationIdRequest        request             parameter: Required
  * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
             subscriptionId string,
-            request *models_pkg.UpdateSubscriptionPaymentMethodRequest) (*models_pkg.GetSubscriptionResponse, error) {
+            request *models_pkg.UpdateSubscriptionAffiliationIdRequest) (*models_pkg.GetSubscriptionResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/payment-method"
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/gateway-affiliation-id"
 
     //variable to hold errors
     var err error = nil
@@ -836,26 +1000,26 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
 }
 
 /**
- * Deletes a discount
+ * Create Usage
  * @param    string        subscriptionId      parameter: Required
- * @param    string        discountId          parameter: Required
- * @return	Returns the *models_pkg.GetDiscountResponse response from the API call
+ * @param    string        itemId              parameter: Required
+ * @return	Returns the *models_pkg.GetUsageResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
+func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
             subscriptionId string,
-            discountId string) (*models_pkg.GetDiscountResponse, error) {
+            itemId string) (*models_pkg.GetUsageResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/discounts/{discount_id}"
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}/usages"
 
     //variable to hold errors
     var err error = nil
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
         "subscription_id" : subscriptionId,
-        "discount_id" : discountId,
+        "item_id" : itemId,
     })
     if err != nil {
         //error in template param handling
@@ -876,7 +1040,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
     }
 
     //prepare API request
-    _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    _request := unirest.PostWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request);
     if err != nil {
@@ -906,7 +1070,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
     }
 
     //returning the response
-    var retVal *models_pkg.GetDiscountResponse = &models_pkg.GetDiscountResponse{}
+    var retVal *models_pkg.GetUsageResponse = &models_pkg.GetUsageResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -918,19 +1082,131 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
 }
 
 /**
- * Cancels a subscription
- * @param    string                                             subscriptionId      parameter: Required
- * @param    *models_pkg.CreateCancelSubscriptionRequest        request             parameter: Optional
- * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
+ * Gets all subscriptions
+ * @param    *int64            page                   parameter: Optional
+ * @param    *int64            size                   parameter: Optional
+ * @param    *string           code                   parameter: Optional
+ * @param    *string           billingType            parameter: Optional
+ * @param    *string           customerId             parameter: Optional
+ * @param    *string           planId                 parameter: Optional
+ * @param    *string           cardId                 parameter: Optional
+ * @param    *string           status                 parameter: Optional
+ * @param    *time.Time        nextBillingSince       parameter: Optional
+ * @param    *time.Time        nextBillingUntil       parameter: Optional
+ * @param    *time.Time        createdSince           parameter: Optional
+ * @param    *time.Time        createdUntil           parameter: Optional
+ * @return	Returns the *models_pkg.ListSubscriptionsResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
-            subscriptionId string,
-            request *models_pkg.CreateCancelSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error) {
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
+            page *int64,
+            size *int64,
+            code *string,
+            billingType *string,
+            customerId *string,
+            planId *string,
+            cardId *string,
+            status *string,
+            nextBillingSince *time.Time,
+            nextBillingUntil *time.Time,
+            createdSince *time.Time,
+            createdUntil *time.Time) (*models_pkg.ListSubscriptionsResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}"
+   _queryBuilder = _queryBuilder + "/subscriptions"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "page" : page,
+        "size" : size,
+        "code" : code,
+        "billing_type" : billingType,
+        "customer_id" : customerId,
+        "plan_id" : planId,
+        "card_id" : cardId,
+        "status" : status,
+        "next_billing_since" : nextBillingSince,
+        "next_billing_until" : nextBillingUntil,
+        "created_since" : createdSince,
+        "created_until" : createdUntil,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ListSubscriptionsResponse = &models_pkg.ListSubscriptionsResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Updates the metadata from a subscription
+ * @param    string                                   subscriptionId      parameter: Required
+ * @param    *models_pkg.UpdateMetadataRequest        request             parameter: Required
+ * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
+ */
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
+            subscriptionId string,
+            request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/Subscriptions/{subscription_id}/metadata"
 
     //variable to hold errors
     var err error = nil
@@ -958,7 +1234,7 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
     }
 
     //prepare API request
-    _request := unirest.DeleteWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request);
     if err != nil {
@@ -1167,19 +1443,101 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
 }
 
 /**
- * Updates the metadata from a subscription
- * @param    string                                   subscriptionId      parameter: Required
- * @param    *models_pkg.UpdateMetadataRequest        request             parameter: Required
- * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
+ * Deletes a discount
+ * @param    string        subscriptionId      parameter: Required
+ * @param    string        discountId          parameter: Required
+ * @return	Returns the *models_pkg.GetDiscountResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
+func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
             subscriptionId string,
-            request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error) {
+            discountId string) (*models_pkg.GetDiscountResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/Subscriptions/{subscription_id}/metadata"
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/discounts/{discount_id}"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "subscription_id" : subscriptionId,
+        "discount_id" : discountId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.GetDiscountResponse = &models_pkg.GetDiscountResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Cancels a subscription
+ * @param    string                                             subscriptionId      parameter: Required
+ * @param    *models_pkg.CreateCancelSubscriptionRequest        request             parameter: Optional
+ * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
+ */
+func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
+            subscriptionId string,
+            request *models_pkg.CreateCancelSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}"
 
     //variable to hold errors
     var err error = nil
@@ -1207,365 +1565,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
     }
 
     //prepare API request
-    _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.GetSubscriptionResponse = &models_pkg.GetSubscriptionResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Gets all subscriptions
- * @param    *int64            page                   parameter: Optional
- * @param    *int64            size                   parameter: Optional
- * @param    *string           code                   parameter: Optional
- * @param    *string           billingType            parameter: Optional
- * @param    *string           customerId             parameter: Optional
- * @param    *string           planId                 parameter: Optional
- * @param    *string           cardId                 parameter: Optional
- * @param    *string           status                 parameter: Optional
- * @param    *time.Time        nextBillingSince       parameter: Optional
- * @param    *time.Time        nextBillingUntil       parameter: Optional
- * @param    *time.Time        createdSince           parameter: Optional
- * @param    *time.Time        createdUntil           parameter: Optional
- * @return	Returns the *models_pkg.ListSubscriptionsResponse response from the API call
- */
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
-            page *int64,
-            size *int64,
-            code *string,
-            billingType *string,
-            customerId *string,
-            planId *string,
-            cardId *string,
-            status *string,
-            nextBillingSince *time.Time,
-            nextBillingUntil *time.Time,
-            createdSince *time.Time,
-            createdUntil *time.Time) (*models_pkg.ListSubscriptionsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
-        "page" : page,
-        "size" : size,
-        "code" : code,
-        "billing_type" : billingType,
-        "customer_id" : customerId,
-        "plan_id" : planId,
-        "card_id" : cardId,
-        "status" : status,
-        "next_billing_since" : nextBillingSince,
-        "next_billing_until" : nextBillingUntil,
-        "created_since" : createdSince,
-        "created_until" : createdUntil,
-    })
-    if err != nil {
-        //error in query param handling
-        return nil, err
-    }
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ListSubscriptionsResponse = &models_pkg.ListSubscriptionsResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Create Usage
- * @param    string        subscriptionId      parameter: Required
- * @param    string        itemId              parameter: Required
- * @return	Returns the *models_pkg.GetUsageResponse response from the API call
- */
-func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
-            subscriptionId string,
-            itemId string) (*models_pkg.GetUsageResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}/usages"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
-        "subscription_id" : subscriptionId,
-        "item_id" : itemId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.PostWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.GetUsageResponse = &models_pkg.GetUsageResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Get Subscription Item
- * @param    string        subscriptionId      parameter: Required
- * @param    string        itemId              parameter: Required
- * @return	Returns the *models_pkg.GetSubscriptionItemResponse response from the API call
- */
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
-            subscriptionId string,
-            itemId string) (*models_pkg.GetSubscriptionItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
-        "subscription_id" : subscriptionId,
-        "item_id" : itemId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.GetSubscriptionItemResponse = &models_pkg.GetSubscriptionItemResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * TODO: type endpoint description here
- * @param    string                                                    subscriptionId      parameter: Required
- * @param    *models_pkg.UpdateSubscriptionAffiliationIdRequest        request             parameter: Required
- * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
- */
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionAffiliationIdRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/gateway-affiliation-id"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
-        "subscription_id" : subscriptionId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK",
-        "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-    }
-
-    //prepare API request
-    _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    _request := unirest.DeleteWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request);
     if err != nil {
@@ -2045,6 +2045,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement (
  * @param    *int64         size                parameter: Optional
  * @param    *int64         page                parameter: Optional
  * @param    *string        itemId              parameter: Optional
+ * @param    *string        group               parameter: Optional
  * @return	Returns the *models_pkg.GetUsagesDetailsResponse response from the API call
  */
 func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
@@ -2052,7 +2053,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
             cycleId *string,
             size *int64,
             page *int64,
-            itemId *string) (*models_pkg.GetUsagesDetailsResponse, error) {
+            itemId *string,
+            group *string) (*models_pkg.GetUsagesDetailsResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
@@ -2076,6 +2078,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
         "size" : size,
         "page" : page,
         "item_id" : itemId,
+        "group" : group,
     })
     if err != nil {
         //error in query param handling

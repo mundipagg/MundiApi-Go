@@ -9,13 +9,13 @@ package MundiAPIClient
 import(
 	"mundiapi_lib/configuration_pkg"
 	"mundiapi_lib/subscriptions_pkg"
-	"mundiapi_lib/charges_pkg"
-	"mundiapi_lib/customers_pkg"
-	"mundiapi_lib/invoices_pkg"
-	"mundiapi_lib/plans_pkg"
 	"mundiapi_lib/orders_pkg"
-	"mundiapi_lib/tokens_pkg"
+	"mundiapi_lib/plans_pkg"
+	"mundiapi_lib/invoices_pkg"
+	"mundiapi_lib/customers_pkg"
+	"mundiapi_lib/charges_pkg"
 	"mundiapi_lib/recipients_pkg"
+	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/sellers_pkg"
 )
 /*
@@ -23,13 +23,13 @@ import(
  */
 type MUNDIAPI_IMPL struct {
      subscriptions subscriptions_pkg.SUBSCRIPTIONS
-     charges charges_pkg.CHARGES
-     customers customers_pkg.CUSTOMERS
-     invoices invoices_pkg.INVOICES
-     plans plans_pkg.PLANS
      orders orders_pkg.ORDERS
-     tokens tokens_pkg.TOKENS
+     plans plans_pkg.PLANS
+     invoices invoices_pkg.INVOICES
+     customers customers_pkg.CUSTOMERS
+     charges charges_pkg.CHARGES
      recipients recipients_pkg.RECIPIENTS
+     tokens tokens_pkg.TOKENS
      sellers sellers_pkg.SELLERS
      config  configuration_pkg.CONFIGURATION
 }
@@ -52,34 +52,14 @@ func (me * MUNDIAPI_IMPL) Subscriptions() subscriptions_pkg.SUBSCRIPTIONS {
     return me.subscriptions
 }
 /**
-     * Access to Charges controller
-     * @return Returns the Charges() instance
+     * Access to Orders controller
+     * @return Returns the Orders() instance
 */
-func (me * MUNDIAPI_IMPL) Charges() charges_pkg.CHARGES {
-    if(me.charges) == nil {
-        me.charges = charges_pkg.NewCHARGES(me.config)
+func (me * MUNDIAPI_IMPL) Orders() orders_pkg.ORDERS {
+    if(me.orders) == nil {
+        me.orders = orders_pkg.NewORDERS(me.config)
     }
-    return me.charges
-}
-/**
-     * Access to Customers controller
-     * @return Returns the Customers() instance
-*/
-func (me * MUNDIAPI_IMPL) Customers() customers_pkg.CUSTOMERS {
-    if(me.customers) == nil {
-        me.customers = customers_pkg.NewCUSTOMERS(me.config)
-    }
-    return me.customers
-}
-/**
-     * Access to Invoices controller
-     * @return Returns the Invoices() instance
-*/
-func (me * MUNDIAPI_IMPL) Invoices() invoices_pkg.INVOICES {
-    if(me.invoices) == nil {
-        me.invoices = invoices_pkg.NewINVOICES(me.config)
-    }
-    return me.invoices
+    return me.orders
 }
 /**
      * Access to Plans controller
@@ -92,24 +72,34 @@ func (me * MUNDIAPI_IMPL) Plans() plans_pkg.PLANS {
     return me.plans
 }
 /**
-     * Access to Orders controller
-     * @return Returns the Orders() instance
+     * Access to Invoices controller
+     * @return Returns the Invoices() instance
 */
-func (me * MUNDIAPI_IMPL) Orders() orders_pkg.ORDERS {
-    if(me.orders) == nil {
-        me.orders = orders_pkg.NewORDERS(me.config)
+func (me * MUNDIAPI_IMPL) Invoices() invoices_pkg.INVOICES {
+    if(me.invoices) == nil {
+        me.invoices = invoices_pkg.NewINVOICES(me.config)
     }
-    return me.orders
+    return me.invoices
 }
 /**
-     * Access to Tokens controller
-     * @return Returns the Tokens() instance
+     * Access to Customers controller
+     * @return Returns the Customers() instance
 */
-func (me * MUNDIAPI_IMPL) Tokens() tokens_pkg.TOKENS {
-    if(me.tokens) == nil {
-        me.tokens = tokens_pkg.NewTOKENS(me.config)
+func (me * MUNDIAPI_IMPL) Customers() customers_pkg.CUSTOMERS {
+    if(me.customers) == nil {
+        me.customers = customers_pkg.NewCUSTOMERS(me.config)
     }
-    return me.tokens
+    return me.customers
+}
+/**
+     * Access to Charges controller
+     * @return Returns the Charges() instance
+*/
+func (me * MUNDIAPI_IMPL) Charges() charges_pkg.CHARGES {
+    if(me.charges) == nil {
+        me.charges = charges_pkg.NewCHARGES(me.config)
+    }
+    return me.charges
 }
 /**
      * Access to Recipients controller
@@ -120,6 +110,16 @@ func (me * MUNDIAPI_IMPL) Recipients() recipients_pkg.RECIPIENTS {
         me.recipients = recipients_pkg.NewRECIPIENTS(me.config)
     }
     return me.recipients
+}
+/**
+     * Access to Tokens controller
+     * @return Returns the Tokens() instance
+*/
+func (me * MUNDIAPI_IMPL) Tokens() tokens_pkg.TOKENS {
+    if(me.tokens) == nil {
+        me.tokens = tokens_pkg.NewTOKENS(me.config)
+    }
+    return me.tokens
 }
 /**
      * Access to Sellers controller
