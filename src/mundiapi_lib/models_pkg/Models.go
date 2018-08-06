@@ -269,18 +269,6 @@ type CreateAccessTokenRequest struct {
 }
 
 /*
- * Structure for the custom type CreateShippingRequest
- */
-type CreateShippingRequest struct {
-    Amount          int64           `json:"amount" form:"amount"` //Shipping amount
-    Description     string          `json:"description" form:"description"` //Description
-    RecipientName   string          `json:"recipient_name" form:"recipient_name"` //Recipient name
-    RecipientPhone  string          `json:"recipient_phone" form:"recipient_phone"` //Recipient phone number
-    AddressId       string          `json:"address_id" form:"address_id"` //The id of the address that will be used for shipping
-    Address         CreateAddressRequest `json:"address" form:"address"` //Address data
-}
-
-/*
  * Structure for the custom type UpdatePlanRequest
  */
 type UpdatePlanRequest struct {
@@ -411,17 +399,6 @@ type GetCustomerResponse struct {
     Phones          GetPhonesResponse `json:"phones" form:"phones"` //TODO: Write general description for this field
     Code            string          `json:"code" form:"code"` //Código de referência do cliente no sistema da loja. Max: 52 caracteres
     FbId            *int64          `json:"fb_id,omitempty" form:"fb_id,omitempty"` //TODO: Write general description for this field
-}
-
-/*
- * Structure for the custom type GetShippingResponse
- */
-type GetShippingResponse struct {
-    Amount          int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
-    Description     string          `json:"description" form:"description"` //TODO: Write general description for this field
-    RecipientName   string          `json:"recipient_name" form:"recipient_name"` //TODO: Write general description for this field
-    RecipientPhone  string          `json:"recipient_phone" form:"recipient_phone"` //TODO: Write general description for this field
-    Address         GetAddressResponse `json:"address" form:"address"` //TODO: Write general description for this field
 }
 
 /*
@@ -1327,23 +1304,6 @@ type GetBoletoTransactionResponse struct {
 }
 
 /*
- * Structure for the custom type CreateCheckoutPaymentRequest
- */
-type CreateCheckoutPaymentRequest struct {
-    AcceptedPaymentMethods     []string        `json:"accepted_payment_methods" form:"accepted_payment_methods"` //Accepted Payment Methods
-    SuccessUrl                 string          `json:"success_url" form:"success_url"` //Success url
-    SkipCheckoutSuccessPage    bool            `json:"skip_checkout_success_page" form:"skip_checkout_success_page"` //Pular tela de sucesso pós-pagamento?
-    BillingAddressEditable     bool            `json:"billing_address_editable" form:"billing_address_editable"` //Torna o objeto billing address editável
-    BillingAddress             CreateAddressRequest `json:"billing_address" form:"billing_address"` //Endereço de cobrança
-    DefaultPaymentMethod       *string         `json:"default_payment_method,omitempty" form:"default_payment_method,omitempty"` //Default payment method
-    GatewayAffiliationId       *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway Affiliation Id
-    CreditCard                 CreateCheckoutCardPaymentRequest `json:"credit_card,omitempty" form:"credit_card,omitempty"` //Card payment request
-    Boleto                     CreateCheckoutBoletoPaymentRequest `json:"boleto,omitempty" form:"boleto,omitempty"` //Boleto payment request
-    CustomerEditable           *bool           `json:"customer_editable,omitempty" form:"customer_editable,omitempty"` //Torna o objeto editável
-    ExpiresIn                  *int64          `json:"expires_in,omitempty" form:"expires_in,omitempty"` //Tempo em minutos para a expiração
-}
-
-/*
  * Structure for the custom type CreateBoletoPaymentRequest
  */
 type CreateBoletoPaymentRequest struct {
@@ -1850,4 +1810,49 @@ type CreateCancelChargeSplitRulesRequest struct {
     Id              string          `json:"id" form:"id"` //The split rule gateway id
     Amount          int64           `json:"Amount" form:"Amount"` //The split rule amount
     Type            string          `json:"type" form:"type"` //The amount type (flat ou percentage)
+}
+
+/*
+ * Structure for the custom type CreateCheckoutPaymentRequest
+ */
+type CreateCheckoutPaymentRequest struct {
+    AcceptedPaymentMethods         []string        `json:"accepted_payment_methods" form:"accepted_payment_methods"` //Accepted Payment Methods
+    AcceptedMultiPaymentMethods    []interface{}   `json:"accepted_multi_payment_methods" form:"accepted_multi_payment_methods"` //Accepted Multi Payment Methods
+    SuccessUrl                     string          `json:"success_url" form:"success_url"` //Success url
+    SkipCheckoutSuccessPage        bool            `json:"skip_checkout_success_page" form:"skip_checkout_success_page"` //Pular tela de sucesso pós-pagamento?
+    BillingAddressEditable         bool            `json:"billing_address_editable" form:"billing_address_editable"` //Torna o objeto billing address editável
+    BillingAddress                 CreateAddressRequest `json:"billing_address" form:"billing_address"` //Endereço de cobrança
+    DefaultPaymentMethod           *string         `json:"default_payment_method,omitempty" form:"default_payment_method,omitempty"` //Default payment method
+    GatewayAffiliationId           *string         `json:"gateway_affiliation_id,omitempty" form:"gateway_affiliation_id,omitempty"` //Gateway Affiliation Id
+    CreditCard                     CreateCheckoutCardPaymentRequest `json:"credit_card,omitempty" form:"credit_card,omitempty"` //Card payment request
+    Boleto                         CreateCheckoutBoletoPaymentRequest `json:"boleto,omitempty" form:"boleto,omitempty"` //Boleto payment request
+    CustomerEditable               *bool           `json:"customer_editable,omitempty" form:"customer_editable,omitempty"` //Torna o objeto editável
+    ExpiresIn                      *int64          `json:"expires_in,omitempty" form:"expires_in,omitempty"` //Tempo em minutos para a expiração
+}
+
+/*
+ * Structure for the custom type CreateShippingRequest
+ */
+type CreateShippingRequest struct {
+    Amount                  int64           `json:"amount" form:"amount"` //Shipping amount
+    Description             string          `json:"description" form:"description"` //Description
+    RecipientName           string          `json:"recipient_name" form:"recipient_name"` //Recipient name
+    RecipientPhone          string          `json:"recipient_phone" form:"recipient_phone"` //Recipient phone number
+    AddressId               string          `json:"address_id" form:"address_id"` //The id of the address that will be used for shipping
+    Address                 CreateAddressRequest `json:"address" form:"address"` //Address data
+    MaxDeliveryDate         *time.Time      `json:"max_delivery_date,omitempty" form:"max_delivery_date,omitempty"` //Data máxima de entrega
+    EstimatedDeliveryDate   *time.Time      `json:"estimated_delivery_date,omitempty" form:"estimated_delivery_date,omitempty"` //Prazo estimado de entrega
+}
+
+/*
+ * Structure for the custom type GetShippingResponse
+ */
+type GetShippingResponse struct {
+    Amount                  int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
+    Description             string          `json:"description" form:"description"` //TODO: Write general description for this field
+    RecipientName           string          `json:"recipient_name" form:"recipient_name"` //TODO: Write general description for this field
+    RecipientPhone          string          `json:"recipient_phone" form:"recipient_phone"` //TODO: Write general description for this field
+    Address                 GetAddressResponse `json:"address" form:"address"` //TODO: Write general description for this field
+    MaxDeliveryDate         *time.Time      `json:"max_delivery_date,omitempty" form:"max_delivery_date,omitempty"` //Data máxima de entrega
+    EstimatedDeliveryDate   *time.Time      `json:"estimated_delivery_date,omitempty" form:"estimated_delivery_date,omitempty"` //Prazo estimado de entrega
 }
