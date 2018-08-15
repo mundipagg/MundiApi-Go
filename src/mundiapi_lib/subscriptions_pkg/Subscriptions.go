@@ -16,7 +16,7 @@ import "mundiapi_lib/configuration_pkg"
 type SUBSCRIPTIONS interface {
     GetIncrementById (string, string) (*models_pkg.GetIncrementResponse, error)
 
-    UpdateSubscriptionBillingDate (string, *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error)
+    UpdateSubscriptionStartAt (string, *models_pkg.UpdateSubscriptionStartDateRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     UpdateSubscriptionCard (string, *models_pkg.UpdateSubscriptionCardRequest) (*models_pkg.GetSubscriptionResponse, error)
 

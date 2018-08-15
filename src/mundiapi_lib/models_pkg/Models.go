@@ -1312,8 +1312,9 @@ type CreateBoletoPaymentRequest struct {
     Instructions       string          `json:"instructions" form:"instructions"` //The instructions field that will be printed on the boleto.
     BillingAddress     CreateAddressRequest `json:"billing_address" form:"billing_address"` //Card's billing address
     BillingAddressId   string          `json:"billing_address_id" form:"billing_address_id"` //The address id for the billing address
+    DocumentNumber     string          `json:"document_number" form:"document_number"` //Boleto identification
     DueAt              *time.Time      `json:"due_at,omitempty" form:"due_at,omitempty"` //Boleto due date
-    NossoNumero        *string         `json:"nosso_numero,omitempty" form:"nosso_numero,omitempty"` //Número de identificação do cliente com o banco
+    NossoNumero        *string         `json:"nosso_numero,omitempty" form:"nosso_numero,omitempty"` //Customer identification number with the bank
 }
 
 /*
@@ -1855,4 +1856,11 @@ type GetShippingResponse struct {
     Address                 GetAddressResponse `json:"address" form:"address"` //TODO: Write general description for this field
     MaxDeliveryDate         *time.Time      `json:"max_delivery_date,omitempty" form:"max_delivery_date,omitempty"` //Data máxima de entrega
     EstimatedDeliveryDate   *time.Time      `json:"estimated_delivery_date,omitempty" form:"estimated_delivery_date,omitempty"` //Prazo estimado de entrega
+}
+
+/*
+ * Structure for the custom type UpdateSubscriptionStartDateRequest
+ */
+type UpdateSubscriptionStartDateRequest struct {
+    StartAt         *time.Time      `json:"start_at" form:"start_at"` //The date when the subscription periods will start
 }

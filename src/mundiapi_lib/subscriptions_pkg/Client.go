@@ -106,19 +106,19 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
 }
 
 /**
- * Updates the billing date from a subscription
- * @param    string                                                  subscriptionId      parameter: Required
- * @param    *models_pkg.UpdateSubscriptionBillingDateRequest        request             parameter: Required
+ * Updates the start at date from a subscription
+ * @param    string                                                subscriptionId      parameter: Required
+ * @param    *models_pkg.UpdateSubscriptionStartDateRequest        request             parameter: Required
  * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
             subscriptionId string,
-            request *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error) {
+            request *models_pkg.UpdateSubscriptionStartDateRequest) (*models_pkg.GetSubscriptionResponse, error) {
         //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
     //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/billing-date"
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/start-at"
 
     //variable to hold errors
     var err error = nil
