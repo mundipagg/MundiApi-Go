@@ -514,14 +514,6 @@ type UpdateChargeCardRequest struct {
 }
 
 /*
- * Structure for the custom type CreateCardPaymentTokenRequest
- */
-type CreateCardPaymentTokenRequest struct {
-    Type            string          `json:"type" form:"type"` //The authentication type
-    ApplePay        ApplePayRequest `json:"apple_pay" form:"apple_pay"` //The apple pay authentication request
-}
-
-/*
  * Structure for the custom type GetPeriodResponse
  */
 type GetPeriodResponse struct {
@@ -1268,6 +1260,7 @@ type GetBoletoTransactionResponse struct {
     PaidAt          *time.Time      `json:"paid_at,omitempty" form:"paid_at,omitempty"` //TODO: Write general description for this field
     PaidAmount      string          `json:"paid_amount" form:"paid_amount"` //TODO: Write general description for this field
     Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
+    CreditAt        *time.Time      `json:"credit_at,omitempty" form:"credit_at,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -1642,21 +1635,21 @@ type UpdateChargePaymentMethodRequest struct {
 }
 
 /*
- * Structure for the custom type ApplePayHeaderRequest
+ * Structure for the custom type CreateApplePayHeaderRequest
  */
-type ApplePayHeaderRequest struct {
+type CreateApplePayHeaderRequest struct {
     PublicKeyHash        *string         `json:"public_key_hash,omitempty" form:"public_key_hash,omitempty"` //SHA–256 hash, Base64 string codified
     EphemeralPublicKey   string          `json:"ephemeral_public_key" form:"ephemeral_public_key"` //X.509 encoded key bytes, Base64 encoded as a string
     TransactionId        *string         `json:"transaction_id,omitempty" form:"transaction_id,omitempty"` //Transaction identifier, generated on Device
 }
 
 /*
- * Structure for the custom type ApplePayRequest
+ * Structure for the custom type CreateApplePayRequest
  */
-type ApplePayRequest struct {
+type CreateApplePayRequest struct {
     Version             string          `json:"version" form:"version"` //The token version
     Data                string          `json:"data" form:"data"` //The cryptography data
-    Header              ApplePayHeaderRequest `json:"header" form:"header"` //The apple pay header request
+    Header              CreateApplePayHeaderRequest `json:"header" form:"header"` //The ApplePay header request
     Signature           string          `json:"signature" form:"signature"` //Detached PKCS #7 signature, Base64 encoded as string
     MerchantIdentifier  string          `json:"merchant_identifier" form:"merchant_identifier"` //ApplePay Merchant identifier
 }
@@ -1929,4 +1922,38 @@ type UpdateCurrentCycleEndDateRequest struct {
 type CreateCheckoutBankTransferRequest struct {
     Bank            []string        `json:"bank" form:"bank"` //Bank
     Retries         int64           `json:"retries" form:"retries"` //Number of retries for processing
+}
+
+/*
+ * Structure for the custom type UpdateCurrentCycleStatusRequest
+ */
+type UpdateCurrentCycleStatusRequest struct {
+    Status          string          `json:"status" form:"status"` //Status
+}
+
+/*
+ * Structure for the custom type CreateGooglePayRequest
+ */
+type CreateGooglePayRequest struct {
+    Version             string          `json:"version" form:"version"` //The token version
+    Data                string          `json:"data" form:"data"` //The cryptography data
+    Header              CreateGooglePayHeaderRequest `json:"header" form:"header"` //The GooglePay header request
+    Signature           string          `json:"signature" form:"signature"` //Detached PKCS #7 signature, Base64 encoded as string
+    MerchantIdentifier  string          `json:"merchant_identifier" form:"merchant_identifier"` //GooglePay Merchant identifier
+}
+
+/*
+ * Structure for the custom type CreateGooglePayHeaderRequest
+ */
+type CreateGooglePayHeaderRequest struct {
+    EphemeralPublicKey   string          `json:"ephemeral_public_key" form:"ephemeral_public_key"` //X.509 encoded key bytes, Base64 encoded as a string
+}
+
+/*
+ * Structure for the custom type CreateCardPaymentTokenRequest
+ */
+type CreateCardPaymentTokenRequest struct {
+    Type            string          `json:"type" form:"type"` //The authentication type
+    ApplePay        CreateApplePayRequest `json:"apple_pay" form:"apple_pay"` //The ApplePay authentication request
+    GooglePay       CreateGooglePayRequest `json:"google_pay" form:"google_pay"` //The GooglePay authentication request
 }

@@ -59,7 +59,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -140,7 +140,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -222,7 +222,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -307,7 +307,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -392,7 +392,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -472,7 +472,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -553,7 +553,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -624,7 +624,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscription (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -706,7 +706,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -788,7 +788,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -871,7 +871,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -952,7 +952,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1035,7 +1035,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -1147,7 +1147,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -1228,7 +1228,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1311,7 +1311,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -1396,7 +1396,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -1478,7 +1478,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -1559,7 +1559,7 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1642,7 +1642,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscountById (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -1735,7 +1735,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -1816,7 +1816,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateIncrement (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1910,7 +1910,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -1992,7 +1992,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -2094,7 +2094,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -2196,7 +2196,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -2307,7 +2307,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -2388,7 +2388,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2470,7 +2470,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2552,7 +2552,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2634,7 +2634,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2678,6 +2678,80 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
         return nil, err
     }
     return retVal, nil
+
+}
+
+/**
+ * TODO: type endpoint description here
+ * @param    string                                             subscriptionId      parameter: Required
+ * @param    *models_pkg.UpdateCurrentCycleStatusRequest        request             parameter: Required
+ * @return	Returns the  response from the API call
+ */
+func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleStatus (
+            subscriptionId string,
+            request *models_pkg.UpdateCurrentCycleStatusRequest) (error) {
+        //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/cycle-status"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "subscription_id" : subscriptionId,
+    })
+    if err != nil {
+        //error in template param handling
+        return err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 0.13.41",
+        "content-type" : "application/json; charset=utf-8",
+    }
+
+    //prepare API request
+    _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return err
+    }
+
+    //returning the response
+    return nil
 
 }
 

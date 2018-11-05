@@ -56,7 +56,7 @@ func (me *SELLERS_IMPL) GetSellerById (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -135,7 +135,7 @@ func (me *SELLERS_IMPL) DeleteSeller (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -205,7 +205,7 @@ func (me *SELLERS_IMPL) CreateSeller (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -309,7 +309,7 @@ func (me *SELLERS_IMPL) GetSellers (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -390,7 +390,7 @@ func (me *SELLERS_IMPL) UpdateSeller (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -472,7 +472,7 @@ func (me *SELLERS_IMPL) UpdateSellerMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }

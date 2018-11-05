@@ -58,7 +58,7 @@ func (me *PLANS_IMPL) CreatePlanItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -143,7 +143,7 @@ func (me *PLANS_IMPL) UpdatePlanItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -223,7 +223,7 @@ func (me *PLANS_IMPL) GetPlan (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -302,7 +302,7 @@ func (me *PLANS_IMPL) DeletePlan (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -383,7 +383,7 @@ func (me *PLANS_IMPL) UpdatePlan (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -454,7 +454,7 @@ func (me *PLANS_IMPL) CreatePlan (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -552,7 +552,7 @@ func (me *PLANS_IMPL) GetPlans (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -633,7 +633,7 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -716,7 +716,7 @@ func (me *PLANS_IMPL) GetPlanItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
@@ -798,7 +798,7 @@ func (me *PLANS_IMPL) DeletePlanItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK – Go 0.13.38",
+        "user-agent" : "MundiSDK - Go 0.13.41",
         "accept" : "application/json",
     }
 
