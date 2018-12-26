@@ -56,7 +56,7 @@ func (me *ORDERS_IMPL) GetOrder (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
     }
 
@@ -126,7 +126,7 @@ func (me *ORDERS_IMPL) CreateOrder (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -224,7 +224,7 @@ func (me *ORDERS_IMPL) GetOrders (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
     }
 
@@ -305,7 +305,7 @@ func (me *ORDERS_IMPL) UpdateOrderMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -385,7 +385,7 @@ func (me *ORDERS_IMPL) DeleteAllOrderItems (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
     }
 
@@ -469,7 +469,7 @@ func (me *ORDERS_IMPL) UpdateOrderItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -552,7 +552,7 @@ func (me *ORDERS_IMPL) DeleteOrderItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
     }
 
@@ -633,7 +633,7 @@ func (me *ORDERS_IMPL) CreateOrderItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -716,7 +716,7 @@ func (me *ORDERS_IMPL) GetOrderItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
     }
 
@@ -797,7 +797,7 @@ func (me *ORDERS_IMPL) UpdateOrderStatus (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }

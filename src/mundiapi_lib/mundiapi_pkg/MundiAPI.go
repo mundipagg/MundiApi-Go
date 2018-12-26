@@ -17,6 +17,7 @@ import(
 	"mundiapi_lib/recipients_pkg"
 	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/sellers_pkg"
+	"mundiapi_lib/transactions_pkg"
 )
 
 
@@ -33,6 +34,7 @@ type MUNDIAPI interface {
      Recipients()            recipients_pkg.RECIPIENTS
      Tokens()                tokens_pkg.TOKENS
      Sellers()               sellers_pkg.SELLERS
+     Transactions()          transactions_pkg.TRANSACTIONS
      Configuration()         configuration_pkg.CONFIGURATION
 }
 

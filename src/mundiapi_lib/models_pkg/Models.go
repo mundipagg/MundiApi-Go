@@ -326,6 +326,7 @@ type GetChargeResponse struct {
     PaidAt           *time.Time      `json:"paid_at,omitempty" form:"paid_at,omitempty"` //TODO: Write general description for this field
     CanceledAt       *time.Time      `json:"canceled_at,omitempty" form:"canceled_at,omitempty"` //TODO: Write general description for this field
     CanceledAmount   int64           `json:"canceled_amount" form:"canceled_amount"` //Canceled Amount
+    PaidAmount       int64           `json:"paid_amount" form:"paid_amount"` //Paid amount
 }
 
 /*
@@ -1306,6 +1307,7 @@ type CreateCreditCardPaymentRequest struct {
     MerchantCategoryCode   *int64          `json:"merchant_category_code,omitempty" form:"merchant_category_code,omitempty"` //Customer business segment code
     Authentication         CreatePaymentAuthenticationRequest `json:"authentication,omitempty" form:"authentication,omitempty"` //The payment authentication request
     Token                  CreateCardPaymentTokenRequest `json:"token,omitempty" form:"token,omitempty"` //The Credit card payment token request
+    AutoRecovery           *bool           `json:"auto_recovery,omitempty" form:"auto_recovery,omitempty"` //Indicates whether a particular payment will enter the offline retry flow
 }
 
 /*
@@ -1917,11 +1919,44 @@ type UpdateCurrentCycleEndDateRequest struct {
 }
 
 /*
+ * Structure for the custom type CreateTransactionReportFileRequest
+ */
+type CreateTransactionReportFileRequest struct {
+    Name            string          `json:"name" form:"name"` //TODO: Write general description for this field
+    StartAt         *time.Time      `json:"start_at,omitempty" form:"start_at,omitempty"` //TODO: Write general description for this field
+    EndAt           *string         `json:"end_at,omitempty" form:"end_at,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type ListTransactionsFilesResponse
+ */
+type ListTransactionsFilesResponse struct {
+    Data            []*GetTransactionReportFileResponse `json:"data" form:"data"` //TODO: Write general description for this field
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
+}
+
+/*
+ * Structure for the custom type GetTransactionReportFileResponse
+ */
+type GetTransactionReportFileResponse struct {
+    Name            string          `json:"name" form:"name"` //TODO: Write general description for this field
+    Date            *time.Time      `json:"date" form:"date"` //TODO: Write general description for this field
+}
+
+/*
  * Structure for the custom type CreateCheckoutBankTransferRequest
  */
 type CreateCheckoutBankTransferRequest struct {
     Bank            []string        `json:"bank" form:"bank"` //Bank
     Retries         int64           `json:"retries" form:"retries"` //Number of retries for processing
+}
+
+/*
+ * Structure for the custom type ListChargeTransactionsResponse
+ */
+type ListChargeTransactionsResponse struct {
+    Data            []*GetTransactionResponse `json:"data" form:"data"` //The charge transactions objects
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
 }
 
 /*

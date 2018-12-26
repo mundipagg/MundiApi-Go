@@ -58,7 +58,7 @@ func (me *CHARGES_IMPL) UpdateChargeCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -140,7 +140,7 @@ func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -211,7 +211,7 @@ func (me *CHARGES_IMPL) CreateCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -291,7 +291,7 @@ func (me *CHARGES_IMPL) GetCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
     }
 
@@ -370,7 +370,7 @@ func (me *CHARGES_IMPL) RetryCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
     }
 
@@ -473,7 +473,7 @@ func (me *CHARGES_IMPL) GetCharges (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
     }
 
@@ -554,7 +554,7 @@ func (me *CHARGES_IMPL) UpdateChargeMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -636,7 +636,7 @@ func (me *CHARGES_IMPL) CancelCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -718,7 +718,7 @@ func (me *CHARGES_IMPL) CaptureCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -800,7 +800,7 @@ func (me *CHARGES_IMPL) UpdateChargeDueDate (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -882,7 +882,7 @@ func (me *CHARGES_IMPL) ConfirmPayment (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.41",
+        "user-agent" : "MundiSDK - Go 0.13.42",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -919,6 +919,99 @@ func (me *CHARGES_IMPL) ConfirmPayment (
 
     //returning the response
     var retVal *models_pkg.GetChargeResponse = &models_pkg.GetChargeResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * TODO: type endpoint description here
+ * @param    string        chargeId      parameter: Required
+ * @param    *int64        page          parameter: Optional
+ * @param    *int64        size          parameter: Optional
+ * @return	Returns the *models_pkg.ListChargeTransactionsResponse response from the API call
+ */
+func (me *CHARGES_IMPL) GetChargeTransactions (
+            chargeId string,
+            page *int64,
+            size *int64) (*models_pkg.ListChargeTransactionsResponse, error) {
+        //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + "/charges/{charge_id}/transactions"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+        "charge_id" : chargeId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "page" : page,
+        "size" : size,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 0.13.42",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+        }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ListChargeTransactionsResponse = &models_pkg.ListChargeTransactionsResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {

@@ -126,6 +126,7 @@ To configure these for your generated code, open the file "Configuration.go" and
 * [recipients_pkg](#recipients_pkg)
 * [tokens_pkg](#tokens_pkg)
 * [sellers_pkg](#sellers_pkg)
+* [transactions_pkg](#transactions_pkg)
 
 ## <a name="subscriptions_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".subscriptions_pkg") subscriptions_pkg
 
@@ -580,8 +581,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("128", 10, 8)
+size,_ := strconv.ParseInt("128", 10, 8)
 code := "code"
 billingType := "billing_type"
 customerId := "customer_id"
@@ -813,8 +814,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("128", 10, 8)
+size,_ := strconv.ParseInt("128", 10, 8)
 
 var result *models_pkg.ListDiscountsResponse
 result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
@@ -878,8 +879,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("128", 10, 8)
+size,_ := strconv.ParseInt("128", 10, 8)
 
 var result *models_pkg.ListIncrementsResponse
 result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
@@ -950,8 +951,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
 ```go
 subscriptionId := "subscription_id"
 cycleId := "cycle_id"
-size,_ := strconv.ParseInt("22", 10, 8)
-page,_ := strconv.ParseInt("22", 10, 8)
+size,_ := strconv.ParseInt("128", 10, 8)
+page,_ := strconv.ParseInt("128", 10, 8)
 itemId := "item_id"
 group := "group"
 
@@ -993,8 +994,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
 ```go
 subscriptionId := "subscription_id"
 itemId := "item_id"
-page,_ := strconv.ParseInt("22", 10, 8)
-size,_ := strconv.ParseInt("22", 10, 8)
+page,_ := strconv.ParseInt("128", 10, 8)
+size,_ := strconv.ParseInt("128", 10, 8)
 code := "code"
 group := "group"
 
@@ -1041,8 +1042,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("22", 10, 8)
-size,_ := strconv.ParseInt("22", 10, 8)
+page,_ := strconv.ParseInt("128", 10, 8)
+size,_ := strconv.ParseInt("128", 10, 8)
 name := "name"
 code := "code"
 status := "status"
@@ -1309,8 +1310,8 @@ func (me *ORDERS_IMPL) GetOrders(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("22", 10, 8)
-size,_ := strconv.ParseInt("22", 10, 8)
+page,_ := strconv.ParseInt("219", 10, 8)
+size,_ := strconv.ParseInt("219", 10, 8)
 code := "code"
 status := "status"
 createdSince := time.Now()
@@ -1760,8 +1761,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("22", 10, 8)
-size,_ := strconv.ParseInt("22", 10, 8)
+page,_ := strconv.ParseInt("219", 10, 8)
+size,_ := strconv.ParseInt("219", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"
@@ -2033,8 +2034,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("114", 10, 8)
-size,_ := strconv.ParseInt("114", 10, 8)
+page,_ := strconv.ParseInt("219", 10, 8)
+size,_ := strconv.ParseInt("219", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -2298,8 +2299,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("114", 10, 8)
-size,_ := strconv.ParseInt("114", 10, 8)
+page,_ := strconv.ParseInt("219", 10, 8)
+size,_ := strconv.ParseInt("219", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -2332,8 +2333,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("114", 10, 8)
-size,_ := strconv.ParseInt("114", 10, 8)
+page,_ := strconv.ParseInt("219", 10, 8)
+size,_ := strconv.ParseInt("219", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -2366,8 +2367,8 @@ func (me *CUSTOMERS_IMPL) GetCards(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("114", 10, 8)
-size,_ := strconv.ParseInt("114", 10, 8)
+page,_ := strconv.ParseInt("219", 10, 8)
+size,_ := strconv.ParseInt("219", 10, 8)
 
 var result *models_pkg.ListCardsResponse
 result,_ = customers.GetCards(customerId, page, size)
@@ -3008,8 +3009,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("114", 10, 8)
-size,_ := strconv.ParseInt("114", 10, 8)
+page,_ := strconv.ParseInt("178", 10, 8)
+size,_ := strconv.ParseInt("178", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -3179,6 +3180,40 @@ result,_ = charges.ConfirmPayment(chargeId, request)
 ```
 
 
+### <a name="get_charge_transactions"></a>![Method: ](https://apidocs.io/img/method.png ".charges_pkg.GetChargeTransactions") GetChargeTransactions
+
+> TODO: Add a method description
+
+
+```go
+func (me *CHARGES_IMPL) GetChargeTransactions(
+            chargeId string,
+            page *int64,
+            size *int64)(*models_pkg.ListChargeTransactionsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| chargeId |  ``` Required ```  | Charge Id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+chargeId := "charge_id"
+page,_ := strconv.ParseInt("178", 10, 8)
+size,_ := strconv.ParseInt("178", 10, 8)
+
+var result *models_pkg.ListChargeTransactionsResponse
+result,_ = charges.GetChargeTransactions(chargeId, page, size)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="recipients_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".recipients_pkg") recipients_pkg
@@ -3284,8 +3319,8 @@ func (me *RECIPIENTS_IMPL) GetTransfers(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("114", 10, 8)
-size,_ := strconv.ParseInt("114", 10, 8)
+page,_ := strconv.ParseInt("178", 10, 8)
+size,_ := strconv.ParseInt("178", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -3429,8 +3464,8 @@ func (me *RECIPIENTS_IMPL) GetAnticipations(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("164", 10, 8)
-size,_ := strconv.ParseInt("164", 10, 8)
+page,_ := strconv.ParseInt("178", 10, 8)
+size,_ := strconv.ParseInt("178", 10, 8)
 status := "status"
 timeframe := "timeframe"
 paymentDateSince := time.Now()
@@ -3555,8 +3590,8 @@ func (me *RECIPIENTS_IMPL) GetRecipients(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("164", 10, 8)
-size,_ := strconv.ParseInt("164", 10, 8)
+page,_ := strconv.ParseInt("178", 10, 8)
+size,_ := strconv.ParseInt("178", 10, 8)
 
 var result *models_pkg.ListRecipientResponse
 result,_ = recipients.GetRecipients(page, size)
@@ -3887,8 +3922,8 @@ func (me *SELLERS_IMPL) GetSellers(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("164", 10, 8)
-size,_ := strconv.ParseInt("164", 10, 8)
+page,_ := strconv.ParseInt("178", 10, 8)
+size,_ := strconv.ParseInt("178", 10, 8)
 name := "name"
 document := "document"
 code := "code"
@@ -3961,6 +3996,45 @@ var request *models_pkg.UpdateMetadataRequest
 
 var result *models_pkg.GetSellerResponse
 result,_ = sellers.UpdateSellerMetadata(sellerId, request)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="transactions_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".transactions_pkg") transactions_pkg
+
+### Get instance
+
+Factory for the ``` TRANSACTIONS ``` interface can be accessed from the package transactions_pkg.
+
+```go
+transactions := transactions_pkg.NewTRANSACTIONS()
+```
+
+### <a name="get_transaction"></a>![Method: ](https://apidocs.io/img/method.png ".transactions_pkg.GetTransaction") GetTransaction
+
+> TODO: Add a method description
+
+
+```go
+func (me *TRANSACTIONS_IMPL) GetTransaction(transactionId string)(*models_pkg.GetTransactionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| transactionId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+transactionId := "transaction_id"
+
+var result *models_pkg.GetTransactionResponse
+result,_ = transactions.GetTransaction(transactionId)
 
 ```
 

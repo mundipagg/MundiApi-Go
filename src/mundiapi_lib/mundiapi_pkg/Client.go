@@ -17,6 +17,7 @@ import(
 	"mundiapi_lib/recipients_pkg"
 	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/sellers_pkg"
+	"mundiapi_lib/transactions_pkg"
 )
 /*
  * Client structure as interface implementation
@@ -31,6 +32,7 @@ type MUNDIAPI_IMPL struct {
      recipients recipients_pkg.RECIPIENTS
      tokens tokens_pkg.TOKENS
      sellers sellers_pkg.SELLERS
+     transactions transactions_pkg.TRANSACTIONS
      config  configuration_pkg.CONFIGURATION
 }
 
@@ -130,4 +132,14 @@ func (me * MUNDIAPI_IMPL) Sellers() sellers_pkg.SELLERS {
         me.sellers = sellers_pkg.NewSELLERS(me.config)
     }
     return me.sellers
+}
+/**
+     * Access to Transactions controller
+     * @return Returns the Transactions() instance
+*/
+func (me * MUNDIAPI_IMPL) Transactions() transactions_pkg.TRANSACTIONS {
+    if(me.transactions) == nil {
+        me.transactions = transactions_pkg.NewTRANSACTIONS(me.config)
+    }
+    return me.transactions
 }
