@@ -8,7 +8,6 @@ package orders_pkg
 
 
 import(
-	"fmt"
 	"time"
 	"encoding/json"
 	"mundiapi_lib/models_pkg"
@@ -30,22 +29,25 @@ type ORDERS_IMPL struct {
  */
 func (me *ORDERS_IMPL) GetOrder (
             orderId string) (*models_pkg.GetOrderResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders/{order_id}"
+    //the endpoint path uri
+    _pathUrl := "/orders/{order_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "order_id" : orderId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -56,7 +58,7 @@ func (me *ORDERS_IMPL) GetOrder (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -109,14 +111,17 @@ func (me *ORDERS_IMPL) GetOrder (
  */
 func (me *ORDERS_IMPL) CreateOrder (
             body *models_pkg.CreateOrderRequest) (*models_pkg.GetOrderResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders"
+    //the endpoint path uri
+    _pathUrl := "/orders"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -126,7 +131,7 @@ func (me *ORDERS_IMPL) CreateOrder (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -192,14 +197,17 @@ func (me *ORDERS_IMPL) GetOrders (
             createdSince *time.Time,
             createdUntil *time.Time,
             customerId *string) (*models_pkg.ListOrderResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders"
+    //the endpoint path uri
+    _pathUrl := "/orders"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
         "page" : page,
@@ -224,7 +232,7 @@ func (me *ORDERS_IMPL) GetOrders (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -279,22 +287,25 @@ func (me *ORDERS_IMPL) GetOrders (
 func (me *ORDERS_IMPL) UpdateOrderMetadata (
             orderId string,
             request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetOrderResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/Orders/{order_id}/metadata"
+    //the endpoint path uri
+    _pathUrl := "/Orders/{order_id}/metadata"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "order_id" : orderId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -305,7 +316,7 @@ func (me *ORDERS_IMPL) UpdateOrderMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -359,22 +370,25 @@ func (me *ORDERS_IMPL) UpdateOrderMetadata (
  */
 func (me *ORDERS_IMPL) DeleteAllOrderItems (
             orderId string) (*models_pkg.GetOrderResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders/{orderId}/items"
+    //the endpoint path uri
+    _pathUrl := "/orders/{orderId}/items"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "orderId" : orderId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -385,7 +399,7 @@ func (me *ORDERS_IMPL) DeleteAllOrderItems (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -442,16 +456,13 @@ func (me *ORDERS_IMPL) UpdateOrderItem (
             orderId string,
             itemId string,
             request *models_pkg.UpdateOrderItemRequest) (*models_pkg.GetOrderItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders/{orderId}/items/{itemId}"
+    //the endpoint path uri
+    _pathUrl := "/orders/{orderId}/items/{itemId}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "orderId" : orderId,
         "itemId" : itemId,
     })
@@ -459,6 +470,12 @@ func (me *ORDERS_IMPL) UpdateOrderItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -469,7 +486,7 @@ func (me *ORDERS_IMPL) UpdateOrderItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -525,16 +542,13 @@ func (me *ORDERS_IMPL) UpdateOrderItem (
 func (me *ORDERS_IMPL) DeleteOrderItem (
             orderId string,
             itemId string) (*models_pkg.GetOrderItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders/{orderId}/items/{itemId}"
+    //the endpoint path uri
+    _pathUrl := "/orders/{orderId}/items/{itemId}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "orderId" : orderId,
         "itemId" : itemId,
     })
@@ -542,6 +556,12 @@ func (me *ORDERS_IMPL) DeleteOrderItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -552,7 +572,7 @@ func (me *ORDERS_IMPL) DeleteOrderItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -607,22 +627,25 @@ func (me *ORDERS_IMPL) DeleteOrderItem (
 func (me *ORDERS_IMPL) CreateOrderItem (
             orderId string,
             request *models_pkg.CreateOrderItemRequest) (*models_pkg.GetOrderItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders/{orderId}/items"
+    //the endpoint path uri
+    _pathUrl := "/orders/{orderId}/items"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "orderId" : orderId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -633,7 +656,7 @@ func (me *ORDERS_IMPL) CreateOrderItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -689,16 +712,13 @@ func (me *ORDERS_IMPL) CreateOrderItem (
 func (me *ORDERS_IMPL) GetOrderItem (
             orderId string,
             itemId string) (*models_pkg.GetOrderItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders/{orderId}/items/{itemId}"
+    //the endpoint path uri
+    _pathUrl := "/orders/{orderId}/items/{itemId}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "orderId" : orderId,
         "itemId" : itemId,
     })
@@ -706,6 +726,12 @@ func (me *ORDERS_IMPL) GetOrderItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -716,7 +742,7 @@ func (me *ORDERS_IMPL) GetOrderItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -771,22 +797,25 @@ func (me *ORDERS_IMPL) GetOrderItem (
 func (me *ORDERS_IMPL) UpdateOrderStatus (
             id string,
             request *models_pkg.UpdateOrderStatusRequest) (*models_pkg.GetOrderResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/orders/{id}/closed"
+    //the endpoint path uri
+    _pathUrl := "/orders/{id}/closed"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "id" : id,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -797,7 +826,7 @@ func (me *ORDERS_IMPL) UpdateOrderStatus (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }

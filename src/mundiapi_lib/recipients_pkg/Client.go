@@ -8,7 +8,6 @@ package recipients_pkg
 
 
 import(
-	"fmt"
 	"time"
 	"encoding/json"
 	"mundiapi_lib/models_pkg"
@@ -32,22 +31,25 @@ type RECIPIENTS_IMPL struct {
 func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
             recipientId string,
             request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetRecipientResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/metadata"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/metadata"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -58,7 +60,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -114,16 +116,13 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
 func (me *RECIPIENTS_IMPL) GetTransfer (
             recipientId string,
             transferId string) (*models_pkg.GetTransferResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/transfers/{transfer_id}"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/transfers/{transfer_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
         "transfer_id" : transferId,
     })
@@ -131,6 +130,12 @@ func (me *RECIPIENTS_IMPL) GetTransfer (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -141,7 +146,7 @@ func (me *RECIPIENTS_IMPL) GetTransfer (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -204,22 +209,25 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
             status *string,
             createdSince *time.Time,
             createdUntil *time.Time) (*models_pkg.ListTransferResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/transfers"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/transfers"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -243,7 +251,7 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -298,22 +306,25 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
 func (me *RECIPIENTS_IMPL) CreateAnticipation (
             recipientId string,
             request *models_pkg.CreateAnticipationRequest) (*models_pkg.GetAnticipationResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/anticipations"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/anticipations"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -324,7 +335,7 @@ func (me *RECIPIENTS_IMPL) CreateAnticipation (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -380,16 +391,13 @@ func (me *RECIPIENTS_IMPL) CreateAnticipation (
 func (me *RECIPIENTS_IMPL) GetAnticipation (
             recipientId string,
             anticipationId string) (*models_pkg.GetAnticipationResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/anticipations/{anticipation_id}"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/anticipations/{anticipation_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
         "anticipation_id" : anticipationId,
     })
@@ -397,6 +405,12 @@ func (me *RECIPIENTS_IMPL) GetAnticipation (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -407,7 +421,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipation (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -464,22 +478,25 @@ func (me *RECIPIENTS_IMPL) GetAnticipationLimits (
             recipientId string,
             timeframe string,
             paymentDate *time.Time) (*models_pkg.GetAnticipationLimitResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/anticipation_limits"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/anticipation_limits"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -500,7 +517,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipationLimits (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -569,22 +586,25 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
             paymentDateUntil *time.Time,
             createdSince *time.Time,
             createdUntil *time.Time) (*models_pkg.ListAnticipationResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/anticipations"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/anticipations"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -611,7 +631,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -666,22 +686,25 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
 func (me *RECIPIENTS_IMPL) UpdateRecipient (
             recipientId string,
             request *models_pkg.UpdateRecipientRequest) (*models_pkg.GetRecipientResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -692,7 +715,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -748,22 +771,25 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
 func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
             recipientId string,
             request *models_pkg.UpdateRecipientBankAccountRequest) (*models_pkg.GetRecipientResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/default-bank-account"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/default-bank-account"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -774,7 +800,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -828,22 +854,25 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
  */
 func (me *RECIPIENTS_IMPL) GetRecipient (
             recipientId string) (*models_pkg.GetRecipientResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -854,7 +883,7 @@ func (me *RECIPIENTS_IMPL) GetRecipient (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -909,14 +938,17 @@ func (me *RECIPIENTS_IMPL) GetRecipient (
 func (me *RECIPIENTS_IMPL) GetRecipients (
             page *int64,
             size *int64) (*models_pkg.ListRecipientResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients"
+    //the endpoint path uri
+    _pathUrl := "/recipients"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
         "page" : page,
@@ -936,7 +968,7 @@ func (me *RECIPIENTS_IMPL) GetRecipients (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -989,22 +1021,25 @@ func (me *RECIPIENTS_IMPL) GetRecipients (
  */
 func (me *RECIPIENTS_IMPL) GetBalance (
             recipientId string) (*models_pkg.GetBalanceResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/balance"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/balance"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1015,7 +1050,7 @@ func (me *RECIPIENTS_IMPL) GetBalance (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1070,22 +1105,25 @@ func (me *RECIPIENTS_IMPL) GetBalance (
 func (me *RECIPIENTS_IMPL) CreateTransfer (
             recipientId string,
             request *models_pkg.CreateTransferRequest) (*models_pkg.GetTransferResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/transfers"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/transfers"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1096,7 +1134,7 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1150,14 +1188,17 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
  */
 func (me *RECIPIENTS_IMPL) CreateRecipient (
             request *models_pkg.CreateRecipientRequest) (*models_pkg.GetRecipientResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients"
+    //the endpoint path uri
+    _pathUrl := "/recipients"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -1167,7 +1208,7 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1223,22 +1264,25 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
 func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
             recipientId string,
             request *models_pkg.UpdateTransferSettingsRequest) (*models_pkg.GetRecipientResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/recipients/{recipient_id}/transfer-settings"
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/transfer-settings"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "recipient_id" : recipientId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1249,7 +1293,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }

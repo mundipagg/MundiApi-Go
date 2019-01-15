@@ -25,26 +25,28 @@ import(
  * Interface for the MUNDIAPI_IMPL
  */
 type MUNDIAPI interface {
-     Subscriptions()         subscriptions_pkg.SUBSCRIPTIONS
-     Orders()                orders_pkg.ORDERS
-     Plans()                 plans_pkg.PLANS
-     Invoices()              invoices_pkg.INVOICES
-     Customers()             customers_pkg.CUSTOMERS
-     Charges()               charges_pkg.CHARGES
-     Recipients()            recipients_pkg.RECIPIENTS
-     Tokens()                tokens_pkg.TOKENS
-     Sellers()               sellers_pkg.SELLERS
-     Transactions()          transactions_pkg.TRANSACTIONS
-     Configuration()         configuration_pkg.CONFIGURATION
+    Subscriptions()         subscriptions_pkg.SUBSCRIPTIONS
+    Orders()                orders_pkg.ORDERS
+    Plans()                 plans_pkg.PLANS
+    Invoices()              invoices_pkg.INVOICES
+    Customers()             customers_pkg.CUSTOMERS
+    Charges()               charges_pkg.CHARGES
+    Recipients()            recipients_pkg.RECIPIENTS
+    Tokens()                tokens_pkg.TOKENS
+    Sellers()               sellers_pkg.SELLERS
+    Transactions()          transactions_pkg.TRANSACTIONS
+    Configuration()         configuration_pkg.CONFIGURATION
 }
 
 /*
- * Factory for the MUNDIAPI interaface returning MUNDIAPI_IMPL
+ * Factory for the MUNDIAPI interface returning MUNDIAPI_IMPL
  */
 func NewMUNDIAPI(basicAuthUserName string, basicAuthPassword string) MUNDIAPI {
     mundiAPIClient := new(MUNDIAPI_IMPL)
     mundiAPIClient.config = configuration_pkg.NewCONFIGURATION()
+
     mundiAPIClient.config.SetBasicAuthUserName(basicAuthUserName)
     mundiAPIClient.config.SetBasicAuthPassword(basicAuthPassword)
+
     return mundiAPIClient
 }

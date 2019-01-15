@@ -8,7 +8,6 @@ package subscriptions_pkg
 
 
 import(
-	"fmt"
 	"time"
 	"encoding/json"
 	"mundiapi_lib/models_pkg"
@@ -32,16 +31,13 @@ type SUBSCRIPTIONS_IMPL struct {
 func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
             subscriptionId string,
             incrementId string) (*models_pkg.GetIncrementResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/increments/{increment_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/increments/{increment_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "increment_id" : incrementId,
     })
@@ -49,6 +45,12 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -59,7 +61,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -114,22 +116,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
 func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
             subscriptionId string,
             request *models_pkg.UpdateSubscriptionStartAtRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/start-at"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/start-at"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -140,7 +145,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -196,22 +201,25 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
 func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
             subscriptionId string,
             request *models_pkg.UpdateSubscriptionCardRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/card"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/card"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -222,7 +230,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -280,16 +288,13 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem (
             subscriptionId string,
             itemId string,
             body *models_pkg.UpdateSubscriptionItemRequest) (*models_pkg.GetSubscriptionItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items/{item_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "item_id" : itemId,
     })
@@ -297,6 +302,12 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -307,7 +318,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -365,16 +376,13 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
             subscriptionId string,
             itemId string,
             body *models_pkg.CreateUsageRequest) (*models_pkg.GetUsageResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}/usages"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items/{item_id}/usages"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "item_id" : itemId,
     })
@@ -382,6 +390,12 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -392,7 +406,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -446,22 +460,25 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
  */
 func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
             subscriptionId string) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -472,7 +489,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -527,22 +544,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
 func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
             subscriptionId string,
             request *models_pkg.UpdateSubscriptionPaymentMethodRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/payment-method"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/payment-method"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -553,7 +573,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -607,14 +627,17 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
  */
 func (me *SUBSCRIPTIONS_IMPL) CreateSubscription (
             body *models_pkg.CreateSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -624,7 +647,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscription (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -680,22 +703,25 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscription (
 func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem (
             subscriptionId string,
             request *models_pkg.CreateSubscriptionItemRequest) (*models_pkg.GetSubscriptionItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -706,7 +732,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -762,22 +788,25 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem (
 func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
             subscriptionId string,
             request *models_pkg.CreateDiscountRequest) (*models_pkg.GetDiscountResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/discounts"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/discounts"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -788,7 +817,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -844,16 +873,13 @@ func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
 func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
             subscriptionId string,
             itemId string) (*models_pkg.GetSubscriptionItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items/{item_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "item_id" : itemId,
     })
@@ -861,6 +887,12 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -871,7 +903,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -926,22 +958,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
 func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
             subscriptionId string,
             request *models_pkg.UpdateSubscriptionAffiliationIdRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/gateway-affiliation-id"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/gateway-affiliation-id"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -952,7 +987,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1008,16 +1043,13 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
 func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
             subscriptionId string,
             itemId string) (*models_pkg.GetUsageResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}/usages"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items/{item_id}/usages"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "item_id" : itemId,
     })
@@ -1025,6 +1057,12 @@ func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1035,7 +1073,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1110,14 +1148,17 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
             nextBillingUntil *time.Time,
             createdSince *time.Time,
             createdUntil *time.Time) (*models_pkg.ListSubscriptionsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
         "page" : page,
@@ -1147,7 +1188,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1202,22 +1243,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
 func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
             subscriptionId string,
             request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/Subscriptions/{subscription_id}/metadata"
+    //the endpoint path uri
+    _pathUrl := "/Subscriptions/{subscription_id}/metadata"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1228,7 +1272,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1284,16 +1328,13 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
 func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem (
             subscriptionId string,
             subscriptionItemId string) (*models_pkg.GetSubscriptionItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{subscription_item_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items/{subscription_item_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "subscription_item_id" : subscriptionItemId,
     })
@@ -1301,6 +1342,12 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1311,7 +1358,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1368,16 +1415,13 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
             subscriptionId string,
             itemId string,
             usageId string) (*models_pkg.GetUsageResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "item_id" : itemId,
         "usage_id" : usageId,
@@ -1386,6 +1430,12 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1396,7 +1446,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1451,16 +1501,13 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
 func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
             subscriptionId string,
             discountId string) (*models_pkg.GetDiscountResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/discounts/{discount_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/discounts/{discount_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "discount_id" : discountId,
     })
@@ -1468,6 +1515,12 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1478,7 +1531,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1533,22 +1586,25 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
 func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
             subscriptionId string,
             request *models_pkg.CreateCancelSubscriptionRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1559,7 +1615,7 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1615,16 +1671,13 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
 func (me *SUBSCRIPTIONS_IMPL) GetDiscountById (
             subscriptionId string,
             discountId string) (*models_pkg.GetDiscountResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/discounts/{discountId}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/discounts/{discountId}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "discountId" : discountId,
     })
@@ -1632,6 +1685,12 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscountById (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1642,7 +1701,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscountById (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1699,22 +1758,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts (
             subscriptionId string,
             page int64,
             size int64) (*models_pkg.ListDiscountsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/discounts/"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/discounts/"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -1735,7 +1797,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1790,22 +1852,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts (
 func (me *SUBSCRIPTIONS_IMPL) CreateIncrement (
             subscriptionId string,
             request *models_pkg.CreateIncrementRequest) (*models_pkg.GetIncrementResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/increments"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/increments"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1816,7 +1881,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateIncrement (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1874,22 +1939,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements (
             subscriptionId string,
             page *int64,
             size *int64) (*models_pkg.ListIncrementsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/increments/"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/increments/"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -1910,7 +1978,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1965,16 +2033,13 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements (
 func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement (
             subscriptionId string,
             incrementId string) (*models_pkg.GetIncrementResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/increments/{increment_id}"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/increments/{increment_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "increment_id" : incrementId,
     })
@@ -1982,6 +2047,12 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1992,7 +2063,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -2055,22 +2126,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
             page *int64,
             itemId *string,
             group *string) (*models_pkg.GetUsagesDetailsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/usages-details/"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/usages-details/"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -2094,7 +2168,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -2157,16 +2231,13 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages (
             size *int64,
             code *string,
             group *string) (*models_pkg.ListUsagesResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items/{item_id}/usages"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items/{item_id}/usages"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
         "item_id" : itemId,
     })
@@ -2174,6 +2245,12 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -2196,7 +2273,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -2265,22 +2342,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems (
             description *string,
             createdSince *string,
             createdUntil *string) (*models_pkg.ListSubscriptionItemsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/items"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/items"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -2307,7 +2387,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -2362,22 +2442,25 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems (
 func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays (
             subscriptionId string,
             request *models_pkg.UpdateSubscriptionDueDaysRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/boleto-due-days"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/boleto-due-days"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -2388,7 +2471,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2444,22 +2527,25 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays (
 func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice (
             subscriptionId string,
             request *models_pkg.UpdateSubscriptionMinimumPriceRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/minimum_price"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/minimum_price"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -2470,7 +2556,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2526,22 +2612,25 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice (
 func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
             subscriptionId string,
             request *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/billing-date"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/billing-date"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -2552,7 +2641,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2608,22 +2697,25 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
 func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
             subscriptionId string,
             request *models_pkg.UpdateCurrentCycleEndDateRequest) (*models_pkg.GetSubscriptionItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/cycle-end-date"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/cycle-end-date"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -2634,7 +2726,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2690,22 +2782,25 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
 func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleStatus (
             subscriptionId string,
             request *models_pkg.UpdateCurrentCycleStatusRequest) (error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/subscriptions/{subscription_id}/cycle-status"
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/cycle-status"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "subscription_id" : subscriptionId,
     })
     if err != nil {
         //error in template param handling
         return err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -2716,7 +2811,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleStatus (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "content-type" : "application/json; charset=utf-8",
     }
 

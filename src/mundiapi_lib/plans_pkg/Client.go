@@ -8,7 +8,6 @@ package plans_pkg
 
 
 import(
-	"fmt"
 	"time"
 	"encoding/json"
 	"mundiapi_lib/models_pkg"
@@ -32,22 +31,25 @@ type PLANS_IMPL struct {
 func (me *PLANS_IMPL) CreatePlanItem (
             planId string,
             request *models_pkg.CreatePlanItemRequest) (*models_pkg.GetPlanItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans/{plan_id}/items"
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}/items"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -58,7 +60,7 @@ func (me *PLANS_IMPL) CreatePlanItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -116,16 +118,13 @@ func (me *PLANS_IMPL) UpdatePlanItem (
             planId string,
             planItemId string,
             body *models_pkg.UpdatePlanItemRequest) (*models_pkg.GetPlanItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans/{plan_id}/items/{plan_item_id}"
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
         "plan_item_id" : planItemId,
     })
@@ -133,6 +132,12 @@ func (me *PLANS_IMPL) UpdatePlanItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -143,7 +148,7 @@ func (me *PLANS_IMPL) UpdatePlanItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -197,22 +202,25 @@ func (me *PLANS_IMPL) UpdatePlanItem (
  */
 func (me *PLANS_IMPL) GetPlan (
             planId string) (*models_pkg.GetPlanResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans/{plan_id}"
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -223,7 +231,7 @@ func (me *PLANS_IMPL) GetPlan (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -276,22 +284,25 @@ func (me *PLANS_IMPL) GetPlan (
  */
 func (me *PLANS_IMPL) DeletePlan (
             planId string) (*models_pkg.GetPlanResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans/{plan_id}"
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -302,7 +313,7 @@ func (me *PLANS_IMPL) DeletePlan (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -357,22 +368,25 @@ func (me *PLANS_IMPL) DeletePlan (
 func (me *PLANS_IMPL) UpdatePlan (
             planId string,
             request *models_pkg.UpdatePlanRequest) (*models_pkg.GetPlanResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans/{plan_id}"
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -383,7 +397,7 @@ func (me *PLANS_IMPL) UpdatePlan (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -437,14 +451,17 @@ func (me *PLANS_IMPL) UpdatePlan (
  */
 func (me *PLANS_IMPL) CreatePlan (
             body *models_pkg.CreatePlanRequest) (*models_pkg.GetPlanResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans"
+    //the endpoint path uri
+    _pathUrl := "/plans"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -454,7 +471,7 @@ func (me *PLANS_IMPL) CreatePlan (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -520,14 +537,17 @@ func (me *PLANS_IMPL) GetPlans (
             billingType *string,
             createdSince *time.Time,
             createdUntil *time.Time) (*models_pkg.ListPlansResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans"
+    //the endpoint path uri
+    _pathUrl := "/plans"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
         "page" : page,
@@ -552,7 +572,7 @@ func (me *PLANS_IMPL) GetPlans (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -607,22 +627,25 @@ func (me *PLANS_IMPL) GetPlans (
 func (me *PLANS_IMPL) UpdatePlanMetadata (
             planId string,
             request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetPlanResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/Plans/{plan_id}/metadata"
+    //the endpoint path uri
+    _pathUrl := "/Plans/{plan_id}/metadata"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -633,7 +656,7 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -689,16 +712,13 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
 func (me *PLANS_IMPL) GetPlanItem (
             planId string,
             planItemId string) (*models_pkg.GetPlanItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans/{plan_id}/items/{plan_item_id}"
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
         "plan_item_id" : planItemId,
     })
@@ -706,6 +726,12 @@ func (me *PLANS_IMPL) GetPlanItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -716,7 +742,7 @@ func (me *PLANS_IMPL) GetPlanItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -771,16 +797,13 @@ func (me *PLANS_IMPL) GetPlanItem (
 func (me *PLANS_IMPL) DeletePlanItem (
             planId string,
             planItemId string) (*models_pkg.GetPlanItemResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/plans/{plan_id}/items/{plan_item_id}"
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
         "plan_item_id" : planItemId,
     })
@@ -788,6 +811,12 @@ func (me *PLANS_IMPL) DeletePlanItem (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -798,7 +827,7 @@ func (me *PLANS_IMPL) DeletePlanItem (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 

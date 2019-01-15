@@ -8,7 +8,6 @@ package charges_pkg
 
 
 import(
-	"fmt"
 	"time"
 	"encoding/json"
 	"mundiapi_lib/models_pkg"
@@ -32,22 +31,25 @@ type CHARGES_IMPL struct {
 func (me *CHARGES_IMPL) UpdateChargeCard (
             chargeId string,
             request *models_pkg.UpdateChargeCardRequest) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges/{charge_id}/card"
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/card"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -58,7 +60,7 @@ func (me *CHARGES_IMPL) UpdateChargeCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -114,22 +116,25 @@ func (me *CHARGES_IMPL) UpdateChargeCard (
 func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
             chargeId string,
             request *models_pkg.UpdateChargePaymentMethodRequest) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges/{charge_id}/payment-method"
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/payment-method"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -140,7 +145,7 @@ func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -194,14 +199,17 @@ func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
  */
 func (me *CHARGES_IMPL) CreateCharge (
             request *models_pkg.CreateChargeRequest) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/Charges"
+    //the endpoint path uri
+    _pathUrl := "/Charges"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -211,7 +219,7 @@ func (me *CHARGES_IMPL) CreateCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -265,22 +273,25 @@ func (me *CHARGES_IMPL) CreateCharge (
  */
 func (me *CHARGES_IMPL) GetCharge (
             chargeId string) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges/{charge_id}"
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -291,7 +302,7 @@ func (me *CHARGES_IMPL) GetCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -344,22 +355,25 @@ func (me *CHARGES_IMPL) GetCharge (
  */
 func (me *CHARGES_IMPL) RetryCharge (
             chargeId string) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges/{charge_id}/retry"
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/retry"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -370,7 +384,7 @@ func (me *CHARGES_IMPL) RetryCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -439,14 +453,17 @@ func (me *CHARGES_IMPL) GetCharges (
             orderId *string,
             createdSince *time.Time,
             createdUntil *time.Time) (*models_pkg.ListChargesResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges"
+    //the endpoint path uri
+    _pathUrl := "/charges"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
         "page" : page,
@@ -473,7 +490,7 @@ func (me *CHARGES_IMPL) GetCharges (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -528,22 +545,25 @@ func (me *CHARGES_IMPL) GetCharges (
 func (me *CHARGES_IMPL) UpdateChargeMetadata (
             chargeId string,
             request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/Charges/{charge_id}/metadata"
+    //the endpoint path uri
+    _pathUrl := "/Charges/{charge_id}/metadata"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -554,7 +574,7 @@ func (me *CHARGES_IMPL) UpdateChargeMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -610,22 +630,25 @@ func (me *CHARGES_IMPL) UpdateChargeMetadata (
 func (me *CHARGES_IMPL) CancelCharge (
             chargeId string,
             request *models_pkg.CreateCancelChargeRequest) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges/{charge_id}"
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -636,7 +659,7 @@ func (me *CHARGES_IMPL) CancelCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -692,22 +715,25 @@ func (me *CHARGES_IMPL) CancelCharge (
 func (me *CHARGES_IMPL) CaptureCharge (
             chargeId string,
             request *models_pkg.CreateCaptureChargeRequest) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges/{charge_id}/capture"
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/capture"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -718,7 +744,7 @@ func (me *CHARGES_IMPL) CaptureCharge (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -774,22 +800,25 @@ func (me *CHARGES_IMPL) CaptureCharge (
 func (me *CHARGES_IMPL) UpdateChargeDueDate (
             chargeId string,
             request *models_pkg.UpdateChargeDueDateRequest) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/Charges/{charge_id}/due-date"
+    //the endpoint path uri
+    _pathUrl := "/Charges/{charge_id}/due-date"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -800,7 +829,7 @@ func (me *CHARGES_IMPL) UpdateChargeDueDate (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -856,22 +885,25 @@ func (me *CHARGES_IMPL) UpdateChargeDueDate (
 func (me *CHARGES_IMPL) ConfirmPayment (
             chargeId string,
             request *models_pkg.CreateConfirmPaymentRequest) (*models_pkg.GetChargeResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges/{charge_id}/confirm-payment"
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/confirm-payment"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -882,7 +914,7 @@ func (me *CHARGES_IMPL) ConfirmPayment (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -940,22 +972,25 @@ func (me *CHARGES_IMPL) GetChargeTransactions (
             chargeId string,
             page *int64,
             size *int64) (*models_pkg.ListChargeTransactionsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/charges/{charge_id}/transactions"
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/transactions"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "charge_id" : chargeId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -976,7 +1011,7 @@ func (me *CHARGES_IMPL) GetChargeTransactions (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 

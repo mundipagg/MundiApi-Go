@@ -8,7 +8,6 @@ package customers_pkg
 
 
 import(
-	"fmt"
 	"encoding/json"
 	"mundiapi_lib/models_pkg"
 	"github.com/apimatic/unirest-go"
@@ -33,16 +32,13 @@ func (me *CUSTOMERS_IMPL) UpdateCard (
             customerId string,
             cardId string,
             request *models_pkg.UpdateCardRequest) (*models_pkg.GetCardResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/cards/{card_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/cards/{card_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "card_id" : cardId,
     })
@@ -50,6 +46,12 @@ func (me *CUSTOMERS_IMPL) UpdateCard (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -60,7 +62,7 @@ func (me *CUSTOMERS_IMPL) UpdateCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -118,16 +120,13 @@ func (me *CUSTOMERS_IMPL) UpdateAddress (
             customerId string,
             addressId string,
             request *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses/{address_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/addresses/{address_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "address_id" : addressId,
     })
@@ -135,6 +134,12 @@ func (me *CUSTOMERS_IMPL) UpdateAddress (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -145,7 +150,7 @@ func (me *CUSTOMERS_IMPL) UpdateAddress (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -199,14 +204,17 @@ func (me *CUSTOMERS_IMPL) UpdateAddress (
  */
 func (me *CUSTOMERS_IMPL) CreateCustomer (
             request *models_pkg.CreateCustomerRequest) (*models_pkg.GetCustomerResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers"
+    //the endpoint path uri
+    _pathUrl := "/customers"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -216,7 +224,7 @@ func (me *CUSTOMERS_IMPL) CreateCustomer (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -270,22 +278,25 @@ func (me *CUSTOMERS_IMPL) CreateCustomer (
  */
 func (me *CUSTOMERS_IMPL) GetCustomer (
             customerId string) (*models_pkg.GetCustomerResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -296,7 +307,7 @@ func (me *CUSTOMERS_IMPL) GetCustomer (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -353,22 +364,25 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens (
             customerId string,
             page *int64,
             size *int64) (*models_pkg.ListAccessTokensResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/access-tokens"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/access-tokens"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -389,7 +403,7 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -446,22 +460,25 @@ func (me *CUSTOMERS_IMPL) GetAddresses (
             customerId string,
             page *int64,
             size *int64) (*models_pkg.ListAddressesResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/addresses"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -482,7 +499,7 @@ func (me *CUSTOMERS_IMPL) GetAddresses (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -539,22 +556,25 @@ func (me *CUSTOMERS_IMPL) GetCards (
             customerId string,
             page *int64,
             size *int64) (*models_pkg.ListCardsResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/cards"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/cards"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
@@ -575,7 +595,7 @@ func (me *CUSTOMERS_IMPL) GetCards (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -628,22 +648,25 @@ func (me *CUSTOMERS_IMPL) GetCards (
  */
 func (me *CUSTOMERS_IMPL) DeleteAccessTokens (
             customerId string) (*models_pkg.ListAccessTokensResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/access-tokens/"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/access-tokens/"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -654,7 +677,7 @@ func (me *CUSTOMERS_IMPL) DeleteAccessTokens (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -709,16 +732,13 @@ func (me *CUSTOMERS_IMPL) DeleteAccessTokens (
 func (me *CUSTOMERS_IMPL) GetAccessToken (
             customerId string,
             tokenId string) (*models_pkg.GetAccessTokenResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/access-tokens/{token_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/access-tokens/{token_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "token_id" : tokenId,
     })
@@ -726,6 +746,12 @@ func (me *CUSTOMERS_IMPL) GetAccessToken (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -736,7 +762,7 @@ func (me *CUSTOMERS_IMPL) GetAccessToken (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -791,22 +817,25 @@ func (me *CUSTOMERS_IMPL) GetAccessToken (
 func (me *CUSTOMERS_IMPL) CreateAccessToken (
             customerId string,
             request *models_pkg.CreateAccessTokenRequest) (*models_pkg.GetAccessTokenResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/access-tokens"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/access-tokens"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -817,7 +846,7 @@ func (me *CUSTOMERS_IMPL) CreateAccessToken (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -873,16 +902,13 @@ func (me *CUSTOMERS_IMPL) CreateAccessToken (
 func (me *CUSTOMERS_IMPL) DeleteAccessToken (
             customerId string,
             tokenId string) (*models_pkg.GetAccessTokenResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/access-tokens/{token_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/access-tokens/{token_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "token_id" : tokenId,
     })
@@ -890,6 +916,12 @@ func (me *CUSTOMERS_IMPL) DeleteAccessToken (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -900,7 +932,7 @@ func (me *CUSTOMERS_IMPL) DeleteAccessToken (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -955,22 +987,25 @@ func (me *CUSTOMERS_IMPL) DeleteAccessToken (
 func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata (
             customerId string,
             request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetCustomerResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/Customers/{customer_id}/metadata"
+    //the endpoint path uri
+    _pathUrl := "/Customers/{customer_id}/metadata"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -981,7 +1016,7 @@ func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1037,22 +1072,25 @@ func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata (
 func (me *CUSTOMERS_IMPL) UpdateCustomer (
             customerId string,
             request *models_pkg.UpdateCustomerRequest) (*models_pkg.GetCustomerResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1063,7 +1101,7 @@ func (me *CUSTOMERS_IMPL) UpdateCustomer (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1119,16 +1157,13 @@ func (me *CUSTOMERS_IMPL) UpdateCustomer (
 func (me *CUSTOMERS_IMPL) GetAddress (
             customerId string,
             addressId string) (*models_pkg.GetAddressResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses/{address_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/addresses/{address_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "address_id" : addressId,
     })
@@ -1136,6 +1171,12 @@ func (me *CUSTOMERS_IMPL) GetAddress (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1146,7 +1187,7 @@ func (me *CUSTOMERS_IMPL) GetAddress (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1201,16 +1242,13 @@ func (me *CUSTOMERS_IMPL) GetAddress (
 func (me *CUSTOMERS_IMPL) DeleteAddress (
             customerId string,
             addressId string) (*models_pkg.GetAddressResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses/{address_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/addresses/{address_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "address_id" : addressId,
     })
@@ -1218,6 +1256,12 @@ func (me *CUSTOMERS_IMPL) DeleteAddress (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1228,7 +1272,7 @@ func (me *CUSTOMERS_IMPL) DeleteAddress (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1283,16 +1327,13 @@ func (me *CUSTOMERS_IMPL) DeleteAddress (
 func (me *CUSTOMERS_IMPL) DeleteCard (
             customerId string,
             cardId string) (*models_pkg.GetCardResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/cards/{card_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/cards/{card_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "card_id" : cardId,
     })
@@ -1300,6 +1341,12 @@ func (me *CUSTOMERS_IMPL) DeleteCard (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1310,7 +1357,7 @@ func (me *CUSTOMERS_IMPL) DeleteCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1365,22 +1412,25 @@ func (me *CUSTOMERS_IMPL) DeleteCard (
 func (me *CUSTOMERS_IMPL) CreateAddress (
             customerId string,
             request *models_pkg.CreateAddressRequest) (*models_pkg.GetAddressResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/addresses"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/addresses"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1391,7 +1441,7 @@ func (me *CUSTOMERS_IMPL) CreateAddress (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1447,16 +1497,13 @@ func (me *CUSTOMERS_IMPL) CreateAddress (
 func (me *CUSTOMERS_IMPL) GetCard (
             customerId string,
             cardId string) (*models_pkg.GetCardResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/cards/{card_id}"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/cards/{card_id}"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "card_id" : cardId,
     })
@@ -1464,6 +1511,12 @@ func (me *CUSTOMERS_IMPL) GetCard (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1474,7 +1527,7 @@ func (me *CUSTOMERS_IMPL) GetCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1529,22 +1582,25 @@ func (me *CUSTOMERS_IMPL) GetCard (
 func (me *CUSTOMERS_IMPL) CreateCard (
             customerId string,
             request *models_pkg.CreateCardRequest) (*models_pkg.GetCardResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/cards"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/cards"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
     })
     if err != nil {
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1555,7 +1611,7 @@ func (me *CUSTOMERS_IMPL) CreateCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1619,14 +1675,17 @@ func (me *CUSTOMERS_IMPL) GetCustomers (
             size *int64,
             email *string,
             code *string) (*models_pkg.ListCustomersResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers"
+    //the endpoint path uri
+    _pathUrl := "/customers"
 
     //variable to hold errors
     var err error = nil
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
     //process optional query parameters
     _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
         "name" : name,
@@ -1650,7 +1709,7 @@ func (me *CUSTOMERS_IMPL) GetCustomers (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 
@@ -1705,16 +1764,13 @@ func (me *CUSTOMERS_IMPL) GetCustomers (
 func (me *CUSTOMERS_IMPL) RenewCard (
             customerId string,
             cardId string) (*models_pkg.GetCardResponse, error) {
-        //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + "/customers/{customer_id}/cards/{card_id}/renew"
+    //the endpoint path uri
+    _pathUrl := "/customers/{customer_id}/cards/{card_id}/renew"
 
     //variable to hold errors
     var err error = nil
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithTemplateParameters(_queryBuilder, map[string]interface{} {
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "customer_id" : customerId,
         "card_id" : cardId,
     })
@@ -1722,6 +1778,12 @@ func (me *CUSTOMERS_IMPL) RenewCard (
         //error in template param handling
         return nil, err
     }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
 
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
@@ -1732,7 +1794,7 @@ func (me *CUSTOMERS_IMPL) RenewCard (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.13.42",
+        "user-agent" : "MundiSDK - Go 0.13.43",
         "accept" : "application/json",
     }
 

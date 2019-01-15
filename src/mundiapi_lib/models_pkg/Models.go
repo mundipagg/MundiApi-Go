@@ -49,15 +49,6 @@ type ListUsagesResponse struct {
 }
 
 /*
- * Structure for the custom type UpdateSubscriptionPaymentMethodRequest
- */
-type UpdateSubscriptionPaymentMethodRequest struct {
-    PaymentMethod   string          `json:"payment_method" form:"payment_method"` //The new payment method
-    CardId          string          `json:"card_id" form:"card_id"` //Card id
-    Card            CreateCardRequest `json:"card" form:"card"` //Card data
-}
-
-/*
  * Structure for the custom type CreateCardOptionsRequest
  */
 type CreateCardOptionsRequest struct {
@@ -1991,4 +1982,14 @@ type CreateCardPaymentTokenRequest struct {
     Type            string          `json:"type" form:"type"` //The authentication type
     ApplePay        CreateApplePayRequest `json:"apple_pay" form:"apple_pay"` //The ApplePay authentication request
     GooglePay       CreateGooglePayRequest `json:"google_pay" form:"google_pay"` //The GooglePay authentication request
+}
+
+/*
+ * Structure for the custom type UpdateSubscriptionPaymentMethodRequest
+ */
+type UpdateSubscriptionPaymentMethodRequest struct {
+    PaymentMethod   string          `json:"payment_method" form:"payment_method"` //The new payment method
+    CardId          string          `json:"card_id" form:"card_id"` //Card id
+    Card            CreateCardRequest `json:"card" form:"card"` //Card data
+    CardToken       *string         `json:"card_token,omitempty" form:"card_token,omitempty"` //The Card Token
 }

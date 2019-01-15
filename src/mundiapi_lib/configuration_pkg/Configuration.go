@@ -9,13 +9,14 @@ package configuration_pkg
 
 
 type CONFIGURATION interface {
-        BasicAuthUserName()  string
-        BasicAuthPassword()  string
+        BasicAuthUserName() string
         SetBasicAuthUserName(basicAuthUserName   string)
+        BasicAuthPassword() string
         SetBasicAuthPassword(basicAuthPassword   string)
-}   
+}
+
 /*
- * Factory for the CONFIGURATION interaface returning CONFIGURATION_IMPL
+ * Factory for the CONFIGURATION interface returning CONFIGURATION_IMPL
  */
 func NewCONFIGURATION() CONFIGURATION{
     configuration := new(CONFIGURATION_IMPL)
