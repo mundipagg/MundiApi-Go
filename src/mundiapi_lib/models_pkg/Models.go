@@ -1063,6 +1063,7 @@ type GetInvoiceResponse struct {
     SeenAt          *time.Time      `json:"seen_at,omitempty" form:"seen_at,omitempty"` //TODO: Write general description for this field
     TotalDiscount   *int64          `json:"total_discount,omitempty" form:"total_discount,omitempty"` //Total discounted value
     TotalIncrement  *int64          `json:"total_increment,omitempty" form:"total_increment,omitempty"` //Total discounted value
+    SubscriptionId  string          `json:"subscription_id" form:"subscription_id"` //Subscription Id
 }
 
 /*
@@ -1982,6 +1983,13 @@ type CreateCardPaymentTokenRequest struct {
     Type            string          `json:"type" form:"type"` //The authentication type
     ApplePay        CreateApplePayRequest `json:"apple_pay" form:"apple_pay"` //The ApplePay authentication request
     GooglePay       CreateGooglePayRequest `json:"google_pay" form:"google_pay"` //The GooglePay authentication request
+}
+
+/*
+ * Structure for the custom type CreateInvoiceRequest
+ */
+type CreateInvoiceRequest struct {
+    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
 }
 
 /*
