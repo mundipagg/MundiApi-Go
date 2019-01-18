@@ -18,17 +18,13 @@ type INVOICES interface {
 
     GetInvoice (string) (*models_pkg.GetInvoiceResponse, error)
 
-    CreateInvoice (string, string) (*models_pkg.GetInvoiceResponse, error)
+    CreateInvoice (string, string, *models_pkg.CreateInvoiceRequest) (*models_pkg.GetInvoiceResponse, error)
 
     UpdateInvoiceStatus (string, *models_pkg.UpdateInvoiceStatusRequest) (*models_pkg.GetInvoiceResponse, error)
 
     GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time) (*models_pkg.ListInvoicesResponse, error)
 
     UpdateInvoiceMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetInvoiceResponse, error)
-
-    RemoveInvoiceUsage (string, string) (*models_pkg.GetInvoiceResponse, error)
-
-    RemoveInvoiceUsages (string) (*models_pkg.GetInvoiceResponse, error)
 }
 
 /*
