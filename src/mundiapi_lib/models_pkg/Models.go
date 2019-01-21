@@ -1626,6 +1626,8 @@ type UpdateChargePaymentMethodRequest struct {
     DebitCard           CreateDebitCardPaymentRequest `json:"debit_card" form:"debit_card"` //Debit card data
     Boleto              CreateBoletoPaymentRequest `json:"boleto" form:"boleto"` //Boleto data
     Voucher             CreateVoucherPaymentRequest `json:"voucher" form:"voucher"` //Voucher data
+    Cash                CreateCashPaymentRequest `json:"cash" form:"cash"` //Cash data
+    BankTransfer        CreateBankTransferPaymentRequest `json:"bank_transfer" form:"bank_transfer"` //Bank Transfer data
 }
 
 /*
@@ -1799,6 +1801,7 @@ type CreateShippingRequest struct {
     Address                 CreateAddressRequest `json:"address" form:"address"` //Address data
     MaxDeliveryDate         *time.Time      `json:"max_delivery_date,omitempty" form:"max_delivery_date,omitempty"` //Data máxima de entrega
     EstimatedDeliveryDate   *time.Time      `json:"estimated_delivery_date,omitempty" form:"estimated_delivery_date,omitempty"` //Prazo estimado de entrega
+    Type                    string          `json:"type" form:"type"` //Shipping type
 }
 
 /*
@@ -1812,6 +1815,7 @@ type GetShippingResponse struct {
     Address                 GetAddressResponse `json:"address" form:"address"` //TODO: Write general description for this field
     MaxDeliveryDate         *time.Time      `json:"max_delivery_date,omitempty" form:"max_delivery_date,omitempty"` //Data máxima de entrega
     EstimatedDeliveryDate   *time.Time      `json:"estimated_delivery_date,omitempty" form:"estimated_delivery_date,omitempty"` //Prazo estimado de entrega
+    Type                    string          `json:"type" form:"type"` //Shipping Type
 }
 
 /*
