@@ -506,17 +506,6 @@ type UpdateChargeCardRequest struct {
 }
 
 /*
- * Structure for the custom type GetPeriodResponse
- */
-type GetPeriodResponse struct {
-    StartAt         *time.Time      `json:"start_at" form:"start_at"` //TODO: Write general description for this field
-    EndAt           *time.Time      `json:"end_at" form:"end_at"` //TODO: Write general description for this field
-    Id              string          `json:"id" form:"id"` //TODO: Write general description for this field
-    BillingAt       *time.Time      `json:"billing_at" form:"billing_at"` //TODO: Write general description for this field
-    Subscription    GetSubscriptionResponse `json:"subscription" form:"subscription"` //TODO: Write general description for this field
-}
-
-/*
  * Structure for the custom type GetPlanItemResponse
  */
 type GetPlanItemResponse struct {
@@ -1495,6 +1484,22 @@ type ListUsagesDetailsResponse struct {
 }
 
 /*
+ * Structure for the custom type GetPeriodResponse
+ */
+type GetPeriodResponse struct {
+    StartAt         *time.Time      `json:"start_at" form:"start_at"` //TODO: Write general description for this field
+    EndAt           *time.Time      `json:"end_at" form:"end_at"` //TODO: Write general description for this field
+    Id              string          `json:"id" form:"id"` //TODO: Write general description for this field
+    BillingAt       *time.Time      `json:"billing_at" form:"billing_at"` //TODO: Write general description for this field
+    Subscription    GetSubscriptionResponse `json:"subscription" form:"subscription"` //TODO: Write general description for this field
+    Status          string          `json:"status" form:"status"` //TODO: Write general description for this field
+    Duration        int64           `json:"duration" form:"duration"` //TODO: Write general description for this field
+    CreatedAt       string          `json:"created_at" form:"created_at"` //TODO: Write general description for this field
+    UpdatedAt       string          `json:"updated_at" form:"updated_at"` //TODO: Write general description for this field
+    Cycle           int64           `json:"cycle" form:"cycle"` //TODO: Write general description for this field
+}
+
+/*
  * Structure for the custom type GetCardResponse
  */
 type GetCardResponse struct {
@@ -2004,4 +2009,12 @@ type UpdateSubscriptionPaymentMethodRequest struct {
     CardId          string          `json:"card_id" form:"card_id"` //Card id
     Card            CreateCardRequest `json:"card" form:"card"` //Card data
     CardToken       *string         `json:"card_token,omitempty" form:"card_token,omitempty"` //The Card Token
+}
+
+/*
+ * Structure for the custom type ListCyclesResponse
+ */
+type ListCyclesResponse struct {
+    Data            GetPeriodResponse `json:"data" form:"data"` //The subscription cycles objects
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
 }

@@ -77,6 +77,10 @@ type SUBSCRIPTIONS interface {
     UpdateCurrentCycleEndDate (string, *models_pkg.UpdateCurrentCycleEndDateRequest) (*models_pkg.GetSubscriptionItemResponse, error)
 
     UpdateCurrentCycleStatus (string, *models_pkg.UpdateCurrentCycleStatusRequest) (error)
+
+    GetSubscriptionCycles (string, string, string) (*models_pkg.ListCyclesResponse, error)
+
+    GetSubscriptionCycleById (string, string) (*models_pkg.GetPeriodResponse, error)
 }
 
 /*

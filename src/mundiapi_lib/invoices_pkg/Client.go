@@ -58,7 +58,7 @@ func (me *INVOICES_IMPL) CancelInvoice (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.1",
+        "user-agent" : "MundiSDK - Go 0.14.2",
         "accept" : "application/json",
     }
 
@@ -140,7 +140,7 @@ func (me *INVOICES_IMPL) GetInvoice (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.1",
+        "user-agent" : "MundiSDK - Go 0.14.2",
         "accept" : "application/json",
     }
 
@@ -227,7 +227,7 @@ func (me *INVOICES_IMPL) CreateInvoice (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.1",
+        "user-agent" : "MundiSDK - Go 0.14.2",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -312,7 +312,7 @@ func (me *INVOICES_IMPL) UpdateInvoiceStatus (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.1",
+        "user-agent" : "MundiSDK - Go 0.14.2",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -422,7 +422,7 @@ func (me *INVOICES_IMPL) GetInvoices (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.1",
+        "user-agent" : "MundiSDK - Go 0.14.2",
         "accept" : "application/json",
     }
 
@@ -506,7 +506,7 @@ func (me *INVOICES_IMPL) UpdateInvoiceMetadata (
 
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.1",
+        "user-agent" : "MundiSDK - Go 0.14.2",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
