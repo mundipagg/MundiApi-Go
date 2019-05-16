@@ -10,10 +10,10 @@ package subscriptions_pkg
 import(
 	"time"
 	"encoding/json"
-	"mundiapi_lib/models_pkg"
 	"github.com/apimatic/unirest-go"
 	"mundiapi_lib/apihelper_pkg"
 	"mundiapi_lib/configuration_pkg"
+	"mundiapi_lib/models_pkg"
 )
 /*
  * Client structure as interface implementation
@@ -58,17 +58,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -89,7 +88,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -142,10 +141,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -153,7 +151,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -174,7 +172,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -227,10 +225,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -238,7 +235,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -259,7 +256,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -315,10 +312,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -326,7 +322,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem (
     //prepare API request
     _request := unirest.PutWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -347,7 +343,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -403,10 +399,9 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -414,7 +409,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -435,7 +430,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -486,17 +481,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -517,7 +511,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -570,10 +564,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -581,7 +574,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -602,7 +595,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -644,10 +637,9 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscription (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -655,7 +647,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscription (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -676,7 +668,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscription (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -729,10 +721,9 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -740,7 +731,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -761,7 +752,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -814,10 +805,9 @@ func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -825,7 +815,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -846,7 +836,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -900,17 +890,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -931,7 +920,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -984,10 +973,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -995,7 +983,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1016,7 +1004,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1070,17 +1058,16 @@ func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1101,7 +1088,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1185,17 +1172,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1216,7 +1202,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1269,10 +1255,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1280,7 +1265,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1301,7 +1286,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1355,17 +1340,16 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1386,7 +1370,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1443,17 +1427,16 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1474,7 +1457,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1528,17 +1511,16 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1559,7 +1541,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1612,10 +1594,9 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1623,7 +1604,7 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1644,7 +1625,7 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1698,17 +1679,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscountById (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1729,7 +1709,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscountById (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1794,17 +1774,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1825,7 +1804,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1878,10 +1857,9 @@ func (me *SUBSCRIPTIONS_IMPL) CreateIncrement (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1889,7 +1867,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateIncrement (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1910,7 +1888,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateIncrement (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1975,17 +1953,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2006,7 +1983,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2060,17 +2037,16 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2091,7 +2067,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2165,17 +2141,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2196,7 +2171,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2270,17 +2245,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2301,7 +2275,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2384,17 +2358,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2415,7 +2388,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2468,10 +2441,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2479,7 +2451,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2500,7 +2472,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2553,10 +2525,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2564,7 +2535,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2585,7 +2556,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2638,10 +2609,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2649,7 +2619,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2670,7 +2640,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2692,13 +2662,13 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
  * TODO: type endpoint description here
  * @param    string                                              subscriptionId      parameter: Required
  * @param    *models_pkg.UpdateCurrentCycleEndDateRequest        request             parameter: Required
- * @return	Returns the *models_pkg.GetSubscriptionItemResponse response from the API call
+ * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
  */
-func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
+func (me *SUBSCRIPTIONS_IMPL) UpdateLatestPeriodEndAt (
             subscriptionId string,
-            request *models_pkg.UpdateCurrentCycleEndDateRequest) (*models_pkg.GetSubscriptionItemResponse, error) {
+            request *models_pkg.UpdateCurrentCycleEndDateRequest) (*models_pkg.GetSubscriptionResponse, error) {
     //the endpoint path uri
-    _pathUrl := "/subscriptions/{subscription_id}/cycle-end-date"
+    _pathUrl := "/subscriptions/{subscription_id}/periods/latest/end-at"
 
     //variable to hold errors
     var err error = nil
@@ -2723,10 +2693,9 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -2734,7 +2703,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2755,14 +2724,14 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleEndDate (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
     }
 
     //returning the response
-    var retVal *models_pkg.GetSubscriptionItemResponse = &models_pkg.GetSubscriptionItemResponse{}
+    var retVal *models_pkg.GetSubscriptionResponse = &models_pkg.GetSubscriptionResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -2808,17 +2777,16 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleStatus (
         //error in url validation or cleaning
         return err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "content-type" : "application/json; charset=utf-8",
     }
 
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return err
@@ -2839,7 +2807,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleStatus (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return err
@@ -2897,17 +2865,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycles (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -2928,7 +2895,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycles (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -2982,17 +2949,16 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycleById (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -3013,7 +2979,88 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycleById (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.GetPeriodResponse = &models_pkg.GetPeriodResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * TODO: type endpoint description here
+ * @param    string        subscriptionId      parameter: Required
+ * @return	Returns the *models_pkg.GetPeriodResponse response from the API call
+ */
+func (me *SUBSCRIPTIONS_IMPL) RenewSubscription (
+            subscriptionId string) (*models_pkg.GetPeriodResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{subscription_id}/cycles"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "subscription_id" : subscriptionId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 0.15.1",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.PostWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err

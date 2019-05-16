@@ -183,16 +183,13 @@ type GetOrderResponse struct {
 }
 
 /*
- * Structure for the custom type CreateChargeRequest
+ * Structure for the custom type GetAntifraudResponse
  */
-type CreateChargeRequest struct {
-    Code            string          `json:"code" form:"code"` //Code
-    Amount          int64           `json:"amount" form:"amount"` //The amount of the charge, in cents
-    CustomerId      string          `json:"customer_id" form:"customer_id"` //The customer's id
-    Customer        CreateCustomerRequest `json:"customer" form:"customer"` //Customer data
-    Payment         CreatePaymentRequest `json:"payment" form:"payment"` //Payment data
-    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
-    DueAt           *time.Time      `json:"due_at,omitempty" form:"due_at,omitempty"` //The charge due date
+type GetAntifraudResponse struct {
+    Status          string          `json:"status" form:"status"` //TODO: Write general description for this field
+    ReturnCode      string          `json:"return_code" form:"return_code"` //TODO: Write general description for this field
+    ReturnMessage   string          `json:"return_message" form:"return_message"` //TODO: Write general description for this field
+    ProviderName    string          `json:"provider_name" form:"provider_name"` //TODO: Write general description for this field
 }
 
 /*
@@ -1332,6 +1329,7 @@ type CreateSubscriptionRequest struct {
     Quantity               *int64          `json:"quantity,omitempty" form:"quantity,omitempty"` //Quantity
     BoletoDueDays          *int64          `json:"boleto_due_days,omitempty" form:"boleto_due_days,omitempty"` //Days until boleto expires
     Increments             []*CreateIncrementRequest `json:"increments" form:"increments"` //Increments
+    Period                 CreatePeriodRequest `json:"period,omitempty" form:"period,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -1473,6 +1471,7 @@ type CreateOrderRequest struct {
     Device            CreateDeviceRequest `json:"device,omitempty" form:"device,omitempty"` //Device's informations
     Closed            bool            `json:"closed" form:"closed"` //TODO: Write general description for this field
     Currency          *string         `json:"currency,omitempty" form:"currency,omitempty"` //Currency
+    Antifraud         CreateAntifraudRequest `json:"antifraud" form:"antifraud"` //TODO: Write general description for this field
 }
 
 /*
@@ -1680,19 +1679,20 @@ type GetDebitCardTransactionResponse struct {
  * Structure for the custom type GetTransactionResponse
  */
 type GetTransactionResponse struct {
-    GatewayId        string          `json:"gateway_id" form:"gateway_id"` //Gateway transaction id
-    Amount           int64           `json:"amount" form:"amount"` //Amount in cents
-    Status           string          `json:"status" form:"status"` //Transaction status
-    Success          bool            `json:"success" form:"success"` //Indicates if the transaction ocurred successfuly
-    CreatedAt        *time.Time      `json:"created_at" form:"created_at"` //Creation date
-    UpdatedAt        *time.Time      `json:"updated_at" form:"updated_at"` //Last update date
-    AttemptCount     int64           `json:"attempt_count" form:"attempt_count"` //Number of attempts tried
-    MaxAttempts      int64           `json:"max_attempts" form:"max_attempts"` //Max attempts
-    Splits           []*GetSplitResponse `json:"splits" form:"splits"` //Splits
-    NextAttempt      *time.Time      `json:"next_attempt,omitempty" form:"next_attempt,omitempty"` //Date and time of the next attempt
-    TransactionType  *string         `json:"transaction_type,omitempty" form:"transaction_type,omitempty"` //TODO: Write general description for this field
-    Id               string          `json:"id" form:"id"` //Código da transação
-    GatewayResponse  GetGatewayResponseResponse `json:"gateway_response" form:"gateway_response"` //The Gateway Response
+    GatewayId          string          `json:"gateway_id" form:"gateway_id"` //Gateway transaction id
+    Amount             int64           `json:"amount" form:"amount"` //Amount in cents
+    Status             string          `json:"status" form:"status"` //Transaction status
+    Success            bool            `json:"success" form:"success"` //Indicates if the transaction ocurred successfuly
+    CreatedAt          *time.Time      `json:"created_at" form:"created_at"` //Creation date
+    UpdatedAt          *time.Time      `json:"updated_at" form:"updated_at"` //Last update date
+    AttemptCount       int64           `json:"attempt_count" form:"attempt_count"` //Number of attempts tried
+    MaxAttempts        int64           `json:"max_attempts" form:"max_attempts"` //Max attempts
+    Splits             []*GetSplitResponse `json:"splits" form:"splits"` //Splits
+    NextAttempt        *time.Time      `json:"next_attempt,omitempty" form:"next_attempt,omitempty"` //Date and time of the next attempt
+    TransactionType    *string         `json:"transaction_type,omitempty" form:"transaction_type,omitempty"` //TODO: Write general description for this field
+    Id                 string          `json:"id" form:"id"` //Código da transação
+    GatewayResponse    GetGatewayResponseResponse `json:"gateway_response" form:"gateway_response"` //The Gateway Response
+    AntifraudResponse  GetAntifraudResponse `json:"antifraud_response" form:"antifraud_response"` //TODO: Write general description for this field
 }
 
 /*
@@ -1701,6 +1701,13 @@ type GetTransactionResponse struct {
 type CreateCashPaymentRequest struct {
     Description     string          `json:"description" form:"description"` //Description
     Confirm         bool            `json:"confirm" form:"confirm"` //Indicates whether cash collection will be confirmed in the act of creation
+}
+
+/*
+ * Structure for the custom type CreatePeriodRequest
+ */
+type CreatePeriodRequest struct {
+    EndAt           *time.Time      `json:"end_at,omitempty" form:"end_at,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -1916,7 +1923,7 @@ type CreateSplitOptionsRequest struct {
  * Structure for the custom type UpdateCurrentCycleEndDateRequest
  */
 type UpdateCurrentCycleEndDateRequest struct {
-    EndAt           *time.Time      `json:"end_at" form:"end_at"` //Current cycle end date
+    EndAt           *time.Time      `json:"end_at,omitempty" form:"end_at,omitempty"` //Current cycle end date
 }
 
 /*
@@ -2017,4 +2024,33 @@ type UpdateSubscriptionPaymentMethodRequest struct {
 type ListCyclesResponse struct {
     Data            GetPeriodResponse `json:"data" form:"data"` //The subscription cycles objects
     Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
+}
+
+/*
+ * Structure for the custom type CreateAntifraudRequest
+ */
+type CreateAntifraudRequest struct {
+    Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
+    Clearsale       ClearSaleRequest `json:"clearsale" form:"clearsale"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type ClearSaleRequest
+ */
+type ClearSaleRequest struct {
+    CustomSla       int64           `json:"custom_sla" form:"custom_sla"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type CreateChargeRequest
+ */
+type CreateChargeRequest struct {
+    Code            string          `json:"code" form:"code"` //Code
+    Amount          int64           `json:"amount" form:"amount"` //The amount of the charge, in cents
+    CustomerId      string          `json:"customer_id" form:"customer_id"` //The customer's id
+    Customer        CreateCustomerRequest `json:"customer" form:"customer"` //Customer data
+    Payment         CreatePaymentRequest `json:"payment" form:"payment"` //Payment data
+    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
+    DueAt           *time.Time      `json:"due_at,omitempty" form:"due_at,omitempty"` //The charge due date
+    Antifraud       CreateAntifraudRequest `json:"antifraud" form:"antifraud"` //TODO: Write general description for this field
 }

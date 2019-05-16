@@ -47,7 +47,7 @@ func (me *MUNDIAPI_IMPL) Configuration() configuration_pkg.CONFIGURATION {
      * Access to Subscriptions controller
      * @return Returns the Subscriptions() instance
 */
-func (me * MUNDIAPI_IMPL) Subscriptions() subscriptions_pkg.SUBSCRIPTIONS {
+func (me *MUNDIAPI_IMPL) Subscriptions() subscriptions_pkg.SUBSCRIPTIONS {
     if(me.subscriptions) == nil {
         me.subscriptions = subscriptions_pkg.NewSUBSCRIPTIONS(me.config)
     }
@@ -57,7 +57,7 @@ func (me * MUNDIAPI_IMPL) Subscriptions() subscriptions_pkg.SUBSCRIPTIONS {
      * Access to Orders controller
      * @return Returns the Orders() instance
 */
-func (me * MUNDIAPI_IMPL) Orders() orders_pkg.ORDERS {
+func (me *MUNDIAPI_IMPL) Orders() orders_pkg.ORDERS {
     if(me.orders) == nil {
         me.orders = orders_pkg.NewORDERS(me.config)
     }
@@ -67,7 +67,7 @@ func (me * MUNDIAPI_IMPL) Orders() orders_pkg.ORDERS {
      * Access to Plans controller
      * @return Returns the Plans() instance
 */
-func (me * MUNDIAPI_IMPL) Plans() plans_pkg.PLANS {
+func (me *MUNDIAPI_IMPL) Plans() plans_pkg.PLANS {
     if(me.plans) == nil {
         me.plans = plans_pkg.NewPLANS(me.config)
     }
@@ -77,7 +77,7 @@ func (me * MUNDIAPI_IMPL) Plans() plans_pkg.PLANS {
      * Access to Invoices controller
      * @return Returns the Invoices() instance
 */
-func (me * MUNDIAPI_IMPL) Invoices() invoices_pkg.INVOICES {
+func (me *MUNDIAPI_IMPL) Invoices() invoices_pkg.INVOICES {
     if(me.invoices) == nil {
         me.invoices = invoices_pkg.NewINVOICES(me.config)
     }
@@ -87,7 +87,7 @@ func (me * MUNDIAPI_IMPL) Invoices() invoices_pkg.INVOICES {
      * Access to Customers controller
      * @return Returns the Customers() instance
 */
-func (me * MUNDIAPI_IMPL) Customers() customers_pkg.CUSTOMERS {
+func (me *MUNDIAPI_IMPL) Customers() customers_pkg.CUSTOMERS {
     if(me.customers) == nil {
         me.customers = customers_pkg.NewCUSTOMERS(me.config)
     }
@@ -97,7 +97,7 @@ func (me * MUNDIAPI_IMPL) Customers() customers_pkg.CUSTOMERS {
      * Access to Charges controller
      * @return Returns the Charges() instance
 */
-func (me * MUNDIAPI_IMPL) Charges() charges_pkg.CHARGES {
+func (me *MUNDIAPI_IMPL) Charges() charges_pkg.CHARGES {
     if(me.charges) == nil {
         me.charges = charges_pkg.NewCHARGES(me.config)
     }
@@ -107,7 +107,7 @@ func (me * MUNDIAPI_IMPL) Charges() charges_pkg.CHARGES {
      * Access to Recipients controller
      * @return Returns the Recipients() instance
 */
-func (me * MUNDIAPI_IMPL) Recipients() recipients_pkg.RECIPIENTS {
+func (me *MUNDIAPI_IMPL) Recipients() recipients_pkg.RECIPIENTS {
     if(me.recipients) == nil {
         me.recipients = recipients_pkg.NewRECIPIENTS(me.config)
     }
@@ -117,7 +117,7 @@ func (me * MUNDIAPI_IMPL) Recipients() recipients_pkg.RECIPIENTS {
      * Access to Tokens controller
      * @return Returns the Tokens() instance
 */
-func (me * MUNDIAPI_IMPL) Tokens() tokens_pkg.TOKENS {
+func (me *MUNDIAPI_IMPL) Tokens() tokens_pkg.TOKENS {
     if(me.tokens) == nil {
         me.tokens = tokens_pkg.NewTOKENS(me.config)
     }
@@ -127,7 +127,7 @@ func (me * MUNDIAPI_IMPL) Tokens() tokens_pkg.TOKENS {
      * Access to Sellers controller
      * @return Returns the Sellers() instance
 */
-func (me * MUNDIAPI_IMPL) Sellers() sellers_pkg.SELLERS {
+func (me *MUNDIAPI_IMPL) Sellers() sellers_pkg.SELLERS {
     if(me.sellers) == nil {
         me.sellers = sellers_pkg.NewSELLERS(me.config)
     }
@@ -137,9 +137,10 @@ func (me * MUNDIAPI_IMPL) Sellers() sellers_pkg.SELLERS {
      * Access to Transactions controller
      * @return Returns the Transactions() instance
 */
-func (me * MUNDIAPI_IMPL) Transactions() transactions_pkg.TRANSACTIONS {
+func (me *MUNDIAPI_IMPL) Transactions() transactions_pkg.TRANSACTIONS {
     if(me.transactions) == nil {
         me.transactions = transactions_pkg.NewTRANSACTIONS(me.config)
     }
     return me.transactions
 }
+

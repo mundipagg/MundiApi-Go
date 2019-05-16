@@ -7,8 +7,8 @@
 package recipients_pkg
 
 import "time"
-import "mundiapi_lib/models_pkg"
 import "mundiapi_lib/configuration_pkg"
+import "mundiapi_lib/models_pkg"
 
 /*
  * Interface for the RECIPIENTS_IMPL

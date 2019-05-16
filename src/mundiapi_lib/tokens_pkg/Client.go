@@ -9,10 +9,10 @@ package tokens_pkg
 
 import(
 	"encoding/json"
-	"mundiapi_lib/models_pkg"
 	"github.com/apimatic/unirest-go"
 	"mundiapi_lib/apihelper_pkg"
 	"mundiapi_lib/configuration_pkg"
+	"mundiapi_lib/models_pkg"
 )
 /*
  * Client structure as interface implementation
@@ -57,17 +57,16 @@ func (me *TOKENS_IMPL) GetToken (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.Get(_queryBuilder, headers)
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -88,7 +87,7 @@ func (me *TOKENS_IMPL) GetToken (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -141,10 +140,9 @@ func (me *TOKENS_IMPL) CreateToken (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -152,7 +150,7 @@ func (me *TOKENS_IMPL) CreateToken (
     //prepare API request
     _request := unirest.Post(_queryBuilder, headers, request)
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -173,7 +171,7 @@ func (me *TOKENS_IMPL) CreateToken (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
