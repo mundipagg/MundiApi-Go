@@ -6,8 +6,8 @@
 
 package customers_pkg
 
-import "mundiapi_lib/models_pkg"
 import "mundiapi_lib/configuration_pkg"
+import "mundiapi_lib/models_pkg"
 
 /*
  * Interface for the CUSTOMERS_IMPL

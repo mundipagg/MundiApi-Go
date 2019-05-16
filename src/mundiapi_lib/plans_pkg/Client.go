@@ -10,10 +10,10 @@ package plans_pkg
 import(
 	"time"
 	"encoding/json"
-	"mundiapi_lib/models_pkg"
 	"github.com/apimatic/unirest-go"
 	"mundiapi_lib/apihelper_pkg"
 	"mundiapi_lib/configuration_pkg"
+	"mundiapi_lib/models_pkg"
 )
 /*
  * Client structure as interface implementation
@@ -57,10 +57,9 @@ func (me *PLANS_IMPL) CreatePlanItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -68,7 +67,7 @@ func (me *PLANS_IMPL) CreatePlanItem (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -89,7 +88,7 @@ func (me *PLANS_IMPL) CreatePlanItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -145,10 +144,9 @@ func (me *PLANS_IMPL) UpdatePlanItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -156,7 +154,7 @@ func (me *PLANS_IMPL) UpdatePlanItem (
     //prepare API request
     _request := unirest.PutWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -177,7 +175,7 @@ func (me *PLANS_IMPL) UpdatePlanItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -228,17 +226,16 @@ func (me *PLANS_IMPL) GetPlan (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -259,7 +256,7 @@ func (me *PLANS_IMPL) GetPlan (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -310,17 +307,16 @@ func (me *PLANS_IMPL) DeletePlan (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -341,7 +337,7 @@ func (me *PLANS_IMPL) DeletePlan (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -394,10 +390,9 @@ func (me *PLANS_IMPL) UpdatePlan (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -405,7 +400,7 @@ func (me *PLANS_IMPL) UpdatePlan (
     //prepare API request
     _request := unirest.PutWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -426,7 +421,7 @@ func (me *PLANS_IMPL) UpdatePlan (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -468,10 +463,9 @@ func (me *PLANS_IMPL) CreatePlan (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -479,7 +473,7 @@ func (me *PLANS_IMPL) CreatePlan (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -500,7 +494,7 @@ func (me *PLANS_IMPL) CreatePlan (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -569,17 +563,16 @@ func (me *PLANS_IMPL) GetPlans (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -600,7 +593,7 @@ func (me *PLANS_IMPL) GetPlans (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -653,10 +646,9 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -664,7 +656,7 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -685,7 +677,7 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -739,17 +731,16 @@ func (me *PLANS_IMPL) GetPlanItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -770,7 +761,7 @@ func (me *PLANS_IMPL) GetPlanItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -824,17 +815,16 @@ func (me *PLANS_IMPL) DeletePlanItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -855,7 +845,7 @@ func (me *PLANS_IMPL) DeletePlanItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err

@@ -10,10 +10,10 @@ package orders_pkg
 import(
 	"time"
 	"encoding/json"
-	"mundiapi_lib/models_pkg"
 	"github.com/apimatic/unirest-go"
 	"mundiapi_lib/apihelper_pkg"
 	"mundiapi_lib/configuration_pkg"
+	"mundiapi_lib/models_pkg"
 )
 /*
  * Client structure as interface implementation
@@ -55,17 +55,16 @@ func (me *ORDERS_IMPL) GetOrder (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -86,7 +85,7 @@ func (me *ORDERS_IMPL) GetOrder (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -128,10 +127,9 @@ func (me *ORDERS_IMPL) CreateOrder (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -139,7 +137,7 @@ func (me *ORDERS_IMPL) CreateOrder (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -160,7 +158,7 @@ func (me *ORDERS_IMPL) CreateOrder (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -229,17 +227,16 @@ func (me *ORDERS_IMPL) GetOrders (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -260,7 +257,7 @@ func (me *ORDERS_IMPL) GetOrders (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -313,10 +310,9 @@ func (me *ORDERS_IMPL) UpdateOrderMetadata (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -324,7 +320,7 @@ func (me *ORDERS_IMPL) UpdateOrderMetadata (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -345,7 +341,7 @@ func (me *ORDERS_IMPL) UpdateOrderMetadata (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -396,17 +392,16 @@ func (me *ORDERS_IMPL) DeleteAllOrderItems (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -427,7 +422,7 @@ func (me *ORDERS_IMPL) DeleteAllOrderItems (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -483,10 +478,9 @@ func (me *ORDERS_IMPL) UpdateOrderItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -494,7 +488,7 @@ func (me *ORDERS_IMPL) UpdateOrderItem (
     //prepare API request
     _request := unirest.PutWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -515,7 +509,7 @@ func (me *ORDERS_IMPL) UpdateOrderItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -569,17 +563,16 @@ func (me *ORDERS_IMPL) DeleteOrderItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -600,7 +593,7 @@ func (me *ORDERS_IMPL) DeleteOrderItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -653,10 +646,9 @@ func (me *ORDERS_IMPL) CreateOrderItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -664,7 +656,7 @@ func (me *ORDERS_IMPL) CreateOrderItem (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -685,7 +677,7 @@ func (me *ORDERS_IMPL) CreateOrderItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -739,17 +731,16 @@ func (me *ORDERS_IMPL) GetOrderItem (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -770,7 +761,7 @@ func (me *ORDERS_IMPL) GetOrderItem (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -823,10 +814,9 @@ func (me *ORDERS_IMPL) UpdateOrderStatus (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -834,7 +824,7 @@ func (me *ORDERS_IMPL) UpdateOrderStatus (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -855,7 +845,7 @@ func (me *ORDERS_IMPL) UpdateOrderStatus (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err

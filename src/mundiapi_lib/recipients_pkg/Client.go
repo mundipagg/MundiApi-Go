@@ -10,10 +10,10 @@ package recipients_pkg
 import(
 	"time"
 	"encoding/json"
-	"mundiapi_lib/models_pkg"
 	"github.com/apimatic/unirest-go"
 	"mundiapi_lib/apihelper_pkg"
 	"mundiapi_lib/configuration_pkg"
+	"mundiapi_lib/models_pkg"
 )
 /*
  * Client structure as interface implementation
@@ -57,10 +57,9 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -68,7 +67,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -89,7 +88,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -143,17 +142,16 @@ func (me *RECIPIENTS_IMPL) GetTransfer (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -174,7 +172,7 @@ func (me *RECIPIENTS_IMPL) GetTransfer (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -248,17 +246,16 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -279,7 +276,7 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -332,10 +329,9 @@ func (me *RECIPIENTS_IMPL) CreateAnticipation (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -343,7 +339,7 @@ func (me *RECIPIENTS_IMPL) CreateAnticipation (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -364,7 +360,7 @@ func (me *RECIPIENTS_IMPL) CreateAnticipation (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -418,17 +414,16 @@ func (me *RECIPIENTS_IMPL) GetAnticipation (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -449,7 +444,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipation (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -514,17 +509,16 @@ func (me *RECIPIENTS_IMPL) GetAnticipationLimits (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -545,7 +539,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipationLimits (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -628,17 +622,16 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -659,7 +652,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -712,10 +705,9 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -723,7 +715,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
     //prepare API request
     _request := unirest.PutWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -744,7 +736,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -797,10 +789,9 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -808,7 +799,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -829,7 +820,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -880,17 +871,16 @@ func (me *RECIPIENTS_IMPL) GetRecipient (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -911,7 +901,7 @@ func (me *RECIPIENTS_IMPL) GetRecipient (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -965,17 +955,16 @@ func (me *RECIPIENTS_IMPL) GetRecipients (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -996,7 +985,7 @@ func (me *RECIPIENTS_IMPL) GetRecipients (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1047,17 +1036,16 @@ func (me *RECIPIENTS_IMPL) GetBalance (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
     }
 
     //prepare API request
     _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1078,7 +1066,7 @@ func (me *RECIPIENTS_IMPL) GetBalance (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1131,10 +1119,9 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1142,7 +1129,7 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1163,7 +1150,7 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1205,10 +1192,9 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1216,7 +1202,7 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
     //prepare API request
     _request := unirest.PostWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1237,7 +1223,7 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err
@@ -1290,10 +1276,9 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
         //error in url validation or cleaning
         return nil, err
     }
-
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.14.2",
+        "user-agent" : "MundiSDK - Go 0.15.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1301,7 +1286,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
     //prepare API request
     _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request);
+    _response, err := unirest.AsString(_request,false);
     if err != nil {
         //error in API invocation
         return nil, err
@@ -1322,7 +1307,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
         err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
     } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
             err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-        }
+    }
     if(err != nil) {
         //error detected in status code validation
         return nil, err

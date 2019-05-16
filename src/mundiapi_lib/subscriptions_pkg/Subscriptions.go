@@ -7,8 +7,8 @@
 package subscriptions_pkg
 
 import "time"
-import "mundiapi_lib/models_pkg"
 import "mundiapi_lib/configuration_pkg"
+import "mundiapi_lib/models_pkg"
 
 /*
  * Interface for the SUBSCRIPTIONS_IMPL
@@ -74,13 +74,15 @@ type SUBSCRIPTIONS interface {
 
     UpdateSubscriptionBillingDate (string, *models_pkg.UpdateSubscriptionBillingDateRequest) (*models_pkg.GetSubscriptionResponse, error)
 
-    UpdateCurrentCycleEndDate (string, *models_pkg.UpdateCurrentCycleEndDateRequest) (*models_pkg.GetSubscriptionItemResponse, error)
+    UpdateLatestPeriodEndAt (string, *models_pkg.UpdateCurrentCycleEndDateRequest) (*models_pkg.GetSubscriptionResponse, error)
 
     UpdateCurrentCycleStatus (string, *models_pkg.UpdateCurrentCycleStatusRequest) (error)
 
     GetSubscriptionCycles (string, string, string) (*models_pkg.ListCyclesResponse, error)
 
     GetSubscriptionCycleById (string, string) (*models_pkg.GetPeriodResponse, error)
+
+    RenewSubscription (string) (*models_pkg.GetPeriodResponse, error)
 }
 
 /*

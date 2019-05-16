@@ -7,8 +7,8 @@
 package invoices_pkg
 
 import "time"
-import "mundiapi_lib/models_pkg"
 import "mundiapi_lib/configuration_pkg"
+import "mundiapi_lib/models_pkg"
 
 /*
  * Interface for the INVOICES_IMPL
@@ -25,6 +25,8 @@ type INVOICES interface {
     GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time) (*models_pkg.ListInvoicesResponse, error)
 
     UpdateInvoiceMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetInvoiceResponse, error)
+
+    GetPartialInvoice (string) (*models_pkg.GetInvoiceResponse, error)
 }
 
 /*
