@@ -17,8 +17,6 @@ type CUSTOMERS interface {
 
     UpdateAddress (string, string, *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error)
 
-    CreateCustomer (*models_pkg.CreateCustomerRequest) (*models_pkg.GetCustomerResponse, error)
-
     GetCustomer (string) (*models_pkg.GetCustomerResponse, error)
 
     GetAccessTokens (string, *int64, *int64) (*models_pkg.ListAccessTokensResponse, error)
@@ -54,6 +52,8 @@ type CUSTOMERS interface {
     GetCustomers (*string, *string, *int64, *int64, *string, *string) (*models_pkg.ListCustomersResponse, error)
 
     RenewCard (string, string) (*models_pkg.GetCardResponse, error)
+
+    CreateCustomer (*models_pkg.CreateCustomerRequest) (*models_pkg.GetCustomerResponse, error)
 }
 
 /*
