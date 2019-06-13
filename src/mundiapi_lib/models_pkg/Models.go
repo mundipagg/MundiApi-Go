@@ -666,21 +666,6 @@ type ListAccessTokensResponse struct {
 }
 
 /*
- * Structure for the custom type CreateCustomerRequest
- */
-type CreateCustomerRequest struct {
-    Name            string          `json:"name" form:"name"` //Name
-    Email           string          `json:"email" form:"email"` //Email
-    Document        string          `json:"document" form:"document"` //Document number. Only numbers, no special characters.
-    Type            string          `json:"type" form:"type"` //Person type. Can be either 'individual' or 'company'
-    Address         CreateAddressRequest `json:"address" form:"address"` //The customer's address
-    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
-    Phones          CreatePhonesRequest `json:"phones" form:"phones"` //TODO: Write general description for this field
-    Code            string          `json:"code" form:"code"` //Customer code
-    Gender          *string         `json:"gender,omitempty" form:"gender,omitempty"` //Customer Gender
-}
-
-/*
  * Structure for the custom type CreateTokenRequest
  */
 type CreateTokenRequest struct {
@@ -1179,44 +1164,15 @@ type GetUsageResponse struct {
  * Structure for the custom type UpdateCustomerRequest
  */
 type UpdateCustomerRequest struct {
-    Name            string          `json:"name" form:"name"` //Name
-    Email           string          `json:"email" form:"email"` //Email
-    Document        string          `json:"document" form:"document"` //Document number
-    Type            string          `json:"type" form:"type"` //Person type
-    Address         CreateAddressRequest `json:"address" form:"address"` //Address
-    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
+    Name            *string         `json:"name,omitempty" form:"name,omitempty"` //Name
+    Email           *string         `json:"email,omitempty" form:"email,omitempty"` //Email
+    Document        *string         `json:"document,omitempty" form:"document,omitempty"` //Document number
+    Type            *string         `json:"type,omitempty" form:"type,omitempty"` //Person type
+    Address         CreateAddressRequest `json:"address,omitempty" form:"address,omitempty"` //Address
+    Metadata        *map[string]string `json:"metadata,omitempty" form:"metadata,omitempty"` //Metadata
     Phones          CreatePhonesRequest `json:"phones,omitempty" form:"phones,omitempty"` //TODO: Write general description for this field
-    Code            string          `json:"code" form:"code"` //Código de referência do cliente no sistema da loja. Max: 52 caracteres
-}
-
-/*
- * Structure for the custom type GetCheckoutPaymentResponse
- */
-type GetCheckoutPaymentResponse struct {
-    Id                         string          `json:"id" form:"id"` //TODO: Write general description for this field
-    Amount                     *int64          `json:"amount,omitempty" form:"amount,omitempty"` //Valor em centavos
-    DefaultPaymentMethod       string          `json:"default_payment_method" form:"default_payment_method"` //Meio de pagamento padrão no checkout
-    SuccessUrl                 string          `json:"success_url" form:"success_url"` //Url de redirecionamento de sucesso após o checkou
-    PaymentUrl                 string          `json:"payment_url" form:"payment_url"` //Url para pagamento usando o checkout
-    GatewayAffiliationId       string          `json:"gateway_affiliation_id" form:"gateway_affiliation_id"` //Código da afiliação onde o pagamento será processado no gateway
-    AcceptedPaymentMethods     []string        `json:"accepted_payment_methods" form:"accepted_payment_methods"` //Meios de pagamento aceitos no checkout
-    Status                     string          `json:"status" form:"status"` //Status do checkout
-    SkipCheckoutSuccessPage    bool            `json:"skip_checkout_success_page" form:"skip_checkout_success_page"` //Pular tela de sucesso pós-pagamento?
-    CreatedAt                  *time.Time      `json:"created_at" form:"created_at"` //Data de criação
-    UpdatedAt                  *time.Time      `json:"updated_at" form:"updated_at"` //Data de atualização
-    CanceledAt                 *time.Time      `json:"canceled_at,omitempty" form:"canceled_at,omitempty"` //Data de cancelamento
-    CustomerEditable           bool            `json:"customer_editable" form:"customer_editable"` //Torna o objeto customer editável
-    Customer                   GetCustomerResponse `json:"customer" form:"customer"` //Dados do comprador
-    Billingaddress             GetAddressResponse `json:"billingaddress" form:"billingaddress"` //Dados do endereço de cobrança
-    CreditCard                 GetCheckoutCreditCardPaymentResponse `json:"credit_Card" form:"credit_Card"` //Configurações de cartão de crédito
-    Boleto                     GetCheckoutBoletoPaymentResponse `json:"boleto" form:"boleto"` //Configurações de boleto
-    BillingAddressEditable     bool            `json:"billing_address_editable" form:"billing_address_editable"` //Indica se o billing address poderá ser editado
-    Shipping                   GetShippingResponse `json:"shipping" form:"shipping"` //Configurações  de entrega
-    Shippable                  bool            `json:"shippable" form:"shippable"` //Indica se possui entrega
-    ClosedAt                   *time.Time      `json:"closed_at,omitempty" form:"closed_at,omitempty"` //Data de fechamento
-    ExpiresAt                  *time.Time      `json:"expires_at,omitempty" form:"expires_at,omitempty"` //Data de expiração
-    Currency                   string          `json:"currency" form:"currency"` //Moeda
-    DebitCard                  GetCheckoutDebitCardPaymentResponse `json:"debit_card,omitempty" form:"debit_card,omitempty"` //Configurações de cartão de débito
+    Code            *string         `json:"code,omitempty" form:"code,omitempty"` //Código de referência do cliente no sistema da loja. Max: 52 caracteres
+    Gender          *string         `json:"gender,omitempty" form:"gender,omitempty"` //Gênero do cliente
 }
 
 /*
@@ -1864,6 +1820,7 @@ type CreateCheckoutCreditCardPaymentRequest struct {
     StatementDescriptor  *string         `json:"statement_descriptor,omitempty" form:"statement_descriptor,omitempty"` //Card invoice text descriptor
     Installments         []*CreateCheckoutCardInstallmentOptionRequest `json:"installments,omitempty" form:"installments,omitempty"` //Payment installment options
     Authentication       CreatePaymentAuthenticationRequest `json:"authentication,omitempty" form:"authentication,omitempty"` //Creates payment authentication
+    Capture              *bool           `json:"capture,omitempty" form:"capture,omitempty"` //Authorize and capture?
 }
 
 /*
@@ -2031,13 +1988,13 @@ type ListCyclesResponse struct {
  */
 type CreateAntifraudRequest struct {
     Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
-    Clearsale       ClearSaleRequest `json:"clearsale" form:"clearsale"` //TODO: Write general description for this field
+    Clearsale       CreateClearSaleRequest `json:"clearsale" form:"clearsale"` //TODO: Write general description for this field
 }
 
 /*
- * Structure for the custom type ClearSaleRequest
+ * Structure for the custom type CreateClearSaleRequest
  */
-type ClearSaleRequest struct {
+type CreateClearSaleRequest struct {
     CustomSla       int64           `json:"custom_sla" form:"custom_sla"` //TODO: Write general description for this field
 }
 
@@ -2053,4 +2010,57 @@ type CreateChargeRequest struct {
     Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
     DueAt           *time.Time      `json:"due_at,omitempty" form:"due_at,omitempty"` //The charge due date
     Antifraud       CreateAntifraudRequest `json:"antifraud" form:"antifraud"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type CreateCustomerRequest
+ */
+type CreateCustomerRequest struct {
+    Name            string          `json:"name" form:"name"` //Name
+    Email           string          `json:"email" form:"email"` //Email
+    Document        string          `json:"document" form:"document"` //Document number. Only numbers, no special characters.
+    Type            string          `json:"type" form:"type"` //Person type. Can be either 'individual' or 'company'
+    Address         CreateAddressRequest `json:"address" form:"address"` //The customer's address
+    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
+    Phones          CreatePhonesRequest `json:"phones" form:"phones"` //TODO: Write general description for this field
+    Code            string          `json:"code" form:"code"` //Customer code
+    Gender          *string         `json:"gender,omitempty" form:"gender,omitempty"` //Customer Gender
+}
+
+/*
+ * Structure for the custom type GetCheckoutBankTransferPaymentResponse
+ */
+type GetCheckoutBankTransferPaymentResponse struct {
+    Bank            []string        `json:"bank" form:"bank"` //bank list response
+}
+
+/*
+ * Structure for the custom type GetCheckoutPaymentResponse
+ */
+type GetCheckoutPaymentResponse struct {
+    Id                         string          `json:"id" form:"id"` //TODO: Write general description for this field
+    Amount                     *int64          `json:"amount,omitempty" form:"amount,omitempty"` //Valor em centavos
+    DefaultPaymentMethod       string          `json:"default_payment_method" form:"default_payment_method"` //Meio de pagamento padrão no checkout
+    SuccessUrl                 string          `json:"success_url" form:"success_url"` //Url de redirecionamento de sucesso após o checkou
+    PaymentUrl                 string          `json:"payment_url" form:"payment_url"` //Url para pagamento usando o checkout
+    GatewayAffiliationId       string          `json:"gateway_affiliation_id" form:"gateway_affiliation_id"` //Código da afiliação onde o pagamento será processado no gateway
+    AcceptedPaymentMethods     []string        `json:"accepted_payment_methods" form:"accepted_payment_methods"` //Meios de pagamento aceitos no checkout
+    Status                     string          `json:"status" form:"status"` //Status do checkout
+    SkipCheckoutSuccessPage    bool            `json:"skip_checkout_success_page" form:"skip_checkout_success_page"` //Pular tela de sucesso pós-pagamento?
+    CreatedAt                  *time.Time      `json:"created_at" form:"created_at"` //Data de criação
+    UpdatedAt                  *time.Time      `json:"updated_at" form:"updated_at"` //Data de atualização
+    CanceledAt                 *time.Time      `json:"canceled_at,omitempty" form:"canceled_at,omitempty"` //Data de cancelamento
+    CustomerEditable           bool            `json:"customer_editable" form:"customer_editable"` //Torna o objeto customer editável
+    Customer                   GetCustomerResponse `json:"customer" form:"customer"` //Dados do comprador
+    Billingaddress             GetAddressResponse `json:"billingaddress" form:"billingaddress"` //Dados do endereço de cobrança
+    CreditCard                 GetCheckoutCreditCardPaymentResponse `json:"credit_card" form:"credit_card"` //Configurações de cartão de crédito
+    Boleto                     GetCheckoutBoletoPaymentResponse `json:"boleto" form:"boleto"` //Configurações de boleto
+    BillingAddressEditable     bool            `json:"billing_address_editable" form:"billing_address_editable"` //Indica se o billing address poderá ser editado
+    Shipping                   GetShippingResponse `json:"shipping" form:"shipping"` //Configurações  de entrega
+    Shippable                  bool            `json:"shippable" form:"shippable"` //Indica se possui entrega
+    ClosedAt                   *time.Time      `json:"closed_at,omitempty" form:"closed_at,omitempty"` //Data de fechamento
+    ExpiresAt                  *time.Time      `json:"expires_at,omitempty" form:"expires_at,omitempty"` //Data de expiração
+    Currency                   string          `json:"currency" form:"currency"` //Moeda
+    DebitCard                  GetCheckoutDebitCardPaymentResponse `json:"debit_card,omitempty" form:"debit_card,omitempty"` //Configurações de cartão de débito
+    BankTransfer               GetCheckoutBankTransferPaymentResponse `json:"bank_transfer,omitempty" form:"bank_transfer,omitempty"` //Bank transfer payment response
 }
