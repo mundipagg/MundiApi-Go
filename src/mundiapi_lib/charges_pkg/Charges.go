@@ -14,27 +14,27 @@ import "mundiapi_lib/models_pkg"
  * Interface for the CHARGES_IMPL
  */
 type CHARGES interface {
-    UpdateChargeCard (string, *models_pkg.UpdateChargeCardRequest) (*models_pkg.GetChargeResponse, error)
+    UpdateChargeCard (string, *models_pkg.UpdateChargeCardRequest, *string) (*models_pkg.GetChargeResponse, error)
 
-    UpdateChargePaymentMethod (string, *models_pkg.UpdateChargePaymentMethodRequest) (*models_pkg.GetChargeResponse, error)
+    UpdateChargePaymentMethod (string, *models_pkg.UpdateChargePaymentMethodRequest, *string) (*models_pkg.GetChargeResponse, error)
 
-    CreateCharge (*models_pkg.CreateChargeRequest) (*models_pkg.GetChargeResponse, error)
+    CreateCharge (*models_pkg.CreateChargeRequest, *string) (*models_pkg.GetChargeResponse, error)
 
     GetCharge (string) (*models_pkg.GetChargeResponse, error)
 
-    RetryCharge (string) (*models_pkg.GetChargeResponse, error)
+    RetryCharge (string, *string) (*models_pkg.GetChargeResponse, error)
 
     GetCharges (*int64, *int64, *string, *string, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.ListChargesResponse, error)
 
-    UpdateChargeMetadata (string, *models_pkg.UpdateMetadataRequest) (*models_pkg.GetChargeResponse, error)
+    UpdateChargeMetadata (string, *models_pkg.UpdateMetadataRequest, *string) (*models_pkg.GetChargeResponse, error)
 
-    CancelCharge (string, *models_pkg.CreateCancelChargeRequest) (*models_pkg.GetChargeResponse, error)
+    CancelCharge (string, *models_pkg.CreateCancelChargeRequest, *string) (*models_pkg.GetChargeResponse, error)
 
-    CaptureCharge (string, *models_pkg.CreateCaptureChargeRequest) (*models_pkg.GetChargeResponse, error)
+    CaptureCharge (string, *models_pkg.CreateCaptureChargeRequest, *string) (*models_pkg.GetChargeResponse, error)
 
-    UpdateChargeDueDate (string, *models_pkg.UpdateChargeDueDateRequest) (*models_pkg.GetChargeResponse, error)
+    UpdateChargeDueDate (string, *models_pkg.UpdateChargeDueDateRequest, *string) (*models_pkg.GetChargeResponse, error)
 
-    ConfirmPayment (string, *models_pkg.CreateConfirmPaymentRequest) (*models_pkg.GetChargeResponse, error)
+    ConfirmPayment (string, *models_pkg.CreateConfirmPaymentRequest, *string) (*models_pkg.GetChargeResponse, error)
 
     GetChargeTransactions (string, *int64, *int64) (*models_pkg.ListChargeTransactionsResponse, error)
 }

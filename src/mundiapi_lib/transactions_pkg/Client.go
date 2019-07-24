@@ -56,7 +56,7 @@ func (me *TRANSACTIONS_IMPL) GetTransaction (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 

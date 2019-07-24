@@ -8,8 +8,8 @@ package MundiAPIClient
 
 import(
 	"mundiapi_lib/configuration_pkg"
-	"mundiapi_lib/subscriptions_pkg"
 	"mundiapi_lib/orders_pkg"
+	"mundiapi_lib/subscriptions_pkg"
 	"mundiapi_lib/plans_pkg"
 	"mundiapi_lib/invoices_pkg"
 	"mundiapi_lib/customers_pkg"
@@ -25,8 +25,8 @@ import(
  * Interface for the MUNDIAPI_IMPL
  */
 type MUNDIAPI interface {
-    Subscriptions()         subscriptions_pkg.SUBSCRIPTIONS
     Orders()                orders_pkg.ORDERS
+    Subscriptions()         subscriptions_pkg.SUBSCRIPTIONS
     Plans()                 plans_pkg.PLANS
     Invoices()              invoices_pkg.INVOICES
     Customers()             customers_pkg.CUSTOMERS

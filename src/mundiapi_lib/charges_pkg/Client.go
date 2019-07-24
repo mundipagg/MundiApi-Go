@@ -24,13 +24,15 @@ type CHARGES_IMPL struct {
 
 /**
  * Updates the card from a charge
- * @param    string                                     chargeId      parameter: Required
- * @param    *models_pkg.UpdateChargeCardRequest        request       parameter: Required
+ * @param    string                                     chargeId            parameter: Required
+ * @param    *models_pkg.UpdateChargeCardRequest        request             parameter: Required
+ * @param    *string                                    idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) UpdateChargeCard (
             chargeId string,
-            request *models_pkg.UpdateChargeCardRequest) (*models_pkg.GetChargeResponse, error) {
+            request *models_pkg.UpdateChargeCardRequest,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/charges/{charge_id}/card"
 
@@ -59,9 +61,10 @@ func (me *CHARGES_IMPL) UpdateChargeCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -108,13 +111,15 @@ func (me *CHARGES_IMPL) UpdateChargeCard (
 
 /**
  * Updates a charge's payment method
- * @param    string                                              chargeId      parameter: Required
- * @param    *models_pkg.UpdateChargePaymentMethodRequest        request       parameter: Required
+ * @param    string                                              chargeId            parameter: Required
+ * @param    *models_pkg.UpdateChargePaymentMethodRequest        request             parameter: Required
+ * @param    *string                                             idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
             chargeId string,
-            request *models_pkg.UpdateChargePaymentMethodRequest) (*models_pkg.GetChargeResponse, error) {
+            request *models_pkg.UpdateChargePaymentMethodRequest,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/charges/{charge_id}/payment-method"
 
@@ -143,9 +148,10 @@ func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -192,11 +198,13 @@ func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
 
 /**
  * Creates a new charge
- * @param    *models_pkg.CreateChargeRequest        request     parameter: Required
+ * @param    *models_pkg.CreateChargeRequest        request             parameter: Required
+ * @param    *string                                idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) CreateCharge (
-            request *models_pkg.CreateChargeRequest) (*models_pkg.GetChargeResponse, error) {
+            request *models_pkg.CreateChargeRequest,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/Charges"
 
@@ -216,9 +224,10 @@ func (me *CHARGES_IMPL) CreateCharge (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -298,7 +307,7 @@ func (me *CHARGES_IMPL) GetCharge (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -346,11 +355,13 @@ func (me *CHARGES_IMPL) GetCharge (
 
 /**
  * Retries a charge
- * @param    string        chargeId      parameter: Required
+ * @param    string         chargeId            parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) RetryCharge (
-            chargeId string) (*models_pkg.GetChargeResponse, error) {
+            chargeId string,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/charges/{charge_id}/retry"
 
@@ -379,8 +390,9 @@ func (me *CHARGES_IMPL) RetryCharge (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -484,7 +496,7 @@ func (me *CHARGES_IMPL) GetCharges (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -532,13 +544,15 @@ func (me *CHARGES_IMPL) GetCharges (
 
 /**
  * Updates the metadata from a charge
- * @param    string                                   chargeId      parameter: Required
- * @param    *models_pkg.UpdateMetadataRequest        request       parameter: Required
+ * @param    string                                   chargeId            parameter: Required
+ * @param    *models_pkg.UpdateMetadataRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) UpdateChargeMetadata (
             chargeId string,
-            request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetChargeResponse, error) {
+            request *models_pkg.UpdateMetadataRequest,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/Charges/{charge_id}/metadata"
 
@@ -567,9 +581,10 @@ func (me *CHARGES_IMPL) UpdateChargeMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -616,13 +631,15 @@ func (me *CHARGES_IMPL) UpdateChargeMetadata (
 
 /**
  * Cancel a charge
- * @param    string                                       chargeId      parameter: Required
- * @param    *models_pkg.CreateCancelChargeRequest        request       parameter: Optional
+ * @param    string                                       chargeId            parameter: Required
+ * @param    *models_pkg.CreateCancelChargeRequest        request             parameter: Optional
+ * @param    *string                                      idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) CancelCharge (
             chargeId string,
-            request *models_pkg.CreateCancelChargeRequest) (*models_pkg.GetChargeResponse, error) {
+            request *models_pkg.CreateCancelChargeRequest,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/charges/{charge_id}"
 
@@ -651,9 +668,10 @@ func (me *CHARGES_IMPL) CancelCharge (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -700,13 +718,15 @@ func (me *CHARGES_IMPL) CancelCharge (
 
 /**
  * Captures a charge
- * @param    string                                        chargeId      parameter: Required
- * @param    *models_pkg.CreateCaptureChargeRequest        request       parameter: Optional
+ * @param    string                                        chargeId            parameter: Required
+ * @param    *models_pkg.CreateCaptureChargeRequest        request             parameter: Optional
+ * @param    *string                                       idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) CaptureCharge (
             chargeId string,
-            request *models_pkg.CreateCaptureChargeRequest) (*models_pkg.GetChargeResponse, error) {
+            request *models_pkg.CreateCaptureChargeRequest,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/charges/{charge_id}/capture"
 
@@ -735,9 +755,10 @@ func (me *CHARGES_IMPL) CaptureCharge (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -784,13 +805,15 @@ func (me *CHARGES_IMPL) CaptureCharge (
 
 /**
  * Updates the due date from a charge
- * @param    string                                        chargeId      parameter: Required
- * @param    *models_pkg.UpdateChargeDueDateRequest        request       parameter: Required
+ * @param    string                                        chargeId            parameter: Required
+ * @param    *models_pkg.UpdateChargeDueDateRequest        request             parameter: Required
+ * @param    *string                                       idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) UpdateChargeDueDate (
             chargeId string,
-            request *models_pkg.UpdateChargeDueDateRequest) (*models_pkg.GetChargeResponse, error) {
+            request *models_pkg.UpdateChargeDueDateRequest,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/Charges/{charge_id}/due-date"
 
@@ -819,9 +842,10 @@ func (me *CHARGES_IMPL) UpdateChargeDueDate (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -868,13 +892,15 @@ func (me *CHARGES_IMPL) UpdateChargeDueDate (
 
 /**
  * TODO: type endpoint description here
- * @param    string                                         chargeId      parameter: Required
- * @param    *models_pkg.CreateConfirmPaymentRequest        request       parameter: Optional
+ * @param    string                                         chargeId            parameter: Required
+ * @param    *models_pkg.CreateConfirmPaymentRequest        request             parameter: Optional
+ * @param    *string                                        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetChargeResponse response from the API call
  */
 func (me *CHARGES_IMPL) ConfirmPayment (
             chargeId string,
-            request *models_pkg.CreateConfirmPaymentRequest) (*models_pkg.GetChargeResponse, error) {
+            request *models_pkg.CreateConfirmPaymentRequest,
+            idempotencyKey *string) (*models_pkg.GetChargeResponse, error) {
     //the endpoint path uri
     _pathUrl := "/charges/{charge_id}/confirm-payment"
 
@@ -903,9 +929,10 @@ func (me *CHARGES_IMPL) ConfirmPayment (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -999,7 +1026,7 @@ func (me *CHARGES_IMPL) GetChargeTransactions (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 

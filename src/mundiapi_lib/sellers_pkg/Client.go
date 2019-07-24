@@ -57,7 +57,7 @@ func (me *SELLERS_IMPL) GetSellerById (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -105,11 +105,13 @@ func (me *SELLERS_IMPL) GetSellerById (
 
 /**
  * TODO: type endpoint description here
- * @param    string        sellerId     parameter: Required
+ * @param    string         sellerId            parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetSellerResponse response from the API call
  */
 func (me *SELLERS_IMPL) DeleteSeller (
-            sellerId string) (*models_pkg.GetSellerResponse, error) {
+            sellerId string,
+            idempotencyKey *string) (*models_pkg.GetSellerResponse, error) {
     //the endpoint path uri
     _pathUrl := "/sellers/{sellerId}"
 
@@ -138,8 +140,9 @@ func (me *SELLERS_IMPL) DeleteSeller (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -186,11 +189,13 @@ func (me *SELLERS_IMPL) DeleteSeller (
 
 /**
  * TODO: type endpoint description here
- * @param    *models_pkg.CreateSellerRequest        request     parameter: Required
+ * @param    *models_pkg.CreateSellerRequest        request             parameter: Required
+ * @param    *string                                idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetSellerResponse response from the API call
  */
 func (me *SELLERS_IMPL) CreateSeller (
-            request *models_pkg.CreateSellerRequest) (*models_pkg.GetSellerResponse, error) {
+            request *models_pkg.CreateSellerRequest,
+            idempotencyKey *string) (*models_pkg.GetSellerResponse, error) {
     //the endpoint path uri
     _pathUrl := "/sellers/"
 
@@ -210,9 +215,10 @@ func (me *SELLERS_IMPL) CreateSeller (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -316,7 +322,7 @@ func (me *SELLERS_IMPL) GetSellers (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -364,13 +370,15 @@ func (me *SELLERS_IMPL) GetSellers (
 
 /**
  * TODO: type endpoint description here
- * @param    string                                 id          parameter: Required
- * @param    *models_pkg.UpdateSellerRequest        request     parameter: Required
+ * @param    string                                 id                  parameter: Required
+ * @param    *models_pkg.UpdateSellerRequest        request             parameter: Required
+ * @param    *string                                idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetSellerResponse response from the API call
  */
 func (me *SELLERS_IMPL) UpdateSeller (
             id string,
-            request *models_pkg.UpdateSellerRequest) (*models_pkg.GetSellerResponse, error) {
+            request *models_pkg.UpdateSellerRequest,
+            idempotencyKey *string) (*models_pkg.GetSellerResponse, error) {
     //the endpoint path uri
     _pathUrl := "/sellers/{id}"
 
@@ -399,9 +407,10 @@ func (me *SELLERS_IMPL) UpdateSeller (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -448,13 +457,15 @@ func (me *SELLERS_IMPL) UpdateSeller (
 
 /**
  * TODO: type endpoint description here
- * @param    string                                   sellerId      parameter: Required
- * @param    *models_pkg.UpdateMetadataRequest        request       parameter: Required
+ * @param    string                                   sellerId            parameter: Required
+ * @param    *models_pkg.UpdateMetadataRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetSellerResponse response from the API call
  */
 func (me *SELLERS_IMPL) UpdateSellerMetadata (
             sellerId string,
-            request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetSellerResponse, error) {
+            request *models_pkg.UpdateMetadataRequest,
+            idempotencyKey *string) (*models_pkg.GetSellerResponse, error) {
     //the endpoint path uri
     _pathUrl := "/sellers/{seller_id}/metadata"
 
@@ -483,9 +494,10 @@ func (me *SELLERS_IMPL) UpdateSellerMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request

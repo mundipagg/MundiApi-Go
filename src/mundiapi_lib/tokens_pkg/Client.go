@@ -59,7 +59,7 @@ func (me *TOKENS_IMPL) GetToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -107,13 +107,15 @@ func (me *TOKENS_IMPL) GetToken (
 
 /**
  * TODO: type endpoint description here
- * @param    string                                publicKey      parameter: Required
- * @param    *models_pkg.CreateTokenRequest        request        parameter: Required
+ * @param    string                                publicKey           parameter: Required
+ * @param    *models_pkg.CreateTokenRequest        request             parameter: Required
+ * @param    *string                               idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetTokenResponse response from the API call
  */
 func (me *TOKENS_IMPL) CreateToken (
             publicKey string,
-            request *models_pkg.CreateTokenRequest) (*models_pkg.GetTokenResponse, error) {
+            request *models_pkg.CreateTokenRequest,
+            idempotencyKey *string) (*models_pkg.GetTokenResponse, error) {
     //the endpoint path uri
     _pathUrl := "/tokens?appId={public_key}"
 
@@ -142,9 +144,10 @@ func (me *TOKENS_IMPL) CreateToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
