@@ -15,7 +15,7 @@ import "mundiapi_lib/models_pkg"
 type TOKENS interface {
     GetToken (string, string) (*models_pkg.GetTokenResponse, error)
 
-    CreateToken (string, *models_pkg.CreateTokenRequest) (*models_pkg.GetTokenResponse, error)
+    CreateToken (string, *models_pkg.CreateTokenRequest, *string) (*models_pkg.GetTokenResponse, error)
 }
 
 /*

@@ -24,13 +24,15 @@ type PLANS_IMPL struct {
 
 /**
  * Adds a new item to a plan
- * @param    string                                   planId      parameter: Required
- * @param    *models_pkg.CreatePlanItemRequest        request     parameter: Required
+ * @param    string                                   planId              parameter: Required
+ * @param    *models_pkg.CreatePlanItemRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetPlanItemResponse response from the API call
  */
 func (me *PLANS_IMPL) CreatePlanItem (
             planId string,
-            request *models_pkg.CreatePlanItemRequest) (*models_pkg.GetPlanItemResponse, error) {
+            request *models_pkg.CreatePlanItemRequest,
+            idempotencyKey *string) (*models_pkg.GetPlanItemResponse, error) {
     //the endpoint path uri
     _pathUrl := "/plans/{plan_id}/items"
 
@@ -59,9 +61,10 @@ func (me *PLANS_IMPL) CreatePlanItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -108,15 +111,17 @@ func (me *PLANS_IMPL) CreatePlanItem (
 
 /**
  * Updates a plan item
- * @param    string                                   planId           parameter: Required
- * @param    string                                   planItemId       parameter: Required
- * @param    *models_pkg.UpdatePlanItemRequest        body             parameter: Required
+ * @param    string                                   planId              parameter: Required
+ * @param    string                                   planItemId          parameter: Required
+ * @param    *models_pkg.UpdatePlanItemRequest        body                parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetPlanItemResponse response from the API call
  */
 func (me *PLANS_IMPL) UpdatePlanItem (
             planId string,
             planItemId string,
-            body *models_pkg.UpdatePlanItemRequest) (*models_pkg.GetPlanItemResponse, error) {
+            body *models_pkg.UpdatePlanItemRequest,
+            idempotencyKey *string) (*models_pkg.GetPlanItemResponse, error) {
     //the endpoint path uri
     _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
 
@@ -146,9 +151,10 @@ func (me *PLANS_IMPL) UpdatePlanItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -228,7 +234,7 @@ func (me *PLANS_IMPL) GetPlan (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -276,11 +282,13 @@ func (me *PLANS_IMPL) GetPlan (
 
 /**
  * Deletes a plan
- * @param    string        planId      parameter: Required
+ * @param    string         planId              parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetPlanResponse response from the API call
  */
 func (me *PLANS_IMPL) DeletePlan (
-            planId string) (*models_pkg.GetPlanResponse, error) {
+            planId string,
+            idempotencyKey *string) (*models_pkg.GetPlanResponse, error) {
     //the endpoint path uri
     _pathUrl := "/plans/{plan_id}"
 
@@ -309,8 +317,9 @@ func (me *PLANS_IMPL) DeletePlan (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -357,13 +366,15 @@ func (me *PLANS_IMPL) DeletePlan (
 
 /**
  * Updates a plan
- * @param    string                               planId      parameter: Required
- * @param    *models_pkg.UpdatePlanRequest        request     parameter: Required
+ * @param    string                               planId              parameter: Required
+ * @param    *models_pkg.UpdatePlanRequest        request             parameter: Required
+ * @param    *string                              idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetPlanResponse response from the API call
  */
 func (me *PLANS_IMPL) UpdatePlan (
             planId string,
-            request *models_pkg.UpdatePlanRequest) (*models_pkg.GetPlanResponse, error) {
+            request *models_pkg.UpdatePlanRequest,
+            idempotencyKey *string) (*models_pkg.GetPlanResponse, error) {
     //the endpoint path uri
     _pathUrl := "/plans/{plan_id}"
 
@@ -392,9 +403,10 @@ func (me *PLANS_IMPL) UpdatePlan (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -441,11 +453,13 @@ func (me *PLANS_IMPL) UpdatePlan (
 
 /**
  * Creates a new plan
- * @param    *models_pkg.CreatePlanRequest        body     parameter: Required
+ * @param    *models_pkg.CreatePlanRequest        body                parameter: Required
+ * @param    *string                              idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetPlanResponse response from the API call
  */
 func (me *PLANS_IMPL) CreatePlan (
-            body *models_pkg.CreatePlanRequest) (*models_pkg.GetPlanResponse, error) {
+            body *models_pkg.CreatePlanRequest,
+            idempotencyKey *string) (*models_pkg.GetPlanResponse, error) {
     //the endpoint path uri
     _pathUrl := "/plans"
 
@@ -465,9 +479,10 @@ func (me *PLANS_IMPL) CreatePlan (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -565,7 +580,7 @@ func (me *PLANS_IMPL) GetPlans (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -613,13 +628,15 @@ func (me *PLANS_IMPL) GetPlans (
 
 /**
  * Updates the metadata from a plan
- * @param    string                                   planId      parameter: Required
- * @param    *models_pkg.UpdateMetadataRequest        request     parameter: Required
+ * @param    string                                   planId              parameter: Required
+ * @param    *models_pkg.UpdateMetadataRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetPlanResponse response from the API call
  */
 func (me *PLANS_IMPL) UpdatePlanMetadata (
             planId string,
-            request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetPlanResponse, error) {
+            request *models_pkg.UpdateMetadataRequest,
+            idempotencyKey *string) (*models_pkg.GetPlanResponse, error) {
     //the endpoint path uri
     _pathUrl := "/Plans/{plan_id}/metadata"
 
@@ -648,9 +665,10 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -733,7 +751,7 @@ func (me *PLANS_IMPL) GetPlanItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -781,13 +799,15 @@ func (me *PLANS_IMPL) GetPlanItem (
 
 /**
  * Removes an item from a plan
- * @param    string        planId           parameter: Required
- * @param    string        planItemId       parameter: Required
+ * @param    string         planId              parameter: Required
+ * @param    string         planItemId          parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetPlanItemResponse response from the API call
  */
 func (me *PLANS_IMPL) DeletePlanItem (
             planId string,
-            planItemId string) (*models_pkg.GetPlanItemResponse, error) {
+            planItemId string,
+            idempotencyKey *string) (*models_pkg.GetPlanItemResponse, error) {
     //the endpoint path uri
     _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
 
@@ -817,8 +837,9 @@ func (me *PLANS_IMPL) DeletePlanItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request

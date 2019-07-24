@@ -24,13 +24,15 @@ type RECIPIENTS_IMPL struct {
 
 /**
  * Updates recipient metadata
- * @param    string                                   recipientId      parameter: Required
- * @param    *models_pkg.UpdateMetadataRequest        request          parameter: Required
+ * @param    string                                   recipientId         parameter: Required
+ * @param    *models_pkg.UpdateMetadataRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetRecipientResponse response from the API call
  */
 func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
             recipientId string,
-            request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetRecipientResponse, error) {
+            request *models_pkg.UpdateMetadataRequest,
+            idempotencyKey *string) (*models_pkg.GetRecipientResponse, error) {
     //the endpoint path uri
     _pathUrl := "/recipients/{recipient_id}/metadata"
 
@@ -59,9 +61,10 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -144,7 +147,7 @@ func (me *RECIPIENTS_IMPL) GetTransfer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -248,7 +251,7 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -296,13 +299,15 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
 
 /**
  * Creates an anticipation
- * @param    string                                       recipientId      parameter: Required
- * @param    *models_pkg.CreateAnticipationRequest        request          parameter: Required
+ * @param    string                                       recipientId         parameter: Required
+ * @param    *models_pkg.CreateAnticipationRequest        request             parameter: Required
+ * @param    *string                                      idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetAnticipationResponse response from the API call
  */
 func (me *RECIPIENTS_IMPL) CreateAnticipation (
             recipientId string,
-            request *models_pkg.CreateAnticipationRequest) (*models_pkg.GetAnticipationResponse, error) {
+            request *models_pkg.CreateAnticipationRequest,
+            idempotencyKey *string) (*models_pkg.GetAnticipationResponse, error) {
     //the endpoint path uri
     _pathUrl := "/recipients/{recipient_id}/anticipations"
 
@@ -331,9 +336,10 @@ func (me *RECIPIENTS_IMPL) CreateAnticipation (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -416,7 +422,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipation (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -511,7 +517,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipationLimits (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -624,7 +630,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -672,13 +678,15 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
 
 /**
  * Updates a recipient
- * @param    string                                    recipientId      parameter: Required
- * @param    *models_pkg.UpdateRecipientRequest        request          parameter: Required
+ * @param    string                                    recipientId         parameter: Required
+ * @param    *models_pkg.UpdateRecipientRequest        request             parameter: Required
+ * @param    *string                                   idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetRecipientResponse response from the API call
  */
 func (me *RECIPIENTS_IMPL) UpdateRecipient (
             recipientId string,
-            request *models_pkg.UpdateRecipientRequest) (*models_pkg.GetRecipientResponse, error) {
+            request *models_pkg.UpdateRecipientRequest,
+            idempotencyKey *string) (*models_pkg.GetRecipientResponse, error) {
     //the endpoint path uri
     _pathUrl := "/recipients/{recipient_id}"
 
@@ -707,9 +715,10 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -756,13 +765,15 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
 
 /**
  * Updates the default bank account from a recipient
- * @param    string                                               recipientId      parameter: Required
- * @param    *models_pkg.UpdateRecipientBankAccountRequest        request          parameter: Required
+ * @param    string                                               recipientId         parameter: Required
+ * @param    *models_pkg.UpdateRecipientBankAccountRequest        request             parameter: Required
+ * @param    *string                                              idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetRecipientResponse response from the API call
  */
 func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
             recipientId string,
-            request *models_pkg.UpdateRecipientBankAccountRequest) (*models_pkg.GetRecipientResponse, error) {
+            request *models_pkg.UpdateRecipientBankAccountRequest,
+            idempotencyKey *string) (*models_pkg.GetRecipientResponse, error) {
     //the endpoint path uri
     _pathUrl := "/recipients/{recipient_id}/default-bank-account"
 
@@ -791,9 +802,10 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -873,7 +885,7 @@ func (me *RECIPIENTS_IMPL) GetRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -957,7 +969,7 @@ func (me *RECIPIENTS_IMPL) GetRecipients (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -1038,7 +1050,7 @@ func (me *RECIPIENTS_IMPL) GetBalance (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -1086,13 +1098,15 @@ func (me *RECIPIENTS_IMPL) GetBalance (
 
 /**
  * Creates a transfer for a recipient
- * @param    string                                   recipientId      parameter: Required
- * @param    *models_pkg.CreateTransferRequest        request          parameter: Required
+ * @param    string                                   recipientId         parameter: Required
+ * @param    *models_pkg.CreateTransferRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetTransferResponse response from the API call
  */
 func (me *RECIPIENTS_IMPL) CreateTransfer (
             recipientId string,
-            request *models_pkg.CreateTransferRequest) (*models_pkg.GetTransferResponse, error) {
+            request *models_pkg.CreateTransferRequest,
+            idempotencyKey *string) (*models_pkg.GetTransferResponse, error) {
     //the endpoint path uri
     _pathUrl := "/recipients/{recipient_id}/transfers"
 
@@ -1121,9 +1135,10 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -1170,11 +1185,13 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
 
 /**
  * Creates a new recipient
- * @param    *models_pkg.CreateRecipientRequest        request     parameter: Required
+ * @param    *models_pkg.CreateRecipientRequest        request             parameter: Required
+ * @param    *string                                   idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetRecipientResponse response from the API call
  */
 func (me *RECIPIENTS_IMPL) CreateRecipient (
-            request *models_pkg.CreateRecipientRequest) (*models_pkg.GetRecipientResponse, error) {
+            request *models_pkg.CreateRecipientRequest,
+            idempotencyKey *string) (*models_pkg.GetRecipientResponse, error) {
     //the endpoint path uri
     _pathUrl := "/recipients"
 
@@ -1194,9 +1211,10 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -1243,13 +1261,15 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
 
 /**
  * TODO: type endpoint description here
- * @param    string                                           recipientId      parameter: Required
- * @param    *models_pkg.UpdateTransferSettingsRequest        request          parameter: Required
+ * @param    string                                           recipientId         parameter: Required
+ * @param    *models_pkg.UpdateTransferSettingsRequest        request             parameter: Required
+ * @param    *string                                          idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetRecipientResponse response from the API call
  */
 func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
             recipientId string,
-            request *models_pkg.UpdateTransferSettingsRequest) (*models_pkg.GetRecipientResponse, error) {
+            request *models_pkg.UpdateTransferSettingsRequest,
+            idempotencyKey *string) (*models_pkg.GetRecipientResponse, error) {
     //the endpoint path uri
     _pathUrl := "/recipients/{recipient_id}/transfer-settings"
 
@@ -1278,9 +1298,10 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request

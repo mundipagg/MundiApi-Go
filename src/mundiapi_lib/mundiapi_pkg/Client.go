@@ -8,8 +8,8 @@ package MundiAPIClient
 
 import(
 	"mundiapi_lib/configuration_pkg"
-	"mundiapi_lib/subscriptions_pkg"
 	"mundiapi_lib/orders_pkg"
+	"mundiapi_lib/subscriptions_pkg"
 	"mundiapi_lib/plans_pkg"
 	"mundiapi_lib/invoices_pkg"
 	"mundiapi_lib/customers_pkg"
@@ -23,8 +23,8 @@ import(
  * Client structure as interface implementation
  */
 type MUNDIAPI_IMPL struct {
-     subscriptions subscriptions_pkg.SUBSCRIPTIONS
      orders orders_pkg.ORDERS
+     subscriptions subscriptions_pkg.SUBSCRIPTIONS
      plans plans_pkg.PLANS
      invoices invoices_pkg.INVOICES
      customers customers_pkg.CUSTOMERS
@@ -44,16 +44,6 @@ func (me *MUNDIAPI_IMPL) Configuration() configuration_pkg.CONFIGURATION {
     return me.config
 }
 /**
-     * Access to Subscriptions controller
-     * @return Returns the Subscriptions() instance
-*/
-func (me *MUNDIAPI_IMPL) Subscriptions() subscriptions_pkg.SUBSCRIPTIONS {
-    if(me.subscriptions) == nil {
-        me.subscriptions = subscriptions_pkg.NewSUBSCRIPTIONS(me.config)
-    }
-    return me.subscriptions
-}
-/**
      * Access to Orders controller
      * @return Returns the Orders() instance
 */
@@ -62,6 +52,16 @@ func (me *MUNDIAPI_IMPL) Orders() orders_pkg.ORDERS {
         me.orders = orders_pkg.NewORDERS(me.config)
     }
     return me.orders
+}
+/**
+     * Access to Subscriptions controller
+     * @return Returns the Subscriptions() instance
+*/
+func (me *MUNDIAPI_IMPL) Subscriptions() subscriptions_pkg.SUBSCRIPTIONS {
+    if(me.subscriptions) == nil {
+        me.subscriptions = subscriptions_pkg.NewSUBSCRIPTIONS(me.config)
+    }
+    return me.subscriptions
 }
 /**
      * Access to Plans controller

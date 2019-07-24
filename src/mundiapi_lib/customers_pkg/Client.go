@@ -23,15 +23,17 @@ type CUSTOMERS_IMPL struct {
 
 /**
  * Updates a card
- * @param    string                               customerId      parameter: Required
- * @param    string                               cardId          parameter: Required
- * @param    *models_pkg.UpdateCardRequest        request         parameter: Required
+ * @param    string                               customerId          parameter: Required
+ * @param    string                               cardId              parameter: Required
+ * @param    *models_pkg.UpdateCardRequest        request             parameter: Required
+ * @param    *string                              idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetCardResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) UpdateCard (
             customerId string,
             cardId string,
-            request *models_pkg.UpdateCardRequest) (*models_pkg.GetCardResponse, error) {
+            request *models_pkg.UpdateCardRequest,
+            idempotencyKey *string) (*models_pkg.GetCardResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/cards/{card_id}"
 
@@ -61,9 +63,10 @@ func (me *CUSTOMERS_IMPL) UpdateCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -110,15 +113,17 @@ func (me *CUSTOMERS_IMPL) UpdateCard (
 
 /**
  * Updates an address
- * @param    string                                  customerId      parameter: Required
- * @param    string                                  addressId       parameter: Required
- * @param    *models_pkg.UpdateAddressRequest        request         parameter: Required
+ * @param    string                                  customerId          parameter: Required
+ * @param    string                                  addressId           parameter: Required
+ * @param    *models_pkg.UpdateAddressRequest        request             parameter: Required
+ * @param    *string                                 idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetAddressResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) UpdateAddress (
             customerId string,
             addressId string,
-            request *models_pkg.UpdateAddressRequest) (*models_pkg.GetAddressResponse, error) {
+            request *models_pkg.UpdateAddressRequest,
+            idempotencyKey *string) (*models_pkg.GetAddressResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/addresses/{address_id}"
 
@@ -148,9 +153,10 @@ func (me *CUSTOMERS_IMPL) UpdateAddress (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -230,7 +236,7 @@ func (me *CUSTOMERS_IMPL) GetCustomer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -325,7 +331,7 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -420,7 +426,7 @@ func (me *CUSTOMERS_IMPL) GetAddresses (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -515,7 +521,7 @@ func (me *CUSTOMERS_IMPL) GetCards (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -596,7 +602,7 @@ func (me *CUSTOMERS_IMPL) DeleteAccessTokens (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -680,7 +686,7 @@ func (me *CUSTOMERS_IMPL) GetAccessToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -728,13 +734,15 @@ func (me *CUSTOMERS_IMPL) GetAccessToken (
 
 /**
  * Creates a access token for a customer
- * @param    string                                      customerId      parameter: Required
- * @param    *models_pkg.CreateAccessTokenRequest        request         parameter: Required
+ * @param    string                                      customerId          parameter: Required
+ * @param    *models_pkg.CreateAccessTokenRequest        request             parameter: Required
+ * @param    *string                                     idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetAccessTokenResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) CreateAccessToken (
             customerId string,
-            request *models_pkg.CreateAccessTokenRequest) (*models_pkg.GetAccessTokenResponse, error) {
+            request *models_pkg.CreateAccessTokenRequest,
+            idempotencyKey *string) (*models_pkg.GetAccessTokenResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/access-tokens"
 
@@ -763,9 +771,10 @@ func (me *CUSTOMERS_IMPL) CreateAccessToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -812,13 +821,15 @@ func (me *CUSTOMERS_IMPL) CreateAccessToken (
 
 /**
  * Delete a customer's access token
- * @param    string        customerId      parameter: Required
- * @param    string        tokenId         parameter: Required
+ * @param    string         customerId          parameter: Required
+ * @param    string         tokenId             parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetAccessTokenResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) DeleteAccessToken (
             customerId string,
-            tokenId string) (*models_pkg.GetAccessTokenResponse, error) {
+            tokenId string,
+            idempotencyKey *string) (*models_pkg.GetAccessTokenResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/access-tokens/{token_id}"
 
@@ -848,8 +859,9 @@ func (me *CUSTOMERS_IMPL) DeleteAccessToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -896,13 +908,15 @@ func (me *CUSTOMERS_IMPL) DeleteAccessToken (
 
 /**
  * Updates the metadata a customer
- * @param    string                                   customerId      parameter: Required
- * @param    *models_pkg.UpdateMetadataRequest        request         parameter: Required
+ * @param    string                                   customerId          parameter: Required
+ * @param    *models_pkg.UpdateMetadataRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetCustomerResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata (
             customerId string,
-            request *models_pkg.UpdateMetadataRequest) (*models_pkg.GetCustomerResponse, error) {
+            request *models_pkg.UpdateMetadataRequest,
+            idempotencyKey *string) (*models_pkg.GetCustomerResponse, error) {
     //the endpoint path uri
     _pathUrl := "/Customers/{customer_id}/metadata"
 
@@ -931,9 +945,10 @@ func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -980,13 +995,15 @@ func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata (
 
 /**
  * Updates a customer
- * @param    string                                   customerId      parameter: Required
- * @param    *models_pkg.UpdateCustomerRequest        request         parameter: Required
+ * @param    string                                   customerId          parameter: Required
+ * @param    *models_pkg.UpdateCustomerRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetCustomerResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) UpdateCustomer (
             customerId string,
-            request *models_pkg.UpdateCustomerRequest) (*models_pkg.GetCustomerResponse, error) {
+            request *models_pkg.UpdateCustomerRequest,
+            idempotencyKey *string) (*models_pkg.GetCustomerResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}"
 
@@ -1015,9 +1032,10 @@ func (me *CUSTOMERS_IMPL) UpdateCustomer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -1100,7 +1118,7 @@ func (me *CUSTOMERS_IMPL) GetAddress (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -1148,13 +1166,15 @@ func (me *CUSTOMERS_IMPL) GetAddress (
 
 /**
  * Delete a Customer's address
- * @param    string        customerId      parameter: Required
- * @param    string        addressId       parameter: Required
+ * @param    string         customerId          parameter: Required
+ * @param    string         addressId           parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetAddressResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) DeleteAddress (
             customerId string,
-            addressId string) (*models_pkg.GetAddressResponse, error) {
+            addressId string,
+            idempotencyKey *string) (*models_pkg.GetAddressResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/addresses/{address_id}"
 
@@ -1184,8 +1204,9 @@ func (me *CUSTOMERS_IMPL) DeleteAddress (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -1232,13 +1253,15 @@ func (me *CUSTOMERS_IMPL) DeleteAddress (
 
 /**
  * Delete a customer's card
- * @param    string        customerId      parameter: Required
- * @param    string        cardId          parameter: Required
+ * @param    string         customerId          parameter: Required
+ * @param    string         cardId              parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetCardResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) DeleteCard (
             customerId string,
-            cardId string) (*models_pkg.GetCardResponse, error) {
+            cardId string,
+            idempotencyKey *string) (*models_pkg.GetCardResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/cards/{card_id}"
 
@@ -1268,8 +1291,9 @@ func (me *CUSTOMERS_IMPL) DeleteCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -1316,13 +1340,15 @@ func (me *CUSTOMERS_IMPL) DeleteCard (
 
 /**
  * Creates a new address for a customer
- * @param    string                                  customerId      parameter: Required
- * @param    *models_pkg.CreateAddressRequest        request         parameter: Required
+ * @param    string                                  customerId          parameter: Required
+ * @param    *models_pkg.CreateAddressRequest        request             parameter: Required
+ * @param    *string                                 idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetAddressResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) CreateAddress (
             customerId string,
-            request *models_pkg.CreateAddressRequest) (*models_pkg.GetAddressResponse, error) {
+            request *models_pkg.CreateAddressRequest,
+            idempotencyKey *string) (*models_pkg.GetAddressResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/addresses"
 
@@ -1351,9 +1377,10 @@ func (me *CUSTOMERS_IMPL) CreateAddress (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -1436,7 +1463,7 @@ func (me *CUSTOMERS_IMPL) GetCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -1484,13 +1511,15 @@ func (me *CUSTOMERS_IMPL) GetCard (
 
 /**
  * Creates a new card for a customer
- * @param    string                               customerId      parameter: Required
- * @param    *models_pkg.CreateCardRequest        request         parameter: Required
+ * @param    string                               customerId          parameter: Required
+ * @param    *models_pkg.CreateCardRequest        request             parameter: Required
+ * @param    *string                              idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetCardResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) CreateCard (
             customerId string,
-            request *models_pkg.CreateCardRequest) (*models_pkg.GetCardResponse, error) {
+            request *models_pkg.CreateCardRequest,
+            idempotencyKey *string) (*models_pkg.GetCardResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/cards"
 
@@ -1519,9 +1548,10 @@ func (me *CUSTOMERS_IMPL) CreateCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -1616,7 +1646,7 @@ func (me *CUSTOMERS_IMPL) GetCustomers (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
     }
 
@@ -1664,13 +1694,15 @@ func (me *CUSTOMERS_IMPL) GetCustomers (
 
 /**
  * Renew a card
- * @param    string        customerId      parameter: Required
- * @param    string        cardId          parameter: Required
+ * @param    string         customerId          parameter: Required
+ * @param    string         cardId              parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetCardResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) RenewCard (
             customerId string,
-            cardId string) (*models_pkg.GetCardResponse, error) {
+            cardId string,
+            idempotencyKey *string) (*models_pkg.GetCardResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers/{customer_id}/cards/{card_id}/renew"
 
@@ -1700,8 +1732,9 @@ func (me *CUSTOMERS_IMPL) RenewCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
@@ -1748,11 +1781,13 @@ func (me *CUSTOMERS_IMPL) RenewCard (
 
 /**
  * Creates a new customer
- * @param    *models_pkg.CreateCustomerRequest        request     parameter: Required
+ * @param    *models_pkg.CreateCustomerRequest        request             parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetCustomerResponse response from the API call
  */
 func (me *CUSTOMERS_IMPL) CreateCustomer (
-            request *models_pkg.CreateCustomerRequest) (*models_pkg.GetCustomerResponse, error) {
+            request *models_pkg.CreateCustomerRequest,
+            idempotencyKey *string) (*models_pkg.GetCustomerResponse, error) {
     //the endpoint path uri
     _pathUrl := "/customers"
 
@@ -1772,9 +1807,10 @@ func (me *CUSTOMERS_IMPL) CreateCustomer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.15.1",
+        "user-agent" : "MundiSDK - Go 0.16.0-beta.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
