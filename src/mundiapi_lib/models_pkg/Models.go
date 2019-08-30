@@ -1109,7 +1109,7 @@ type CreateCreditCardPaymentRequest struct {
     ExtendedLimitCode      *string         `json:"extended_limit_code,omitempty" form:"extended_limit_code,omitempty"` //Extended Limit Code
     MerchantCategoryCode   *int64          `json:"merchant_category_code,omitempty" form:"merchant_category_code,omitempty"` //Customer business segment code
     Authentication         *CreatePaymentAuthenticationRequest `json:"authentication,omitempty" form:"authentication,omitempty"` //The payment authentication request
-    Contactless            *CreateCardPaymentTokenRequest `json:"contactless,omitempty" form:"contactless,omitempty"` //The Credit card payment contactless request
+    Contactless            *CreateCardPaymentContactlessRequest `json:"contactless,omitempty" form:"contactless,omitempty"` //The Credit card payment contactless request
     AutoRecovery           *bool           `json:"auto_recovery,omitempty" form:"auto_recovery,omitempty"` //Indicates whether a particular payment will enter the offline retry flow
 }
 
@@ -1396,11 +1396,13 @@ type GetGatewayErrorResponse struct {
  * Structure for the custom type CreateThreeDSecureRequest
  */
 type CreateThreeDSecureRequest struct {
-    Mpi             string          `json:"mpi" form:"mpi"` //The MPI Vendor (MerchantPlugin)
-    Cavv            *string         `json:"cavv,omitempty" form:"cavv,omitempty"` //The Cardholder Authentication Verification value
-    Eci             *string         `json:"eci,omitempty" form:"eci,omitempty"` //The Electronic Commerce Indicator value
-    TransactionId   *string         `json:"transaction_id,omitempty" form:"transaction_id,omitempty"` //The TransactionId value (XID)
-    SuccessUrl      *string         `json:"success_url,omitempty" form:"success_url,omitempty"` //The success URL after the authentication
+    Mpi               string          `json:"mpi" form:"mpi"` //The MPI Vendor (MerchantPlugin)
+    Cavv              *string         `json:"cavv,omitempty" form:"cavv,omitempty"` //The Cardholder Authentication Verification value
+    Eci               *string         `json:"eci,omitempty" form:"eci,omitempty"` //The Electronic Commerce Indicator value
+    TransactionId     *string         `json:"transaction_id,omitempty" form:"transaction_id,omitempty"` //The TransactionId value (XID)
+    SuccessUrl        *string         `json:"success_url,omitempty" form:"success_url,omitempty"` //The success URL after the authentication
+    DsTransactionId   *string         `json:"ds_transaction_id,omitempty" form:"ds_transaction_id,omitempty"` //Directory Service Transaction Identifier
+    Version           *string         `json:"version,omitempty" form:"version,omitempty"` //ThreeDSecure Version
 }
 
 /*
@@ -1421,7 +1423,7 @@ type CreateDebitCardPaymentRequest struct {
     CardToken            *string         `json:"card_token,omitempty" form:"card_token,omitempty"` //The debit card token
     Recurrence           *bool           `json:"recurrence,omitempty" form:"recurrence,omitempty"` //Indicates a recurrence
     Authentication       *CreatePaymentAuthenticationRequest `json:"authentication,omitempty" form:"authentication,omitempty"` //The payment authentication request
-    Token                *CreateCardPaymentTokenRequest `json:"token,omitempty" form:"token,omitempty"` //The Debit card payment token request
+    Token                *CreateCardPaymentContactlessRequest `json:"token,omitempty" form:"token,omitempty"` //The Debit card payment token request
 }
 
 /*
@@ -1819,12 +1821,13 @@ type CreateGooglePayHeaderRequest struct {
 }
 
 /*
- * Structure for the custom type CreateCardPaymentTokenRequest
+ * Structure for the custom type CreateCardPaymentContactlessRequest
  */
-type CreateCardPaymentTokenRequest struct {
+type CreateCardPaymentContactlessRequest struct {
     Type            string          `json:"type" form:"type"` //The authentication type
-    ApplePay        CreateApplePayRequest `json:"apple_pay" form:"apple_pay"` //The ApplePay authentication request
-    GooglePay       CreateGooglePayRequest `json:"google_pay" form:"google_pay"` //The GooglePay authentication request
+    ApplePay        *CreateApplePayRequest `json:"apple_pay,omitempty" form:"apple_pay,omitempty"` //The ApplePay encrypted request
+    GooglePay       *CreateGooglePayRequest `json:"google_pay,omitempty" form:"google_pay,omitempty"` //The GooglePay encrypted request
+    Emv             *CreateEmvDecryptRequest `json:"emv,omitempty" form:"emv,omitempty"` //The Emv encrypted request
 }
 
 /*
@@ -2064,4 +2067,50 @@ type GetAddressResponse struct {
     Line1           string          `json:"line_1" form:"line_1"` //Line 1 for address
     Line2           string          `json:"line_2" form:"line_2"` //Line 2 for address
     DeletedAt       *time.Time      `json:"deleted_at,omitempty" form:"deleted_at,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type CreateEmvDataTlvDecryptRequest
+ */
+type CreateEmvDataTlvDecryptRequest struct {
+    Tag             string          `json:"tag" form:"tag"` //Emv tag
+    Lenght          string          `json:"lenght" form:"lenght"` //Emv lenght
+    Value           string          `json:"value" form:"value"` //Emv value
+}
+
+/*
+ * Structure for the custom type CreateEmvDataDukptDecryptRequest
+ */
+type CreateEmvDataDukptDecryptRequest struct {
+    Ksn             string          `json:"ksn" form:"ksn"` //Key serial number
+}
+
+/*
+ * Structure for the custom type CreateEmvDataDecryptRequest
+ */
+type CreateEmvDataDecryptRequest struct {
+    Cipher          string          `json:"cipher" form:"cipher"` //Emv Decrypt cipher type
+    Dukpt           *CreateEmvDataDukptDecryptRequest `json:"dukpt,omitempty" form:"dukpt,omitempty"` //Dukpt data request
+    Tags            []*CreateEmvDataTlvDecryptRequest `json:"tags" form:"tags"` //Encrypted tags list
+}
+
+/*
+ * Structure for the custom type CreateEmvDecryptRequest
+ */
+type CreateEmvDecryptRequest struct {
+    IccData              string          `json:"icc_data" form:"icc_data"` //TODO: Write general description for this field
+    CardSequenceNumber   string          `json:"card_sequence_number" form:"card_sequence_number"` //TODO: Write general description for this field
+    Data                 CreateEmvDataDecryptRequest `json:"data" form:"data"` //TODO: Write general description for this field
+    Poi                  *CreateCardPaymentContactlessPOIRequest `json:"poi,omitempty" form:"poi,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type CreateCardPaymentContactlessPOIRequest
+ */
+type CreateCardPaymentContactlessPOIRequest struct {
+    SystemName      string          `json:"system_name" form:"system_name"` //system name
+    Model           string          `json:"model" form:"model"` //model
+    Provider        string          `json:"provider" form:"provider"` //provider
+    SerialNumber    string          `json:"serial_number" form:"serial_number"` //serial number
+    VersionNumber   string          `json:"version_number" form:"version_number"` //version number
 }
