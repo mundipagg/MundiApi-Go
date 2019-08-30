@@ -117,8 +117,8 @@ To configure these for your generated code, open the file "Configuration.go" and
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
-* [orders_pkg](#orders_pkg)
 * [subscriptions_pkg](#subscriptions_pkg)
+* [orders_pkg](#orders_pkg)
 * [plans_pkg](#plans_pkg)
 * [invoices_pkg](#invoices_pkg)
 * [customers_pkg](#customers_pkg)
@@ -127,357 +127,6 @@ To configure these for your generated code, open the file "Configuration.go" and
 * [tokens_pkg](#tokens_pkg)
 * [sellers_pkg](#sellers_pkg)
 * [transactions_pkg](#transactions_pkg)
-
-## <a name="orders_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".orders_pkg") orders_pkg
-
-### Get instance
-
-Factory for the ``` ORDERS ``` interface can be accessed from the package orders_pkg.
-
-```go
-orders := orders_pkg.NewORDERS()
-```
-
-### <a name="get_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrderItem") GetOrderItem
-
-> TODO: Add a method description
-
-
-```go
-func (me *ORDERS_IMPL) GetOrderItem(
-            orderId string,
-            itemId string)(*models_pkg.GetOrderItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| itemId |  ``` Required ```  | Item Id |
-
-
-#### Example Usage
-
-```go
-orderId := "orderId"
-itemId := "itemId"
-
-var result *models_pkg.GetOrderItemResponse
-result,_ = orders.GetOrderItem(orderId, itemId)
-
-```
-
-
-### <a name="update_order_status"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderStatus") UpdateOrderStatus
-
-> TODO: Add a method description
-
-
-```go
-func (me *ORDERS_IMPL) UpdateOrderStatus(
-            id string,
-            request *models_pkg.UpdateOrderStatusRequest,
-            idempotencyKey *string)(*models_pkg.GetOrderResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| id |  ``` Required ```  | Order Id |
-| request |  ``` Required ```  | Update Order Model |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-id := "id"
-var request *models_pkg.UpdateOrderStatusRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetOrderResponse
-result,_ = orders.UpdateOrderStatus(id, request, idempotencyKey)
-
-```
-
-
-### <a name="delete_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.DeleteOrderItem") DeleteOrderItem
-
-> TODO: Add a method description
-
-
-```go
-func (me *ORDERS_IMPL) DeleteOrderItem(
-            orderId string,
-            itemId string,
-            idempotencyKey *string)(*models_pkg.GetOrderItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| itemId |  ``` Required ```  | Item Id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-orderId := "orderId"
-itemId := "itemId"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetOrderItemResponse
-result,_ = orders.DeleteOrderItem(orderId, itemId, idempotencyKey)
-
-```
-
-
-### <a name="create_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.CreateOrderItem") CreateOrderItem
-
-> TODO: Add a method description
-
-
-```go
-func (me *ORDERS_IMPL) CreateOrderItem(
-            orderId string,
-            request *models_pkg.CreateOrderItemRequest,
-            idempotencyKey *string)(*models_pkg.GetOrderItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| request |  ``` Required ```  | Order Item Model |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-orderId := "orderId"
-var request *models_pkg.CreateOrderItemRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetOrderItemResponse
-result,_ = orders.CreateOrderItem(orderId, request, idempotencyKey)
-
-```
-
-
-### <a name="update_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderItem") UpdateOrderItem
-
-> TODO: Add a method description
-
-
-```go
-func (me *ORDERS_IMPL) UpdateOrderItem(
-            orderId string,
-            itemId string,
-            request *models_pkg.UpdateOrderItemRequest,
-            idempotencyKey *string)(*models_pkg.GetOrderItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| itemId |  ``` Required ```  | Item Id |
-| request |  ``` Required ```  | Item Model |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-orderId := "orderId"
-itemId := "itemId"
-var request *models_pkg.UpdateOrderItemRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetOrderItemResponse
-result,_ = orders.UpdateOrderItem(orderId, itemId, request, idempotencyKey)
-
-```
-
-
-### <a name="update_order_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderMetadata") UpdateOrderMetadata
-
-> Updates the metadata from an order
-
-
-```go
-func (me *ORDERS_IMPL) UpdateOrderMetadata(
-            orderId string,
-            request *models_pkg.UpdateMetadataRequest,
-            idempotencyKey *string)(*models_pkg.GetOrderResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | The order id |
-| request |  ``` Required ```  | Request for updating the order metadata |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-orderId := "order_id"
-var request *models_pkg.UpdateMetadataRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetOrderResponse
-result,_ = orders.UpdateOrderMetadata(orderId, request, idempotencyKey)
-
-```
-
-
-### <a name="delete_all_order_items"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.DeleteAllOrderItems") DeleteAllOrderItems
-
-> TODO: Add a method description
-
-
-```go
-func (me *ORDERS_IMPL) DeleteAllOrderItems(
-            orderId string,
-            idempotencyKey *string)(*models_pkg.GetOrderResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order Id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-orderId := "orderId"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetOrderResponse
-result,_ = orders.DeleteAllOrderItems(orderId, idempotencyKey)
-
-```
-
-
-### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrders") GetOrders
-
-> Gets all orders
-
-
-```go
-func (me *ORDERS_IMPL) GetOrders(
-            page *int64,
-            size *int64,
-            code *string,
-            status *string,
-            createdSince *time.Time,
-            createdUntil *time.Time,
-            customerId *string)(*models_pkg.ListOrderResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Filter for order's code |
-| status |  ``` Optional ```  | Filter for order's status |
-| createdSince |  ``` Optional ```  | Filter for order's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for order's creation date end range |
-| customerId |  ``` Optional ```  | Filter for order's customer id |
-
-
-#### Example Usage
-
-```go
-page,_ := strconv.ParseInt("60", 10, 8)
-size,_ := strconv.ParseInt("60", 10, 8)
-code := "code"
-status := "status"
-createdSince := time.Now()
-createdUntil := time.Now()
-customerId := "customer_id"
-
-var result *models_pkg.ListOrderResponse
-result,_ = orders.GetOrders(page, size, code, status, createdSince, createdUntil, customerId)
-
-```
-
-
-### <a name="get_order"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrder") GetOrder
-
-> Gets an order
-
-
-```go
-func (me *ORDERS_IMPL) GetOrder(orderId string)(*models_pkg.GetOrderResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| orderId |  ``` Required ```  | Order id |
-
-
-#### Example Usage
-
-```go
-orderId := "order_id"
-
-var result *models_pkg.GetOrderResponse
-result,_ = orders.GetOrder(orderId)
-
-```
-
-
-### <a name="create_order"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.CreateOrder") CreateOrder
-
-> Creates a new Order
-
-
-```go
-func (me *ORDERS_IMPL) CreateOrder(
-            body *models_pkg.CreateOrderRequest,
-            idempotencyKey *string)(*models_pkg.GetOrderResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating an order |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-var body *models_pkg.CreateOrderRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetOrderResponse
-result,_ = orders.CreateOrder(body, idempotencyKey)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
 
 ## <a name="subscriptions_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".subscriptions_pkg") subscriptions_pkg
 
@@ -489,445 +138,23 @@ Factory for the ``` SUBSCRIPTIONS ``` interface can be accessed from the package
 subscriptions := subscriptions_pkg.NewSUBSCRIPTIONS()
 ```
 
-### <a name="get_subscription_cycle_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionCycleById") GetSubscriptionCycleById
+### <a name="get_increment_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetIncrementById") GetIncrementById
 
 > TODO: Add a method description
 
 
 ```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycleById(
+func (me *SUBSCRIPTIONS_IMPL) GetIncrementById(
             subscriptionId string,
-            cycleId string)(*models_pkg.GetPeriodResponse,error)
+            incrementId string)(*models_pkg.GetIncrementResponse,error)
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| cycleId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-cycleId := "cycleId"
-
-var result *models_pkg.GetPeriodResponse
-result,_ = subscriptions.GetSubscriptionCycleById(subscriptionId, cycleId)
-
-```
-
-
-### <a name="renew_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.RenewSubscription") RenewSubscription
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) RenewSubscription(
-            subscriptionId string,
-            idempotencyKey *string)(*models_pkg.GetPeriodResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetPeriodResponse
-result,_ = subscriptions.RenewSubscription(subscriptionId, idempotencyKey)
-
-```
-
-
-### <a name="update_current_cycle_status"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateCurrentCycleStatus") UpdateCurrentCycleStatus
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleStatus(
-            subscriptionId string,
-            request *models_pkg.UpdateCurrentCycleStatusRequest,
-            idempotencyKey *string)(,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | Request for updating the end date of the subscription current status |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateCurrentCycleStatusRequest
-idempotencyKey := "idempotency-key"
-
-var result 
-result,_ = subscriptions.UpdateCurrentCycleStatus(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="get_subscription_cycles"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionCycles") GetSubscriptionCycles
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycles(
-            subscriptionId string,
-            page string,
-            size string)(*models_pkg.ListCyclesResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| page |  ``` Required ```  | Page number |
-| size |  ``` Required ```  | Page size |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-page := "page"
-size := "size"
-
-var result *models_pkg.ListCyclesResponse
-result,_ = subscriptions.GetSubscriptionCycles(subscriptionId, page, size)
-
-```
-
-
-### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionBillingDate") UpdateSubscriptionBillingDate
-
-> Updates the billing date from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionBillingDateRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription billing date |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionBillingDateRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionBillingDate(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="update_latest_period_end_at"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateLatestPeriodEndAt") UpdateLatestPeriodEndAt
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateLatestPeriodEndAt(
-            subscriptionId string,
-            request *models_pkg.UpdateCurrentCycleEndDateRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-| request |  ``` Required ```  | Request for updating the end date of the current signature cycle |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateCurrentCycleEndDateRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateLatestPeriodEndAt(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="update_subscription_due_days"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionDueDays") UpdateSubscriptionDueDays
-
-> Updates the boleto due days from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionDueDaysRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | TODO: Add a parameter description |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionDueDaysRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionDueDays(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMiniumPrice") UpdateSubscriptionMiniumPrice
-
-> Atualização do valor mínimo da assinatura
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionMinimumPriceRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionMinimumPriceRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionMiniumPrice(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsages") GetUsages
-
-> Lists all usages from a subscription item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetUsages(
-            subscriptionId string,
-            itemId string,
-            page *int64,
-            size *int64,
-            code *string,
-            group *string)(*models_pkg.ListUsagesResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Identification code in the client system |
-| group |  ``` Optional ```  | Identification group in the client system |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-page,_ := strconv.ParseInt("60", 10, 8)
-size,_ := strconv.ParseInt("60", 10, 8)
-code := "code"
-group := "group"
-
-var result *models_pkg.ListUsagesResponse
-result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size, code, group)
-
-```
-
-
-### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsagesDetails") GetUsagesDetails
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
-            subscriptionId string,
-            cycleId *string,
-            size *int64,
-            page *int64,
-            itemId *string,
-            group *string)(*models_pkg.GetUsagesDetailsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Identifier |
-| cycleId |  ``` Optional ```  | Cycle id |
-| size |  ``` Optional ```  | Page size |
-| page |  ``` Optional ```  | Page number |
-| itemId |  ``` Optional ```  | Identificador do item |
-| group |  ``` Optional ```  | identificador da loja (account) de cada item |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-cycleId := "cycle_id"
-size,_ := strconv.ParseInt("60", 10, 8)
-page,_ := strconv.ParseInt("60", 10, 8)
-itemId := "item_id"
-group := "group"
-
-var result *models_pkg.GetUsagesDetailsResponse
-result,_ = subscriptions.GetUsagesDetails(subscriptionId, cycleId, size, page, itemId, group)
-
-```
-
-
-### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetIncrements") GetIncrements
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
-            subscriptionId string,
-            page *int64,
-            size *int64)(*models_pkg.ListIncrementsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("60", 10, 8)
-size,_ := strconv.ParseInt("60", 10, 8)
-
-var result *models_pkg.ListIncrementsResponse
-result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
-
-```
-
-
-### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateIncrement") CreateIncrement
-
-> Creates a increment
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateIncrement(
-            subscriptionId string,
-            request *models_pkg.CreateIncrementRequest,
-            idempotencyKey *string)(*models_pkg.GetIncrementResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a increment |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.CreateIncrementRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetIncrementResponse
-result,_ = subscriptions.CreateIncrement(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteIncrement") DeleteIncrement
-
-> Deletes a increment
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement(
-            subscriptionId string,
-            incrementId string,
-            idempotencyKey *string)(*models_pkg.GetIncrementResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| incrementId |  ``` Required ```  | Increment id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+| subscriptionId |  ``` Required ```  | The subscription Id |
+| incrementId |  ``` Required ```  | The increment Id |
 
 
 #### Example Usage
@@ -935,24 +162,23 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement(
 ```go
 subscriptionId := "subscription_id"
 incrementId := "increment_id"
-idempotencyKey := "idempotency-key"
 
 var result *models_pkg.GetIncrementResponse
-result,_ = subscriptions.DeleteIncrement(subscriptionId, incrementId, idempotencyKey)
+result,_ = subscriptions.GetIncrementById(subscriptionId, incrementId)
 
 ```
 
 
-### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscounts") GetDiscounts
+### <a name="update_subscription_start_at"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionStartAt") UpdateSubscriptionStartAt
 
-> TODO: Add a method description
+> Updates the start at date from a subscription
 
 
 ```go
-func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt(
             subscriptionId string,
-            page int64,
-            size int64)(*models_pkg.ListDiscountsResponse,error)
+            request *models_pkg.UpdateSubscriptionStartAtRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
 ```
 
 #### Parameters
@@ -960,32 +186,32 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Required ```  | Page number |
-| size |  ``` Required ```  | Page size |
+| request |  ``` Required ```  | Request for updating the subscription start date |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 #### Example Usage
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("60", 10, 8)
-size,_ := strconv.ParseInt("60", 10, 8)
+var request *models_pkg.UpdateSubscriptionStartAtRequest
+idempotencyKey := "idempotency-key"
 
-var result *models_pkg.ListDiscountsResponse
-result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionStartAt(subscriptionId, request, idempotencyKey)
 
 ```
 
 
-### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CancelSubscription") CancelSubscription
+### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionCard") UpdateSubscriptionCard
 
-> Cancels a subscription
+> Updates the credit card from a subscription
 
 
 ```go
-func (me *SUBSCRIPTIONS_IMPL) CancelSubscription(
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard(
             subscriptionId string,
-            request *models_pkg.CreateCancelSubscriptionRequest,
+            request *models_pkg.UpdateSubscriptionCardRequest,
             idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
 ```
 
@@ -994,7 +220,7 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription(
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Optional ```  | Request for cancelling a subscription |
+| request |  ``` Required ```  | Request for updating a card |
 | idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
@@ -1002,228 +228,26 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription(
 
 ```go
 subscriptionId := "subscription_id"
-var request *models_pkg.CreateCancelSubscriptionRequest
+var request *models_pkg.UpdateSubscriptionCardRequest
 idempotencyKey := "idempotency-key"
 
 var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.CancelSubscription(subscriptionId, request, idempotencyKey)
+result,_ = subscriptions.UpdateSubscriptionCard(subscriptionId, request, idempotencyKey)
 
 ```
 
 
-### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscountById") GetDiscountById
+### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionItem") UpdateSubscriptionItem
 
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetDiscountById(
-            subscriptionId string,
-            discountId string)(*models_pkg.GetDiscountResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| discountId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-discountId := "discountId"
-
-var result *models_pkg.GetDiscountResponse
-result,_ = subscriptions.GetDiscountById(subscriptionId, discountId)
-
-```
-
-
-### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteUsage") DeleteUsage
-
-> Deletes a usage
+> Updates a subscription item
 
 
 ```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteUsage(
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem(
             subscriptionId string,
             itemId string,
-            usageId string,
-            idempotencyKey *string)(*models_pkg.GetUsageResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| itemId |  ``` Required ```  | The subscription item id |
-| usageId |  ``` Required ```  | The usage id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-usageId := "usage_id"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetUsageResponse
-result,_ = subscriptions.DeleteUsage(subscriptionId, itemId, usageId, idempotencyKey)
-
-```
-
-
-### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteSubscriptionItem") DeleteSubscriptionItem
-
-> Deletes a subscription item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem(
-            subscriptionId string,
-            subscriptionItemId string,
+            body *models_pkg.UpdateSubscriptionItemRequest,
             idempotencyKey *string)(*models_pkg.GetSubscriptionItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| subscriptionItemId |  ``` Required ```  | Subscription item id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-subscriptionItemId := "subscription_item_id"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionItemResponse
-result,_ = subscriptions.DeleteSubscriptionItem(subscriptionId, subscriptionItemId, idempotencyKey)
-
-```
-
-
-### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteDiscount") DeleteDiscount
-
-> Deletes a discount
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount(
-            subscriptionId string,
-            discountId string,
-            idempotencyKey *string)(*models_pkg.GetDiscountResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| discountId |  ``` Required ```  | Discount Id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-discountId := "discount_id"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetDiscountResponse
-result,_ = subscriptions.DeleteDiscount(subscriptionId, discountId, idempotencyKey)
-
-```
-
-
-### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateAnUsage") CreateAnUsage
-
-> Create Usage
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage(
-            subscriptionId string,
-            itemId string,
-            idempotencyKey *string)(*models_pkg.GetUsageResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| itemId |  ``` Required ```  | Item id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetUsageResponse
-result,_ = subscriptions.CreateAnUsage(subscriptionId, itemId, idempotencyKey)
-
-```
-
-
-### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMetadata") UpdateSubscriptionMetadata
-
-> Updates the metadata from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata(
-            subscriptionId string,
-            request *models_pkg.UpdateMetadataRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscrption metadata |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateMetadataRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionMetadata(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItem") GetSubscriptionItem
-
-> Get Subscription Item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem(
-            subscriptionId string,
-            itemId string)(*models_pkg.GetSubscriptionItemResponse,error)
 ```
 
 #### Parameters
@@ -1232,38 +256,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem(
 |-----------|------|-------------|
 | subscriptionId |  ``` Required ```  | Subscription Id |
 | itemId |  ``` Required ```  | Item id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-
-var result *models_pkg.GetSubscriptionItemResponse
-result,_ = subscriptions.GetSubscriptionItem(subscriptionId, itemId)
-
-```
-
-
-### <a name="update_subscription_affiliation_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionAffiliationId") UpdateSubscriptionAffiliationId
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionAffiliationIdRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
-| request |  ``` Required ```  | Request for updating a subscription affiliation id |
+| body |  ``` Required ```  | Request for updating a subscription item |
 | idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
@@ -1271,11 +264,141 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId(
 
 ```go
 subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionAffiliationIdRequest
+itemId := "item_id"
+var body *models_pkg.UpdateSubscriptionItemRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionItemResponse
+result,_ = subscriptions.UpdateSubscriptionItem(subscriptionId, itemId, body, idempotencyKey)
+
+```
+
+
+### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateUsage") CreateUsage
+
+> Creates a usage
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateUsage(
+            subscriptionId string,
+            itemId string,
+            body *models_pkg.CreateUsageRequest,
+            idempotencyKey *string)(*models_pkg.GetUsageResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for creating a usage |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+var body *models_pkg.CreateUsageRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetUsageResponse
+result,_ = subscriptions.CreateUsage(subscriptionId, itemId, body, idempotencyKey)
+
+```
+
+
+### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscription") GetSubscription
+
+> Gets a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscription(subscriptionId string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.GetSubscription(subscriptionId)
+
+```
+
+
+### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionPaymentMethod") UpdateSubscriptionPaymentMethod
+
+> Updates the payment method from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionPaymentMethodRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionPaymentMethodRequest
 idempotencyKey := "idempotency-key"
 
 var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionAffiliationId(subscriptionId, request, idempotencyKey)
+result,_ = subscriptions.UpdateSubscriptionPaymentMethod(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateSubscription") CreateSubscription
+
+> Creates a new subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateSubscription(
+            body *models_pkg.CreateSubscriptionRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating a subscription |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+var body *models_pkg.CreateSubscriptionRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.CreateSubscription(body, idempotencyKey)
 
 ```
 
@@ -1348,15 +471,46 @@ result,_ = subscriptions.CreateDiscount(subscriptionId, request, idempotencyKey)
 ```
 
 
-### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionPaymentMethod") UpdateSubscriptionPaymentMethod
+### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItem") GetSubscriptionItem
 
-> Updates the payment method from a subscription
+> Get Subscription Item
 
 
 ```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod(
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem(
             subscriptionId string,
-            request *models_pkg.UpdateSubscriptionPaymentMethodRequest,
+            itemId string)(*models_pkg.GetSubscriptionItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| itemId |  ``` Required ```  | Item id |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+
+var result *models_pkg.GetSubscriptionItemResponse
+result,_ = subscriptions.GetSubscriptionItem(subscriptionId, itemId)
+
+```
+
+
+### <a name="update_subscription_affiliation_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionAffiliationId") UpdateSubscriptionAffiliationId
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionAffiliationIdRequest,
             idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
 ```
 
@@ -1364,8 +518,8 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod(
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
+| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | Request for updating a subscription affiliation id |
 | idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
@@ -1373,56 +527,24 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod(
 
 ```go
 subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionPaymentMethodRequest
+var request *models_pkg.UpdateSubscriptionAffiliationIdRequest
 idempotencyKey := "idempotency-key"
 
 var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionPaymentMethod(subscriptionId, request, idempotencyKey)
+result,_ = subscriptions.UpdateSubscriptionAffiliationId(subscriptionId, request, idempotencyKey)
 
 ```
 
 
-### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateSubscription") CreateSubscription
+### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateAnUsage") CreateAnUsage
 
-> Creates a new subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) CreateSubscription(
-            body *models_pkg.CreateSubscriptionRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating a subscription |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-var body *models_pkg.CreateSubscriptionRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.CreateSubscription(body, idempotencyKey)
-
-```
-
-
-### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateUsage") CreateUsage
-
-> Creates a usage
+> Create Usage
 
 
 ```go
-func (me *SUBSCRIPTIONS_IMPL) CreateUsage(
+func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage(
             subscriptionId string,
             itemId string,
-            body *models_pkg.CreateUsageRequest,
             idempotencyKey *string)(*models_pkg.GetUsageResponse,error)
 ```
 
@@ -1430,9 +552,8 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage(
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
+| subscriptionId |  ``` Required ```  | Subscription id |
 | itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for creating a usage |
 | idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
 
 
@@ -1441,174 +562,10 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage(
 ```go
 subscriptionId := "subscription_id"
 itemId := "item_id"
-var body *models_pkg.CreateUsageRequest
 idempotencyKey := "idempotency-key"
 
 var result *models_pkg.GetUsageResponse
-result,_ = subscriptions.CreateUsage(subscriptionId, itemId, body, idempotencyKey)
-
-```
-
-
-### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionItem") UpdateSubscriptionItem
-
-> Updates a subscription item
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem(
-            subscriptionId string,
-            itemId string,
-            body *models_pkg.UpdateSubscriptionItemRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| itemId |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for updating a subscription item |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-itemId := "item_id"
-var body *models_pkg.UpdateSubscriptionItemRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionItemResponse
-result,_ = subscriptions.UpdateSubscriptionItem(subscriptionId, itemId, body, idempotencyKey)
-
-```
-
-
-### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionCard") UpdateSubscriptionCard
-
-> Updates the credit card from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionCardRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating a card |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionCardRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionCard(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscription") GetSubscription
-
-> Gets a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscription(subscriptionId string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.GetSubscription(subscriptionId)
-
-```
-
-
-### <a name="get_increment_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetIncrementById") GetIncrementById
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetIncrementById(
-            subscriptionId string,
-            incrementId string)(*models_pkg.GetIncrementResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription Id |
-| incrementId |  ``` Required ```  | The increment Id |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-incrementId := "increment_id"
-
-var result *models_pkg.GetIncrementResponse
-result,_ = subscriptions.GetIncrementById(subscriptionId, incrementId)
-
-```
-
-
-### <a name="update_subscription_start_at"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionStartAt") UpdateSubscriptionStartAt
-
-> Updates the start at date from a subscription
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionStartAtRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription start date |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionStartAtRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionStartAt(subscriptionId, request, idempotencyKey)
+result,_ = subscriptions.CreateAnUsage(subscriptionId, itemId, idempotencyKey)
 
 ```
 
@@ -1655,8 +612,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("60", 10, 8)
-size,_ := strconv.ParseInt("60", 10, 8)
+page,_ := strconv.ParseInt("238", 10, 8)
+size,_ := strconv.ParseInt("238", 10, 8)
 code := "code"
 billingType := "billing_type"
 customerId := "customer_id"
@@ -1670,6 +627,432 @@ createdUntil := time.Now()
 
 var result *models_pkg.ListSubscriptionsResponse
 result,_ = subscriptions.GetSubscriptions(page, size, code, billingType, customerId, planId, cardId, status, nextBillingSince, nextBillingUntil, createdSince, createdUntil)
+
+```
+
+
+### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMetadata") UpdateSubscriptionMetadata
+
+> Updates the metadata from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata(
+            subscriptionId string,
+            request *models_pkg.UpdateMetadataRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscrption metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateMetadataRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionMetadata(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteSubscriptionItem") DeleteSubscriptionItem
+
+> Deletes a subscription item
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem(
+            subscriptionId string,
+            subscriptionItemId string,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| subscriptionItemId |  ``` Required ```  | Subscription item id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+subscriptionItemId := "subscription_item_id"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionItemResponse
+result,_ = subscriptions.DeleteSubscriptionItem(subscriptionId, subscriptionItemId, idempotencyKey)
+
+```
+
+
+### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteUsage") DeleteUsage
+
+> Deletes a usage
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteUsage(
+            subscriptionId string,
+            itemId string,
+            usageId string,
+            idempotencyKey *string)(*models_pkg.GetUsageResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| usageId |  ``` Required ```  | The usage id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+usageId := "usage_id"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetUsageResponse
+result,_ = subscriptions.DeleteUsage(subscriptionId, itemId, usageId, idempotencyKey)
+
+```
+
+
+### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteDiscount") DeleteDiscount
+
+> Deletes a discount
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount(
+            subscriptionId string,
+            discountId string,
+            idempotencyKey *string)(*models_pkg.GetDiscountResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| discountId |  ``` Required ```  | Discount Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+discountId := "discount_id"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetDiscountResponse
+result,_ = subscriptions.DeleteDiscount(subscriptionId, discountId, idempotencyKey)
+
+```
+
+
+### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CancelSubscription") CancelSubscription
+
+> Cancels a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CancelSubscription(
+            subscriptionId string,
+            request *models_pkg.CreateCancelSubscriptionRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Optional ```  | Request for cancelling a subscription |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.CreateCancelSubscriptionRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.CancelSubscription(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscountById") GetDiscountById
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetDiscountById(
+            subscriptionId string,
+            discountId string)(*models_pkg.GetDiscountResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| discountId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+discountId := "discountId"
+
+var result *models_pkg.GetDiscountResponse
+result,_ = subscriptions.GetDiscountById(subscriptionId, discountId)
+
+```
+
+
+### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscounts") GetDiscounts
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
+            subscriptionId string,
+            page int64,
+            size int64)(*models_pkg.ListDiscountsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Required ```  | Page number |
+| size |  ``` Required ```  | Page size |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+page,_ := strconv.ParseInt("238", 10, 8)
+size,_ := strconv.ParseInt("238", 10, 8)
+
+var result *models_pkg.ListDiscountsResponse
+result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
+
+```
+
+
+### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.CreateIncrement") CreateIncrement
+
+> Creates a increment
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) CreateIncrement(
+            subscriptionId string,
+            request *models_pkg.CreateIncrementRequest,
+            idempotencyKey *string)(*models_pkg.GetIncrementResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a increment |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.CreateIncrementRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetIncrementResponse
+result,_ = subscriptions.CreateIncrement(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetIncrements") GetIncrements
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
+            subscriptionId string,
+            page *int64,
+            size *int64)(*models_pkg.ListIncrementsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+page,_ := strconv.ParseInt("238", 10, 8)
+size,_ := strconv.ParseInt("238", 10, 8)
+
+var result *models_pkg.ListIncrementsResponse
+result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
+
+```
+
+
+### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.DeleteIncrement") DeleteIncrement
+
+> Deletes a increment
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement(
+            subscriptionId string,
+            incrementId string,
+            idempotencyKey *string)(*models_pkg.GetIncrementResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription id |
+| incrementId |  ``` Required ```  | Increment id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+incrementId := "increment_id"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetIncrementResponse
+result,_ = subscriptions.DeleteIncrement(subscriptionId, incrementId, idempotencyKey)
+
+```
+
+
+### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsagesDetails") GetUsagesDetails
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
+            subscriptionId string,
+            cycleId *string,
+            size *int64,
+            page *int64,
+            itemId *string,
+            group *string)(*models_pkg.GetUsagesDetailsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Identifier |
+| cycleId |  ``` Optional ```  | Cycle id |
+| size |  ``` Optional ```  | Page size |
+| page |  ``` Optional ```  | Page number |
+| itemId |  ``` Optional ```  | Identificador do item |
+| group |  ``` Optional ```  | identificador da loja (account) de cada item |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+cycleId := "cycle_id"
+size,_ := strconv.ParseInt("238", 10, 8)
+page,_ := strconv.ParseInt("238", 10, 8)
+itemId := "item_id"
+group := "group"
+
+var result *models_pkg.GetUsagesDetailsResponse
+result,_ = subscriptions.GetUsagesDetails(subscriptionId, cycleId, size, page, itemId, group)
+
+```
+
+
+### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetUsages") GetUsages
+
+> Lists all usages from a subscription item
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetUsages(
+            subscriptionId string,
+            itemId string,
+            page *int64,
+            size *int64,
+            code *string,
+            group *string)(*models_pkg.ListUsagesResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| itemId |  ``` Required ```  | The subscription item id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Identification code in the client system |
+| group |  ``` Optional ```  | Identification group in the client system |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+itemId := "item_id"
+page,_ := strconv.ParseInt("238", 10, 8)
+size,_ := strconv.ParseInt("238", 10, 8)
+code := "code"
+group := "group"
+
+var result *models_pkg.ListUsagesResponse
+result,_ = subscriptions.GetUsages(subscriptionId, itemId, page, size, code, group)
 
 ```
 
@@ -1711,8 +1094,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("60", 10, 8)
-size,_ := strconv.ParseInt("60", 10, 8)
+page,_ := strconv.ParseInt("238", 10, 8)
+size,_ := strconv.ParseInt("238", 10, 8)
 name := "name"
 code := "code"
 status := "status"
@@ -1722,6 +1105,623 @@ createdUntil := "created_until"
 
 var result *models_pkg.ListSubscriptionItemsResponse
 result,_ = subscriptions.GetSubscriptionItems(subscriptionId, page, size, name, code, status, description, createdSince, createdUntil)
+
+```
+
+
+### <a name="update_subscription_due_days"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionDueDays") UpdateSubscriptionDueDays
+
+> Updates the boleto due days from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionDueDaysRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | TODO: Add a parameter description |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionDueDaysRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionDueDays(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMiniumPrice") UpdateSubscriptionMiniumPrice
+
+> Atualização do valor mínimo da assinatura
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionMinimumPriceRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionMinimumPriceRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionMiniumPrice(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionBillingDate") UpdateSubscriptionBillingDate
+
+> Updates the billing date from a subscription
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionBillingDateRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscription billing date |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionBillingDateRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionBillingDate(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="update_latest_period_end_at"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateLatestPeriodEndAt") UpdateLatestPeriodEndAt
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateLatestPeriodEndAt(
+            subscriptionId string,
+            request *models_pkg.UpdateCurrentCycleEndDateRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | Request for updating the end date of the current signature cycle |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateCurrentCycleEndDateRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateLatestPeriodEndAt(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="update_current_cycle_status"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateCurrentCycleStatus") UpdateCurrentCycleStatus
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleStatus(
+            subscriptionId string,
+            request *models_pkg.UpdateCurrentCycleStatusRequest,
+            idempotencyKey *string)(,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request for updating the end date of the subscription current status |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateCurrentCycleStatusRequest
+idempotencyKey := "idempotency-key"
+
+var result 
+result,_ = subscriptions.UpdateCurrentCycleStatus(subscriptionId, request, idempotencyKey)
+
+```
+
+
+### <a name="get_subscription_cycles"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionCycles") GetSubscriptionCycles
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycles(
+            subscriptionId string,
+            page string,
+            size string)(*models_pkg.ListCyclesResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| page |  ``` Required ```  | Page number |
+| size |  ``` Required ```  | Page size |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+page := "page"
+size := "size"
+
+var result *models_pkg.ListCyclesResponse
+result,_ = subscriptions.GetSubscriptionCycles(subscriptionId, page, size)
+
+```
+
+
+### <a name="get_subscription_cycle_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionCycleById") GetSubscriptionCycleById
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycleById(
+            subscriptionId string,
+            cycleId string)(*models_pkg.GetPeriodResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| cycleId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+cycleId := "cycleId"
+
+var result *models_pkg.GetPeriodResponse
+result,_ = subscriptions.GetSubscriptionCycleById(subscriptionId, cycleId)
+
+```
+
+
+### <a name="renew_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.RenewSubscription") RenewSubscription
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) RenewSubscription(
+            subscriptionId string,
+            idempotencyKey *string)(*models_pkg.GetPeriodResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | TODO: Add a parameter description |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetPeriodResponse
+result,_ = subscriptions.RenewSubscription(subscriptionId, idempotencyKey)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="orders_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".orders_pkg") orders_pkg
+
+### Get instance
+
+Factory for the ``` ORDERS ``` interface can be accessed from the package orders_pkg.
+
+```go
+orders := orders_pkg.NewORDERS()
+```
+
+### <a name="get_order"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrder") GetOrder
+
+> Gets an order
+
+
+```go
+func (me *ORDERS_IMPL) GetOrder(orderId string)(*models_pkg.GetOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order id |
+
+
+#### Example Usage
+
+```go
+orderId := "order_id"
+
+var result *models_pkg.GetOrderResponse
+result,_ = orders.GetOrder(orderId)
+
+```
+
+
+### <a name="create_order"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.CreateOrder") CreateOrder
+
+> Creates a new Order
+
+
+```go
+func (me *ORDERS_IMPL) CreateOrder(
+            body *models_pkg.CreateOrderRequest,
+            idempotencyKey *string)(*models_pkg.GetOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating an order |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+var body *models_pkg.CreateOrderRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetOrderResponse
+result,_ = orders.CreateOrder(body, idempotencyKey)
+
+```
+
+
+### <a name="get_orders"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrders") GetOrders
+
+> Gets all orders
+
+
+```go
+func (me *ORDERS_IMPL) GetOrders(
+            page *int64,
+            size *int64,
+            code *string,
+            status *string,
+            createdSince *time.Time,
+            createdUntil *time.Time,
+            customerId *string)(*models_pkg.ListOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for order's code |
+| status |  ``` Optional ```  | Filter for order's status |
+| createdSince |  ``` Optional ```  | Filter for order's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for order's creation date end range |
+| customerId |  ``` Optional ```  | Filter for order's customer id |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
+code := "code"
+status := "status"
+createdSince := time.Now()
+createdUntil := time.Now()
+customerId := "customer_id"
+
+var result *models_pkg.ListOrderResponse
+result,_ = orders.GetOrders(page, size, code, status, createdSince, createdUntil, customerId)
+
+```
+
+
+### <a name="update_order_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderMetadata") UpdateOrderMetadata
+
+> Updates the metadata from an order
+
+
+```go
+func (me *ORDERS_IMPL) UpdateOrderMetadata(
+            orderId string,
+            request *models_pkg.UpdateMetadataRequest,
+            idempotencyKey *string)(*models_pkg.GetOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | The order id |
+| request |  ``` Required ```  | Request for updating the order metadata |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+orderId := "order_id"
+var request *models_pkg.UpdateMetadataRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetOrderResponse
+result,_ = orders.UpdateOrderMetadata(orderId, request, idempotencyKey)
+
+```
+
+
+### <a name="delete_all_order_items"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.DeleteAllOrderItems") DeleteAllOrderItems
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) DeleteAllOrderItems(
+            orderId string,
+            idempotencyKey *string)(*models_pkg.GetOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetOrderResponse
+result,_ = orders.DeleteAllOrderItems(orderId, idempotencyKey)
+
+```
+
+
+### <a name="update_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderItem") UpdateOrderItem
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) UpdateOrderItem(
+            orderId string,
+            itemId string,
+            request *models_pkg.UpdateOrderItemRequest,
+            idempotencyKey *string)(*models_pkg.GetOrderItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+| request |  ``` Required ```  | Item Model |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+itemId := "itemId"
+var request *models_pkg.UpdateOrderItemRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetOrderItemResponse
+result,_ = orders.UpdateOrderItem(orderId, itemId, request, idempotencyKey)
+
+```
+
+
+### <a name="delete_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.DeleteOrderItem") DeleteOrderItem
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) DeleteOrderItem(
+            orderId string,
+            itemId string,
+            idempotencyKey *string)(*models_pkg.GetOrderItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+itemId := "itemId"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetOrderItemResponse
+result,_ = orders.DeleteOrderItem(orderId, itemId, idempotencyKey)
+
+```
+
+
+### <a name="create_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.CreateOrderItem") CreateOrderItem
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) CreateOrderItem(
+            orderId string,
+            request *models_pkg.CreateOrderItemRequest,
+            idempotencyKey *string)(*models_pkg.GetOrderItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| request |  ``` Required ```  | Order Item Model |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+var request *models_pkg.CreateOrderItemRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetOrderItemResponse
+result,_ = orders.CreateOrderItem(orderId, request, idempotencyKey)
+
+```
+
+
+### <a name="get_order_item"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.GetOrderItem") GetOrderItem
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) GetOrderItem(
+            orderId string,
+            itemId string)(*models_pkg.GetOrderItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| orderId |  ``` Required ```  | Order Id |
+| itemId |  ``` Required ```  | Item Id |
+
+
+#### Example Usage
+
+```go
+orderId := "orderId"
+itemId := "itemId"
+
+var result *models_pkg.GetOrderItemResponse
+result,_ = orders.GetOrderItem(orderId, itemId)
+
+```
+
+
+### <a name="update_order_status"></a>![Method: ](https://apidocs.io/img/method.png ".orders_pkg.UpdateOrderStatus") UpdateOrderStatus
+
+> TODO: Add a method description
+
+
+```go
+func (me *ORDERS_IMPL) UpdateOrderStatus(
+            id string,
+            request *models_pkg.UpdateOrderStatusRequest,
+            idempotencyKey *string)(*models_pkg.GetOrderResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| id |  ``` Required ```  | Order Id |
+| request |  ``` Required ```  | Update Order Model |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+id := "id"
+var request *models_pkg.UpdateOrderStatusRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetOrderResponse
+result,_ = orders.UpdateOrderStatus(id, request, idempotencyKey)
 
 ```
 
@@ -1964,8 +1964,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("60", 10, 8)
-size,_ := strconv.ParseInt("60", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"
@@ -2256,8 +2256,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -2472,8 +2472,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -2506,8 +2506,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -2540,8 +2540,8 @@ func (me *CUSTOMERS_IMPL) GetCards(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 
 var result *models_pkg.ListCardsResponse
 result,_ = customers.GetCards(customerId, page, size)
@@ -3254,8 +3254,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -3465,8 +3465,8 @@ func (me *CHARGES_IMPL) GetChargeTransactions(
 
 ```go
 chargeId := "charge_id"
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 
 var result *models_pkg.ListChargeTransactionsResponse
 result,_ = charges.GetChargeTransactions(chargeId, page, size)
@@ -3582,8 +3582,8 @@ func (me *RECIPIENTS_IMPL) GetTransfers(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -3730,8 +3730,8 @@ func (me *RECIPIENTS_IMPL) GetAnticipations(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("147", 10, 8)
+size,_ := strconv.ParseInt("147", 10, 8)
 status := "status"
 timeframe := "timeframe"
 paymentDateSince := time.Now()
@@ -3862,8 +3862,8 @@ func (me *RECIPIENTS_IMPL) GetRecipients(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("47", 10, 8)
+size,_ := strconv.ParseInt("47", 10, 8)
 
 var result *models_pkg.ListRecipientResponse
 result,_ = recipients.GetRecipients(page, size)
@@ -4215,8 +4215,8 @@ func (me *SELLERS_IMPL) GetSellers(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("19", 10, 8)
-size,_ := strconv.ParseInt("19", 10, 8)
+page,_ := strconv.ParseInt("47", 10, 8)
+size,_ := strconv.ParseInt("47", 10, 8)
 name := "name"
 document := "document"
 code := "code"
