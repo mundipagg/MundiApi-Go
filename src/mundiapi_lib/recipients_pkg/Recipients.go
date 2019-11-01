@@ -43,6 +43,12 @@ type RECIPIENTS interface {
     CreateTransfer (string, *models_pkg.CreateTransferRequest, *string) (*models_pkg.GetTransferResponse, error)
 
     GetAnticipationLimits (string, string, *time.Time) (*models_pkg.GetAnticipationLimitResponse, error)
+
+    CreateWithdraw (string, *models_pkg.CreateWithdrawRequest) (*models_pkg.GetWithdrawResponse, error)
+
+    GetWithdrawById (string, string) (*models_pkg.GetWithdrawResponse, error)
+
+    GetWithdrawals (string, *int64, *int64, *string, *time.Time, *time.Time) (*models_pkg.ListWithdrawals, error)
 }
 
 /*

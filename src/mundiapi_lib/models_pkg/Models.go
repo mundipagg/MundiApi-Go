@@ -2128,3 +2128,107 @@ type GetUsageReportResponse struct {
 type GetChargesSummaryResponse struct {
     Total           int64           `json:"total" form:"total"` //TODO: Write general description for this field
 }
+
+/*
+ * Structure for the custom type CreateWithdrawRequest
+ */
+type CreateWithdrawRequest struct {
+    Amount          int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
+    Metadata        *map[string]string `json:"metadata,omitempty" form:"metadata,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type GetWithdrawTargetResponse
+ */
+type GetWithdrawTargetResponse struct {
+    TargetId        string          `json:"target_id" form:"target_id"` //TODO: Write general description for this field
+    Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type GetWithdrawSourceResponse
+ */
+type GetWithdrawSourceResponse struct {
+    SourceId        string          `json:"source_id" form:"source_id"` //TODO: Write general description for this field
+    Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type GetWithdrawResponse
+ */
+type GetWithdrawResponse struct {
+    Id                     string          `json:"id" form:"id"` //TODO: Write general description for this field
+    GatewayId              string          `json:"gateway_id" form:"gateway_id"` //TODO: Write general description for this field
+    Amount                 int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
+    Status                 string          `json:"status" form:"status"` //TODO: Write general description for this field
+    CreatedAt              *time.Time      `json:"created_at" form:"created_at"` //TODO: Write general description for this field
+    UpdatedAt              *time.Time      `json:"updated_at" form:"updated_at"` //TODO: Write general description for this field
+    Metadata               *[]string       `json:"metadata,omitempty" form:"metadata,omitempty"` //TODO: Write general description for this field
+    Fee                    *int64          `json:"fee,omitempty" form:"fee,omitempty"` //TODO: Write general description for this field
+    FundingDate            *time.Time      `json:"funding_date,omitempty" form:"funding_date,omitempty"` //TODO: Write general description for this field
+    FundingEstimatedDate   *time.Time      `json:"funding_estimated_date,omitempty" form:"funding_estimated_date,omitempty"` //TODO: Write general description for this field
+    Type                   string          `json:"type" form:"type"` //TODO: Write general description for this field
+    Source                 GetWithdrawSourceResponse `json:"source" form:"source"` //TODO: Write general description for this field
+    Target                 GetWithdrawTargetResponse `json:"target" form:"target"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type GetTransferSourceResponse
+ */
+type GetTransferSourceResponse struct {
+    SourceId        string          `json:"source_id" form:"source_id"` //TODO: Write general description for this field
+    Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type GetTransferTargetResponse
+ */
+type GetTransferTargetResponse struct {
+    TargetId        string          `json:"target_id" form:"target_id"` //TODO: Write general description for this field
+    Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type GetTransfer
+ */
+type GetTransfer struct {
+    Id                     string          `json:"id" form:"id"` //TODO: Write general description for this field
+    GatewayId              string          `json:"gateway_id" form:"gateway_id"` //TODO: Write general description for this field
+    Amount                 int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
+    Status                 string          `json:"status" form:"status"` //TODO: Write general description for this field
+    CreatedAt              *time.Time      `json:"created_at" form:"created_at"` //TODO: Write general description for this field
+    UpdatedAt              *time.Time      `json:"updated_at" form:"updated_at"` //TODO: Write general description for this field
+    Metadata               *map[string]string `json:"metadata,omitempty" form:"metadata,omitempty"` //TODO: Write general description for this field
+    Fee                    *int64          `json:"fee,omitempty" form:"fee,omitempty"` //TODO: Write general description for this field
+    FundingDate            *time.Time      `json:"funding_date,omitempty" form:"funding_date,omitempty"` //TODO: Write general description for this field
+    FundingEstimatedDate   *time.Time      `json:"funding_estimated_date,omitempty" form:"funding_estimated_date,omitempty"` //TODO: Write general description for this field
+    Type                   string          `json:"type" form:"type"` //TODO: Write general description for this field
+    Source                 GetTransferSourceResponse `json:"source" form:"source"` //TODO: Write general description for this field
+    Target                 GetTransferTargetResponse `json:"target" form:"target"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type CreateTransfer
+ */
+type CreateTransfer struct {
+    Amount          int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
+    SourceId        string          `json:"source_id" form:"source_id"` //TODO: Write general description for this field
+    TargetId        string          `json:"target_id" form:"target_id"` //TODO: Write general description for this field
+    Metadata        *[]string       `json:"metadata,omitempty" form:"metadata,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type ListTransfers
+ */
+type ListTransfers struct {
+    Data            []*GetTransfer  `json:"data" form:"data"` //The Increments response
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
+}
+
+/*
+ * Structure for the custom type ListWithdrawals
+ */
+type ListWithdrawals struct {
+    Data            []*GetWithdrawResponse `json:"data" form:"data"` //The Increments response
+    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
+}
