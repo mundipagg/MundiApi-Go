@@ -18,6 +18,7 @@ import(
 	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/plans_pkg"
 	"mundiapi_lib/transactions_pkg"
+	"mundiapi_lib/transfers_pkg"
 )
 /*
  * Client structure as interface implementation
@@ -33,6 +34,7 @@ type MUNDIAPI_IMPL struct {
      tokens tokens_pkg.TOKENS
      plans plans_pkg.PLANS
      transactions transactions_pkg.TRANSACTIONS
+     transfers transfers_pkg.TRANSFERS
      config  configuration_pkg.CONFIGURATION
 }
 
@@ -142,5 +144,15 @@ func (me *MUNDIAPI_IMPL) Transactions() transactions_pkg.TRANSACTIONS {
         me.transactions = transactions_pkg.NewTRANSACTIONS(me.config)
     }
     return me.transactions
+}
+/**
+     * Access to Transfers controller
+     * @return Returns the Transfers() instance
+*/
+func (me *MUNDIAPI_IMPL) Transfers() transfers_pkg.TRANSFERS {
+    if(me.transfers) == nil {
+        me.transfers = transfers_pkg.NewTRANSFERS(me.config)
+    }
+    return me.transfers
 }
 

@@ -18,6 +18,7 @@ import(
 	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/plans_pkg"
 	"mundiapi_lib/transactions_pkg"
+	"mundiapi_lib/transfers_pkg"
 )
 
 
@@ -35,6 +36,7 @@ type MUNDIAPI interface {
     Tokens()                tokens_pkg.TOKENS
     Plans()                 plans_pkg.PLANS
     Transactions()          transactions_pkg.TRANSACTIONS
+    Transfers()             transfers_pkg.TRANSFERS
     Configuration()         configuration_pkg.CONFIGURATION
 }
 
