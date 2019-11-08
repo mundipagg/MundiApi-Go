@@ -1635,6 +1635,7 @@ type GetAntifraudResponse struct {
     ReturnCode      string          `json:"return_code" form:"return_code"` //TODO: Write general description for this field
     ReturnMessage   string          `json:"return_message" form:"return_message"` //TODO: Write general description for this field
     ProviderName    string          `json:"provider_name" form:"provider_name"` //TODO: Write general description for this field
+    Score           string          `json:"score" form:"score"` //TODO: Write general description for this field
 }
 
 /*
