@@ -22,23 +22,22 @@ type TOKENS_IMPL struct {
 }
 
 /**
- * TODO: type endpoint description here
- * @param    string                                publicKey           parameter: Required
- * @param    *models_pkg.CreateTokenRequest        request             parameter: Required
- * @param    *string                               idempotencyKey      parameter: Optional
+ * Gets a token from its id
+ * @param    string        id             parameter: Required
+ * @param    string        publicKey      parameter: Required
  * @return	Returns the *models_pkg.GetTokenResponse response from the API call
  */
-func (me *TOKENS_IMPL) CreateToken (
-            publicKey string,
-            request *models_pkg.CreateTokenRequest,
-            idempotencyKey *string) (*models_pkg.GetTokenResponse, error) {
+func (me *TOKENS_IMPL) GetToken (
+            id string,
+            publicKey string) (*models_pkg.GetTokenResponse, error) {
     //the endpoint path uri
-    _pathUrl := "/tokens?appId={public_key}"
+    _pathUrl := "/tokens/{id}?appId={public_key}"
 
     //variable to hold errors
     var err error = nil
     //process optional template parameters
     _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "id" : id,
         "public_key" : publicKey,
     })
     if err != nil {
@@ -60,14 +59,12 @@ func (me *TOKENS_IMPL) CreateToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.4",
+        "user-agent" : "MundiSDK - Go 0.16.5",
         "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
-    _request := unirest.Post(_queryBuilder, headers, request)
+    _request := unirest.Get(_queryBuilder, headers)
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request,false);
     if err != nil {
@@ -109,22 +106,23 @@ func (me *TOKENS_IMPL) CreateToken (
 }
 
 /**
- * Gets a token from its id
- * @param    string        id             parameter: Required
- * @param    string        publicKey      parameter: Required
+ * TODO: type endpoint description here
+ * @param    string                                publicKey           parameter: Required
+ * @param    *models_pkg.CreateTokenRequest        request             parameter: Required
+ * @param    *string                               idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.GetTokenResponse response from the API call
  */
-func (me *TOKENS_IMPL) GetToken (
-            id string,
-            publicKey string) (*models_pkg.GetTokenResponse, error) {
+func (me *TOKENS_IMPL) CreateToken (
+            publicKey string,
+            request *models_pkg.CreateTokenRequest,
+            idempotencyKey *string) (*models_pkg.GetTokenResponse, error) {
     //the endpoint path uri
-    _pathUrl := "/tokens/{id}?appId={public_key}"
+    _pathUrl := "/tokens?appId={public_key}"
 
     //variable to hold errors
     var err error = nil
     //process optional template parameters
     _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "id" : id,
         "public_key" : publicKey,
     })
     if err != nil {
@@ -146,12 +144,14 @@ func (me *TOKENS_IMPL) GetToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.4",
+        "user-agent" : "MundiSDK - Go 0.16.5",
         "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
-    _request := unirest.Get(_queryBuilder, headers)
+    _request := unirest.Post(_queryBuilder, headers, request)
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request,false);
     if err != nil {
