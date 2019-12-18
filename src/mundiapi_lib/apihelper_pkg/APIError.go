@@ -6,21 +6,19 @@
 
 package apihelper_pkg
 
-/*
- * APIError structure for custom error handling in API invocation
- */
+
+
+// APIError structure for custom error handling in API invocation
 type APIError struct {
     ResponseCode    int     //The HTTP response code from the API request
     Reason          string  //The reason for throwing exception
     Response		[]byte
 }
 
-/*
- * Initialization constructor
- * @param   string  reason  The reason for throwing exception
- * @param   int     code    The HTTP response code from the API request 
- * @return  new APIException object
- */
+// NewAPIError implements initialization constructor
+// @param   string  reason  The reason for throwing exception
+// @param   int     code    The HTTP response code from the API request
+// @return  new APIException object
 func NewAPIError(reason string, code int, res []byte) *APIError {
     ex := new(APIError)
     ex.ResponseCode = code
@@ -29,9 +27,7 @@ func NewAPIError(reason string, code int, res []byte) *APIError {
     return ex
 }
 
-/*
- * Implementing the Error method for the error interface
- */
+// Error method implements error interface
 func (e *APIError) Error() string {
     return e.Reason
 }
