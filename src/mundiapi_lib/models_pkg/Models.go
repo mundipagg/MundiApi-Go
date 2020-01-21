@@ -1859,7 +1859,7 @@ type UpdateSubscriptionPaymentMethodRequest struct {
  * Structure for the custom type ListCyclesResponse
  */
 type ListCyclesResponse struct {
-    Data            *GetPeriodResponse `json:"data,omitempty" form:"data,omitempty"` //The subscription cycles objects
+    Data            []*GetPeriodResponse `json:"data,omitempty" form:"data,omitempty"` //The subscription cycles objects
     Paging          *PagingResponse `json:"paging,omitempty" form:"paging,omitempty"` //Paging object
 }
 
