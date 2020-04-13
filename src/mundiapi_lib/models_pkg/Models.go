@@ -304,6 +304,7 @@ type GetPricingSchemeResponse struct {
     SchemeType      string          `json:"scheme_type" form:"scheme_type"` //TODO: Write general description for this field
     PriceBrackets   []*GetPriceBracketResponse `json:"price_brackets" form:"price_brackets"` //TODO: Write general description for this field
     MinimumPrice    *int64          `json:"minimum_price,omitempty" form:"minimum_price,omitempty"` //TODO: Write general description for this field
+    Percentage      *float64        `json:"percentage,omitempty" form:"percentage,omitempty"` //percentual value used in pricing_scheme Percent
 }
 
 /*
@@ -430,6 +431,7 @@ type CreatePricingSchemeRequest struct {
     PriceBrackets   []*CreatePriceBracketRequest `json:"price_brackets" form:"price_brackets"` //Price brackets
     Price           *int64          `json:"price,omitempty" form:"price,omitempty"` //Price
     MinimumPrice    *int64          `json:"minimum_price,omitempty" form:"minimum_price,omitempty"` //Minimum price
+    Percentage      *float64        `json:"percentage,omitempty" form:"percentage,omitempty"` //percentual value used in pricing_scheme Percent
 }
 
 /*
@@ -440,6 +442,7 @@ type UpdatePricingSchemeRequest struct {
     PriceBrackets   []*UpdatePriceBracketRequest `json:"price_brackets" form:"price_brackets"` //Price brackets
     Price           *int64          `json:"price,omitempty" form:"price,omitempty"` //Price
     MinimumPrice    *int64          `json:"minimum_price,omitempty" form:"minimum_price,omitempty"` //Minimum price
+    Percentage      *float64        `json:"percentage,omitempty" form:"percentage,omitempty"` //percentual value used in pricing_scheme Percent
 }
 
 /*
@@ -1031,6 +1034,7 @@ type GetUsageResponse struct {
     SubscriptionItem  GetSubscriptionItemResponse `json:"subscription_item" form:"subscription_item"` //Subscription item
     Code              *string         `json:"code,omitempty" form:"code,omitempty"` //Identification code in the client system
     Group             *string         `json:"group,omitempty" form:"group,omitempty"` //Identification group in the client system
+    Amount            *int64          `json:"amount,omitempty" form:"amount,omitempty"` //Field used in item scheme type 'Percent'
 }
 
 /*
@@ -1054,7 +1058,7 @@ type UpdateCustomerRequest struct {
 type GetBoletoTransactionResponse struct {
     GetTransactionResponse // Anonymous member to emulate model inheritence
     Url             string          `json:"url" form:"url"` //TODO: Write general description for this field
-    BarCode         string          `json:"bar_code" form:"bar_code"` //TODO: Write general description for this field
+    Barcode         string          `json:"barcode" form:"barcode"` //TODO: Write general description for this field
     NossoNumero     string          `json:"nosso_numero" form:"nosso_numero"` //TODO: Write general description for this field
     Bank            string          `json:"bank" form:"bank"` //TODO: Write general description for this field
     DocumentNumber  string          `json:"document_number" form:"document_number"` //TODO: Write general description for this field
@@ -1170,6 +1174,7 @@ type CreateUsageRequest struct {
     UsedAt          *time.Time      `json:"used_at" form:"used_at"` //TODO: Write general description for this field
     Code            *string         `json:"code,omitempty" form:"code,omitempty"` //Identification code in the client system
     Group           *string         `json:"group,omitempty" form:"group,omitempty"` //identification group in the client system
+    Amount          *int64          `json:"amount,omitempty" form:"amount,omitempty"` //Field used in item scheme type 'Percent'
 }
 
 /*
@@ -2011,7 +2016,7 @@ type GetAccessTokenResponse struct {
  * Structure for the custom type GetOrderItemResponse
  */
 type GetOrderItemResponse struct {
-    Id                string          `json:"Id" form:"Id"` //Id
+    Id                string          `json:"id" form:"id"` //Id
     Amount            int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
     Description       string          `json:"description" form:"description"` //TODO: Write general description for this field
     Quantity          int64           `json:"quantity" form:"quantity"` //TODO: Write general description for this field
