@@ -1119,6 +1119,7 @@ type CreateCreditCardPaymentRequest struct {
     Authentication         *CreatePaymentAuthenticationRequest `json:"authentication,omitempty" form:"authentication,omitempty"` //The payment authentication request
     Contactless            *CreateCardPaymentContactlessRequest `json:"contactless,omitempty" form:"contactless,omitempty"` //The Credit card payment contactless request
     AutoRecovery           *bool           `json:"auto_recovery,omitempty" form:"auto_recovery,omitempty"` //Indicates whether a particular payment will enter the offline retry flow
+    OperationType          *string         `json:"operation_type,omitempty" form:"operation_type,omitempty"` //AuthOnly, AuthAndCapture, PreAuth
 }
 
 /*
