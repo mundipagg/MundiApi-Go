@@ -574,8 +574,10 @@ type GetVoucherTransactionResponse struct {
  * Structure for the custom type CreateCaptureChargeRequest
  */
 type CreateCaptureChargeRequest struct {
-    Code            string          `json:"code" form:"code"` //Code for the charge. Sending this field will update the code send on the charge and order creation.
-    Amount          *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount that will be captured
+    Code                string          `json:"code" form:"code"` //Code for the charge. Sending this field will update the code send on the charge and order creation.
+    Amount              *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount that will be captured
+    Split               []*CreateSplitRequest `json:"split,omitempty" form:"split,omitempty"` //Splits
+    OperationReference  string          `json:"operation_reference" form:"operation_reference"` //TODO: Write general description for this field
 }
 
 /*
@@ -1596,8 +1598,10 @@ type GetSplitResponse struct {
  * Structure for the custom type CreateCancelChargeRequest
  */
 type CreateCancelChargeRequest struct {
-    Amount          *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount that will be canceled.
-    SplitRules      []*CreateCancelChargeSplitRulesRequest `json:"split_rules,omitempty" form:"split_rules,omitempty"` //The split rules request
+    Amount              *int64          `json:"amount,omitempty" form:"amount,omitempty"` //The amount that will be canceled.
+    SplitRules          []*CreateCancelChargeSplitRulesRequest `json:"split_rules,omitempty" form:"split_rules,omitempty"` //The split rules request
+    Split               []*CreateSplitRequest `json:"split,omitempty" form:"split,omitempty"` //Splits
+    OperationReference  string          `json:"operation_reference" form:"operation_reference"` //TODO: Write general description for this field
 }
 
 /*
@@ -1896,6 +1900,7 @@ type CreateChargeRequest struct {
     Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
     DueAt           *time.Time      `json:"due_at,omitempty" form:"due_at,omitempty"` //The charge due date
     Antifraud       CreateAntifraudRequest `json:"antifraud" form:"antifraud"` //TODO: Write general description for this field
+    OrderId         string          `json:"order_id" form:"order_id"` //Order Id
 }
 
 /*
