@@ -26,13 +26,14 @@ import (
 func ExampleNewClient() {
     client := mundiapi.NewClient("username", "password")
 
-	resp, err := client.Charges().CreateCharge(&CreateChargeRequest{
-		Amount:     100,
-		Customer:   CreateCustomerRequest{
-			Name:     "João da Silva",
-			Email:    "joao@gmail.com.br",
-		},
-	}, nil)
+    resp, err := client.Charges().CreateCharge(&CreateChargeRequest{
+        Amount:     100,
+        Customer:   CreateCustomerRequest{
+            Name:     "João da Silva", 
+            Email:    "joao@gmail.com.br",
+        },
+    }, nil)
+
     fmt.Println(resp, err)
     // Output: GetChargeResponse <nil>
 }
