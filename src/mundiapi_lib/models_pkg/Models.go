@@ -899,6 +899,7 @@ type GetRecipientResponse struct {
     GatewayRecipients               []*GetGatewayRecipientResponse `json:"gateway_recipients" form:"gateway_recipients"` //Info about the recipient on the gateway
     Metadata                        map[string]string `json:"metadata" form:"metadata"` //Metadata
     AutomaticAnticipationSettings   *GetAutomaticAnticipationResponse `json:"automatic_anticipation_settings,omitempty" form:"automatic_anticipation_settings,omitempty"` //TODO: Write general description for this field
+    TransferSettings                *GetTransferSettingsResponse `json:"transfer_settings,omitempty" form:"transfer_settings,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -1314,6 +1315,7 @@ type GetSplitResponse struct {
     Recipient       *GetRecipientResponse `json:"recipient,omitempty" form:"recipient,omitempty"` //Recipient
     GatewayId       string          `json:"gateway_id" form:"gateway_id"` //The split rule gateway id
     Options         *GetSplitOptionsResponse `json:"options,omitempty" form:"options,omitempty"` //TODO: Write general description for this field
+    Id              string          `json:"id" form:"id"` //TODO: Write general description for this field
 }
 
 /*
@@ -2379,4 +2381,13 @@ type CreatePixPaymentRequest struct {
     ExpiresAt              *time.Time      `json:"expires_at,omitempty" form:"expires_at,omitempty"` //Datetime when pix payment will expire
     ExpiresIn              *int64          `json:"expires_in,omitempty" form:"expires_in,omitempty"` //Seconds until pix payment expires
     AdditionalInformation  []*PixAdditionalInformation `json:"additional_information,omitempty" form:"additional_information,omitempty"` //Pix additional information
+}
+
+/*
+ * Structure for the custom type GetTransferSettingsResponse
+ */
+type GetTransferSettingsResponse struct {
+    TransferEnabled   bool            `json:"transfer_enabled" form:"transfer_enabled"` //TODO: Write general description for this field
+    TransferInterval  string          `json:"transfer_interval" form:"transfer_interval"` //TODO: Write general description for this field
+    TransferDay       int64           `json:"transfer_day" form:"transfer_day"` //TODO: Write general description for this field
 }
