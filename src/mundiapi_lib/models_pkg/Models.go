@@ -96,6 +96,7 @@ type UpdateCustomerRequest struct {
     Phones          *CreatePhonesRequest `json:"phones,omitempty" form:"phones,omitempty"` //TODO: Write general description for this field
     Code            *string         `json:"code,omitempty" form:"code,omitempty"` //Código de referência do cliente no sistema da loja. Max: 52 caracteres
     Gender          *string         `json:"gender,omitempty" form:"gender,omitempty"` //Gênero do cliente
+    DocumentType    *string         `json:"document_type,omitempty" form:"document_type,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -1132,6 +1133,7 @@ type CreateCustomerRequest struct {
     Phones          CreatePhonesRequest `json:"phones" form:"phones"` //TODO: Write general description for this field
     Code            string          `json:"code" form:"code"` //Customer code
     Gender          *string         `json:"gender,omitempty" form:"gender,omitempty"` //Customer Gender
+    DocumentType    *string         `json:"document_type,omitempty" form:"document_type,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -1789,6 +1791,7 @@ type GetCustomerResponse struct {
     Phones          GetPhonesResponse `json:"phones" form:"phones"` //TODO: Write general description for this field
     FbId            *int64          `json:"fb_id,omitempty" form:"fb_id,omitempty"` //TODO: Write general description for this field
     Code            string          `json:"code" form:"code"` //Código de referência do cliente no sistema da loja. Max: 52 caracteres
+    DocumentType    string          `json:"document_type" form:"document_type"` //TODO: Write general description for this field
 }
 
 /*
