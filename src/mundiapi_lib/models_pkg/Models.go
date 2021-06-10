@@ -2252,7 +2252,7 @@ type CreateTransfer struct {
     Amount          int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
     SourceId        string          `json:"source_id" form:"source_id"` //TODO: Write general description for this field
     TargetId        string          `json:"target_id" form:"target_id"` //TODO: Write general description for this field
-    Metadata        *[]string       `json:"metadata,omitempty" form:"metadata,omitempty"` //TODO: Write general description for this field
+    Metadata        *map[string]string `json:"metadata,omitempty" form:"metadata,omitempty"` //TODO: Write general description for this field
 }
 
 /*
