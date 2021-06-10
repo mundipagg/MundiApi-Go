@@ -59,7 +59,7 @@ func (me *INVOICES_IMPL) CancelInvoice (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.21",
+        "user-agent" : "MundiSDK - Go 2.0.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -141,7 +141,7 @@ func (me *INVOICES_IMPL) GetInvoice (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.21",
+        "user-agent" : "MundiSDK - Go 2.0.0",
         "accept" : "application/json",
     }
 
@@ -229,7 +229,7 @@ func (me *INVOICES_IMPL) CreateInvoice (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.21",
+        "user-agent" : "MundiSDK - Go 2.0.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -316,7 +316,7 @@ func (me *INVOICES_IMPL) UpdateInvoiceStatus (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.21",
+        "user-agent" : "MundiSDK - Go 2.0.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -366,16 +366,17 @@ func (me *INVOICES_IMPL) UpdateInvoiceStatus (
 
 /**
  * Gets all invoices
- * @param    *int64            page                parameter: Optional
- * @param    *int64            size                parameter: Optional
- * @param    *string           code                parameter: Optional
- * @param    *string           customerId          parameter: Optional
- * @param    *string           subscriptionId      parameter: Optional
- * @param    *time.Time        createdSince        parameter: Optional
- * @param    *time.Time        createdUntil        parameter: Optional
- * @param    *string           status              parameter: Optional
- * @param    *time.Time        dueSince            parameter: Optional
- * @param    *time.Time        dueUntil            parameter: Optional
+ * @param    *int64            page                  parameter: Optional
+ * @param    *int64            size                  parameter: Optional
+ * @param    *string           code                  parameter: Optional
+ * @param    *string           customerId            parameter: Optional
+ * @param    *string           subscriptionId        parameter: Optional
+ * @param    *time.Time        createdSince          parameter: Optional
+ * @param    *time.Time        createdUntil          parameter: Optional
+ * @param    *string           status                parameter: Optional
+ * @param    *time.Time        dueSince              parameter: Optional
+ * @param    *time.Time        dueUntil              parameter: Optional
+ * @param    *string           customerDocument      parameter: Optional
  * @return	Returns the *models_pkg.ListInvoicesResponse response from the API call
  */
 func (me *INVOICES_IMPL) GetInvoices (
@@ -388,7 +389,8 @@ func (me *INVOICES_IMPL) GetInvoices (
             createdUntil *time.Time,
             status *string,
             dueSince *time.Time,
-            dueUntil *time.Time) (*models_pkg.ListInvoicesResponse, error) {
+            dueUntil *time.Time,
+            customerDocument *string) (*models_pkg.ListInvoicesResponse, error) {
     //the endpoint path uri
     _pathUrl := "/invoices"
 
@@ -412,6 +414,7 @@ func (me *INVOICES_IMPL) GetInvoices (
         "status" : status,
         "due_since" : dueSince,
         "due_until" : dueUntil,
+        "customer_document" : customerDocument,
     })
     if err != nil {
         //error in query param handling
@@ -426,7 +429,7 @@ func (me *INVOICES_IMPL) GetInvoices (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.21",
+        "user-agent" : "MundiSDK - Go 2.0.0",
         "accept" : "application/json",
     }
 
@@ -511,7 +514,7 @@ func (me *INVOICES_IMPL) UpdateInvoiceMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.21",
+        "user-agent" : "MundiSDK - Go 2.0.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -594,7 +597,7 @@ func (me *INVOICES_IMPL) GetPartialInvoice (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 0.16.21",
+        "user-agent" : "MundiSDK - Go 2.0.0",
         "accept" : "application/json",
     }
 

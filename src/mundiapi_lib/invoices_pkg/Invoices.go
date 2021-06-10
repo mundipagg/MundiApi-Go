@@ -22,7 +22,7 @@ type INVOICES interface {
 
     UpdateInvoiceStatus (string, *models_pkg.UpdateInvoiceStatusRequest, *string) (*models_pkg.GetInvoiceResponse, error)
 
-    GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time) (*models_pkg.ListInvoicesResponse, error)
+    GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time, *string) (*models_pkg.ListInvoicesResponse, error)
 
     UpdateInvoiceMetadata (string, *models_pkg.UpdateMetadataRequest, *string) (*models_pkg.GetInvoiceResponse, error)
 
