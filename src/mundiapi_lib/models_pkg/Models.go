@@ -1006,6 +1006,7 @@ type GetCheckoutPaymentResponse struct {
     Currency                   string          `json:"currency" form:"currency"` //Moeda
     DebitCard                  *GetCheckoutDebitCardPaymentResponse `json:"debit_card,omitempty" form:"debit_card,omitempty"` //Configurações de cartão de débito
     BankTransfer               *GetCheckoutBankTransferPaymentResponse `json:"bank_transfer,omitempty" form:"bank_transfer,omitempty"` //Bank transfer payment response
+    AcceptedBrands             []string        `json:"accepted_brands" form:"accepted_brands"` //Accepted Brands
 }
 
 /*
@@ -1345,6 +1346,7 @@ type CreateCheckoutPaymentRequest struct {
     BillingAddressEditable         bool            `json:"billing_address_editable" form:"billing_address_editable"` //Billing Address is editable?
     BillingAddress                 CreateAddressRequest `json:"billing_address" form:"billing_address"` //Billing Address
     BankTransfer                   CreateCheckoutBankTransferRequest `json:"bank_transfer" form:"bank_transfer"` //Bank Transfer payment request
+    AcceptedBrands                 []string        `json:"accepted_brands" form:"accepted_brands"` //Accepted Brands
 }
 
 /*

@@ -300,8 +300,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("177", 10, 8)
+size,_ := strconv.ParseInt("177", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -532,8 +532,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("86", 10, 8)
+size,_ := strconv.ParseInt("86", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -671,8 +671,8 @@ func (me *CUSTOMERS_IMPL) GetCards(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("86", 10, 8)
+size,_ := strconv.ParseInt("86", 10, 8)
 
 var result *models_pkg.ListCardsResponse
 result,_ = customers.GetCards(customerId, page, size)
@@ -999,8 +999,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -1272,8 +1272,8 @@ func (me *CHARGES_IMPL) GetChargeTransactions(
 
 ```go
 chargeId := "charge_id"
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 
 var result *models_pkg.ListChargeTransactionsResponse
 result,_ = charges.GetChargeTransactions(chargeId, page, size)
@@ -1448,8 +1448,8 @@ func (me *RECIPIENTS_IMPL) GetRecipients(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 
 var result *models_pkg.ListRecipientResponse
 result,_ = recipients.GetRecipients(page, size)
@@ -1521,8 +1521,8 @@ func (me *RECIPIENTS_IMPL) GetAnticipations(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 status := "status"
 timeframe := "timeframe"
 paymentDateSince := time.Now()
@@ -1693,8 +1693,8 @@ func (me *RECIPIENTS_IMPL) GetTransfers(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -1931,8 +1931,8 @@ func (me *RECIPIENTS_IMPL) GetWithdrawals(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("106", 10, 8)
-size,_ := strconv.ParseInt("106", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -2382,8 +2382,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
 ```go
 subscriptionId := "subscription_id"
 cycleId := "cycle_id"
-size,_ := strconv.ParseInt("64", 10, 8)
-page,_ := strconv.ParseInt("64", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
 itemId := "item_id"
 group := "group"
 
@@ -2585,8 +2585,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 
 var result *models_pkg.ListIncrementsResponse
 result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
@@ -2701,8 +2701,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
 ```go
 subscriptionId := "subscription_id"
 itemId := "item_id"
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 code := "code"
 group := "group"
 usedSince := time.Now()
@@ -3038,8 +3038,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 
 var result *models_pkg.ListDiscountsResponse
 result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
@@ -3123,8 +3123,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 code := "code"
 billingType := "billing_type"
 customerId := "customer_id"
@@ -3210,8 +3210,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("249", 10, 8)
 name := "name"
 code := "code"
 status := "status"
@@ -3532,8 +3532,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("36", 10, 8)
+size,_ := strconv.ParseInt("36", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -3693,8 +3693,8 @@ func (me *ORDERS_IMPL) GetOrders(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("36", 10, 8)
+size,_ := strconv.ParseInt("36", 10, 8)
 code := "code"
 status := "status"
 createdSince := time.Now()
@@ -4014,8 +4014,8 @@ func (me *SELLERS_IMPL) GetSellers(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("36", 10, 8)
+size,_ := strconv.ParseInt("36", 10, 8)
 name := "name"
 document := "document"
 code := "code"
@@ -4318,8 +4318,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("64", 10, 8)
-size,_ := strconv.ParseInt("64", 10, 8)
+page,_ := strconv.ParseInt("36", 10, 8)
+size,_ := strconv.ParseInt("36", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"
