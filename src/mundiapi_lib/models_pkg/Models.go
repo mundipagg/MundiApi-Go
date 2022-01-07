@@ -382,14 +382,6 @@ type CreateLocationRequest struct {
 }
 
 /*
- * Structure for the custom type ListSellerResponse
- */
-type ListSellerResponse struct {
-    Data            []*GetSellerResponse `json:"data" form:"data"` //The order object
-    Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
-}
-
-/*
  * Structure for the custom type UpdateTransferSettingsRequest
  */
 type UpdateTransferSettingsRequest struct {
@@ -669,8 +661,6 @@ type CreateOrderItemRequest struct {
     Amount          int64           `json:"amount" form:"amount"` //Amount
     Description     string          `json:"description" form:"description"` //Description
     Quantity        int64           `json:"quantity" form:"quantity"` //Quantity
-    Seller          *CreateSellerRequest `json:"seller,omitempty" form:"seller,omitempty"` //Item seller
-    SellerId        *string         `json:"seller_id,omitempty" form:"seller_id,omitempty"` //seller identificator
     Category        string          `json:"category" form:"category"` //Category
     Code            *string         `json:"code,omitempty" form:"code,omitempty"` //The item code passed by the client
 }
@@ -720,19 +710,6 @@ type UpdateChargeCardRequest struct {
 }
 
 /*
- * Structure for the custom type CreateSellerRequest
- */
-type CreateSellerRequest struct {
-    Name            string          `json:"name" form:"name"` //Name
-    Code            *string         `json:"code,omitempty" form:"code,omitempty"` //Seller's code identification
-    Description     *string         `json:"description,omitempty" form:"description,omitempty"` //Description
-    Document        *string         `json:"document,omitempty" form:"document,omitempty"` //Document number (individual / company)
-    Address         *CreateAddressRequest `json:"address,omitempty" form:"address,omitempty"` //Address
-    Type            *string         `json:"type,omitempty" form:"type,omitempty"` //Person type (individual / company)
-    Metadata        map[string]string `json:"metadata" form:"metadata"` //Metadata
-}
-
-/*
  * Structure for the custom type UpdateRecipientRequest
  */
 type UpdateRecipientRequest struct {
@@ -750,19 +727,6 @@ type UpdateRecipientRequest struct {
 type GetAnticipationLimitResponse struct {
     Amount           int64           `json:"amount" form:"amount"` //Amount
     AnticipationFee  int64           `json:"anticipation_fee" form:"anticipation_fee"` //Anticipation fee
-}
-
-/*
- * Structure for the custom type GetSellersRequest
- */
-type GetSellersRequest struct {
-    Name            string          `json:"name" form:"name"` //TODO: Write general description for this field
-    Document        string          `json:"document" form:"document"` //TODO: Write general description for this field
-    Code            string          `json:"code" form:"code"` //TODO: Write general description for this field
-    Status          string          `json:"status" form:"status"` //TODO: Write general description for this field
-    Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
-    CreatedSince    *string         `json:"created_Since,omitempty" form:"created_Since,omitempty"` //TODO: Write general description for this field
-    CreatedUntil    *string         `json:"created_Until,omitempty" form:"created_Until,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -1431,20 +1395,6 @@ type UpdateAddressRequest struct {
 }
 
 /*
- * Structure for the custom type UpdateSellerRequest
- */
-type UpdateSellerRequest struct {
-    Name            string          `json:"name" form:"name"` //Seller name
-    Code            string          `json:"code" form:"code"` //Seller code
-    Description     string          `json:"description" form:"description"` //Seller description
-    Document        string          `json:"document" form:"document"` //Seller document CPF or CNPJ
-    Status          string          `json:"status" form:"status"` //TODO: Write general description for this field
-    Type            string          `json:"type" form:"type"` //TODO: Write general description for this field
-    Address         CreateAddressRequest `json:"address" form:"address"` //TODO: Write general description for this field
-    Metadata        map[string]string `json:"metadata" form:"metadata"` //TODO: Write general description for this field
-}
-
-/*
  * Structure for the custom type GetBoletoTransactionResponse
  */
 type GetBoletoTransactionResponse struct {
@@ -1613,23 +1563,6 @@ type UpdateSubscriptionBillingDateRequest struct {
 type ListAddressesResponse struct {
     Data            []*GetAddressResponse `json:"data" form:"data"` //The address objects
     Paging          PagingResponse  `json:"paging" form:"paging"` //Paging object
-}
-
-/*
- * Structure for the custom type GetSellerResponse
- */
-type GetSellerResponse struct {
-    Id              string          `json:"id" form:"id"` //Identification
-    Name            string          `json:"name" form:"name"` //TODO: Write general description for this field
-    Code            string          `json:"code" form:"code"` //TODO: Write general description for this field
-    Document        string          `json:"document" form:"document"` //TODO: Write general description for this field
-    Description     string          `json:"description" form:"description"` //Description
-    Status          string          `json:"Status" form:"Status"` //Status
-    CreatedAt       string          `json:"CreatedAt" form:"CreatedAt"` //Creation date
-    UpdatedAt       string          `json:"UpdatedAt" form:"UpdatedAt"` //Updated date
-    Address         GetAddressResponse `json:"Address" form:"Address"` //Address
-    Metadata        map[string]string `json:"Metadata" form:"Metadata"` //Metadata
-    DeletedAt       *string         `json:"DeletedAt,omitempty" form:"DeletedAt,omitempty"` //Deleted date
 }
 
 /*
@@ -2105,13 +2038,12 @@ type CreateClearSaleRequest struct {
  * Structure for the custom type GetOrderItemResponse
  */
 type GetOrderItemResponse struct {
-    Id                string          `json:"id" form:"id"` //Id
-    Amount            int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
-    Description       string          `json:"description" form:"description"` //TODO: Write general description for this field
-    Quantity          int64           `json:"quantity" form:"quantity"` //TODO: Write general description for this field
-    GetSellerResponse *GetSellerResponse `json:"GetSellerResponse,omitempty" form:"GetSellerResponse,omitempty"` //Seller data
-    Category          string          `json:"category" form:"category"` //Category
-    Code              string          `json:"code" form:"code"` //Code
+    Id              string          `json:"id" form:"id"` //Id
+    Amount          int64           `json:"amount" form:"amount"` //TODO: Write general description for this field
+    Description     string          `json:"description" form:"description"` //TODO: Write general description for this field
+    Quantity        int64           `json:"quantity" form:"quantity"` //TODO: Write general description for this field
+    Category        string          `json:"category" form:"category"` //Category
+    Code            string          `json:"code" form:"code"` //Code
 }
 
 /*

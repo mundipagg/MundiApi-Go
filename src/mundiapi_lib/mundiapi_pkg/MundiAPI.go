@@ -14,7 +14,6 @@ import(
 	"mundiapi_lib/subscriptions_pkg"
 	"mundiapi_lib/invoices_pkg"
 	"mundiapi_lib/orders_pkg"
-	"mundiapi_lib/sellers_pkg"
 	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/plans_pkg"
 	"mundiapi_lib/transactions_pkg"
@@ -32,7 +31,6 @@ type MUNDIAPI interface {
     Subscriptions()         subscriptions_pkg.SUBSCRIPTIONS
     Invoices()              invoices_pkg.INVOICES
     Orders()                orders_pkg.ORDERS
-    Sellers()               sellers_pkg.SELLERS
     Tokens()                tokens_pkg.TOKENS
     Plans()                 plans_pkg.PLANS
     Transactions()          transactions_pkg.TRANSACTIONS
