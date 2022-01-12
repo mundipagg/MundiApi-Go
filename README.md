@@ -1,17 +1,3 @@
-### DEPRECATED | CHECK NEW VERSION > https://github.com/pagarme/pagarme-core-api-go
-
-# Mundipagg agora é Pagar.me
-
-Buscando trazer a melhor experiência para os nossos clientes, a Mundipagg agora é parte do Pagar.me.
-
-Somamos nossas funcionalidades e agora você tem acesso a uma plataforma financeira completa, que oferece o melhor das duas soluções em uma experiência unificada.
-
-Você pode customizar nossos produtos e serviços da forma que for melhor para o seu e-commerce. Ficou curioso para saber o que muda? Preparamos um FAQ completo explicando tudo.
-
-[Saiba mais](https://mundipagg.zendesk.com/hc/pt-br/categories/4404432249876-Incorpora%C3%A7%C3%A3o-Mundipagg-pelo-Pagar-me)
-
------------------------------------------------------------------------------------------------------------------------------
-
 # Getting started
 
 Mundipagg API
@@ -137,7 +123,6 @@ To configure these for your generated code, open the file "Configuration.go" and
 * [subscriptions_pkg](#subscriptions_pkg)
 * [invoices_pkg](#invoices_pkg)
 * [orders_pkg](#orders_pkg)
-* [sellers_pkg](#sellers_pkg)
 * [tokens_pkg](#tokens_pkg)
 * [plans_pkg](#plans_pkg)
 * [transactions_pkg](#transactions_pkg)
@@ -300,8 +285,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("177", 10, 8)
-size,_ := strconv.ParseInt("177", 10, 8)
+page,_ := strconv.ParseInt("156", 10, 8)
+size,_ := strconv.ParseInt("156", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -532,8 +517,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("86", 10, 8)
-size,_ := strconv.ParseInt("86", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -671,8 +656,8 @@ func (me *CUSTOMERS_IMPL) GetCards(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("86", 10, 8)
-size,_ := strconv.ParseInt("86", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 
 var result *models_pkg.ListCardsResponse
 result,_ = customers.GetCards(customerId, page, size)
@@ -999,8 +984,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -1272,8 +1257,8 @@ func (me *CHARGES_IMPL) GetChargeTransactions(
 
 ```go
 chargeId := "charge_id"
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 
 var result *models_pkg.ListChargeTransactionsResponse
 result,_ = charges.GetChargeTransactions(chargeId, page, size)
@@ -1448,8 +1433,8 @@ func (me *RECIPIENTS_IMPL) GetRecipients(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 
 var result *models_pkg.ListRecipientResponse
 result,_ = recipients.GetRecipients(page, size)
@@ -1521,8 +1506,8 @@ func (me *RECIPIENTS_IMPL) GetAnticipations(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 status := "status"
 timeframe := "timeframe"
 paymentDateSince := time.Now()
@@ -1693,8 +1678,8 @@ func (me *RECIPIENTS_IMPL) GetTransfers(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -1931,8 +1916,8 @@ func (me *RECIPIENTS_IMPL) GetWithdrawals(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -2382,8 +2367,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
 ```go
 subscriptionId := "subscription_id"
 cycleId := "cycle_id"
-size,_ := strconv.ParseInt("249", 10, 8)
-page,_ := strconv.ParseInt("249", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
 itemId := "item_id"
 group := "group"
 
@@ -2585,8 +2570,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 
 var result *models_pkg.ListIncrementsResponse
 result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
@@ -2701,8 +2686,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
 ```go
 subscriptionId := "subscription_id"
 itemId := "item_id"
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 code := "code"
 group := "group"
 usedSince := time.Now()
@@ -3038,8 +3023,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 
 var result *models_pkg.ListDiscountsResponse
 result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
@@ -3123,8 +3108,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 code := "code"
 billingType := "billing_type"
 customerId := "customer_id"
@@ -3210,8 +3195,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("249", 10, 8)
-size,_ := strconv.ParseInt("249", 10, 8)
+page,_ := strconv.ParseInt("248", 10, 8)
+size,_ := strconv.ParseInt("248", 10, 8)
 name := "name"
 code := "code"
 status := "status"
@@ -3532,8 +3517,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("36", 10, 8)
-size,_ := strconv.ParseInt("36", 10, 8)
+page,_ := strconv.ParseInt("206", 10, 8)
+size,_ := strconv.ParseInt("206", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -3693,8 +3678,8 @@ func (me *ORDERS_IMPL) GetOrders(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("36", 10, 8)
-size,_ := strconv.ParseInt("36", 10, 8)
+page,_ := strconv.ParseInt("206", 10, 8)
+size,_ := strconv.ParseInt("206", 10, 8)
 code := "code"
 status := "status"
 createdSince := time.Now()
@@ -3903,227 +3888,6 @@ result,_ = orders.UpdateOrderItem(orderId, itemId, request, idempotencyKey)
 
 [Back to List of Controllers](#list_of_controllers)
 
-## <a name="sellers_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".sellers_pkg") sellers_pkg
-
-### Get instance
-
-Factory for the ``` SELLERS ``` interface can be accessed from the package sellers_pkg.
-
-```go
-sellers := sellers_pkg.NewSELLERS()
-```
-
-### <a name="create_seller"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.CreateSeller") CreateSeller
-
-> TODO: Add a method description
-
-
-```go
-func (me *SELLERS_IMPL) CreateSeller(
-            request *models_pkg.CreateSellerRequest,
-            idempotencyKey *string)(*models_pkg.GetSellerResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| request |  ``` Required ```  | Seller Model |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-var request *models_pkg.CreateSellerRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSellerResponse
-result,_ = sellers.CreateSeller(request, idempotencyKey)
-
-```
-
-
-### <a name="update_seller"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.UpdateSeller") UpdateSeller
-
-> TODO: Add a method description
-
-
-```go
-func (me *SELLERS_IMPL) UpdateSeller(
-            id string,
-            request *models_pkg.UpdateSellerRequest,
-            idempotencyKey *string)(*models_pkg.GetSellerResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| id |  ``` Required ```  | TODO: Add a parameter description |
-| request |  ``` Required ```  | Update Seller model |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-id := "id"
-var request *models_pkg.UpdateSellerRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSellerResponse
-result,_ = sellers.UpdateSeller(id, request, idempotencyKey)
-
-```
-
-
-### <a name="get_sellers"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.GetSellers") GetSellers
-
-> TODO: Add a method description
-
-
-```go
-func (me *SELLERS_IMPL) GetSellers(
-            page *int64,
-            size *int64,
-            name *string,
-            document *string,
-            code *string,
-            status *string,
-            mtype *string,
-            createdSince *time.Time,
-            createdUntil *time.Time)(*models_pkg.ListSellerResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| name |  ``` Optional ```  | TODO: Add a parameter description |
-| document |  ``` Optional ```  | TODO: Add a parameter description |
-| code |  ``` Optional ```  | TODO: Add a parameter description |
-| status |  ``` Optional ```  | TODO: Add a parameter description |
-| mtype |  ``` Optional ```  | TODO: Add a parameter description |
-| createdSince |  ``` Optional ```  | TODO: Add a parameter description |
-| createdUntil |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-page,_ := strconv.ParseInt("36", 10, 8)
-size,_ := strconv.ParseInt("36", 10, 8)
-name := "name"
-document := "document"
-code := "code"
-status := "status"
-mtype := "type"
-createdSince := time.Now()
-createdUntil := time.Now()
-
-var result *models_pkg.ListSellerResponse
-result,_ = sellers.GetSellers(page, size, name, document, code, status, mtype, createdSince, createdUntil)
-
-```
-
-
-### <a name="update_seller_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.UpdateSellerMetadata") UpdateSellerMetadata
-
-> TODO: Add a method description
-
-
-```go
-func (me *SELLERS_IMPL) UpdateSellerMetadata(
-            sellerId string,
-            request *models_pkg.UpdateMetadataRequest,
-            idempotencyKey *string)(*models_pkg.GetSellerResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| sellerId |  ``` Required ```  | Seller Id |
-| request |  ``` Required ```  | Request for updating the charge metadata |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-sellerId := "seller_id"
-var request *models_pkg.UpdateMetadataRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSellerResponse
-result,_ = sellers.UpdateSellerMetadata(sellerId, request, idempotencyKey)
-
-```
-
-
-### <a name="delete_seller"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.DeleteSeller") DeleteSeller
-
-> TODO: Add a method description
-
-
-```go
-func (me *SELLERS_IMPL) DeleteSeller(
-            sellerId string,
-            idempotencyKey *string)(*models_pkg.GetSellerResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| sellerId |  ``` Required ```  | Seller Id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-sellerId := "sellerId"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSellerResponse
-result,_ = sellers.DeleteSeller(sellerId, idempotencyKey)
-
-```
-
-
-### <a name="get_seller_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".sellers_pkg.GetSellerById") GetSellerById
-
-> TODO: Add a method description
-
-
-```go
-func (me *SELLERS_IMPL) GetSellerById(id string)(*models_pkg.GetSellerResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| id |  ``` Required ```  | Seller Id |
-
-
-#### Example Usage
-
-```go
-id := "id"
-
-var result *models_pkg.GetSellerResponse
-result,_ = sellers.GetSellerById(id)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
 ## <a name="tokens_pkg"></a>![Class: ](https://apidocs.io/img/class.png ".tokens_pkg") tokens_pkg
 
 ### Get instance
@@ -4318,8 +4082,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("36", 10, 8)
-size,_ := strconv.ParseInt("36", 10, 8)
+page,_ := strconv.ParseInt("206", 10, 8)
+size,_ := strconv.ParseInt("206", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"

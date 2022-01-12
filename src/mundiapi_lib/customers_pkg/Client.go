@@ -60,7 +60,7 @@ func (me *CUSTOMERS_IMPL) CreateAccessToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -147,7 +147,7 @@ func (me *CUSTOMERS_IMPL) UpdateCustomer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -230,7 +230,7 @@ func (me *CUSTOMERS_IMPL) DeleteAccessTokens (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 
@@ -311,7 +311,7 @@ func (me *CUSTOMERS_IMPL) GetCustomer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 
@@ -406,7 +406,7 @@ func (me *CUSTOMERS_IMPL) GetAddresses (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 
@@ -490,7 +490,7 @@ func (me *CUSTOMERS_IMPL) GetAccessToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 
@@ -574,7 +574,7 @@ func (me *CUSTOMERS_IMPL) GetAddress (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 
@@ -659,7 +659,7 @@ func (me *CUSTOMERS_IMPL) CreateCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -747,7 +747,7 @@ func (me *CUSTOMERS_IMPL) RenewCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -822,7 +822,7 @@ func (me *CUSTOMERS_IMPL) CreateCustomer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -912,7 +912,7 @@ func (me *CUSTOMERS_IMPL) UpdateAddress (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1009,7 +1009,7 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 
@@ -1094,7 +1094,7 @@ func (me *CUSTOMERS_IMPL) UpdateCustomerMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1182,7 +1182,7 @@ func (me *CUSTOMERS_IMPL) DeleteAddress (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -1271,7 +1271,7 @@ func (me *CUSTOMERS_IMPL) UpdateCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1368,7 +1368,7 @@ func (me *CUSTOMERS_IMPL) GetCards (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 
@@ -1454,7 +1454,7 @@ func (me *CUSTOMERS_IMPL) DeleteCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -1551,7 +1551,7 @@ func (me *CUSTOMERS_IMPL) GetCustomers (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 
@@ -1637,7 +1637,7 @@ func (me *CUSTOMERS_IMPL) DeleteAccessToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -1723,7 +1723,7 @@ func (me *CUSTOMERS_IMPL) CreateAddress (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1809,7 +1809,7 @@ func (me *CUSTOMERS_IMPL) GetCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.1.1",
+        "user-agent" : "MundiSDK - Go 2.2.0",
         "accept" : "application/json",
     }
 

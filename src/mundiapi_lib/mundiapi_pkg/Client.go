@@ -14,7 +14,6 @@ import(
 	"mundiapi_lib/subscriptions_pkg"
 	"mundiapi_lib/invoices_pkg"
 	"mundiapi_lib/orders_pkg"
-	"mundiapi_lib/sellers_pkg"
 	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/plans_pkg"
 	"mundiapi_lib/transactions_pkg"
@@ -30,7 +29,6 @@ type MUNDIAPI_IMPL struct {
      subscriptions subscriptions_pkg.SUBSCRIPTIONS
      invoices invoices_pkg.INVOICES
      orders orders_pkg.ORDERS
-     sellers sellers_pkg.SELLERS
      tokens tokens_pkg.TOKENS
      plans plans_pkg.PLANS
      transactions transactions_pkg.TRANSACTIONS
@@ -104,16 +102,6 @@ func (me *MUNDIAPI_IMPL) Orders() orders_pkg.ORDERS {
         me.orders = orders_pkg.NewORDERS(me.config)
     }
     return me.orders
-}
-/**
-     * Access to Sellers controller
-     * @return Returns the Sellers() instance
-*/
-func (me *MUNDIAPI_IMPL) Sellers() sellers_pkg.SELLERS {
-    if(me.sellers) == nil {
-        me.sellers = sellers_pkg.NewSELLERS(me.config)
-    }
-    return me.sellers
 }
 /**
      * Access to Tokens controller
