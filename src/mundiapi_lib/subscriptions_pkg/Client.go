@@ -61,7 +61,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateDiscount (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -147,7 +147,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -236,7 +236,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteUsage (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -322,7 +322,7 @@ func (me *SUBSCRIPTIONS_IMPL) CancelSubscription (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -410,7 +410,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteIncrement (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -495,7 +495,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycleById (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -580,7 +580,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionStartAt (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -667,7 +667,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionPaymentMethod (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -754,7 +754,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateCurrentCycleStatus (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -822,7 +822,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscription (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -928,7 +928,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -1011,7 +1011,7 @@ func (me *SUBSCRIPTIONS_IMPL) RenewSubscription (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -1100,7 +1100,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1188,7 +1188,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateAnUsage (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -1273,7 +1273,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrementById (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -1359,7 +1359,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteDiscount (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -1455,7 +1455,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -1543,7 +1543,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateUsage (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1630,7 +1630,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateSubscriptionItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1742,7 +1742,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -1827,7 +1827,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionBillingDate (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1914,7 +1914,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateLatestPeriodEndAt (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -2011,7 +2011,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionCycles (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -2092,7 +2092,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscription (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -2177,7 +2177,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionAffiliationId (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -2265,7 +2265,7 @@ func (me *SUBSCRIPTIONS_IMPL) DeleteSubscriptionItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -2351,7 +2351,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionCard (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -2438,7 +2438,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -2525,7 +2525,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionDueDays (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -2622,7 +2622,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -2707,7 +2707,7 @@ func (me *SUBSCRIPTIONS_IMPL) CreateIncrement (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -2823,7 +2823,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -2907,7 +2907,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscountById (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -3020,7 +3020,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -3105,7 +3105,7 @@ func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -3191,7 +3191,7 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsageReport (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
@@ -3227,6 +3227,90 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsageReport (
 
     //returning the response
     var retVal *models_pkg.GetUsageReportResponse = &models_pkg.GetUsageReportResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * TODO: type endpoint description here
+ * @param    string                                            id          parameter: Required
+ * @param    *models_pkg.UpdateSubscriptionSplitRequest        request     parameter: Required
+ * @return	Returns the *models_pkg.GetSubscriptionResponse response from the API call
+ */
+func (me *SUBSCRIPTIONS_IMPL) UpdateSplitSubscription (
+            id string,
+            request *models_pkg.UpdateSubscriptionSplitRequest) (*models_pkg.GetSubscriptionResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/subscriptions/{id}/split"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "id" : id,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.3.0",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+    }
+
+    //prepare API request
+    _request := unirest.PatchWithAuth(_queryBuilder, headers, request, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.GetSubscriptionResponse = &models_pkg.GetSubscriptionResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {

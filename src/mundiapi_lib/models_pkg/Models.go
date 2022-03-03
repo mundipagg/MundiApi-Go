@@ -580,6 +580,7 @@ type CreateSubscriptionRequest struct {
     Increments             []*CreateIncrementRequest `json:"increments" form:"increments"` //Increments
     Period                 *CreatePeriodRequest `json:"period,omitempty" form:"period,omitempty"` //TODO: Write general description for this field
     Submerchant            *CreateSubMerchantRequest `json:"submerchant,omitempty" form:"submerchant,omitempty"` //SubMerchant
+    Split                  *CreateSubscriptionSplitRequest `json:"split,omitempty" form:"split,omitempty"` //Subscription's split
 }
 
 /*
@@ -1236,6 +1237,7 @@ type GetSubscriptionResponse struct {
     Discounts              []*GetDiscountResponse `json:"discounts,omitempty" form:"discounts,omitempty"` //Subscription discounts
     Increments             []*GetIncrementResponse `json:"increments" form:"increments"` //Subscription increments
     BoletoDueDays          *int64          `json:"boleto_due_days,omitempty" form:"boleto_due_days,omitempty"` //Days until boleto expires
+    Split                  GetSubscriptionSplitResponse `json:"split" form:"split"` //Subscription's split response
 }
 
 /*
@@ -2310,6 +2312,7 @@ type GetPixTransactionResponse struct {
     QrCodeUrl              string          `json:"qr_code_url" form:"qr_code_url"` //TODO: Write general description for this field
     ExpiresAt              *time.Time      `json:"expires_at" form:"expires_at"` //TODO: Write general description for this field
     AdditionalInformation  []*PixAdditionalInformation `json:"additional_information" form:"additional_information"` //TODO: Write general description for this field
+    Payer                  *GetPixPayerResponse `json:"payer,omitempty" form:"payer,omitempty"` //TODO: Write general description for this field
 }
 
 /*
@@ -2336,4 +2339,59 @@ type GetTransferSettingsResponse struct {
     TransferEnabled   bool            `json:"transfer_enabled" form:"transfer_enabled"` //TODO: Write general description for this field
     TransferInterval  string          `json:"transfer_interval" form:"transfer_interval"` //TODO: Write general description for this field
     TransferDay       int64           `json:"transfer_day" form:"transfer_day"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type CreateSubscriptionSplitRequest
+ */
+type CreateSubscriptionSplitRequest struct {
+    Enabled         bool            `json:"enabled" form:"enabled"` //Defines if the split is enabled
+    Rules           []*CreateSplitRequest `json:"rules" form:"rules"` //Split
+}
+
+/*
+ * Structure for the custom type GetSubscriptionSplitResponse
+ */
+type GetSubscriptionSplitResponse struct {
+    Enabled         bool            `json:"enabled" form:"enabled"` //Defines if the split is enabled
+    Rules           []*GetSplitResponse `json:"rules" form:"rules"` //Split
+}
+
+/*
+ * Structure for the custom type UpdateSubscriptionSplitRequest
+ */
+type UpdateSubscriptionSplitRequest struct {
+    Enabled         bool            `json:"enabled" form:"enabled"` //Defines if the split is enabled
+    Rules           []*CreateSplitRequest `json:"rules" form:"rules"` //Split
+}
+
+/*
+ * Structure for the custom type CancelSplitRequest
+ */
+type CancelSplitRequest struct {
+    Type            string          `json:"type" form:"type"` //Split type
+    Amount          int64           `json:"amount" form:"amount"` //Amount
+    RecipientId     string          `json:"recipient_id" form:"recipient_id"` //Recipient id
+    Options         *CreateSplitOptionsRequest `json:"options,omitempty" form:"options,omitempty"` //The split options request
+    SplitRuleId     *string         `json:"split_rule_id,omitempty" form:"split_rule_id,omitempty"` //Rule id
+}
+
+/*
+ * Structure for the custom type GetPixPayerResponse
+ */
+type GetPixPayerResponse struct {
+    Name            *string         `json:"name,omitempty" form:"name,omitempty"` //TODO: Write general description for this field
+    Document        *string         `json:"document,omitempty" form:"document,omitempty"` //TODO: Write general description for this field
+    DocumentType    *string         `json:"document_type,omitempty" form:"document_type,omitempty"` //TODO: Write general description for this field
+    BankAccount     *GetPixBankAccountResponse `json:"bank_account,omitempty" form:"bank_account,omitempty"` //TODO: Write general description for this field
+}
+
+/*
+ * Structure for the custom type GetPixBankAccountResponse
+ */
+type GetPixBankAccountResponse struct {
+    BankName        *string         `json:"bank_name,omitempty" form:"bank_name,omitempty"` //TODO: Write general description for this field
+    Ispb            *string         `json:"ispb,omitempty" form:"ispb,omitempty"` //TODO: Write general description for this field
+    BranchCode      *string         `json:"branch_code,omitempty" form:"branch_code,omitempty"` //TODO: Write general description for this field
+    AccountNumber   *string         `json:"account_number,omitempty" form:"account_number,omitempty"` //TODO: Write general description for this field
 }
