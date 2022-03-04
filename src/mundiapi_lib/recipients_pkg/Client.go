@@ -61,7 +61,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -148,7 +148,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -234,7 +234,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipation (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -318,7 +318,7 @@ func (me *RECIPIENTS_IMPL) GetRecipients (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -399,7 +399,7 @@ func (me *RECIPIENTS_IMPL) GetBalance (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -512,7 +512,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -597,7 +597,7 @@ func (me *RECIPIENTS_IMPL) CreateAnticipation (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -684,7 +684,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -767,7 +767,7 @@ func (me *RECIPIENTS_IMPL) GetRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -851,7 +851,7 @@ func (me *RECIPIENTS_IMPL) GetTransfer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -955,7 +955,7 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -1040,7 +1040,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1116,7 +1116,7 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1203,7 +1203,7 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1300,7 +1300,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipationLimits (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -1383,7 +1383,7 @@ func (me *RECIPIENTS_IMPL) CreateWithdraw (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1468,7 +1468,7 @@ func (me *RECIPIENTS_IMPL) GetWithdrawById (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -1572,7 +1572,7 @@ func (me *RECIPIENTS_IMPL) GetWithdrawals (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
@@ -1657,7 +1657,7 @@ func (me *RECIPIENTS_IMPL) UpdateAutomaticAnticipationSettings (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1740,7 +1740,7 @@ func (me *RECIPIENTS_IMPL) GetRecipientByCode (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+
         "accept" : "application/json",
     }
 
