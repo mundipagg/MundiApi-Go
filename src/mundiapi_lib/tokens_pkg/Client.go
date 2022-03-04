@@ -60,7 +60,7 @@ func (me *TOKENS_IMPL) CreateToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -146,7 +146,7 @@ func (me *TOKENS_IMPL) GetToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.2.0",
+        "user-agent" : "MundiSDK - Go 2.3.0",
         "accept" : "application/json",
     }
 
