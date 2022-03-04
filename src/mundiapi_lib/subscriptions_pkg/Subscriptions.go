@@ -85,6 +85,8 @@ type SUBSCRIPTIONS interface {
     UpdateSubscriptionMiniumPrice (string, *models_pkg.UpdateSubscriptionMinimumPriceRequest, *string) (*models_pkg.GetSubscriptionResponse, error)
 
     GetUsageReport (string, string) (*models_pkg.GetUsageReportResponse, error)
+
+    UpdateSplitSubscription (string, *models_pkg.UpdateSubscriptionSplitRequest) (*models_pkg.GetSubscriptionResponse, error)
 }
 
 /*
