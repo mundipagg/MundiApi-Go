@@ -60,6 +60,14 @@ type SUBSCRIPTIONS interface {
 
     GetSubscriptionCycles (string, string, string) (*models_pkg.ListCyclesResponse, error)
 
+    GetSubscriptions (*int64, *int64, *string, *string, *string, *string, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListSubscriptionsResponse, error)
+
+    GetDiscountById (string, string) (*models_pkg.GetDiscountResponse, error)
+
+    GetSubscriptionItems (string, *int64, *int64, *string, *string, *string, *string, *string, *string) (*models_pkg.ListSubscriptionItemsResponse, error)
+
+    UpdateSubscriptionMiniumPrice (string, *models_pkg.UpdateSubscriptionMinimumPriceRequest, *string) (*models_pkg.GetSubscriptionResponse, error)
+
     GetSubscription (string) (*models_pkg.GetSubscriptionResponse, error)
 
     UpdateSubscriptionAffiliationId (string, *models_pkg.UpdateSubscriptionAffiliationIdRequest, *string) (*models_pkg.GetSubscriptionResponse, error)
@@ -75,14 +83,6 @@ type SUBSCRIPTIONS interface {
     GetDiscounts (string, int64, int64) (*models_pkg.ListDiscountsResponse, error)
 
     CreateIncrement (string, *models_pkg.CreateIncrementRequest, *string) (*models_pkg.GetIncrementResponse, error)
-
-    GetSubscriptions (*int64, *int64, *string, *string, *string, *string, *string, *string, *time.Time, *time.Time, *time.Time, *time.Time) (*models_pkg.ListSubscriptionsResponse, error)
-
-    GetDiscountById (string, string) (*models_pkg.GetDiscountResponse, error)
-
-    GetSubscriptionItems (string, *int64, *int64, *string, *string, *string, *string, *string, *string) (*models_pkg.ListSubscriptionItemsResponse, error)
-
-    UpdateSubscriptionMiniumPrice (string, *models_pkg.UpdateSubscriptionMinimumPriceRequest, *string) (*models_pkg.GetSubscriptionResponse, error)
 
     GetUsageReport (string, string) (*models_pkg.GetUsageReportResponse, error)
 

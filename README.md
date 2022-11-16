@@ -285,8 +285,8 @@ func (me *CUSTOMERS_IMPL) GetAddresses(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("28", 10, 8)
-size,_ := strconv.ParseInt("28", 10, 8)
+page,_ := strconv.ParseInt("29", 10, 8)
+size,_ := strconv.ParseInt("29", 10, 8)
 
 var result *models_pkg.ListAddressesResponse
 result,_ = customers.GetAddresses(customerId, page, size)
@@ -517,8 +517,8 @@ func (me *CUSTOMERS_IMPL) GetAccessTokens(
 
 ```go
 customerId := "customer_id"
-page,_ := strconv.ParseInt("28", 10, 8)
-size,_ := strconv.ParseInt("28", 10, 8)
+page,_ := strconv.ParseInt("29", 10, 8)
+size,_ := strconv.ParseInt("29", 10, 8)
 
 var result *models_pkg.ListAccessTokensResponse
 result,_ = customers.GetAccessTokens(customerId, page, size)
@@ -631,117 +631,6 @@ result,_ = customers.UpdateCard(customerId, cardId, request, idempotencyKey)
 ```
 
 
-### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetCards") GetCards
-
-> Get all cards from a customer
-
-
-```go
-func (me *CUSTOMERS_IMPL) GetCards(
-            customerId string,
-            page *int64,
-            size *int64)(*models_pkg.ListCardsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-#### Example Usage
-
-```go
-customerId := "customer_id"
-page,_ := strconv.ParseInt("28", 10, 8)
-size,_ := strconv.ParseInt("28", 10, 8)
-
-var result *models_pkg.ListCardsResponse
-result,_ = customers.GetCards(customerId, page, size)
-
-```
-
-
-### <a name="delete_card"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.DeleteCard") DeleteCard
-
-> Delete a customer's card
-
-
-```go
-func (me *CUSTOMERS_IMPL) DeleteCard(
-            customerId string,
-            cardId string,
-            idempotencyKey *string)(*models_pkg.GetCardResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customerId |  ``` Required ```  | Customer Id |
-| cardId |  ``` Required ```  | Card Id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-customerId := "customer_id"
-cardId := "card_id"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetCardResponse
-result,_ = customers.DeleteCard(customerId, cardId, idempotencyKey)
-
-```
-
-
-### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetCustomers") GetCustomers
-
-> Get all Customers
-
-
-```go
-func (me *CUSTOMERS_IMPL) GetCustomers(
-            name *string,
-            document *string,
-            page *int64,
-            size *int64,
-            email *string,
-            code *string)(*models_pkg.ListCustomersResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| name |  ``` Optional ```  | Name of the Customer |
-| document |  ``` Optional ```  | Document of the Customer |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
-| size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
-| email |  ``` Optional ```  | Customer's email |
-| code |  ``` Optional ```  | Customer's code |
-
-
-#### Example Usage
-
-```go
-name := "name"
-document := "document"
-page,_ := strconv.ParseInt("1", 10, 8)
-size,_ := strconv.ParseInt("10", 10, 8)
-email := "email"
-code := "Code"
-
-var result *models_pkg.ListCustomersResponse
-result,_ = customers.GetCustomers(name, document, page, size, email, code)
-
-```
-
-
 ### <a name="delete_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.DeleteAccessToken") DeleteAccessToken
 
 > Delete a customer's access token
@@ -837,6 +726,117 @@ cardId := "card_id"
 
 var result *models_pkg.GetCardResponse
 result,_ = customers.GetCard(customerId, cardId)
+
+```
+
+
+### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetCards") GetCards
+
+> Get all cards from a customer
+
+
+```go
+func (me *CUSTOMERS_IMPL) GetCards(
+            customerId string,
+            page *int64,
+            size *int64)(*models_pkg.ListCardsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+page,_ := strconv.ParseInt("29", 10, 8)
+size,_ := strconv.ParseInt("29", 10, 8)
+
+var result *models_pkg.ListCardsResponse
+result,_ = customers.GetCards(customerId, page, size)
+
+```
+
+
+### <a name="delete_card"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.DeleteCard") DeleteCard
+
+> Delete a customer's card
+
+
+```go
+func (me *CUSTOMERS_IMPL) DeleteCard(
+            customerId string,
+            cardId string,
+            idempotencyKey *string)(*models_pkg.GetCardResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customerId |  ``` Required ```  | Customer Id |
+| cardId |  ``` Required ```  | Card Id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+customerId := "customer_id"
+cardId := "card_id"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetCardResponse
+result,_ = customers.DeleteCard(customerId, cardId, idempotencyKey)
+
+```
+
+
+### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".customers_pkg.GetCustomers") GetCustomers
+
+> Get all Customers
+
+
+```go
+func (me *CUSTOMERS_IMPL) GetCustomers(
+            name *string,
+            document *string,
+            page *int64,
+            size *int64,
+            email *string,
+            code *string)(*models_pkg.ListCustomersResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| name |  ``` Optional ```  | Name of the Customer |
+| document |  ``` Optional ```  | Document of the Customer |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
+| size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
+| email |  ``` Optional ```  | Customer's email |
+| code |  ``` Optional ```  | Customer's code |
+
+
+#### Example Usage
+
+```go
+name := "name"
+document := "document"
+page,_ := strconv.ParseInt("1", 10, 8)
+size,_ := strconv.ParseInt("10", 10, 8)
+email := "email"
+code := "Code"
+
+var result *models_pkg.ListCustomersResponse
+result,_ = customers.GetCustomers(name, document, page, size, email, code)
 
 ```
 
@@ -984,8 +984,8 @@ func (me *CHARGES_IMPL) GetCharges(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("28", 10, 8)
-size,_ := strconv.ParseInt("28", 10, 8)
+page,_ := strconv.ParseInt("29", 10, 8)
+size,_ := strconv.ParseInt("29", 10, 8)
 code := "code"
 status := "status"
 paymentMethod := "payment_method"
@@ -1257,8 +1257,8 @@ func (me *CHARGES_IMPL) GetChargeTransactions(
 
 ```go
 chargeId := "charge_id"
-page,_ := strconv.ParseInt("119", 10, 8)
-size,_ := strconv.ParseInt("119", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 
 var result *models_pkg.ListChargeTransactionsResponse
 result,_ = charges.GetChargeTransactions(chargeId, page, size)
@@ -1433,8 +1433,8 @@ func (me *RECIPIENTS_IMPL) GetRecipients(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("119", 10, 8)
-size,_ := strconv.ParseInt("119", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 
 var result *models_pkg.ListRecipientResponse
 result,_ = recipients.GetRecipients(page, size)
@@ -1506,8 +1506,8 @@ func (me *RECIPIENTS_IMPL) GetAnticipations(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("119", 10, 8)
-size,_ := strconv.ParseInt("119", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 status := "status"
 timeframe := "timeframe"
 paymentDateSince := time.Now()
@@ -1616,6 +1616,40 @@ result,_ = recipients.GetRecipient(recipientId)
 ```
 
 
+### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetAnticipationLimits") GetAnticipationLimits
+
+> Gets the anticipation limits for a recipient
+
+
+```go
+func (me *RECIPIENTS_IMPL) GetAnticipationLimits(
+            recipientId string,
+            timeframe string,
+            paymentDate *time.Time)(*models_pkg.GetAnticipationLimitResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipientId |  ``` Required ```  | Recipient id |
+| timeframe |  ``` Required ```  | Timeframe |
+| paymentDate |  ``` Required ```  | Anticipation payment date |
+
+
+#### Example Usage
+
+```go
+recipientId := "recipient_id"
+timeframe := "timeframe"
+paymentDate := time.Now()
+
+var result *models_pkg.GetAnticipationLimitResponse
+result,_ = recipients.GetAnticipationLimits(recipientId, timeframe, paymentDate)
+
+```
+
+
 ### <a name="get_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetTransfer") GetTransfer
 
 > Gets a transfer
@@ -1678,8 +1712,8 @@ func (me *RECIPIENTS_IMPL) GetTransfers(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("119", 10, 8)
-size,_ := strconv.ParseInt("119", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -1789,40 +1823,6 @@ result,_ = recipients.CreateTransfer(recipientId, request, idempotencyKey)
 ```
 
 
-### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.GetAnticipationLimits") GetAnticipationLimits
-
-> Gets the anticipation limits for a recipient
-
-
-```go
-func (me *RECIPIENTS_IMPL) GetAnticipationLimits(
-            recipientId string,
-            timeframe string,
-            paymentDate *time.Time)(*models_pkg.GetAnticipationLimitResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recipientId |  ``` Required ```  | Recipient id |
-| timeframe |  ``` Required ```  | Timeframe |
-| paymentDate |  ``` Required ```  | Anticipation payment date |
-
-
-#### Example Usage
-
-```go
-recipientId := "recipient_id"
-timeframe := "timeframe"
-paymentDate := time.Now()
-
-var result *models_pkg.GetAnticipationLimitResponse
-result,_ = recipients.GetAnticipationLimits(recipientId, timeframe, paymentDate)
-
-```
-
-
 ### <a name="create_withdraw"></a>![Method: ](https://apidocs.io/img/method.png ".recipients_pkg.CreateWithdraw") CreateWithdraw
 
 > TODO: Add a method description
@@ -1916,8 +1916,8 @@ func (me *RECIPIENTS_IMPL) GetWithdrawals(
 
 ```go
 recipientId := "recipient_id"
-page,_ := strconv.ParseInt("119", 10, 8)
-size,_ := strconv.ParseInt("119", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 status := "status"
 createdSince := time.Now()
 createdUntil := time.Now()
@@ -2367,8 +2367,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsagesDetails(
 ```go
 subscriptionId := "subscription_id"
 cycleId := "cycle_id"
-size,_ := strconv.ParseInt("119", 10, 8)
-page,_ := strconv.ParseInt("119", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
 itemId := "item_id"
 group := "group"
 
@@ -2570,8 +2570,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetIncrements(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("119", 10, 8)
-size,_ := strconv.ParseInt("119", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 
 var result *models_pkg.ListIncrementsResponse
 result,_ = subscriptions.GetIncrements(subscriptionId, page, size)
@@ -2686,8 +2686,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetUsages(
 ```go
 subscriptionId := "subscription_id"
 itemId := "item_id"
-page,_ := strconv.ParseInt("119", 10, 8)
-size,_ := strconv.ParseInt("119", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 code := "code"
 group := "group"
 usedSince := time.Now()
@@ -2797,6 +2797,184 @@ size := "size"
 
 var result *models_pkg.ListCyclesResponse
 result,_ = subscriptions.GetSubscriptionCycles(subscriptionId, page, size)
+
+```
+
+
+### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptions") GetSubscriptions
+
+> Gets all subscriptions
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
+            page *int64,
+            size *int64,
+            code *string,
+            billingType *string,
+            customerId *string,
+            planId *string,
+            cardId *string,
+            status *string,
+            nextBillingSince *time.Time,
+            nextBillingUntil *time.Time,
+            createdSince *time.Time,
+            createdUntil *time.Time)(*models_pkg.ListSubscriptionsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for subscription's code |
+| billingType |  ``` Optional ```  | Filter for subscription's billing type |
+| customerId |  ``` Optional ```  | Filter for subscription's customer id |
+| planId |  ``` Optional ```  | Filter for subscription's plan id |
+| cardId |  ``` Optional ```  | Filter for subscription's card id |
+| status |  ``` Optional ```  | Filter for subscription's status |
+| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
+| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
+| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
+
+
+#### Example Usage
+
+```go
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
+code := "code"
+billingType := "billing_type"
+customerId := "customer_id"
+planId := "plan_id"
+cardId := "card_id"
+status := "status"
+nextBillingSince := time.Now()
+nextBillingUntil := time.Now()
+createdSince := time.Now()
+createdUntil := time.Now()
+
+var result *models_pkg.ListSubscriptionsResponse
+result,_ = subscriptions.GetSubscriptions(page, size, code, billingType, customerId, planId, cardId, status, nextBillingSince, nextBillingUntil, createdSince, createdUntil)
+
+```
+
+
+### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscountById") GetDiscountById
+
+> TODO: Add a method description
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetDiscountById(
+            subscriptionId string,
+            discountId string)(*models_pkg.GetDiscountResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| discountId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+discountId := "discountId"
+
+var result *models_pkg.GetDiscountResponse
+result,_ = subscriptions.GetDiscountById(subscriptionId, discountId)
+
+```
+
+
+### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItems") GetSubscriptionItems
+
+> Get Subscription Items
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
+            subscriptionId string,
+            page *int64,
+            size *int64,
+            name *string,
+            code *string,
+            status *string,
+            description *string,
+            createdSince *string,
+            createdUntil *string)(*models_pkg.ListSubscriptionItemsResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | The item name |
+| code |  ``` Optional ```  | Identification code in the client system |
+| status |  ``` Optional ```  | The item statis |
+| description |  ``` Optional ```  | The item description |
+| createdSince |  ``` Optional ```  | Filter for item's creation date start range |
+| createdUntil |  ``` Optional ```  | Filter for item's creation date end range |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
+name := "name"
+code := "code"
+status := "status"
+description := "description"
+createdSince := "created_since"
+createdUntil := "created_until"
+
+var result *models_pkg.ListSubscriptionItemsResponse
+result,_ = subscriptions.GetSubscriptionItems(subscriptionId, page, size, name, code, status, description, createdSince, createdUntil)
+
+```
+
+
+### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMiniumPrice") UpdateSubscriptionMiniumPrice
+
+> Atualização do valor mínimo da assinatura
+
+
+```go
+func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice(
+            subscriptionId string,
+            request *models_pkg.UpdateSubscriptionMinimumPriceRequest,
+            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscriptionId |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+subscriptionId := "subscription_id"
+var request *models_pkg.UpdateSubscriptionMinimumPriceRequest
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetSubscriptionResponse
+result,_ = subscriptions.UpdateSubscriptionMiniumPrice(subscriptionId, request, idempotencyKey)
 
 ```
 
@@ -3023,8 +3201,8 @@ func (me *SUBSCRIPTIONS_IMPL) GetDiscounts(
 
 ```go
 subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("78", 10, 8)
-size,_ := strconv.ParseInt("78", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 
 var result *models_pkg.ListDiscountsResponse
 result,_ = subscriptions.GetDiscounts(subscriptionId, page, size)
@@ -3062,184 +3240,6 @@ idempotencyKey := "idempotency-key"
 
 var result *models_pkg.GetIncrementResponse
 result,_ = subscriptions.CreateIncrement(subscriptionId, request, idempotencyKey)
-
-```
-
-
-### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptions") GetSubscriptions
-
-> Gets all subscriptions
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptions(
-            page *int64,
-            size *int64,
-            code *string,
-            billingType *string,
-            customerId *string,
-            planId *string,
-            cardId *string,
-            status *string,
-            nextBillingSince *time.Time,
-            nextBillingUntil *time.Time,
-            createdSince *time.Time,
-            createdUntil *time.Time)(*models_pkg.ListSubscriptionsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Filter for subscription's code |
-| billingType |  ``` Optional ```  | Filter for subscription's billing type |
-| customerId |  ``` Optional ```  | Filter for subscription's customer id |
-| planId |  ``` Optional ```  | Filter for subscription's plan id |
-| cardId |  ``` Optional ```  | Filter for subscription's card id |
-| status |  ``` Optional ```  | Filter for subscription's status |
-| nextBillingSince |  ``` Optional ```  | Filter for subscription's next billing date start range |
-| nextBillingUntil |  ``` Optional ```  | Filter for subscription's next billing date end range |
-| createdSince |  ``` Optional ```  | Filter for subscription's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for subscriptions creation date end range |
-
-
-#### Example Usage
-
-```go
-page,_ := strconv.ParseInt("78", 10, 8)
-size,_ := strconv.ParseInt("78", 10, 8)
-code := "code"
-billingType := "billing_type"
-customerId := "customer_id"
-planId := "plan_id"
-cardId := "card_id"
-status := "status"
-nextBillingSince := time.Now()
-nextBillingUntil := time.Now()
-createdSince := time.Now()
-createdUntil := time.Now()
-
-var result *models_pkg.ListSubscriptionsResponse
-result,_ = subscriptions.GetSubscriptions(page, size, code, billingType, customerId, planId, cardId, status, nextBillingSince, nextBillingUntil, createdSince, createdUntil)
-
-```
-
-
-### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetDiscountById") GetDiscountById
-
-> TODO: Add a method description
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetDiscountById(
-            subscriptionId string,
-            discountId string)(*models_pkg.GetDiscountResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| discountId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-discountId := "discountId"
-
-var result *models_pkg.GetDiscountResponse
-result,_ = subscriptions.GetDiscountById(subscriptionId, discountId)
-
-```
-
-
-### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.GetSubscriptionItems") GetSubscriptionItems
-
-> Get Subscription Items
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) GetSubscriptionItems(
-            subscriptionId string,
-            page *int64,
-            size *int64,
-            name *string,
-            code *string,
-            status *string,
-            description *string,
-            createdSince *string,
-            createdUntil *string)(*models_pkg.ListSubscriptionItemsResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| name |  ``` Optional ```  | The item name |
-| code |  ``` Optional ```  | Identification code in the client system |
-| status |  ``` Optional ```  | The item statis |
-| description |  ``` Optional ```  | The item description |
-| createdSince |  ``` Optional ```  | Filter for item's creation date start range |
-| createdUntil |  ``` Optional ```  | Filter for item's creation date end range |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-page,_ := strconv.ParseInt("78", 10, 8)
-size,_ := strconv.ParseInt("78", 10, 8)
-name := "name"
-code := "code"
-status := "status"
-description := "description"
-createdSince := "created_since"
-createdUntil := "created_until"
-
-var result *models_pkg.ListSubscriptionItemsResponse
-result,_ = subscriptions.GetSubscriptionItems(subscriptionId, page, size, name, code, status, description, createdSince, createdUntil)
-
-```
-
-
-### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".subscriptions_pkg.UpdateSubscriptionMiniumPrice") UpdateSubscriptionMiniumPrice
-
-> Atualização do valor mínimo da assinatura
-
-
-```go
-func (me *SUBSCRIPTIONS_IMPL) UpdateSubscriptionMiniumPrice(
-            subscriptionId string,
-            request *models_pkg.UpdateSubscriptionMinimumPriceRequest,
-            idempotencyKey *string)(*models_pkg.GetSubscriptionResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscriptionId |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-subscriptionId := "subscription_id"
-var request *models_pkg.UpdateSubscriptionMinimumPriceRequest
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetSubscriptionResponse
-result,_ = subscriptions.UpdateSubscriptionMiniumPrice(subscriptionId, request, idempotencyKey)
 
 ```
 
@@ -3477,37 +3477,6 @@ result,_ = invoices.UpdateInvoiceMetadata(invoiceId, request, idempotencyKey)
 ```
 
 
-### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.CancelInvoice") CancelInvoice
-
-> Cancels an invoice
-
-
-```go
-func (me *INVOICES_IMPL) CancelInvoice(
-            invoiceId string,
-            idempotencyKey *string)(*models_pkg.GetInvoiceResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoiceId |  ``` Required ```  | Invoice id |
-| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```go
-invoiceId := "invoice_id"
-idempotencyKey := "idempotency-key"
-
-var result *models_pkg.GetInvoiceResponse
-result,_ = invoices.CancelInvoice(invoiceId, idempotencyKey)
-
-```
-
-
 ### <a name="get_invoices"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.GetInvoices") GetInvoices
 
 > Gets all invoices
@@ -3548,8 +3517,8 @@ func (me *INVOICES_IMPL) GetInvoices(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("78", 10, 8)
-size,_ := strconv.ParseInt("78", 10, 8)
+page,_ := strconv.ParseInt("71", 10, 8)
+size,_ := strconv.ParseInt("71", 10, 8)
 code := "code"
 customerId := "customer_id"
 subscriptionId := "subscription_id"
@@ -3562,6 +3531,37 @@ customerDocument := "customer_document"
 
 var result *models_pkg.ListInvoicesResponse
 result,_ = invoices.GetInvoices(page, size, code, customerId, subscriptionId, createdSince, createdUntil, status, dueSince, dueUntil, customerDocument)
+
+```
+
+
+### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".invoices_pkg.CancelInvoice") CancelInvoice
+
+> Cancels an invoice
+
+
+```go
+func (me *INVOICES_IMPL) CancelInvoice(
+            invoiceId string,
+            idempotencyKey *string)(*models_pkg.GetInvoiceResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoiceId |  ``` Required ```  | Invoice id |
+| idempotencyKey |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```go
+invoiceId := "invoice_id"
+idempotencyKey := "idempotency-key"
+
+var result *models_pkg.GetInvoiceResponse
+result,_ = invoices.CancelInvoice(invoiceId, idempotencyKey)
 
 ```
 
@@ -3709,8 +3709,8 @@ func (me *ORDERS_IMPL) GetOrders(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("78", 10, 8)
-size,_ := strconv.ParseInt("78", 10, 8)
+page,_ := strconv.ParseInt("234", 10, 8)
+size,_ := strconv.ParseInt("234", 10, 8)
 code := "code"
 status := "status"
 createdSince := time.Now()
@@ -4113,8 +4113,8 @@ func (me *PLANS_IMPL) GetPlans(
 #### Example Usage
 
 ```go
-page,_ := strconv.ParseInt("78", 10, 8)
-size,_ := strconv.ParseInt("78", 10, 8)
+page,_ := strconv.ParseInt("234", 10, 8)
+size,_ := strconv.ParseInt("234", 10, 8)
 name := "name"
 status := "status"
 billingType := "billing_type"
@@ -4287,37 +4287,6 @@ result,_ = plans.DeletePlanItem(planId, planItemId, idempotencyKey)
 ```
 
 
-### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlanItem") GetPlanItem
-
-> Gets a plan item
-
-
-```go
-func (me *PLANS_IMPL) GetPlanItem(
-            planId string,
-            planItemId string)(*models_pkg.GetPlanItemResponse,error)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| planId |  ``` Required ```  | Plan id |
-| planItemId |  ``` Required ```  | Plan item id |
-
-
-#### Example Usage
-
-```go
-planId := "plan_id"
-planItemId := "plan_item_id"
-
-var result *models_pkg.GetPlanItemResponse
-result,_ = plans.GetPlanItem(planId, planItemId)
-
-```
-
-
 ### <a name="delete_plan"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.DeletePlan") DeletePlan
 
 > Deletes a plan
@@ -4345,6 +4314,37 @@ idempotencyKey := "idempotency-key"
 
 var result *models_pkg.GetPlanResponse
 result,_ = plans.DeletePlan(planId, idempotencyKey)
+
+```
+
+
+### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".plans_pkg.GetPlanItem") GetPlanItem
+
+> Gets a plan item
+
+
+```go
+func (me *PLANS_IMPL) GetPlanItem(
+            planId string,
+            planItemId string)(*models_pkg.GetPlanItemResponse,error)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| planId |  ``` Required ```  | Plan id |
+| planItemId |  ``` Required ```  | Plan item id |
+
+
+#### Example Usage
+
+```go
+planId := "plan_id"
+planItemId := "plan_item_id"
+
+var result *models_pkg.GetPlanItemResponse
+result,_ = plans.GetPlanItem(planId, planItemId)
 
 ```
 

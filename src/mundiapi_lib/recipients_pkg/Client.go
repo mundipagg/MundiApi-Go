@@ -61,7 +61,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -148,7 +148,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientTransferSettings (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -234,7 +234,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipation (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -318,7 +318,7 @@ func (me *RECIPIENTS_IMPL) GetRecipients (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -399,7 +399,7 @@ func (me *RECIPIENTS_IMPL) GetBalance (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -512,7 +512,7 @@ func (me *RECIPIENTS_IMPL) GetAnticipations (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -597,7 +597,7 @@ func (me *RECIPIENTS_IMPL) CreateAnticipation (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -684,7 +684,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipientDefaultBankAccount (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -767,7 +767,7 @@ func (me *RECIPIENTS_IMPL) GetRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -803,6 +803,101 @@ func (me *RECIPIENTS_IMPL) GetRecipient (
 
     //returning the response
     var retVal *models_pkg.GetRecipientResponse = &models_pkg.GetRecipientResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Gets the anticipation limits for a recipient
+ * @param    string            recipientId      parameter: Required
+ * @param    string            timeframe        parameter: Required
+ * @param    *time.Time        paymentDate      parameter: Required
+ * @return	Returns the *models_pkg.GetAnticipationLimitResponse response from the API call
+ */
+func (me *RECIPIENTS_IMPL) GetAnticipationLimits (
+            recipientId string,
+            timeframe string,
+            paymentDate *time.Time) (*models_pkg.GetAnticipationLimitResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/recipients/{recipient_id}/anticipation_limits"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "recipient_id" : recipientId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "timeframe" : timeframe,
+        "payment_date" : paymentDate,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.5.0",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.GetAnticipationLimitResponse = &models_pkg.GetAnticipationLimitResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -851,7 +946,7 @@ func (me *RECIPIENTS_IMPL) GetTransfer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -955,7 +1050,7 @@ func (me *RECIPIENTS_IMPL) GetTransfers (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -1040,7 +1135,7 @@ func (me *RECIPIENTS_IMPL) UpdateRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1116,7 +1211,7 @@ func (me *RECIPIENTS_IMPL) CreateRecipient (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1203,7 +1298,7 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1252,101 +1347,6 @@ func (me *RECIPIENTS_IMPL) CreateTransfer (
 }
 
 /**
- * Gets the anticipation limits for a recipient
- * @param    string            recipientId      parameter: Required
- * @param    string            timeframe        parameter: Required
- * @param    *time.Time        paymentDate      parameter: Required
- * @return	Returns the *models_pkg.GetAnticipationLimitResponse response from the API call
- */
-func (me *RECIPIENTS_IMPL) GetAnticipationLimits (
-            recipientId string,
-            timeframe string,
-            paymentDate *time.Time) (*models_pkg.GetAnticipationLimitResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/recipients/{recipient_id}/anticipation_limits"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "recipient_id" : recipientId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //process optional query parameters
-    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
-        "timeframe" : timeframe,
-        "payment_date" : paymentDate,
-    })
-    if err != nil {
-        //error in query param handling
-        return nil, err
-    }
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.GetAnticipationLimitResponse = &models_pkg.GetAnticipationLimitResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
  * TODO: type endpoint description here
  * @param    string                                   recipientId      parameter: Required
  * @param    *models_pkg.CreateWithdrawRequest        request          parameter: Required
@@ -1383,7 +1383,7 @@ func (me *RECIPIENTS_IMPL) CreateWithdraw (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
     }
@@ -1468,7 +1468,7 @@ func (me *RECIPIENTS_IMPL) GetWithdrawById (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -1572,7 +1572,7 @@ func (me *RECIPIENTS_IMPL) GetWithdrawals (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
@@ -1657,7 +1657,7 @@ func (me *RECIPIENTS_IMPL) UpdateAutomaticAnticipationSettings (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
@@ -1740,7 +1740,7 @@ func (me *RECIPIENTS_IMPL) GetRecipientByCode (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.3.0",
+        "user-agent" : "MundiSDK - Go 2.5.0",
         "accept" : "application/json",
     }
 
