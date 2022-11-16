@@ -30,9 +30,9 @@ type PLANS interface {
 
     DeletePlanItem (string, string, *string) (*models_pkg.GetPlanItemResponse, error)
 
-    GetPlanItem (string, string) (*models_pkg.GetPlanItemResponse, error)
-
     DeletePlan (string, *string) (*models_pkg.GetPlanResponse, error)
+
+    GetPlanItem (string, string) (*models_pkg.GetPlanItemResponse, error)
 }
 
 /*
