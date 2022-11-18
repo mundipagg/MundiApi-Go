@@ -32,6 +32,8 @@ type RECIPIENTS interface {
 
     GetRecipient (string) (*models_pkg.GetRecipientResponse, error)
 
+    GetAnticipationLimits (string, string, *time.Time) (*models_pkg.GetAnticipationLimitResponse, error)
+
     GetTransfer (string, string) (*models_pkg.GetTransferResponse, error)
 
     GetTransfers (string, *int64, *int64, *string, *time.Time, *time.Time) (*models_pkg.ListTransferResponse, error)
@@ -41,8 +43,6 @@ type RECIPIENTS interface {
     CreateRecipient (*models_pkg.CreateRecipientRequest, *string) (*models_pkg.GetRecipientResponse, error)
 
     CreateTransfer (string, *models_pkg.CreateTransferRequest, *string) (*models_pkg.GetTransferResponse, error)
-
-    GetAnticipationLimits (string, string, *time.Time) (*models_pkg.GetAnticipationLimitResponse, error)
 
     CreateWithdraw (string, *models_pkg.CreateWithdrawRequest) (*models_pkg.GetWithdrawResponse, error)
 

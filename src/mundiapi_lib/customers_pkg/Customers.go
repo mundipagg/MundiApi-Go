@@ -43,17 +43,17 @@ type CUSTOMERS interface {
 
     UpdateCard (string, string, *models_pkg.UpdateCardRequest, *string) (*models_pkg.GetCardResponse, error)
 
-    GetCards (string, *int64, *int64) (*models_pkg.ListCardsResponse, error)
-
-    DeleteCard (string, string, *string) (*models_pkg.GetCardResponse, error)
-
-    GetCustomers (*string, *string, *int64, *int64, *string, *string) (*models_pkg.ListCustomersResponse, error)
-
     DeleteAccessToken (string, string, *string) (*models_pkg.GetAccessTokenResponse, error)
 
     CreateAddress (string, *models_pkg.CreateAddressRequest, *string) (*models_pkg.GetAddressResponse, error)
 
     GetCard (string, string) (*models_pkg.GetCardResponse, error)
+
+    GetCards (string, *int64, *int64) (*models_pkg.ListCardsResponse, error)
+
+    DeleteCard (string, string, *string) (*models_pkg.GetCardResponse, error)
+
+    GetCustomers (*string, *string, *int64, *int64, *string, *string) (*models_pkg.ListCustomersResponse, error)
 }
 
 /*
