@@ -22,7 +22,7 @@ type TRANSACTIONS_IMPL struct {
 }
 
 /**
- * TODO: type endpoint description here
+ * GetTransaction
  * @param    string        transactionId      parameter: Required
  * @return	Returns the *models_pkg.GetTransactionResponse response from the API call
  */
@@ -56,7 +56,7 @@ func (me *TRANSACTIONS_IMPL) GetTransaction (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.0",
+        "user-agent" : "MundiSDK - Go 2.4.1",
         "accept" : "application/json",
     }
 

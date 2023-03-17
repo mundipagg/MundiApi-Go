@@ -13,9 +13,9 @@ import "mundiapi_lib/models_pkg"
  * Interface for the TOKENS_IMPL
  */
 type TOKENS interface {
-    CreateToken (string, *models_pkg.CreateTokenRequest, *string) (*models_pkg.GetTokenResponse, error)
+    CreateToken (string, *models_pkg.TokensRequest, *string, *string) (*models_pkg.TokensResponse, error)
 
-    GetToken (string, string) (*models_pkg.GetTokenResponse, error)
+    GetToken (string, string, *string) (*models_pkg.TokensResponse, error)
 }
 
 /*

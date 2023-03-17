@@ -14,25 +14,25 @@ import "mundiapi_lib/models_pkg"
  * Interface for the PLANS_IMPL
  */
 type PLANS interface {
-    UpdatePlanItem (string, string, *models_pkg.UpdatePlanItemRequest, *string) (*models_pkg.GetPlanItemResponse, error)
+    UpdatePlanItem (string, string, *models_pkg.PlansItemsRequest, *string) (*models_pkg.PlansItemsResponse, error)
 
-    CreatePlanItem (string, *models_pkg.CreatePlanItemRequest, *string) (*models_pkg.GetPlanItemResponse, error)
+    DeletePlanItem (string, string, *string) (*models_pkg.PlansItemsResponse, error)
 
-    GetPlans (*int64, *int64, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.ListPlansResponse, error)
+    GetPlanItem (string, string) (*models_pkg.PlansItemsResponse, error)
 
-    GetPlan (string) (*models_pkg.GetPlanResponse, error)
+    CreatePlanItem (string, *models_pkg.PlansItemsRequest1, *string) (*models_pkg.PlansItemsResponse, error)
 
-    UpdatePlan (string, *models_pkg.UpdatePlanRequest, *string) (*models_pkg.GetPlanResponse, error)
+    GetPlans (*int64, *int64, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.PlansResponse, error)
 
-    UpdatePlanMetadata (string, *models_pkg.UpdateMetadataRequest, *string) (*models_pkg.GetPlanResponse, error)
+    CreatePlan (*models_pkg.PlansRequest, *string) (*models_pkg.PlansResponse1, error)
 
-    CreatePlan (*models_pkg.CreatePlanRequest, *string) (*models_pkg.GetPlanResponse, error)
+    GetPlan (string) (*models_pkg.PlansResponse1, error)
 
-    DeletePlanItem (string, string, *string) (*models_pkg.GetPlanItemResponse, error)
+    UpdatePlan (string, *models_pkg.PlansRequest1, *string) (*models_pkg.PlansResponse1, error)
 
-    DeletePlan (string, *string) (*models_pkg.GetPlanResponse, error)
+    DeletePlan (string, *string) (*models_pkg.PlansResponse1, error)
 
-    GetPlanItem (string, string) (*models_pkg.GetPlanItemResponse, error)
+    UpdatePlanMetadata (string, *models_pkg.PlansMetadataRequest, *string) (*models_pkg.PlansMetadataResponse, error)
 }
 
 /*
