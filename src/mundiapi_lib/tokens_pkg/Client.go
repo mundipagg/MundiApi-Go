@@ -22,18 +22,20 @@ type TOKENS_IMPL struct {
 }
 
 /**
- * TODO: type endpoint description here
- * @param    string                                publicKey           parameter: Required
- * @param    *models_pkg.CreateTokenRequest        request             parameter: Required
- * @param    *string                               idempotencyKey      parameter: Optional
- * @return	Returns the *models_pkg.GetTokenResponse response from the API call
+ * CreateToken
+ * @param    string                           publicKey           parameter: Required
+ * @param    *models_pkg.TokensRequest        body                parameter: Required
+ * @param    *string                          idempotencyKey      parameter: Optional
+ * @param    *string                          appId               parameter: Optional
+ * @return	Returns the *models_pkg.TokensResponse response from the API call
  */
 func (me *TOKENS_IMPL) CreateToken (
             publicKey string,
-            request *models_pkg.CreateTokenRequest,
-            idempotencyKey *string) (*models_pkg.GetTokenResponse, error) {
+            body *models_pkg.TokensRequest,
+            idempotencyKey *string,
+            appId *string) (*models_pkg.TokensResponse, error) {
     //the endpoint path uri
-    _pathUrl := "/tokens?appId={public_key}"
+    _pathUrl := "/tokens"
 
     //variable to hold errors
     var err error = nil
@@ -52,6 +54,15 @@ func (me *TOKENS_IMPL) CreateToken (
     //prepare query string for API call
    _queryBuilder = _queryBuilder + _pathUrl
 
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "appId" : appId,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -60,14 +71,15 @@ func (me *TOKENS_IMPL) CreateToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.0",
+        "user-agent" : "MundiSDK - Go 2.4.1",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
+        "Content-Type" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
-    _request := unirest.Post(_queryBuilder, headers, request)
+    _request := unirest.Post(_queryBuilder, headers, body)
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request,false);
     if err != nil {
@@ -97,7 +109,7 @@ func (me *TOKENS_IMPL) CreateToken (
     }
 
     //returning the response
-    var retVal *models_pkg.GetTokenResponse = &models_pkg.GetTokenResponse{}
+    var retVal *models_pkg.TokensResponse = &models_pkg.TokensResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -110,15 +122,17 @@ func (me *TOKENS_IMPL) CreateToken (
 
 /**
  * Gets a token from its id
- * @param    string        id             parameter: Required
- * @param    string        publicKey      parameter: Required
- * @return	Returns the *models_pkg.GetTokenResponse response from the API call
+ * @param    string         id             parameter: Required
+ * @param    string         publicKey      parameter: Required
+ * @param    *string        appId          parameter: Optional
+ * @return	Returns the *models_pkg.TokensResponse response from the API call
  */
 func (me *TOKENS_IMPL) GetToken (
             id string,
-            publicKey string) (*models_pkg.GetTokenResponse, error) {
+            publicKey string,
+            appId *string) (*models_pkg.TokensResponse, error) {
     //the endpoint path uri
-    _pathUrl := "/tokens/{id}?appId={public_key}"
+    _pathUrl := "/tokens/{id}"
 
     //variable to hold errors
     var err error = nil
@@ -138,6 +152,15 @@ func (me *TOKENS_IMPL) GetToken (
     //prepare query string for API call
    _queryBuilder = _queryBuilder + _pathUrl
 
+    //process optional query parameters
+    _queryBuilder, err = apihelper_pkg.AppendUrlWithQueryParameters(_queryBuilder, map[string]interface{} {
+        "appId" : appId,
+    })
+    if err != nil {
+        //error in query param handling
+        return nil, err
+    }
+
     //validate and preprocess url
     _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
     if err != nil {
@@ -146,7 +169,7 @@ func (me *TOKENS_IMPL) GetToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.0",
+        "user-agent" : "MundiSDK - Go 2.4.1",
         "accept" : "application/json",
     }
 
@@ -181,7 +204,7 @@ func (me *TOKENS_IMPL) GetToken (
     }
 
     //returning the response
-    var retVal *models_pkg.GetTokenResponse = &models_pkg.GetTokenResponse{}
+    var retVal *models_pkg.TokensResponse = &models_pkg.TokensResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
