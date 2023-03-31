@@ -14,25 +14,25 @@ import "mundiapi_lib/models_pkg"
  * Interface for the ORDERS_IMPL
  */
 type ORDERS interface {
-    UpdateOrderStatus (string, *models_pkg.UpdateOrderStatusRequest, *string) (*models_pkg.OrdersClosedResponse, error)
+    CreateOrder (*models_pkg.OrdersRequest, *string) (*models_pkg.OrdersResponse1, error)
 
-    DeleteAllOrderItems (string, *string) (*models_pkg.OrdersItemsResponse, error)
+    GetOrder (string) (*models_pkg.OrdersResponse1, error)
 
     CreateOrderItem (string, *models_pkg.OrdersItemsRequest, *string) (*models_pkg.OrdersItemsResponse1, error)
 
+    UpdateOrderItem (string, string, *models_pkg.OrdersItemsRequest1, *string) (*models_pkg.OrdersItemsResponse1, error)
+
+    DeleteAllOrderItems (string, *string) (*models_pkg.OrdersItemsResponse, error)
+
     UpdateOrderMetadata (string, *models_pkg.OrdersMetadataRequest, *string) (*models_pkg.OrdersMetadataResponse, error)
 
-    GetOrders (*int64, *int64, *string, *string, *time.Time, *time.Time, *string) (*models_pkg.OrdersResponse, error)
+    UpdateOrderStatus (string, *models_pkg.UpdateOrderStatusRequest, *string) (*models_pkg.OrdersClosedResponse, error)
 
-    CreateOrder (*models_pkg.OrdersRequest, *string) (*models_pkg.OrdersResponse1, error)
+    GetOrders (*int64, *int64, *string, *string, *time.Time, *time.Time, *string) (*models_pkg.OrdersResponse, error)
 
     DeleteOrderItem (string, string, *string) (*models_pkg.OrdersItemsResponse1, error)
 
     GetOrderItem (string, string) (*models_pkg.OrdersItemsResponse1, error)
-
-    UpdateOrderItem (string, string, *models_pkg.OrdersItemsRequest1, *string) (*models_pkg.OrdersItemsResponse1, error)
-
-    GetOrder (string) (*models_pkg.OrdersResponse1, error)
 }
 
 /*

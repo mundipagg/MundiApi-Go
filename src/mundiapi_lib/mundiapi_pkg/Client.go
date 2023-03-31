@@ -15,9 +15,9 @@ import(
 	"mundiapi_lib/customers_pkg"
 	"mundiapi_lib/charges_pkg"
 	"mundiapi_lib/recipients_pkg"
+	"mundiapi_lib/transfers_pkg"
 	"mundiapi_lib/tokens_pkg"
 	"mundiapi_lib/transactions_pkg"
-	"mundiapi_lib/transfers_pkg"
 )
 /*
  * Client structure as interface implementation
@@ -30,9 +30,9 @@ type MUNDIAPI_IMPL struct {
      customers customers_pkg.CUSTOMERS
      charges charges_pkg.CHARGES
      recipients recipients_pkg.RECIPIENTS
+     transfers transfers_pkg.TRANSFERS
      tokens tokens_pkg.TOKENS
      transactions transactions_pkg.TRANSACTIONS
-     transfers transfers_pkg.TRANSFERS
      config  configuration_pkg.CONFIGURATION
 }
 
@@ -114,6 +114,16 @@ func (me *MUNDIAPI_IMPL) Recipients() recipients_pkg.RECIPIENTS {
     return me.recipients
 }
 /**
+     * Access to Transfers controller
+     * @return Returns the Transfers() instance
+*/
+func (me *MUNDIAPI_IMPL) Transfers() transfers_pkg.TRANSFERS {
+    if(me.transfers) == nil {
+        me.transfers = transfers_pkg.NewTRANSFERS(me.config)
+    }
+    return me.transfers
+}
+/**
      * Access to Tokens controller
      * @return Returns the Tokens() instance
 */
@@ -132,15 +142,5 @@ func (me *MUNDIAPI_IMPL) Transactions() transactions_pkg.TRANSACTIONS {
         me.transactions = transactions_pkg.NewTRANSACTIONS(me.config)
     }
     return me.transactions
-}
-/**
-     * Access to Transfers controller
-     * @return Returns the Transfers() instance
-*/
-func (me *MUNDIAPI_IMPL) Transfers() transfers_pkg.TRANSFERS {
-    if(me.transfers) == nil {
-        me.transfers = transfers_pkg.NewTRANSFERS(me.config)
-    }
-    return me.transfers
 }
 

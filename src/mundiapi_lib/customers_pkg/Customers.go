@@ -13,19 +13,35 @@ import "mundiapi_lib/models_pkg"
  * Interface for the CUSTOMERS_IMPL
  */
 type CUSTOMERS interface {
-    CreateAccessToken (string, *models_pkg.CustomersAccessTokensRequest, *string) (*models_pkg.CustomersAccessTokensResponse, error)
+    GetCustomer (string) (*models_pkg.CustomersResponse, error)
+
+    DeleteAccessTokens (string) (*models_pkg.CustomersAccessTokensResponse1, error)
+
+    CreateAddress (string, *models_pkg.CustomersAddressesRequest, *string) (*models_pkg.CustomersAddressesResponse1, error)
+
+    UpdateAddress (string, string, *models_pkg.CustomersAddressesRequest1, *string) (*models_pkg.CustomersAddressesResponse1, error)
+
+    GetCards (string, *int64, *int64) (*models_pkg.CustomersCardsResponse1, error)
+
+    CreateCustomer (*models_pkg.CustomersRequest1, *string) (*models_pkg.CustomersResponse, error)
+
+    UpdateCustomerMetadata (string, *models_pkg.CustomersMetadataRequest, *string) (*models_pkg.CustomersMetadataResponse, error)
+
+    DeleteCard (string, string, *string) (*models_pkg.CustomersCardsResponse, error)
+
+    GetCard (string, string) (*models_pkg.CustomersCardsResponse, error)
 
     GetAccessTokens (string, *int64, *int64) (*models_pkg.CustomersAccessTokensResponse1, error)
 
     UpdateCustomer (string, *models_pkg.CustomersRequest, *string) (*models_pkg.CustomersResponse, error)
 
-    GetCustomer (string) (*models_pkg.CustomersResponse, error)
+    RenewCard (string, string, *string) (*models_pkg.CustomersCardsRenewResponse, error)
 
-    DeleteAccessTokens (string) (*models_pkg.CustomersAccessTokensResponse1, error)
+    GetCustomers (*string, *string, *int64, *int64, *string, *string) (*models_pkg.CustomersResponse3, error)
+
+    CreateAccessToken (string, *models_pkg.CustomersAccessTokensRequest, *string) (*models_pkg.CustomersAccessTokensResponse, error)
 
     GetAddresses (string, *int64, *int64) (*models_pkg.CustomersAddressesResponse, error)
-
-    CreateAddress (string, *models_pkg.CustomersAddressesRequest, *string) (*models_pkg.CustomersAddressesResponse1, error)
 
     GetAccessToken (string, string) (*models_pkg.CustomersAccessTokensResponse, error)
 
@@ -33,27 +49,11 @@ type CUSTOMERS interface {
 
     GetAddress (string, string) (*models_pkg.CustomersAddressesResponse1, error)
 
-    UpdateAddress (string, string, *models_pkg.CustomersAddressesRequest1, *string) (*models_pkg.CustomersAddressesResponse1, error)
-
     DeleteAddress (string, string, *string) (*models_pkg.CustomersAddressesResponse1, error)
 
     CreateCard (string, *models_pkg.CustomersCardsRequest, *string) (*models_pkg.CustomersCardsResponse, error)
 
-    GetCards (string, *int64, *int64) (*models_pkg.CustomersCardsResponse1, error)
-
-    RenewCard (string, string, *string) (*models_pkg.CustomersCardsRenewResponse, error)
-
-    CreateCustomer (*models_pkg.CustomersRequest1, *string) (*models_pkg.CustomersResponse, error)
-
-    GetCustomers (*string, *string, *int64, *int64, *string, *string) (*models_pkg.CustomersResponse3, error)
-
-    UpdateCustomerMetadata (string, *models_pkg.CustomersMetadataRequest, *string) (*models_pkg.CustomersMetadataResponse, error)
-
     UpdateCard (string, string, *models_pkg.CustomersCardsRequest1, *string) (*models_pkg.CustomersCardsResponse, error)
-
-    DeleteCard (string, string, *string) (*models_pkg.CustomersCardsResponse, error)
-
-    GetCard (string, string) (*models_pkg.CustomersCardsResponse, error)
 }
 
 /*
