@@ -3145,12 +3145,13 @@ type GetSplitOptionsResponse struct {
  * Structure for the custom type GetPixTransactionResponse
  */
 type GetPixTransactionResponse struct {
-    GetTransactionResponse // Anonymous member to emulate model inheritence
-    QrCode                 string          `json:"qr_code" form:"qr_code"` //TODO: Write general description for this field
-    QrCodeUrl              string          `json:"qr_code_url" form:"qr_code_url"` //TODO: Write general description for this field
-    ExpiresAt              *time.Time      `json:"expires_at" form:"expires_at"` //TODO: Write general description for this field
-    AdditionalInformation  []*PixAdditionalInformation `json:"additional_information" form:"additional_information"` //TODO: Write general description for this field
-    Payer                  interface{}     `json:"payer" form:"payer"` //TODO: Write general description for this field
+    GetTransactionResponse  // Anonymous member to emulate model inheritence
+    QrCode                  string          `json:"qr_code" form:"qr_code"` //TODO: Write general description for this field
+    QrCodeUrl               string          `json:"qr_code_url" form:"qr_code_url"` //TODO: Write general description for this field
+    ExpiresAt               *time.Time      `json:"expires_at" form:"expires_at"` //TODO: Write general description for this field
+    AdditionalInformation   []*PixAdditionalInformation `json:"additional_information" form:"additional_information"` //TODO: Write general description for this field
+    Payer                   interface{}     `json:"payer" form:"payer"` //TODO: Write general description for this field
+    ProviderTransactionId   string          `json:"provider_transaction_id" form:"provider_transaction_id"` //Provider transaction id
 }
 
 /*
