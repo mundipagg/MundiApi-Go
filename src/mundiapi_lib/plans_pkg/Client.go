@@ -23,6 +23,268 @@ type PLANS_IMPL struct {
 }
 
 /**
+ * Updates a plan item
+ * @param    string                               planId              parameter: Required
+ * @param    string                               planItemId          parameter: Required
+ * @param    *models_pkg.PlansItemsRequest        body                parameter: Required
+ * @param    *string                              idempotencyKey      parameter: Optional
+ * @return	Returns the *models_pkg.PlansItemsResponse response from the API call
+ */
+func (me *PLANS_IMPL) UpdatePlanItem (
+            planId string,
+            planItemId string,
+            body *models_pkg.PlansItemsRequest,
+            idempotencyKey *string) (*models_pkg.PlansItemsResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "plan_id" : planId,
+        "plan_item_id" : planItemId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+        "Content-Type" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
+    }
+
+    //prepare API request
+    _request := unirest.PutWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.PlansItemsResponse = &models_pkg.PlansItemsResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Removes an item from a plan
+ * @param    string         planId              parameter: Required
+ * @param    string         planItemId          parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
+ * @return	Returns the *models_pkg.PlansItemsResponse response from the API call
+ */
+func (me *PLANS_IMPL) DeletePlanItem (
+            planId string,
+            planItemId string,
+            idempotencyKey *string) (*models_pkg.PlansItemsResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "plan_id" : planId,
+        "plan_item_id" : planItemId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
+    }
+
+    //prepare API request
+    _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.PlansItemsResponse = &models_pkg.PlansItemsResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Gets a plan item
+ * @param    string        planId           parameter: Required
+ * @param    string        planItemId       parameter: Required
+ * @return	Returns the *models_pkg.PlansItemsResponse response from the API call
+ */
+func (me *PLANS_IMPL) GetPlanItem (
+            planId string,
+            planItemId string) (*models_pkg.PlansItemsResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "plan_id" : planId,
+        "plan_item_id" : planItemId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.PlansItemsResponse = &models_pkg.PlansItemsResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
  * Adds a new item to a plan
  * @param    string                                planId              parameter: Required
  * @param    *models_pkg.PlansItemsRequest1        body                parameter: Required
@@ -61,7 +323,7 @@ func (me *PLANS_IMPL) CreatePlanItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",
@@ -163,7 +425,7 @@ func (me *PLANS_IMPL) GetPlans (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
     }
 
@@ -210,26 +472,19 @@ func (me *PLANS_IMPL) GetPlans (
 }
 
 /**
- * Gets a plan
- * @param    string        planId      parameter: Required
+ * Creates a new plan
+ * @param    *models_pkg.PlansRequest        body                parameter: Required
+ * @param    *string                         idempotencyKey      parameter: Optional
  * @return	Returns the *models_pkg.PlansResponse1 response from the API call
  */
-func (me *PLANS_IMPL) GetPlan (
-            planId string) (*models_pkg.PlansResponse1, error) {
+func (me *PLANS_IMPL) CreatePlan (
+            body *models_pkg.PlansRequest,
+            idempotencyKey *string) (*models_pkg.PlansResponse1, error) {
     //the endpoint path uri
-    _pathUrl := "/plans/{plan_id}"
+    _pathUrl := "/plans"
 
     //variable to hold errors
     var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "plan_id" : planId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
     //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
@@ -244,12 +499,15 @@ func (me *PLANS_IMPL) GetPlan (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+        "Content-Type" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request,false);
     if err != nil {
@@ -291,25 +549,20 @@ func (me *PLANS_IMPL) GetPlan (
 }
 
 /**
- * Removes an item from a plan
- * @param    string         planId              parameter: Required
- * @param    string         planItemId          parameter: Required
- * @param    *string        idempotencyKey      parameter: Optional
- * @return	Returns the *models_pkg.PlansItemsResponse response from the API call
+ * Gets a plan
+ * @param    string        planId      parameter: Required
+ * @return	Returns the *models_pkg.PlansResponse1 response from the API call
  */
-func (me *PLANS_IMPL) DeletePlanItem (
-            planId string,
-            planItemId string,
-            idempotencyKey *string) (*models_pkg.PlansItemsResponse, error) {
+func (me *PLANS_IMPL) GetPlan (
+            planId string) (*models_pkg.PlansResponse1, error) {
     //the endpoint path uri
-    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
+    _pathUrl := "/plans/{plan_id}"
 
     //variable to hold errors
     var err error = nil
     //process optional template parameters
     _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
         "plan_id" : planId,
-        "plan_item_id" : planItemId,
     })
     if err != nil {
         //error in template param handling
@@ -330,90 +583,12 @@ func (me *PLANS_IMPL) DeletePlanItem (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
 
     //prepare API request
-    _request := unirest.DeleteWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.PlansItemsResponse = &models_pkg.PlansItemsResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Creates a new plan
- * @param    *models_pkg.PlansRequest        body                parameter: Required
- * @param    *string                         idempotencyKey      parameter: Optional
- * @return	Returns the *models_pkg.PlansResponse1 response from the API call
- */
-func (me *PLANS_IMPL) CreatePlan (
-            body *models_pkg.PlansRequest,
-            idempotencyKey *string) (*models_pkg.PlansResponse1, error) {
-    //the endpoint path uri
-    _pathUrl := "/plans"
-
-    //variable to hold errors
-    var err error = nil
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-        "Content-Type" : "application/json",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
-    }
-
-    //prepare API request
-    _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request,false);
     if err != nil {
@@ -493,7 +668,7 @@ func (me *PLANS_IMPL) UpdatePlan (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",
@@ -579,7 +754,7 @@ func (me *PLANS_IMPL) DeletePlan (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
     }
@@ -616,181 +791,6 @@ func (me *PLANS_IMPL) DeletePlan (
 
     //returning the response
     var retVal *models_pkg.PlansResponse1 = &models_pkg.PlansResponse1{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Updates a plan item
- * @param    string                               planId              parameter: Required
- * @param    string                               planItemId          parameter: Required
- * @param    *models_pkg.PlansItemsRequest        body                parameter: Required
- * @param    *string                              idempotencyKey      parameter: Optional
- * @return	Returns the *models_pkg.PlansItemsResponse response from the API call
- */
-func (me *PLANS_IMPL) UpdatePlanItem (
-            planId string,
-            planItemId string,
-            body *models_pkg.PlansItemsRequest,
-            idempotencyKey *string) (*models_pkg.PlansItemsResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "plan_id" : planId,
-        "plan_item_id" : planItemId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-        "Content-Type" : "application/json",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
-    }
-
-    //prepare API request
-    _request := unirest.PutWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.PlansItemsResponse = &models_pkg.PlansItemsResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Gets a plan item
- * @param    string        planId           parameter: Required
- * @param    string        planItemId       parameter: Required
- * @return	Returns the *models_pkg.PlansItemsResponse response from the API call
- */
-func (me *PLANS_IMPL) GetPlanItem (
-            planId string,
-            planItemId string) (*models_pkg.PlansItemsResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/plans/{plan_id}/items/{plan_item_id}"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "plan_id" : planId,
-        "plan_item_id" : planItemId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.PlansItemsResponse = &models_pkg.PlansItemsResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -840,7 +840,7 @@ func (me *PLANS_IMPL) UpdatePlanMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",

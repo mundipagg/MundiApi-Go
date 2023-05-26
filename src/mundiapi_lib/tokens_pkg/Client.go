@@ -71,7 +71,7 @@ func (me *TOKENS_IMPL) CreateToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",
@@ -169,7 +169,7 @@ func (me *TOKENS_IMPL) GetToken (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
     }
 
