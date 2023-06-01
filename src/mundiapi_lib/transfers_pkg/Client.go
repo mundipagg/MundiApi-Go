@@ -22,26 +22,17 @@ type TRANSFERS_IMPL struct {
 }
 
 /**
- * GetTransferById
- * @param    string        transferId      parameter: Required
+ * CreateTransfer
+ * @param    *models_pkg.CreateTransfer        body             parameter: Required
  * @return	Returns the *models_pkg.GetTransfer response from the API call
  */
-func (me *TRANSFERS_IMPL) GetTransferById (
-            transferId string) (*models_pkg.GetTransfer, error) {
+func (me *TRANSFERS_IMPL) PostCreateTransfer (
+            body *models_pkg.CreateTransfer) (*models_pkg.GetTransfer, error) {
     //the endpoint path uri
-    _pathUrl := "/transfers/{transfer_id}"
+    _pathUrl := "/transfers/recipients"
 
     //variable to hold errors
     var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "transfer_id" : transferId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
     //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
@@ -56,12 +47,14 @@ func (me *TRANSFERS_IMPL) GetTransferById (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+        "Content-Type" : "application/json",
     }
 
     //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request,false);
     if err != nil {
@@ -103,17 +96,26 @@ func (me *TRANSFERS_IMPL) GetTransferById (
 }
 
 /**
- * CreateTransfer
- * @param    *models_pkg.CreateTransfer        body             parameter: Required
+ * GetTransferById
+ * @param    string        transferId      parameter: Required
  * @return	Returns the *models_pkg.GetTransfer response from the API call
  */
-func (me *TRANSFERS_IMPL) PostCreateTransfer (
-            body *models_pkg.CreateTransfer) (*models_pkg.GetTransfer, error) {
+func (me *TRANSFERS_IMPL) GetTransferById (
+            transferId string) (*models_pkg.GetTransfer, error) {
     //the endpoint path uri
-    _pathUrl := "/transfers/recipients"
+    _pathUrl := "/transfers/{transfer_id}"
 
     //variable to hold errors
     var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "transfer_id" : transferId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
     //the base uri for api requests
     _queryBuilder := configuration_pkg.BASEURI;
 
@@ -128,14 +130,12 @@ func (me *TRANSFERS_IMPL) PostCreateTransfer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-        "Content-Type" : "application/json",
     }
 
     //prepare API request
-    _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
     //and invoke the API call request to fetch the response
     _response, err := unirest.AsString(_request,false);
     if err != nil {
@@ -200,7 +200,7 @@ func (me *TRANSFERS_IMPL) GetTransfers1 () (*models_pkg.ListTransfers, error) {
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
     }
 

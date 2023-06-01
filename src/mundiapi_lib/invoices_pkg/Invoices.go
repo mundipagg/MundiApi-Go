@@ -18,13 +18,13 @@ type INVOICES interface {
 
     GetPartialInvoice (string) (*models_pkg.SubscriptionsPartialInvoiceResponse, error)
 
-    CancelInvoice (string, *string) (*models_pkg.InvoicesResponse, error)
-
-    UpdateInvoiceMetadata (string, *models_pkg.InvoicesMetadataRequest, *string) (*models_pkg.InvoicesMetadataResponse, error)
-
     UpdateInvoiceStatus (string, *models_pkg.UpdateCurrentCycleStatusRequest, *string) (*models_pkg.InvoicesStatusResponse, error)
 
     GetInvoice (string) (*models_pkg.InvoicesResponse, error)
+
+    CancelInvoice (string, *string) (*models_pkg.InvoicesResponse, error)
+
+    UpdateInvoiceMetadata (string, *models_pkg.InvoicesMetadataRequest, *string) (*models_pkg.InvoicesMetadataResponse, error)
 
     GetInvoices (*int64, *int64, *string, *string, *string, *time.Time, *time.Time, *string, *time.Time, *time.Time, *string) (*models_pkg.InvoicesResponse2, error)
 }

@@ -14,31 +14,31 @@ import "mundiapi_lib/models_pkg"
  * Interface for the CHARGES_IMPL
  */
 type CHARGES interface {
+    GetCharge (string) (*models_pkg.ChargesResponse, error)
+
+    CancelCharge (string, *string, *models_pkg.ChargesRequest) (*models_pkg.ChargesResponse, error)
+
     ConfirmPayment (string, *string, *models_pkg.CreateConfirmPaymentRequest) (*models_pkg.ChargesConfirmPaymentResponse, error)
+
+    UpdateChargeCard (string, *models_pkg.ChargesCardRequest, *string) (*models_pkg.ChargesCardResponse, error)
 
     GetCharges (*int64, *int64, *string, *string, *string, *string, *string, *time.Time, *time.Time) (*models_pkg.ChargesResponse2, error)
 
+    RetryCharge (string, *string) (*models_pkg.ChargesRetryResponse, error)
+
+    UpdateChargePaymentMethod (string, *models_pkg.ChargesPaymentMethodRequest, *string) (*models_pkg.ChargesPaymentMethodResponse, error)
+
     UpdateChargeMetadata (string, *models_pkg.ChargesMetadataRequest, *string) (*models_pkg.ChargesMetadataResponse, error)
+
+    CaptureCharge (string, *string, *models_pkg.ChargesCaptureRequest) (*models_pkg.ChargesCaptureResponse, error)
 
     UpdateChargeDueDate (string, *models_pkg.ChargesDueDateRequest, *string) (*models_pkg.ChargesDueDateResponse, error)
 
     CreateCharge (*models_pkg.ChargesRequest1, *string) (*models_pkg.ChargesResponse, error)
 
-    RetryCharge (string, *string) (*models_pkg.ChargesRetryResponse, error)
-
     GetChargeTransactions (string, *int64, *int64) (*models_pkg.ChargesTransactionsResponse, error)
 
     GetChargesSummary (string, *time.Time, *time.Time) (*models_pkg.GetChargesSummaryResponse, error)
-
-    CaptureCharge (string, *string, *models_pkg.ChargesCaptureRequest) (*models_pkg.ChargesCaptureResponse, error)
-
-    GetCharge (string) (*models_pkg.ChargesResponse, error)
-
-    CancelCharge (string, *string, *models_pkg.ChargesRequest) (*models_pkg.ChargesResponse, error)
-
-    UpdateChargeCard (string, *models_pkg.ChargesCardRequest, *string) (*models_pkg.ChargesCardResponse, error)
-
-    UpdateChargePaymentMethod (string, *models_pkg.ChargesPaymentMethodRequest, *string) (*models_pkg.ChargesPaymentMethodResponse, error)
 }
 
 /*

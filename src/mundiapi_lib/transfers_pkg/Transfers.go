@@ -13,9 +13,9 @@ import "mundiapi_lib/models_pkg"
  * Interface for the TRANSFERS_IMPL
  */
 type TRANSFERS interface {
-    GetTransferById (string) (*models_pkg.GetTransfer, error)
-
     PostCreateTransfer (*models_pkg.CreateTransfer) (*models_pkg.GetTransfer, error)
+
+    GetTransferById (string) (*models_pkg.GetTransfer, error)
 
     GetTransfers1 () (*models_pkg.ListTransfers, error)
 }

@@ -23,6 +23,175 @@ type CHARGES_IMPL struct {
 }
 
 /**
+ * Get a charge from its id
+ * @param    string        chargeId      parameter: Required
+ * @return	Returns the *models_pkg.ChargesResponse response from the API call
+ */
+func (me *CHARGES_IMPL) GetCharge (
+            chargeId string) (*models_pkg.ChargesResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "charge_id" : chargeId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+    }
+
+    //prepare API request
+    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ChargesResponse = &models_pkg.ChargesResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Cancel a charge
+ * @param    string                            chargeId            parameter: Required
+ * @param    *string                           idempotencyKey      parameter: Optional
+ * @param    *models_pkg.ChargesRequest        body                parameter: Optional
+ * @return	Returns the *models_pkg.ChargesResponse response from the API call
+ */
+func (me *CHARGES_IMPL) CancelCharge (
+            chargeId string,
+            idempotencyKey *string,
+            body *models_pkg.ChargesRequest) (*models_pkg.ChargesResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "charge_id" : chargeId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+        "Content-Type" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
+    }
+
+    //prepare API request
+    _request := unirest.DeleteWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ChargesResponse = &models_pkg.ChargesResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
  * ConfirmPayment
  * @param    string                                         chargeId            parameter: Required
  * @param    *string                                        idempotencyKey      parameter: Optional
@@ -61,7 +230,7 @@ func (me *CHARGES_IMPL) ConfirmPayment (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",
@@ -100,6 +269,94 @@ func (me *CHARGES_IMPL) ConfirmPayment (
 
     //returning the response
     var retVal *models_pkg.ChargesConfirmPaymentResponse = &models_pkg.ChargesConfirmPaymentResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Updates the card from a charge
+ * @param    string                                chargeId            parameter: Required
+ * @param    *models_pkg.ChargesCardRequest        body                parameter: Required
+ * @param    *string                               idempotencyKey      parameter: Optional
+ * @return	Returns the *models_pkg.ChargesCardResponse response from the API call
+ */
+func (me *CHARGES_IMPL) UpdateChargeCard (
+            chargeId string,
+            body *models_pkg.ChargesCardRequest,
+            idempotencyKey *string) (*models_pkg.ChargesCardResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/card"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "charge_id" : chargeId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+        "Content-Type" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
+    }
+
+    //prepare API request
+    _request := unirest.PatchWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ChargesCardResponse = &models_pkg.ChargesCardResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -169,7 +426,7 @@ func (me *CHARGES_IMPL) GetCharges (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
     }
 
@@ -205,6 +462,178 @@ func (me *CHARGES_IMPL) GetCharges (
 
     //returning the response
     var retVal *models_pkg.ChargesResponse2 = &models_pkg.ChargesResponse2{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Retries a charge
+ * @param    string         chargeId            parameter: Required
+ * @param    *string        idempotencyKey      parameter: Optional
+ * @return	Returns the *models_pkg.ChargesRetryResponse response from the API call
+ */
+func (me *CHARGES_IMPL) RetryCharge (
+            chargeId string,
+            idempotencyKey *string) (*models_pkg.ChargesRetryResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/retry"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "charge_id" : chargeId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
+    }
+
+    //prepare API request
+    _request := unirest.PostWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ChargesRetryResponse = &models_pkg.ChargesRetryResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
+ * Updates a charge's payment method
+ * @param    string                                         chargeId            parameter: Required
+ * @param    *models_pkg.ChargesPaymentMethodRequest        body                parameter: Required
+ * @param    *string                                        idempotencyKey      parameter: Optional
+ * @return	Returns the *models_pkg.ChargesPaymentMethodResponse response from the API call
+ */
+func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
+            chargeId string,
+            body *models_pkg.ChargesPaymentMethodRequest,
+            idempotencyKey *string) (*models_pkg.ChargesPaymentMethodResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/payment-method"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "charge_id" : chargeId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+        "Content-Type" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
+    }
+
+    //prepare API request
+    _request := unirest.PatchWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ChargesPaymentMethodResponse = &models_pkg.ChargesPaymentMethodResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -254,7 +683,7 @@ func (me *CHARGES_IMPL) UpdateChargeMetadata (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",
@@ -304,6 +733,94 @@ func (me *CHARGES_IMPL) UpdateChargeMetadata (
 }
 
 /**
+ * Captures a charge
+ * @param    string                                   chargeId            parameter: Required
+ * @param    *string                                  idempotencyKey      parameter: Optional
+ * @param    *models_pkg.ChargesCaptureRequest        body                parameter: Optional
+ * @return	Returns the *models_pkg.ChargesCaptureResponse response from the API call
+ */
+func (me *CHARGES_IMPL) CaptureCharge (
+            chargeId string,
+            idempotencyKey *string,
+            body *models_pkg.ChargesCaptureRequest) (*models_pkg.ChargesCaptureResponse, error) {
+    //the endpoint path uri
+    _pathUrl := "/charges/{charge_id}/capture"
+
+    //variable to hold errors
+    var err error = nil
+    //process optional template parameters
+    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
+        "charge_id" : chargeId,
+    })
+    if err != nil {
+        //error in template param handling
+        return nil, err
+    }
+
+    //the base uri for api requests
+    _queryBuilder := configuration_pkg.BASEURI;
+
+    //prepare query string for API call
+   _queryBuilder = _queryBuilder + _pathUrl
+
+    //validate and preprocess url
+    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
+    if err != nil {
+        //error in url validation or cleaning
+        return nil, err
+    }
+    //prepare headers for the outgoing request
+    headers := map[string]interface{} {
+        "user-agent" : "MundiSDK - Go 2.4.4",
+        "accept" : "application/json",
+        "content-type" : "application/json; charset=utf-8",
+        "Content-Type" : "application/json",
+        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
+    }
+
+    //prepare API request
+    _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
+    //and invoke the API call request to fetch the response
+    _response, err := unirest.AsString(_request,false);
+    if err != nil {
+        //error in API invocation
+        return nil, err
+    }
+
+    //error handling using HTTP status codes
+    if (_response.Code == 400) {
+        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
+    } else if (_response.Code == 401) {
+        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
+    } else if (_response.Code == 404) {
+        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
+    } else if (_response.Code == 412) {
+        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 422) {
+        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
+    } else if (_response.Code == 500) {
+        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
+    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
+            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
+    }
+    if(err != nil) {
+        //error detected in status code validation
+        return nil, err
+    }
+
+    //returning the response
+    var retVal *models_pkg.ChargesCaptureResponse = &models_pkg.ChargesCaptureResponse{}
+    err = json.Unmarshal(_response.RawBody, &retVal)
+
+    if err != nil {
+        //error in parsing
+        return nil, err
+    }
+    return retVal, nil
+
+}
+
+/**
  * Updates the due date from a charge
  * @param    string                                   chargeId            parameter: Required
  * @param    *models_pkg.ChargesDueDateRequest        body                parameter: Required
@@ -342,7 +859,7 @@ func (me *CHARGES_IMPL) UpdateChargeDueDate (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",
@@ -419,7 +936,7 @@ func (me *CHARGES_IMPL) CreateCharge (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",
@@ -458,90 +975,6 @@ func (me *CHARGES_IMPL) CreateCharge (
 
     //returning the response
     var retVal *models_pkg.ChargesResponse = &models_pkg.ChargesResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Retries a charge
- * @param    string         chargeId            parameter: Required
- * @param    *string        idempotencyKey      parameter: Optional
- * @return	Returns the *models_pkg.ChargesRetryResponse response from the API call
- */
-func (me *CHARGES_IMPL) RetryCharge (
-            chargeId string,
-            idempotencyKey *string) (*models_pkg.ChargesRetryResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/charges/{charge_id}/retry"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "charge_id" : chargeId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
-    }
-
-    //prepare API request
-    _request := unirest.PostWithAuth(_queryBuilder, headers, nil, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ChargesRetryResponse = &models_pkg.ChargesRetryResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
@@ -601,7 +1034,7 @@ func (me *CHARGES_IMPL) GetChargeTransactions (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
     }
 
@@ -688,7 +1121,7 @@ func (me *CHARGES_IMPL) GetChargesSummary (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
+        "user-agent" : "MundiSDK - Go 2.4.4",
         "accept" : "application/json",
     }
 
@@ -724,439 +1157,6 @@ func (me *CHARGES_IMPL) GetChargesSummary (
 
     //returning the response
     var retVal *models_pkg.GetChargesSummaryResponse = &models_pkg.GetChargesSummaryResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Captures a charge
- * @param    string                                   chargeId            parameter: Required
- * @param    *string                                  idempotencyKey      parameter: Optional
- * @param    *models_pkg.ChargesCaptureRequest        body                parameter: Optional
- * @return	Returns the *models_pkg.ChargesCaptureResponse response from the API call
- */
-func (me *CHARGES_IMPL) CaptureCharge (
-            chargeId string,
-            idempotencyKey *string,
-            body *models_pkg.ChargesCaptureRequest) (*models_pkg.ChargesCaptureResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/charges/{charge_id}/capture"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "charge_id" : chargeId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-        "Content-Type" : "application/json",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
-    }
-
-    //prepare API request
-    _request := unirest.PostWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ChargesCaptureResponse = &models_pkg.ChargesCaptureResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Get a charge from its id
- * @param    string        chargeId      parameter: Required
- * @return	Returns the *models_pkg.ChargesResponse response from the API call
- */
-func (me *CHARGES_IMPL) GetCharge (
-            chargeId string) (*models_pkg.ChargesResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/charges/{charge_id}"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "charge_id" : chargeId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-    }
-
-    //prepare API request
-    _request := unirest.GetWithAuth(_queryBuilder, headers, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ChargesResponse = &models_pkg.ChargesResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Cancel a charge
- * @param    string                            chargeId            parameter: Required
- * @param    *string                           idempotencyKey      parameter: Optional
- * @param    *models_pkg.ChargesRequest        body                parameter: Optional
- * @return	Returns the *models_pkg.ChargesResponse response from the API call
- */
-func (me *CHARGES_IMPL) CancelCharge (
-            chargeId string,
-            idempotencyKey *string,
-            body *models_pkg.ChargesRequest) (*models_pkg.ChargesResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/charges/{charge_id}"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "charge_id" : chargeId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-        "Content-Type" : "application/json",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
-    }
-
-    //prepare API request
-    _request := unirest.DeleteWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ChargesResponse = &models_pkg.ChargesResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Updates the card from a charge
- * @param    string                                chargeId            parameter: Required
- * @param    *models_pkg.ChargesCardRequest        body                parameter: Required
- * @param    *string                               idempotencyKey      parameter: Optional
- * @return	Returns the *models_pkg.ChargesCardResponse response from the API call
- */
-func (me *CHARGES_IMPL) UpdateChargeCard (
-            chargeId string,
-            body *models_pkg.ChargesCardRequest,
-            idempotencyKey *string) (*models_pkg.ChargesCardResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/charges/{charge_id}/card"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "charge_id" : chargeId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-        "Content-Type" : "application/json",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
-    }
-
-    //prepare API request
-    _request := unirest.PatchWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ChargesCardResponse = &models_pkg.ChargesCardResponse{}
-    err = json.Unmarshal(_response.RawBody, &retVal)
-
-    if err != nil {
-        //error in parsing
-        return nil, err
-    }
-    return retVal, nil
-
-}
-
-/**
- * Updates a charge's payment method
- * @param    string                                         chargeId            parameter: Required
- * @param    *models_pkg.ChargesPaymentMethodRequest        body                parameter: Required
- * @param    *string                                        idempotencyKey      parameter: Optional
- * @return	Returns the *models_pkg.ChargesPaymentMethodResponse response from the API call
- */
-func (me *CHARGES_IMPL) UpdateChargePaymentMethod (
-            chargeId string,
-            body *models_pkg.ChargesPaymentMethodRequest,
-            idempotencyKey *string) (*models_pkg.ChargesPaymentMethodResponse, error) {
-    //the endpoint path uri
-    _pathUrl := "/charges/{charge_id}/payment-method"
-
-    //variable to hold errors
-    var err error = nil
-    //process optional template parameters
-    _pathUrl, err = apihelper_pkg.AppendUrlWithTemplateParameters(_pathUrl, map[string]interface{} {
-        "charge_id" : chargeId,
-    })
-    if err != nil {
-        //error in template param handling
-        return nil, err
-    }
-
-    //the base uri for api requests
-    _queryBuilder := configuration_pkg.BASEURI;
-
-    //prepare query string for API call
-   _queryBuilder = _queryBuilder + _pathUrl
-
-    //validate and preprocess url
-    _queryBuilder, err = apihelper_pkg.CleanUrl(_queryBuilder)
-    if err != nil {
-        //error in url validation or cleaning
-        return nil, err
-    }
-    //prepare headers for the outgoing request
-    headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.3",
-        "accept" : "application/json",
-        "content-type" : "application/json; charset=utf-8",
-        "Content-Type" : "application/json",
-        "idempotency-key" : apihelper_pkg.ToString(idempotencyKey, ""),
-    }
-
-    //prepare API request
-    _request := unirest.PatchWithAuth(_queryBuilder, headers, body, me.config.BasicAuthUserName(), me.config.BasicAuthPassword())
-    //and invoke the API call request to fetch the response
-    _response, err := unirest.AsString(_request,false);
-    if err != nil {
-        //error in API invocation
-        return nil, err
-    }
-
-    //error handling using HTTP status codes
-    if (_response.Code == 400) {
-        err = apihelper_pkg.NewAPIError("Invalid request", _response.Code, _response.RawBody)
-    } else if (_response.Code == 401) {
-        err = apihelper_pkg.NewAPIError("Invalid API key", _response.Code, _response.RawBody)
-    } else if (_response.Code == 404) {
-        err = apihelper_pkg.NewAPIError("An informed resource was not found", _response.Code, _response.RawBody)
-    } else if (_response.Code == 412) {
-        err = apihelper_pkg.NewAPIError("Business validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 422) {
-        err = apihelper_pkg.NewAPIError("Contract validation error", _response.Code, _response.RawBody)
-    } else if (_response.Code == 500) {
-        err = apihelper_pkg.NewAPIError("Internal server error", _response.Code, _response.RawBody)
-    } else if (_response.Code < 200) || (_response.Code > 206) { //[200,206] = HTTP OK
-            err = apihelper_pkg.NewAPIError("HTTP Response Not OK", _response.Code, _response.RawBody)
-    }
-    if(err != nil) {
-        //error detected in status code validation
-        return nil, err
-    }
-
-    //returning the response
-    var retVal *models_pkg.ChargesPaymentMethodResponse = &models_pkg.ChargesPaymentMethodResponse{}
     err = json.Unmarshal(_response.RawBody, &retVal)
 
     if err != nil {
