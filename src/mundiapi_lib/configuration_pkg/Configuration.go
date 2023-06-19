@@ -9,6 +9,8 @@ package configuration_pkg
 
 
 type CONFIGURATION interface {
+        ServiceRefererName() string
+        SetServiceRefererName(serviceRefererName   string)
         BasicAuthUserName() string
         SetBasicAuthUserName(basicAuthUserName   string)
         BasicAuthPassword() string

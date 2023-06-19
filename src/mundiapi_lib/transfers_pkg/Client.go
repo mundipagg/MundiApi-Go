@@ -47,7 +47,7 @@ func (me *TRANSFERS_IMPL) PostCreateTransfer (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.4",
+        "user-agent" : "MundiSDK - Go 2.4.5",
         "accept" : "application/json",
         "content-type" : "application/json; charset=utf-8",
         "Content-Type" : "application/json",
@@ -130,7 +130,7 @@ func (me *TRANSFERS_IMPL) GetTransferById (
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.4",
+        "user-agent" : "MundiSDK - Go 2.4.5",
         "accept" : "application/json",
     }
 
@@ -200,7 +200,7 @@ func (me *TRANSFERS_IMPL) GetTransfers1 () (*models_pkg.ListTransfers, error) {
     }
     //prepare headers for the outgoing request
     headers := map[string]interface{} {
-        "user-agent" : "MundiSDK - Go 2.4.4",
+        "user-agent" : "MundiSDK - Go 2.4.5",
         "accept" : "application/json",
     }
 
